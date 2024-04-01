@@ -9,11 +9,11 @@ public class Publication {
     private String type, code, publisher, author, name;
     private double price;
     private int quantity;
-    private Date publishedDate;
+    private String publishedDate;
     public Publication(){
        
     }
-    public Publication(String type, String code, String publisher, String author, double price, int quantity, Date publishedDate, String name) {
+    public Publication(String type, String code, String publisher, String author, double price, int quantity, String publishedDate, String name) {
         this.name = name;
         this.type = type;
         this.code = code;
@@ -72,12 +72,12 @@ public class Publication {
         this.quantity = quantity;
     }
 
-    public Date getPublishedDate() {
+    public String getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(Date publicDate) {
-        this.publishedDate = publicDate;
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
     public String getName() {

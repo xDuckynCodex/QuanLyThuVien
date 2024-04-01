@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.utils.FileUtils;
 
 public class PublicationDao {
     private static final String file_name = "Publication.xml";
     private List<Publication> listPub;
+    Scanner sc = new Scanner(System.in);
     public PublicationDao(){
         this.listPub = readPublication();
         if(listPub == null){
@@ -106,5 +108,18 @@ public class PublicationDao {
     public void filter(){
         Publication p = listPub.stream().filter(publi -> "Tap chi".equals(publi.getType())).findAny().orElse(null);
         System.out.println(p);
+    }
+    
+    public void searchByName(){
+        String name = sc.nextLine();
+        for(int i = 0; i < listPub.size(); i++){
+            if(listPub.get(i).getName() == name){
+                System.out.println(listPub.get(i));
+            }
+        }
+    }
+    
+    public List<Publication> getListPublication(){
+        return listPub;
     }
 }
