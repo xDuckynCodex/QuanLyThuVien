@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publications>
+    <publication>
+        <name>adasdas</name>
+        <code>xxxx</code>
+        <publisher>PhongNQ</publisher>
+        <author>Phong NQ</author>
+        <publishedDate>20-03-2024</publishedDate>
+        <quantity>1000</quantity>
+        <price>10</price>
+        <type>book</type>
+    </publication>
+</publications>
