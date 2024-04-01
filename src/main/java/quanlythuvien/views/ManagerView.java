@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.concurrent.Flow;
+import quanlythuvien.controllers.ManagerController;
+import quanlythuvien.dao.PublicationDao;
 
 // Thiết kế views của giao diện quản lý
 public class ManagerView extends JFrame implements ActionListener, ListSelectionListener {
@@ -254,6 +257,124 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             addPublicationBtn.setEnabled(false);
         }
     }
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    private boolean validName(){
+        String name = nameField.getText();
+        if(name == null || "".equals(name.trim())){
+            nameField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validType(){
+        String type = typeField.getText();
+        if(type == null || "".equals(type.trim())){
+            typeField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validCode(){
+        String code = codeField.getText();
+        if(code == null || "".equals(code.trim())){
+            codeField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validPublisher(){
+        String publisher = publisherField.getText();
+        if(publisher == null || "".equals(publisher.trim())){
+            publisherField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validAuthor(){
+        String author = authorField.getText();
+        if(author == null || "".equals(author.trim())){
+            authorField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validPrice(){
+        try {
+            double price = Double.parseDouble(priceField.getText().trim());
+            if(price < 0){
+                priceField.requestFocus();
+                showMessage("Không hợp lệ");
+                return false;
+            }
+        } catch (Exception e){
+            priceField.requestFocus();
+            showMessage("Giá không hợp lệ");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validQuantity(){
+        try {
+            int quantity = Integer.parseInt(quantityField.getText().trim());
+            if(quantity < 0){
+                quantityField.requestFocus();
+                showMessage("Không hợp lệ");
+                return false;
+            }
+        } catch (Exception e){
+            quantityField.requestFocus();
+            showMessage("Số lượng không hợp lệ");
+            return false;
+        }
+        return true;
+    }
+    
+    public Publication getPublicationInfo(){
+        if(!validName() || !validType() || !validCode() || 
+                !validPublisher() || !validAuthor() || !validPrice() || !validQuantity()){
+            return null;
+        }
+        try{
+            Publication publication = new Publication();
+            publication.setName(nameField.getText().trim());
+            publication.setCode(codeField.getText().trim());
+            publication.setPublisher(publisherField.getText().trim());
+            publication.setAuthor(authorField.getText().trim());
+            publication.setType(typeField.getText().trim());
+            publication.setPublishedDate(publishedDateField.getText().trim());
+            publication.setPrice(Double.parseDouble(priceField.getText().trim()));
+            publication.setQuantity(Integer.parseInt(quantityField.getText().trim()));
+            return publication;
+        } catch (Exception e){
+            showMessage(e.getMessage());
+        }
+        return null;
+    }
+    
+    public void showPublication(Publication publication){
+        nameField.setText("" + publication.getName());
+        codeField.setText(publication.getCode());
+        publisherField.setText("" + publication.getPublisher());
+        authorField.setText(publication.getAuthor());
+        typeField.setText("" + publication.getType());
+        publishedDateField.setText(publication.getPublishedDate());
+        priceField.setText("" + publication.getPrice());
+        quantityField.setText("" + publication.getQuantity());
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -263,9 +384,15 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     public void valueChanged(ListSelectionEvent e) {
 
     }
-
-    public static void main(String[] args) {
-        ManagerView managerView = new ManagerView();
-        managerView.setVisible(true);
+    public void addAddPublicationListener(ActionListener listener) {
+        addPublicationBtn.addActionListener(listener);
+    }
+    
+    public void addEditPublicationListener(ActionListener listener) {
+        editPublicationBtn.addActionListener(listener);
+    }
+    
+    public void addDeletePublicationListener(ActionListener listener) {
+        deletePublicationBtn.addActionListener(listener);
     }
 }
