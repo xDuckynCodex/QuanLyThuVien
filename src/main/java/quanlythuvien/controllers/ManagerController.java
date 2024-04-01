@@ -18,12 +18,12 @@ public class ManagerController {
         view.addEditPublicationListener(new EditPublicationListener());
         view.addDeletePublicationListener(new DeletePublicationListener());       
     }
-    class AddPublicationListener implements ActionListener{
+    public class AddPublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
-            if(publication == null){
+            if(publication != null){
                 pubDao.add(publication);
-                managerView.showPublication(publication);
+//                managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.showMessage("Thêm thành công");
             }
@@ -33,7 +33,7 @@ public class ManagerController {
     class EditPublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
-            if(publication == null){
+            if(publication != null){
                 pubDao.add(publication);
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
@@ -45,12 +45,20 @@ public class ManagerController {
     class DeletePublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
-            if(publication == null){
+            if(publication != null){
                 pubDao.add(publication);
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.showMessage("Xoá thành công");
             }
         }
+    }
+    public static void main(String[] args) {
+        ManagerView managerView = new ManagerView();
+        PublicationDao pubDao = new PublicationDao();
+        ManagerController mc = new ManagerController(managerView);
+        managerView.showListPublications(pubDao.getListPublication());
+        managerView.setVisible(true);
+        
     }
 }

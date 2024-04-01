@@ -11,6 +11,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.concurrent.Flow;
+import quanlythuvien.controllers.ManagerController;
+import quanlythuvien.dao.PublicationDao;
 
 // Thiết kế views của giao diện quản lý
 public class ManagerView extends JFrame implements ActionListener, ListSelectionListener {
@@ -355,6 +358,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             publication.setPublishedDate(publishedDateField.getText().trim());
             publication.setPrice(Double.parseDouble(priceField.getText().trim()));
             publication.setQuantity(Integer.parseInt(quantityField.getText().trim()));
+            return publication;
         } catch (Exception e){
             showMessage(e.getMessage());
         }
