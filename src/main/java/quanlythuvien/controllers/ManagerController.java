@@ -1,7 +1,6 @@
 package quanlythuvien.controllers;
 
-import quanlythuvien.entities.Publications;
+import quanlythuvien.entities.Publication;
 
 public class ManagerController {
-    Publications pub = new Publications();
 }

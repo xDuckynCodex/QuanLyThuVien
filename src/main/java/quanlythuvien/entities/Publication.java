@@ -2,25 +2,26 @@ package quanlythuvien.entities;
 
 import java.util.Date;
 
-public class Publications {
+public class Publication {
     // class định nghĩa các ấn phẩm của thư viện
     // chứa các thông tin sau: sách, báo, tạp chí, chuyên san, tập san, sách tranh…, 
     //giá thành, số lượng, mã số, Nhà xuất bản, tác giả…
-    private String type, code, publisher, author;
+    private String type, code, publisher, author, name;
     private double price;
     private int quantity;
-    private Date publicDate;
-    public Publications(){
-        this("","","","",0,0,new Date());
+    private Date publishedDate;
+    public Publication(){
+       
     }
-    public Publications(String type, String code, String publisher, String author, double price, int quantity, Date publicDate) {
+    public Publication(String type, String code, String publisher, String author, double price, int quantity, Date publishedDate, String name) {
+        this.name = name;
         this.type = type;
         this.code = code;
         this.publisher = publisher;
         this.author = author;
         this.price = price;
         this.quantity = quantity;
-        this.publicDate = publicDate;
+        this.publishedDate = publishedDate;
     }
 
     public String getType() {
@@ -71,12 +72,19 @@ public class Publications {
         this.quantity = quantity;
     }
 
-    public Date getPublicDate() {
-        return publicDate;
+    public Date getPublishedDate() {
+        return publishedDate;
     }
 
-    public void setPublicDate(Date publicDate) {
-        this.publicDate = publicDate;
+    public void setPublishedDate(Date publicDate) {
+        this.publishedDate = publicDate;
     }
-    //
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
