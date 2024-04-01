@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="Tạo file cần thực hiện">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="ManagerView done">
+      <change afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PubilcationDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXLM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publiccations.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +27,14 @@
       <list>
         <option value="Class" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="quanlythuvien/master" />
+    <option name="OPTIONS">
+      <set>
+        <option value="SQUASH" />
+      </set>
     </option>
   </component>
   <component name="Git.Settings">
@@ -124,12 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1711891314069</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ManagerView done">
+      <option name="closed" value="true" />
+      <created>1711979899011</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711979899011</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init base" />
     <MESSAGE value="Tạo file cần thực hiện" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tạo file cần thực hiện" />
+    <MESSAGE value="ManagerView done" />
+    <option name="LAST_COMMIT_MESSAGE" value="ManagerView done" />
   </component>
 </project>

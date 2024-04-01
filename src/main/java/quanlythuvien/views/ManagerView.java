@@ -1,6 +1,8 @@
 package quanlythuvien.views;
 
 
+import quanlythuvien.entities.Publication;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -8,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 // Thiết kế views của giao diện quản lý
 public class ManagerView extends JFrame implements ActionListener, ListSelectionListener {
@@ -216,7 +219,41 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         this.setResizable(false);
     }
 
+    public void showListPublications(List<Publication> list) {
+        int size = list.size();
+        Object [][] publications = new Object[size][9];
+        for (int i = 0; i < size; i++) {
+            publications[i][0] = i + 1;
+            publications[i][1] = list.get(i).getName();
+            publications[i][2] = list.get(i).getCode();
+            publications[i][3] = list.get(i).getPublisher();
+            publications[i][4] = list.get(i).getAuthor();
+            publications[i][5] = list.get(i).getPublishedDate();
+            publications[i][6] = list.get(i).getQuantity();
+            publications[i][7] = list.get(i).getPrice();
+            publications[i][8] = list.get(i).getType();
+        }
+        table.setModel(new DefaultTableModel(publications, columnNames));
+    }
 
+    public void fillPublicationFromSelectedRow() {
+        int row =table.getSelectedRow();
+        if (row >= 0) {
+            nameField.setText(table.getModel().getValueAt(row, 1).toString());
+            codeField.setText(table.getModel().getValueAt(row, 2).toString());
+            publisherField.setText(table.getModel().getValueAt(row, 3).toString());
+            authorField.setText(table.getModel().getValueAt(row, 4).toString());
+            publishedDateField.setText(table.getModel().getValueAt(row, 5).toString());
+            quantityField.setText(table.getModel().getValueAt(row, 6).toString());
+            priceField.setText(table.getModel().getValueAt(row, 7).toString());
+            typeField.setText(table.getModel().getValueAt(row, 8).toString());
+            //enable
+            editPublicationBtn.setEnabled(true);
+            deletePublicationBtn.setEnabled(true);
+            //disable
+            addPublicationBtn.setEnabled(false);
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
