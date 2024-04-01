@@ -25,7 +25,6 @@ public class PublicationDao {
     }
     
     // doc file XML
-
     public List<Publication> readPublication() {
         List<Publication> list = new ArrayList<Publication>();
         PublicationXML pubXML = (PublicationXML) FileUtils.readXMLFile(
