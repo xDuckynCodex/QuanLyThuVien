@@ -10,7 +10,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.concurrent.Flow;
+import quanlythuvien.controllers.ManagerController;
+import quanlythuvien.dao.PublicationDao;
 
 // Thiết kế views của giao diện quản lý
 public class ManagerView extends JFrame implements ActionListener, ListSelectionListener {
@@ -19,6 +23,9 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JButton editPublicationBtn;
     private JButton deletePublicationBtn;
     private JButton clearBtn;
+    private JButton sortByNameBtn;
+    private JButton sortByPrice;
+
     // label nhập
     private JLabel nameLabel;
     private JLabel codeLabel;
@@ -28,6 +35,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JLabel quantityLabel;
     private  JLabel priceLabel;
     private JLabel typeLabel;
+    private JLabel tableLabel;
 
     // field nhập
     private JTextField nameField;
@@ -68,6 +76,9 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         quantityLabel = new JLabel("Số lượng");
         priceLabel = new JLabel("Giá");
         typeLabel = new JLabel("Thể loại");
+        tableLabel = new JLabel("Bảng thống kê ấn phẩm");
+        tableLabel.setFont(new Font(tableLabel.getFont().getName(),
+                Font.PLAIN, 40));
 
         //khởi tạo field nhập
         nameField = new JTextField(20);
@@ -81,12 +92,19 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
         // Tạo bảng lưu dữ liệu
         jScrollTable = new JScrollPane();
-        table = new JTable();
+        table = new JTable() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        table.getTableHeader().setReorderingAllowed(false);
 
         //cài đặt bảng
         table.setModel(new DefaultTableModel((Object[][]) data, columnNames));
+        table.setFont(new Font(table.getFont().getName(), Font.PLAIN, 15));
         jScrollTable.setViewportView(table);
-        jScrollTable.setPreferredSize(new Dimension(1350, 980));
+        jScrollTable.setPreferredSize(new Dimension(1350, 800));
 
         // Tạo layout của giao diện
         SpringLayout layout = new SpringLayout();
@@ -108,6 +126,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(quantityLabel);
         panel.add(priceLabel);
         panel.add(typeLabel);
+        panel.add(tableLabel);
 
         panel.add(nameField);
         panel.add(codeField);
@@ -152,6 +171,10 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         layout.putConstraint(SpringLayout.WEST, typeLabel, 10,
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, typeLabel, 220,
+                SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, tableLabel, 1050,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, tableLabel, 20,
                 SpringLayout.NORTH, panel);
         // field
         layout.putConstraint(SpringLayout.WEST, nameField, 100,
@@ -206,7 +229,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         // table
         layout.putConstraint(SpringLayout.EAST, jScrollTable, 0,
                 SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.NORTH, jScrollTable, 0,
+        layout.putConstraint(SpringLayout.NORTH, jScrollTable, 100,
                 SpringLayout.NORTH, panel);
         //
         this.add(panel);
@@ -234,6 +257,9 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             publications[i][8] = list.get(i).getType();
         }
         table.setModel(new DefaultTableModel(publications, columnNames));
+        for (int i = 0; i < size; i++) {
+            table.setRowHeight(i, 20);
+        }
     }
 
     public void fillPublicationFromSelectedRow() {
@@ -254,6 +280,138 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             addPublicationBtn.setEnabled(false);
         }
     }
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    private boolean validName(){
+        String name = nameField.getText();
+        if(name == null || "".equals(name.trim())){
+            nameField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validType(){
+        String type = typeField.getText();
+        if(type == null || "".equals(type.trim())){
+            typeField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validCode(){
+        String code = codeField.getText();
+        if(code == null || "".equals(code.trim())){
+            codeField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validPublisher(){
+        String publisher = publisherField.getText();
+        if(publisher == null || "".equals(publisher.trim())){
+            publisherField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validAuthor(){
+        String author = authorField.getText();
+        if(author == null || "".equals(author.trim())){
+            authorField.requestFocus();
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validPrice(){
+        try {
+            double price = Double.parseDouble(priceField.getText().trim());
+            if(price < 0){
+                priceField.requestFocus();
+                showMessage("Không hợp lệ");
+                return false;
+            }
+        } catch (Exception e){
+            priceField.requestFocus();
+            showMessage("Giá không hợp lệ");
+            return false;
+        }
+        return true;
+    }
+    
+    private boolean validQuantity(){
+        try {
+            int quantity = Integer.parseInt(quantityField.getText().trim());
+            if(quantity < 0){
+                quantityField.requestFocus();
+                showMessage("Không hợp lệ");
+                return false;
+            }
+        } catch (Exception e){
+            quantityField.requestFocus();
+            showMessage("Số lượng không hợp lệ");
+            return false;
+        }
+        return true;
+    }
+    
+    public Publication getPublicationInfo(){
+        if(!validName() || !validType() || !validCode() || 
+                !validPublisher() || !validAuthor() || !validPrice() || !validQuantity()){
+            return null;
+        }
+        try{
+            Publication publication = new Publication();
+            publication.setName(nameField.getText().trim());
+            publication.setCode(codeField.getText().trim());
+            publication.setPublisher(publisherField.getText().trim());
+            publication.setAuthor(authorField.getText().trim());
+            publication.setType(typeField.getText().trim());
+            publication.setPublishedDate(publishedDateField.getText().trim());
+            publication.setPrice(Double.parseDouble(priceField.getText().trim()));
+            publication.setQuantity(Integer.parseInt(quantityField.getText().trim()));
+            return publication;
+        } catch (Exception e){
+            showMessage(e.getMessage());
+        }
+        return null;
+    }
+
+    public void clearPublication(){
+        nameField.setText("");
+        codeField.setText("");
+        publisherField.setText("");
+        authorField.setText("");
+        typeField.setText("");
+        publishedDateField.setText("");
+        priceField.setText("");
+        quantityField.setText("");
+
+        editPublicationBtn.setEnabled(false);
+        deletePublicationBtn.setEnabled(false);
+        addPublicationBtn.setEnabled(true);
+    }
+    public void showPublication(Publication publication){
+        nameField.setText("" + publication.getName());
+        codeField.setText(publication.getCode());
+        publisherField.setText("" + publication.getPublisher());
+        authorField.setText(publication.getAuthor());
+        typeField.setText("" + publication.getType());
+        publishedDateField.setText(publication.getPublishedDate());
+        priceField.setText("" + publication.getPrice());
+        quantityField.setText("" + publication.getQuantity());
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -263,9 +421,23 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     public void valueChanged(ListSelectionEvent e) {
 
     }
+    public void addAddPublicationListener(ActionListener listener) {
+        addPublicationBtn.addActionListener(listener);
+    }
+    
+    public void addEditPublicationListener(ActionListener listener) {
+        editPublicationBtn.addActionListener(listener);
+    }
+    
+    public void addDeletePublicationListener(ActionListener listener) {
+        deletePublicationBtn.addActionListener(listener);
+    }
 
-    public static void main(String[] args) {
-        ManagerView managerView = new ManagerView();
-        managerView.setVisible(true);
+    public void addClearPublicationListener(ActionListener listener){
+        clearBtn.addActionListener(listener);
+    }
+
+    public void addFillPublicationFromSelectedRow(ListSelectionListener listener) {
+        table.getSelectionModel().addListSelectionListener(listener);
     }
 }

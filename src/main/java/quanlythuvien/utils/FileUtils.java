@@ -21,7 +21,7 @@ public class FileUtils {
             JAXBContext jaxbContext = JAXBContext.newInstance(object.getClass());
             // Create đối tượng Marshaller
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-            // formating 
+            // formating
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             // lưu nội dung XML vào file
             File xmlFile = new File(fileName);

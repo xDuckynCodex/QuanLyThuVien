@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="ManagerView done">
-      <change afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" afterDir="false" />
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="ManagerView add method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Publication.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PubilcationDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXLM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publiccations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FileUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +29,14 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="quanlythuvien/master" />
+    <option name="BRANCH" value="quanlythuvien/phongnq" />
+    <option name="OPTIONS">
+      <set>
+        <option value="SQUASH" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Pull.Settings">
     <option name="OPTIONS">
       <set>
         <option value="SQUASH" />
@@ -45,6 +51,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;xDuckynCodex&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2581eae8-1a80-4412-a631-3d2d178053af" />
+        <option name="url" value="git@github.com:xDuckynCodex/quanlythuvien.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -57,6 +77,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
+    "Application.ManagerController.executor": "Run",
     "Application.ManagerView.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -76,13 +97,39 @@
       <recent name="quanlythuvien.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ManagerView">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quanlythuvien.App" />
+      <module name="QuanLyThuVien" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="quanlythuvien.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="QuanLyThuVien" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManagerController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.ManagerController" />
+      <module name="QuanLyThuVien" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="quanlythuvien.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,6 +152,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
+        <item itemvalue="Application.ManagerController" />
         <item itemvalue="Application.ManagerView" />
         <item itemvalue="Application.Main" />
       </list>
@@ -146,13 +195,43 @@
       <option name="project" value="LOCAL" />
       <updated>1711979899011</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ManagerView add method">
+      <option name="closed" value="true" />
+      <created>1711982516753</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711982516753</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init base" />
     <MESSAGE value="Tạo file cần thực hiện" />
     <MESSAGE value="ManagerView done" />
-    <option name="LAST_COMMIT_MESSAGE" value="ManagerView done" />
+    <MESSAGE value="ManagerView add method" />
+    <option name="LAST_COMMIT_MESSAGE" value="ManagerView add method" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="javax.xml.bind.UnmarshalException" package="javax.xml.bind" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
