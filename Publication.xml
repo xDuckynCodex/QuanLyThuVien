@@ -1,13 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
-    <publication>
-        <name>adasdas</name>
-        <code>xxxx</code>
-        <publisher>PhongNQ</publisher>
+    <pub>
         <author>Phong NQ</author>
+        <code>xxxx</code>
+        <name>adasdas</name>
+        <price>10.0</price>
         <publishedDate>20-03-2024</publishedDate>
+        <publisher>PhongNQ</publisher>
         <quantity>1000</quantity>
-        <price>10</price>
         <type>book</type>
-    </publication>
+    </pub>
+    <pub>
+        <author>3</author>
+        <code>2</code>
+        <name>1</name>
+        <price>465.0</price>
+        <publishedDate>43254</publishedDate>
+        <publisher>3</publisher>
+        <quantity>354365</quantity>
+        <type>476</type>
+    </pub>
+    <pub>
+        <author>Phong NQ</author>
+        <code>xxxx</code>
+        <name>adasdas</name>
+        <price>10.0</price>
+        <publishedDate>20-03-2024</publishedDate>
+        <publisher>PhongNQ</publisher>
+        <quantity>1000</quantity>
+        <type>book</type>
+    </pub>
+    <pub>
+        <author>3</author>
+        <code>2</code>
+        <name>1</name>
+        <price>465.0</price>
+        <publishedDate>43254</publishedDate>
+        <publisher>3</publisher>
+        <quantity>354365</quantity>
+        <type>476</type>
+    </pub>
 </publications>

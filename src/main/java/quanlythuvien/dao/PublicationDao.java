@@ -1,5 +1,6 @@
 package quanlythuvien.dao;
 
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.utils.FileUtils;
+import quanlythuvien.views.ManagerView;
 
 public class PublicationDao {
     private static final String file_name = "Publication.xml";
@@ -20,9 +22,9 @@ public class PublicationDao {
     }
     
     // in ra file XML
-    public void writeListPub(List<Publication> pub) {
+    public void writeListPub(List<Publication> listPublications) {
         PublicationXML pubXML = new PublicationXML();
-        pubXML.setPublication(pub);
+        pubXML.setPublication(listPublications);
         FileUtils.writeXMLtoFile(file_name, pubXML);
     }
     
@@ -40,12 +42,13 @@ public class PublicationDao {
     // them sach
     public void add(Publication pub){
         listPub.add(pub);
+        writeListPub(listPub);
     }
     
     // sua thong tin
     public void edit(Publication pub){
         for(int i = 0; i < listPub.size(); i++ ){
-            if(listPub.get(i).getCode() == pub.getCode()){
+            if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
                 listPub.get(i).setName(pub.getName());
                 listPub.get(i).setType(pub.getType());
                 listPub.get(i).setPublisher(pub.getPublisher());
@@ -61,7 +64,7 @@ public class PublicationDao {
     public boolean delete(Publication pub){
         boolean check = false;
         for(int i = 0; i < listPub.size(); i++){
-            if(listPub.get(i).getCode() == pub.getCode()){
+            if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
                 pub = listPub.get(i);
                 check = true;
                 break;
@@ -110,14 +113,15 @@ public class PublicationDao {
         System.out.println(p);
     }
     
-    public void searchByName(){
-        String name = sc.nextLine();
-        for(int i = 0; i < listPub.size(); i++){
-            if(listPub.get(i).getName() == name){
-                System.out.println(listPub.get(i));
-            }
-        }
-    }
+
+//    public void searchByName(){
+//
+//        for(int i = 0; i < listPub.size(); i++){
+//            if(listPub.get(i).getName() == name){
+//                System.out.println(listPub.get(i));
+//            }
+//        }
+//    }
     
     public List<Publication> getListPublication(){
         return listPub;

@@ -12,6 +12,7 @@ import quanlythuvien.entities.Publication;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PublicationXML {
     private List<Publication> pub;
+
     @XmlElement(name = "publication")
     public List<Publication> getPublication(){
         return pub;

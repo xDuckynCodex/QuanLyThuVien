@@ -1,5 +1,6 @@
 package quanlythuvien;
 
+import quanlythuvien.controllers.LoginController;
 import quanlythuvien.views.LoginView;
 
 import java.awt.*;
@@ -10,6 +11,9 @@ public class App {
             @Override
             public void run() {
                 LoginView loginView = new LoginView();
+                LoginController loginController =
+                        new LoginController(loginView);
+                loginController.showLoginView();
             }
         });
     }

@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.views.ManagerView;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 
 public class ManagerController {
     private PublicationDao pubDao;
@@ -16,15 +19,29 @@ public class ManagerController {
         
         view.addAddPublicationListener(new AddPublicationListener());
         view.addEditPublicationListener(new EditPublicationListener());
+
+        view.addDeletePublicationListener(new DeletePublicationListener());
+        view.addClearPublicationListener(new ClearPublicationListener());
+        view.addFillPublicationFromSelectedRow(new FillPublicationFromSelectedRowListener());
+    }
+
+    public void showPublicationView() {
+        managerView.setVisible(true);
+        managerView.showListPublications(pubDao.getListPublication());
+    }
+    class AddPublicationListener implements ActionListener{
+
         view.addDeletePublicationListener(new DeletePublicationListener());       
     }
     public class AddPublicationListener implements ActionListener{
+
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
                 pubDao.add(publication);
 //                managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
+                managerView.clearPublication();
                 managerView.showMessage("Thêm thành công");
             }
         }
@@ -34,31 +51,38 @@ public class ManagerController {
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
-                pubDao.add(publication);
+                pubDao.edit(publication);
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
+                managerView.clearPublication();
                 managerView.showMessage("Cập nhật thành công");
+
             }
         }
     }
-    
+
     class DeletePublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
-                pubDao.add(publication);
+
+                pubDao.delete(publication);
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.showMessage("Xoá thành công");
             }
         }
+
+    class FillPublicationFromSelectedRowListener implements ListSelectionListener {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            managerView.fillPublicationFromSelectedRow();
+        }
     }
-    public static void main(String[] args) {
-        ManagerView managerView = new ManagerView();
-        PublicationDao pubDao = new PublicationDao();
-        ManagerController mc = new ManagerController(managerView);
-        managerView.showListPublications(pubDao.getListPublication());
-        managerView.setVisible(true);
-        
+    class ClearPublicationListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            managerView.clearPublication();
+        }
     }
 }
