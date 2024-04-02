@@ -40,6 +40,7 @@ public class PublicationDao {
     // them sach
     public void add(Publication pub){
         listPub.add(pub);
+        writeListPub(listPub);
     }
     
     // sua thong tin

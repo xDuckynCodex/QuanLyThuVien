@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import quanlythuvien.dao.UserDao;
 import quanlythuvien.entities.User;
 import quanlythuvien.views.LoginView;
+import quanlythuvien.views.ManagerView;
 //import quanlythuvien.views.StudentView;
 
 public class LoginController {
@@ -34,9 +35,10 @@ public class LoginController {
             User user = loginView.getUser();
             if (userDao.checkUser(user)) {
                 // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
-//                studentView = new StudentView();
-//                StudentController studentController = new StudentController(studentView);
-//                studentController.showStudentView();
+                ManagerView managerView = new ManagerView();
+                managerView.setVisible(true);
+                ManagerController managerController = new ManagerController(managerView);
+                managerController.showPublicationView();
                 loginView.setVisible(false);
             } else {
                 loginView.showMessage("username hoặc password không đúng.");

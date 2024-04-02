@@ -2,6 +2,7 @@ package quanlythuvien.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.views.ManagerView;
@@ -18,6 +19,13 @@ public class ManagerController {
         view.addEditPublicationListener(new EditPublicationListener());
         view.addDeletePublicationListener(new DeletePublicationListener());       
     }
+    
+    public void showPublicationView(){
+        List<Publication> listPub = pubDao.getListPublication();
+        managerView.setVisible(true);
+        managerView.showListPublications(listPub);
+    }
+    
     public class AddPublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
@@ -34,7 +42,7 @@ public class ManagerController {
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
-                pubDao.add(publication);
+                pubDao.edit(publication);
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.showMessage("Cập nhật thành công");
@@ -52,13 +60,5 @@ public class ManagerController {
                 managerView.showMessage("Xoá thành công");
             }
         }
-    }
-    public static void main(String[] args) {
-        ManagerView managerView = new ManagerView();
-        PublicationDao pubDao = new PublicationDao();
-        ManagerController mc = new ManagerController(managerView);
-        managerView.showListPublications(pubDao.getListPublication());
-        managerView.setVisible(true);
-        
     }
 }

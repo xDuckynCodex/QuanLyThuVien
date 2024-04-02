@@ -18,7 +18,7 @@ import quanlythuvien.dao.PublicationDao;
 // Thiết kế views của giao diện quản lý
 public class ManagerView extends JFrame implements ActionListener, ListSelectionListener {
     // nút
-    private  JButton addPublicationBtn;
+    private JButton addPublicationBtn;
     private JButton editPublicationBtn;
     private JButton deletePublicationBtn;
     private JButton clearBtn;
@@ -26,10 +26,10 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JLabel nameLabel;
     private JLabel codeLabel;
     private JLabel publisherLabel;
-    private  JLabel authorLabel;
+    private JLabel authorLabel;
     private JLabel publishedDateLabel;
     private JLabel quantityLabel;
-    private  JLabel priceLabel;
+    private JLabel priceLabel;
     private JLabel typeLabel;
 
     // field nhập
@@ -43,8 +43,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JTextField typeField;
 
     // bảng
-    private  JScrollPane jScrollTable;
-    private  JTable table;
+    private JScrollPane jScrollTable;
+    private JTable table;
 
     // cột của table
     private String [] columnNames = new String [] {
@@ -90,7 +90,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         table.setModel(new DefaultTableModel((Object[][]) data, columnNames));
         jScrollTable.setViewportView(table);
         jScrollTable.setPreferredSize(new Dimension(1350, 980));
-
+        
         // Tạo layout của giao diện
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel();
