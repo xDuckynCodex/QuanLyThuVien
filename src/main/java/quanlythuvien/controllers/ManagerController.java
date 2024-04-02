@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.views.ManagerView;
-
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 
 public class ManagerController {
     private PublicationDao pubDao;
@@ -19,6 +19,7 @@ public class ManagerController {
         
         view.addAddPublicationListener(new AddPublicationListener());
         view.addEditPublicationListener(new EditPublicationListener());
+
         view.addDeletePublicationListener(new DeletePublicationListener());
         view.addClearPublicationListener(new ClearPublicationListener());
         view.addFillPublicationFromSelectedRow(new FillPublicationFromSelectedRowListener());
@@ -29,6 +30,11 @@ public class ManagerController {
         managerView.showListPublications(pubDao.getListPublication());
     }
     class AddPublicationListener implements ActionListener{
+
+        view.addDeletePublicationListener(new DeletePublicationListener());       
+    }
+    public class AddPublicationListener implements ActionListener{
+
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
@@ -59,13 +65,13 @@ public class ManagerController {
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
+
                 pubDao.delete(publication);
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.showMessage("Xoá thành công");
             }
         }
-    }
 
     class FillPublicationFromSelectedRowListener implements ListSelectionListener {
         @Override

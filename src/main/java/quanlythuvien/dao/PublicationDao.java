@@ -1,7 +1,11 @@
 package quanlythuvien.dao;
 
 import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.utils.FileUtils;
 import quanlythuvien.views.ManagerView;
@@ -9,6 +13,7 @@ import quanlythuvien.views.ManagerView;
 public class PublicationDao {
     private static final String file_name = "Publication.xml";
     private List<Publication> listPub;
+    Scanner sc = new Scanner(System.in);
     public PublicationDao(){
         this.listPub = readPublication();
         if(listPub == null){
@@ -108,6 +113,7 @@ public class PublicationDao {
         System.out.println(p);
     }
     
+
 //    public void searchByName(){
 //
 //        for(int i = 0; i < listPub.size(); i++){

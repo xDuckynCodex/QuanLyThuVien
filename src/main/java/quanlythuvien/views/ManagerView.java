@@ -402,6 +402,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         deletePublicationBtn.setEnabled(false);
         addPublicationBtn.setEnabled(true);
     }
+
     public void showPublication(Publication publication){
         nameField.setText("" + publication.getName());
         codeField.setText(publication.getCode());
@@ -439,5 +440,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
     public void addFillPublicationFromSelectedRow(ListSelectionListener listener) {
         table.getSelectionModel().addListSelectionListener(listener);
+
     }
 }
