@@ -5,19 +5,19 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import quanlythuvien.entities.Publication;
+import quanlythuvien.entities.Renter;
 
 //Lưu dsach ấn phẩm vào file xml
-@XmlRootElement(name = "publications")
+@XmlRootElement(name = "renters")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class PublicationXML {
-    private List<Publication> pub;
+public class RenterXML {
+    private List<Renter> renter;
 
-    @XmlElement(name = "pub")
-    public List<Publication> getPublication(){
-        return pub;
+    @XmlElement(name = "renter")
+    public List<Renter> getRenter(){
+        return renter;
     }
-    public void setPublication(List<Publication> pub){
-        this.pub = pub;
+    public void setRenter(List<Renter> renter){
+        this.renter = renter;
     }
 }

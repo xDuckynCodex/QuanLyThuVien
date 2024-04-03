@@ -35,9 +35,11 @@ public class LoginController {
             User user = loginView.getUser();
             if (userDao.checkUser(user)) {
                 // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
+
                 ManagerView managerView = new ManagerView();
                 managerView.setVisible(true);
                 ManagerController managerController = new ManagerController(managerView);
+
                 managerController.showPublicationView();
                 loginView.setVisible(false);
             } else {

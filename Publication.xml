@@ -1,13 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
-    <publication>
-        <name>adasdas</name>
-        <code>xxxx</code>
-        <publisher>PhongNQ</publisher>
-        <author>Phong NQ</author>
-        <publishedDate>20-03-2024</publishedDate>
-        <quantity>1000</quantity>
-        <price>10</price>
-        <type>book</type>
-    </publication>
+    <pub>
+        <author>123</author>
+        <code>3213</code>
+        <name>12</name>
+        <price>2.0</price>
+        <publishedDate>312</publishedDate>
+        <publisher>312</publisher>
+        <quantity>112</quantity>
+        <type>Tạp chí</type>
+    </pub>
+    <pub>
+        <author>123</author>
+        <code>3213</code>
+        <name>12</name>
+        <price>2.0</price>
+        <publishedDate>312</publishedDate>
+        <publisher>312</publisher>
+        <quantity>112</quantity>
+        <type>Tạp chí</type>
+    </pub>
 </publications>

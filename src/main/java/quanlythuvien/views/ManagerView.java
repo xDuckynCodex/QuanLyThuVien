@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.List;
 import java.util.concurrent.Flow;
 import quanlythuvien.controllers.ManagerController;
@@ -22,6 +23,10 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JButton editPublicationBtn;
     private JButton deletePublicationBtn;
     private JButton clearBtn;
+    private JButton sortByNameBtn;
+    private JButton sortByPrice;
+    private JButton filterBtn;
+
     // label nhập
     private JLabel nameLabel;
     private JLabel codeLabel;
@@ -31,6 +36,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JLabel quantityLabel;
     private JLabel priceLabel;
     private JLabel typeLabel;
+    private JLabel tableLabel;
 
     // field nhập
     private JTextField nameField;
@@ -61,6 +67,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         editPublicationBtn = new JButton("Sửa");
         deletePublicationBtn = new JButton("Xóa");
         clearBtn = new JButton("Clear");
+        filterBtn = new JButton("Lọc");
 
         // khơi tạo label
         nameLabel = new JLabel("Tên ấn phẩm");
@@ -71,6 +78,9 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         quantityLabel = new JLabel("Số lượng");
         priceLabel = new JLabel("Giá");
         typeLabel = new JLabel("Thể loại");
+        tableLabel = new JLabel("Bảng thống kê ấn phẩm");
+        tableLabel.setFont(new Font(tableLabel.getFont().getName(),
+                Font.PLAIN, 40));
 
         //khởi tạo field nhập
         nameField = new JTextField(20);
@@ -84,13 +94,20 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
         // Tạo bảng lưu dữ liệu
         jScrollTable = new JScrollPane();
-        table = new JTable();
+        table = new JTable() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        table.getTableHeader().setReorderingAllowed(false);
 
         //cài đặt bảng
         table.setModel(new DefaultTableModel((Object[][]) data, columnNames));
+        table.setFont(new Font(table.getFont().getName(), Font.PLAIN, 15));
         jScrollTable.setViewportView(table);
-        jScrollTable.setPreferredSize(new Dimension(1350, 980));
-        
+        jScrollTable.setPreferredSize(new Dimension(1350, 800));
+
         // Tạo layout của giao diện
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel();
@@ -102,6 +119,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(editPublicationBtn);
         panel.add(deletePublicationBtn);
         panel.add(clearBtn);
+        panel.add(filterBtn);
 
         panel.add(nameLabel);
         panel.add(codeLabel);
@@ -111,6 +129,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(quantityLabel);
         panel.add(priceLabel);
         panel.add(typeLabel);
+        panel.add(tableLabel);
 
         panel.add(nameField);
         panel.add(codeField);
@@ -155,6 +174,10 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         layout.putConstraint(SpringLayout.WEST, typeLabel, 10,
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, typeLabel, 220,
+                SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, tableLabel, 1050,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, tableLabel, 20,
                 SpringLayout.NORTH, panel);
         // field
         layout.putConstraint(SpringLayout.WEST, nameField, 100,
@@ -209,8 +232,10 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         // table
         layout.putConstraint(SpringLayout.EAST, jScrollTable, 0,
                 SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.NORTH, jScrollTable, 0,
+        layout.putConstraint(SpringLayout.NORTH, jScrollTable, 100,
                 SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, filterBtn, 430, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, filterBtn, 250, SpringLayout.WEST, panel);
         //
         this.add(panel);
         this.pack();
@@ -237,6 +262,9 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             publications[i][8] = list.get(i).getType();
         }
         table.setModel(new DefaultTableModel(publications, columnNames));
+        for (int i = 0; i < size; i++) {
+            table.setRowHeight(i, 20);
+        }
     }
 
     public void fillPublicationFromSelectedRow() {
@@ -364,7 +392,22 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         }
         return null;
     }
-    
+
+    public void clearPublication(){
+        nameField.setText("");
+        codeField.setText("");
+        publisherField.setText("");
+        authorField.setText("");
+        typeField.setText("");
+        publishedDateField.setText("");
+        priceField.setText("");
+        quantityField.setText("");
+
+        editPublicationBtn.setEnabled(false);
+        deletePublicationBtn.setEnabled(false);
+        addPublicationBtn.setEnabled(true);
+    }
+
     public void showPublication(Publication publication){
         nameField.setText("" + publication.getName());
         codeField.setText(publication.getCode());
@@ -379,7 +422,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     public void actionPerformed(ActionEvent e) {
 
     }
-
     @Override
     public void valueChanged(ListSelectionEvent e) {
 
@@ -394,5 +436,17 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     
     public void addDeletePublicationListener(ActionListener listener) {
         deletePublicationBtn.addActionListener(listener);
+    }
+
+    public void addClearPublicationListener(ActionListener listener){
+        clearBtn.addActionListener(listener);
+    }
+    
+    public void addFilterPublicationListener(ActionListener listener){
+        filterBtn.addActionListener(listener);
+    }
+
+    public void addFillPublicationFromSelectedRow(ListSelectionListener listener) {
+        table.getSelectionModel().addListSelectionListener(listener);
     }
 }

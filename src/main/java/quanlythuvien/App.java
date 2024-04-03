@@ -1,5 +1,6 @@
 package quanlythuvien;
 
+import quanlythuvien.controllers.LoginController;
 import quanlythuvien.views.LoginView;
 
 import java.awt.*;
