@@ -11,6 +11,7 @@ import quanlythuvien.entities.Publication;
 public class PublicationXML {
     @XmlTransient
     private List<Publication> pub;
+
     @XmlElement(name = "publication")
     public List<Publication> getPublication(){
         return pub;

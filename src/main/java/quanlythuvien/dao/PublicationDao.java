@@ -4,9 +4,7 @@ import java.text.ParseException;
 import java.util.*;
 
 import quanlythuvien.entities.Publication;
-import quanlythuvien.utils.DateFomatterUtil;
 import quanlythuvien.utils.FileUtils;
-import quanlythuvien.views.ManagerView;
 
 public class PublicationDao {
     private static final String file_name = "Publication.xml";
