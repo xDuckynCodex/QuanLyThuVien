@@ -1,19 +1,14 @@
 package quanlythuvien.dao;
 
+import java.text.ParseException;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+
 import quanlythuvien.entities.Publication;
 import quanlythuvien.utils.FileUtils;
-import quanlythuvien.views.ManagerView;
 
 public class PublicationDao {
     private static final String file_name = "Publication.xml";
     private List<Publication> listPub;
-    Scanner sc = new Scanner(System.in);
     public PublicationDao(){
         this.listPub = readPublication();
         if(listPub == null){
@@ -46,7 +41,7 @@ public class PublicationDao {
     }
     
     // sua thong tin
-    public void edit(Publication pub){
+    public void edit(Publication pub) throws ParseException {
         for(int i = 0; i < listPub.size(); i++ ){
             if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
                 listPub.get(i).setName(pub.getName());
@@ -102,6 +97,8 @@ public class PublicationDao {
             public int compare(Publication pub1, Publication pub2){
                 if(pub1.getPrice() > pub2.getPrice()){
                     return 1;
+                } else if (pub1.getPrice() < pub2.getPrice()) {
+                    return -1;
                 }
                 return 0;
             }
@@ -113,15 +110,15 @@ public class PublicationDao {
         System.out.println(p);
     }
     
-
-//    public void searchByName(){
-//
-//        for(int i = 0; i < listPub.size(); i++){
-//            if(listPub.get(i).getName() == name){
-//                System.out.println(listPub.get(i));
-//            }
-//        }
-//    }
+    public List<Publication> searchByName(String name){
+        List<Publication> searchResult = new ArrayList<Publication>();
+        for(int i = 0; i < listPub.size(); i++){
+            if(listPub.get(i).getName().contains(name)) {
+                searchResult.add(listPub.get(i));
+            }
+        }
+        return searchResult;
+    }
     
     public List<Publication> getListPublication(){
         return listPub;
