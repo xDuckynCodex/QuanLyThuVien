@@ -1,18 +1,16 @@
 package quanlythuvien.dao;
 
+import java.text.ParseException;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+
 import quanlythuvien.entities.Publication;
 import quanlythuvien.utils.FileUtils;
-import quanlythuvien.views.ManagerView;
+
 
 public class PublicationDao {
     private static final String file_name = "Publication.xml";
     private List<Publication> listPub;
+
     List<Publication> pubFilter = new ArrayList<Publication>();
 
     public PublicationDao(){
@@ -44,10 +42,11 @@ public class PublicationDao {
     // them sach
     public void add(Publication pub){
         listPub.add(pub);
+        writeListPub(listPub);
     }
     
     // sua thong tin
-    public void edit(Publication pub){
+    public void edit(Publication pub) throws ParseException {
         for(int i = 0; i < listPub.size(); i++ ){
             if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
                 listPub.get(i).setName(pub.getName());
@@ -94,6 +93,8 @@ public class PublicationDao {
             public int compare(Publication pub1, Publication pub2){
                 if(pub1.getPrice() > pub2.getPrice()){
                     return 1;
+                } else if (pub1.getPrice() < pub2.getPrice()) {
+                    return -1;
                 }
                 return 0;
             }
@@ -105,10 +106,22 @@ public class PublicationDao {
         return pubFilter;
     }
     
+    public List<Publication> searchByName(String name){
+        List<Publication> searchResult = new ArrayList<Publication>();
+        for(int i = 0; i < listPub.size(); i++){
+            if(listPub.get(i).getName().contains(name)) {
+                searchResult.add(listPub.get(i));
+            }
+        }
+        return searchResult;
+    }
+    
+
     public List<Publication> getListPublication(){
         return listPub;
     }
     public List<Publication> getListPubFilter(){
         return pubFilter;
     }
+    
 }

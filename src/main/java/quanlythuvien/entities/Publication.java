@@ -1,11 +1,15 @@
 package quanlythuvien.entities;
 
-import java.util.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class Publication {
+import java.io.Serializable;
+public class Publication implements Serializable {
     // class định nghĩa các ấn phẩm của thư viện
     // chứa các thông tin sau: sách, báo, tạp chí, chuyên san, tập san, sách tranh…, 
     //giá thành, số lượng, mã số, Nhà xuất bản, tác giả…
+    private static final long serialVersionUID = 1L;
     private String type, code, publisher, author, name;
     private double price;
     private int quantity;
@@ -13,7 +17,9 @@ public class Publication {
     public Publication(){
        
     }
-    public Publication(String type, String code, String publisher, String author, double price, int quantity, String publishedDate, String name) {
+    public Publication(String type, String code, String publisher,
+                       String author, double price, int quantity,
+                       String publishedDate, String name) {
         this.name = name;
         this.type = type;
         this.code = code;

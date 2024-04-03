@@ -18,7 +18,8 @@ public class FileUtils {
     public static void writeXMLtoFile(String fileName, Object object) {
         try {
             // tạo đối tượng JAXB Context
-            JAXBContext jaxbContext = JAXBContext.newInstance(object.getClass());
+            JAXBContext jaxbContext =
+                    JAXBContext.newInstance(object.getClass());
             // Create đối tượng Marshaller
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
             // formating

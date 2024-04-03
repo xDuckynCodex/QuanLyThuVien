@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
+<<<<<<< HEAD
     <pub>
         <author>123</author>
         <code>3213</code>
@@ -20,4 +21,46 @@
         <quantity>112</quantity>
         <type>Tạp chí</type>
     </pub>
+=======
+    <publication>
+        <author>asd</author>
+        <code>asd</code>
+        <name>asd</name>
+        <price>12.0</price>
+        <publishedDate>03/04/2024</publishedDate>
+        <publisher>asd</publisher>
+        <quantity>21</quantity>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>asdd</author>
+        <code>asd</code>
+        <name>asd</name>
+        <price>21.0</price>
+        <publishedDate>02/05/2024</publishedDate>
+        <publisher>asd</publisher>
+        <quantity>12</quantity>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>asd</author>
+        <code>asd</code>
+        <name>sad</name>
+        <price>12.0</price>
+        <publishedDate>03/07/2024</publishedDate>
+        <publisher>ads</publisher>
+        <quantity>12</quantity>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>asd</author>
+        <code>asd</code>
+        <name>sad</name>
+        <price>12.0</price>
+        <publishedDate>03/07/2024</publishedDate>
+        <publisher>ads</publisher>
+        <quantity>12</quantity>
+        <type>Book</type>
+    </publication>
+>>>>>>> origin/master
 </publications>

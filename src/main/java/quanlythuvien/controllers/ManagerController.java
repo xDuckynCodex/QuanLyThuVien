@@ -2,13 +2,19 @@ package quanlythuvien.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.List;
+
+import java.text.ParseException;
+
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.views.ManagerView;
+
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 
 public class ManagerController {
     private PublicationDao pubDao;
@@ -20,10 +26,13 @@ public class ManagerController {
         
         view.addAddPublicationListener(new AddPublicationListener());
         view.addEditPublicationListener(new EditPublicationListener());
-        view.addFilterPublicationListener(new FilterPublicationListener());
+
         view.addDeletePublicationListener(new DeletePublicationListener());
         view.addClearPublicationListener(new ClearPublicationListener());
         view.addFillPublicationFromSelectedRow(new FillPublicationFromSelectedRowListener());
+        view.addSortByName(new SortByNameListener());
+        view.addSortByPrice(new SortByPriceListener());
+        view.addSearchByName(new SearchByNameListener());
     }
 
     public void showPublicationView() {
@@ -31,7 +40,7 @@ public class ManagerController {
         managerView.showListPublications(pubDao.getListPublication());
     }
 
-    public class AddPublicationListener implements ActionListener{
+    class AddPublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
@@ -48,7 +57,11 @@ public class ManagerController {
         public void actionPerformed(ActionEvent e){
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
-                pubDao.edit(publication);
+                try {
+                    pubDao.edit(publication);
+                } catch (ParseException ex) {
+                    throw new RuntimeException(ex);
+                }
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.clearPublication();
@@ -69,15 +82,15 @@ public class ManagerController {
             }
         }
     }
-    
-    class FilterPublicationListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-                pubDao.filter(); 
-                managerView.showListPublications(pubDao.getListPubFilter());
-                managerView.clearPublication();   
-        }
-    }
-    
+
+//    class FilterPublicationListener implements ActionListener{
+//        public void actionPerformed(ActionEvent e){
+//                pubDao.filter(); 
+//                managerView.showListPublications(pubDao.getListPubFilter());
+//                managerView.clearPublication();   
+//        }
+//    }
+
     class FillPublicationFromSelectedRowListener implements ListSelectionListener {
         @Override
         public void valueChanged(ListSelectionEvent e) {
@@ -90,5 +103,44 @@ public class ManagerController {
         public void actionPerformed(ActionEvent e){
             managerView.clearPublication();
         }
+    }
+
+    class SortByNameListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pubDao.sortByName();
+            managerView.showListPublications(pubDao.getListPublication());
+        }
+    }
+
+    class  SortByPriceListener implements  ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            pubDao.sortByPrice();
+            managerView.showListPublications(pubDao.getListPublication());
+        }
+    }
+
+    class  SearchByNameListener implements DocumentListener {
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            managerView.showListPublications(pubDao.searchByName(managerView.getSearchField()));
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            managerView.showListPublications(pubDao.searchByName(managerView.getSearchField()));
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+
+        }
+    }
+    
+    public static void main(String[] args) {
+        ManagerView mv = new ManagerView();
+        ManagerController mc = new ManagerController(mv);
+        mc.showPublicationView();
     }
 }
