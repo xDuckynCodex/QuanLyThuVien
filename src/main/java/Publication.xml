@@ -4,21 +4,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
 -->
 <publications>
-    <publication>
-        <name>asdasd</name>
-        <code>xxx</code>
-        <publisher>asddsa</publisher>
-        <author>Phong NQ</author>
-        <publishedDate>20-03-2024</publishedDate>
-        <quantity>123213</quantity>
-        <price>10</price>
-        <type>book</type>
-    </publication>
 
 </publications>
-
-
-<root>
-    
-</root>
 
