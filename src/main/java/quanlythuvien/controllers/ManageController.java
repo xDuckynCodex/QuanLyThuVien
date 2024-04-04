@@ -31,7 +31,7 @@ public class ManageController {
         @Override
         public void insertUpdate(DocumentEvent e) {
             try {
-                String searchField = mangeView.search.getSearchField();
+                String searchField = mangeView.inputField.getField();
                 mangeView.showView(publicationDao.searchByName(searchField));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
@@ -41,7 +41,7 @@ public class ManageController {
         @Override
         public void removeUpdate(DocumentEvent e) {
             try {
-                mangeView.showView(publicationDao.searchByName(mangeView.search.getSearchField()));
+                mangeView.showView(publicationDao.searchByName(mangeView.inputField.getField()));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

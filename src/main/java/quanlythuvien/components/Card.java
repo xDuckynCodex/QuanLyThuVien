@@ -1,17 +1,18 @@
 package quanlythuvien.components;
 
 import quanlythuvien.entities.Publication;
+import quanlythuvien.views.ContextMenu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 
 public class Card extends JPanel {
 
@@ -19,6 +20,7 @@ public class Card extends JPanel {
     private JLabel authorCard;
     private  JLabel imgCardLabel;
     private ImageIcon imgCard;
+    private ContextMenu menu;
     public Card(Publication publication) throws IOException {
         initComponent(publication);
     }
@@ -29,6 +31,10 @@ public class Card extends JPanel {
         authorCard = new JLabel(publication.getAuthor());
         this.getImageFromFile(".\\public\\ph.png");
         imgCardLabel = new JLabel(imgCard);
+
+        //context menu
+        menu = new ContextMenu();
+//        menu.addMouseClcikedListener(new RightClickMouse());
 
         //css
         imgCardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -61,4 +67,9 @@ public class Card extends JPanel {
         BufferedImage bImg = ImageIO.read(new File(filePath));
         imgCard = new ImageIcon(bImg);
     }
+
+    public void addMouseClickedListener(MouseListener listener) {
+        this.addMouseListener(listener);
+    }
+
 }

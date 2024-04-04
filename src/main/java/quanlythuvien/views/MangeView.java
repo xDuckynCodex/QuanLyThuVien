@@ -1,7 +1,7 @@
 package quanlythuvien.views;
 
 import quanlythuvien.components.GridCards;
-import quanlythuvien.components.Search;
+import quanlythuvien.components.InputField;
 
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
@@ -15,12 +15,12 @@ import java.util.List;
 public class MangeView extends JFrame {
     //components
     private GridCards gridCards;
-    public Search search;
+    public InputField inputField;
 
     private JLabel frameLabel;
     public void initComponent() {
         gridCards = new GridCards();
-        search = new Search();
+        inputField = new InputField("Tìm kiếm ấn phẩm: ", 20);
         frameLabel = new JLabel("Quản lý ấn phẩm");
         frameLabel.setFont(new Font(frameLabel.getFont().getName(),
                 Font.PLAIN, 40));
@@ -35,7 +35,7 @@ public class MangeView extends JFrame {
         //add element to panel
         //component
         panel.add(gridCards);
-        panel.add(search);
+        panel.add(inputField);
 
         //label
         panel.add(frameLabel);
@@ -48,9 +48,9 @@ public class MangeView extends JFrame {
         layout.putConstraint(SpringLayout.SOUTH, gridCards, 0,
                 SpringLayout.SOUTH, panel);
         //search component
-        layout.putConstraint(SpringLayout.WEST, search, 350,
+        layout.putConstraint(SpringLayout.WEST, inputField, 350,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, search, 80,
+        layout.putConstraint(SpringLayout.NORTH, inputField, 75,
                 SpringLayout.NORTH, panel);
         //label
         layout.putConstraint(SpringLayout.WEST, frameLabel, 800,
@@ -77,10 +77,8 @@ public class MangeView extends JFrame {
 
     //Xử lý sự kiện
     public void addSearchListener(DocumentListener listener) {
-        search.addSearching(listener);
+        inputField.addSearching(listener);
     }
-
-
 
     public static void main(String[] args) throws IOException {
         PublicationDao publicationDao = new PublicationDao();
