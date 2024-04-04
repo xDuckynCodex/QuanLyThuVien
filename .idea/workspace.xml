@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="add DatePicker&#10;edit date type">
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Search.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/MangeView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="4/4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Publication.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +99,7 @@
       <recent name="quanlythuvien.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ManagerController">
+  <component name="RunManager" selected="Application.ManageController">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="quanlythuvien.App" />
       <module name="QuanLyThuVien" />
@@ -161,8 +154,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ManagerController" />
         <item itemvalue="Application.ManageController" />
+        <item itemvalue="Application.ManagerController" />
         <item itemvalue="Application.MangeView" />
         <item itemvalue="Application.App" />
       </list>
@@ -228,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712135109504</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="4/4">
+      <option name="closed" value="true" />
+      <created>1712227934733</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712227934733</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -249,7 +250,8 @@
     <MESSAGE value="ManagerView add method" />
     <MESSAGE value="99%" />
     <MESSAGE value="add DatePicker&#10;edit date type" />
-    <option name="LAST_COMMIT_MESSAGE" value="add DatePicker&#10;edit date type" />
+    <MESSAGE value="4/4" />
+    <option name="LAST_COMMIT_MESSAGE" value="4/4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

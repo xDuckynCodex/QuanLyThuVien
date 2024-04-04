@@ -31,7 +31,8 @@ public class ManageController {
         @Override
         public void insertUpdate(DocumentEvent e) {
             try {
-                mangeView.showView(publicationDao.searchByName(mangeView.search.getSearchField()));
+                String searchField = mangeView.search.getSearchField();
+                mangeView.showView(publicationDao.searchByName(searchField));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

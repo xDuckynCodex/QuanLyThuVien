@@ -63,6 +63,7 @@ public class MangeView extends JFrame {
         this.pack();
         this.setTitle("Manage View");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public MangeView() throws IOException {
