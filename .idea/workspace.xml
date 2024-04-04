@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="99%">
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/DateFomatterUtil.java" afterDir="false" />
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="add DatePicker&#10;edit date type">
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Search.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/MangeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Publication.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManagerView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +45,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -82,8 +83,11 @@
   "keyToString": {
     "Application.App.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.ManageController.executor": "Run",
     "Application.ManagerController.executor": "Run",
     "Application.ManagerView.executor": "Run",
+    "Application.MangeView.executor": "Run",
+    "Application.View.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -116,12 +120,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+    <configuration name="ManageController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.ManageController" />
       <module name="QuanLyThuVien" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="quanlythuvien.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,8 +146,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManagerView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quanlythuvien.views.ManagerView" />
+    <configuration name="MangeView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quanlythuvien.views.MangeView" />
       <module name="QuanLyThuVien" />
       <extension name="coverage">
         <pattern>
@@ -158,9 +162,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ManagerController" />
-        <item itemvalue="Application.ManagerView" />
+        <item itemvalue="Application.ManageController" />
+        <item itemvalue="Application.MangeView" />
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712039204653</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add DatePicker&#10;edit date type">
+      <option name="closed" value="true" />
+      <created>1712135109504</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712135109504</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,7 +248,8 @@
     <MESSAGE value="ManagerView done" />
     <MESSAGE value="ManagerView add method" />
     <MESSAGE value="99%" />
-    <option name="LAST_COMMIT_MESSAGE" value="99%" />
+    <MESSAGE value="add DatePicker&#10;edit date type" />
+    <option name="LAST_COMMIT_MESSAGE" value="add DatePicker&#10;edit date type" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
