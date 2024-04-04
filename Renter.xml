@@ -30,4 +30,14 @@
         <name>Nguyên</name>
         <rentedBook>Anh 3</rentedBook>
     </renter>
+    <renter>
+        <id>003</id>
+        <name>Phạm Minh Duy</name>
+        <rentedBook>Anh 4</rentedBook>
+    </renter>
+    <renter>
+        <id>13</id>
+        <name>Nguyễn Quốc Huy</name>
+        <rentedBook>Anh 5</rentedBook>
+    </renter>
 </renters>

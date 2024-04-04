@@ -30,4 +30,14 @@
         <quantity>12</quantity>
         <type>Choose type</type>
     </pub>
+    <pub>
+        <author>HVAN</author>
+        <code>002</code>
+        <name>Anh 1</name>
+        <price>1000.0</price>
+        <publishedDate>06/04/2023</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>12</quantity>
+        <type>Choose type</type>
+    </pub>
 </publications>
