@@ -58,6 +58,7 @@ public class PublicationDao {
                 listPub.get(i).setPublishedDate(pub.getPublishedDate());
             }
         }
+        writeListPub(listPub);
     }
     
     // xoa sach

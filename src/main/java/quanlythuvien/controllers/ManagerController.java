@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import java.text.ParseException;
+import javax.swing.Action;
 
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
@@ -15,10 +16,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import quanlythuvien.views.RenterView;
 
 public class ManagerController {
     private PublicationDao pubDao;
     private ManagerView managerView;
+    private RenterView renterView;
     
     public ManagerController(ManagerView view) {
         this.managerView = view;
@@ -26,9 +29,11 @@ public class ManagerController {
         
         view.addAddPublicationListener(new AddPublicationListener());
         view.addEditPublicationListener(new EditPublicationListener());
-
         view.addDeletePublicationListener(new DeletePublicationListener());
         view.addClearPublicationListener(new ClearPublicationListener());
+        
+        view.addTransferRenterListener(new TransferRenterListener());
+        
         view.addFillPublicationFromSelectedRow(new FillPublicationFromSelectedRowListener());
         view.addSortByName(new SortByNameListener());
         view.addSortByPrice(new SortByPriceListener());
@@ -66,7 +71,6 @@ public class ManagerController {
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.clearPublication();
                 managerView.showMessage("Cập nhật thành công");
-
             }
         }
     }
@@ -104,6 +108,15 @@ public class ManagerController {
             managerView.clearPublication();
         }
     }
+    
+    class TransferRenterListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            renterView = new RenterView();
+            RenterController rc = new RenterController(renterView);
+            managerView.setVisible(false);
+            rc.showRenterView();
+        }
+    }
 
     class SortByNameListener implements ActionListener {
         @Override
@@ -113,7 +126,7 @@ public class ManagerController {
         }
     }
 
-    class  SortByPriceListener implements  ActionListener {
+    class SortByPriceListener implements  ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             pubDao.sortByPrice();
@@ -121,7 +134,7 @@ public class ManagerController {
         }
     }
 
-    class  SearchByNameListener implements DocumentListener {
+    class SearchByNameListener implements DocumentListener {
         @Override
         public void insertUpdate(DocumentEvent e) {
             managerView.showListPublications(pubDao.searchByName(managerView.getSearchField()));

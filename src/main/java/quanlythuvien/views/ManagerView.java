@@ -29,14 +29,11 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JButton deletePublicationBtn;
     private JButton clearBtn;
     private JButton sortByNameBtn;
-<<<<<<< HEAD
-    private JButton sortByPrice;
-    private JButton filterBtn;
 
-=======
     private JButton sortByPriceBtn;
     private JButton searchByNameBtn;
->>>>>>> origin/master
+    private JButton transferBtn;
+
     // label nhập
     private JLabel nameLabel;
     private JLabel codeLabel;
@@ -48,6 +45,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JLabel typeLabel;
     private JLabel tableLabel;
     private JLabel searchLabel;
+    private JLabel transferLabel;
 
     // field nhập
     private JTextField nameField;
@@ -72,18 +70,15 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     // Combobox Type
     private JComboBox typeComboBox;
     private String typeString;
-    private String[] types = {"Chose type","Book", "Magazine", "Novel",
+    private String[] types = {"Choose type","Book", "Magazine", "Novel",
             "Newspapers"};
 
     // bảng
-<<<<<<< HEAD
-    private JScrollPane jScrollTable;
-    private JTable table;
-=======
+
     private  JScrollPane jScrollTable;
     private  JTable table;
-    private TableFilterHeader tableFilter;
->>>>>>> origin/master
+    private  TableFilterHeader tableFilter;
+
 
     // cột của table
     private String [] columnNames = new String [] {
@@ -104,13 +99,12 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         editPublicationBtn = new JButton("Sửa");
         deletePublicationBtn = new JButton("Xóa");
         clearBtn = new JButton("Clear");
-<<<<<<< HEAD
-        filterBtn = new JButton("Lọc");
-=======
+        transferBtn = new JButton("Chuyển");
+
         sortByNameBtn = new JButton("Sort by Name");
         sortByPriceBtn = new JButton("Sort by price");
         searchByNameBtn = new JButton("Search");
->>>>>>> origin/master
+
 
         // khởi tạo label
         nameLabel = new JLabel("Tên ấn phẩm");
@@ -125,6 +119,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         tableLabel.setFont(new Font(tableLabel.getFont().getName(),
                 Font.PLAIN, 40));
         searchLabel = new JLabel("Tìm kiếm ấn phẩm:");
+        transferLabel = new JLabel("Chuyển qua chế độ quản lý người mượn");
 
         //date time picker
         dateModel = new UtilDateModel();
@@ -176,13 +171,12 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(editPublicationBtn);
         panel.add(deletePublicationBtn);
         panel.add(clearBtn);
-<<<<<<< HEAD
-        panel.add(filterBtn);
-=======
+        panel.add(transferBtn);
+
         panel.add(sortByNameBtn);
         panel.add(sortByPriceBtn);
 //        panel.add(searchByNameBtn);
->>>>>>> origin/master
+
 
         panel.add(nameLabel);
         panel.add(codeLabel);
@@ -194,6 +188,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(typeLabel);
         panel.add(tableLabel);
         panel.add(searchLabel);
+        panel.add(transferLabel);
 
         panel.add(nameField);
         panel.add(codeField);
@@ -250,6 +245,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, searchLabel, 100,
                 SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, transferLabel, 30, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferLabel, 350, SpringLayout.NORTH, panel);
         // field
         layout.putConstraint(SpringLayout.WEST, nameField, 100,
                 SpringLayout.WEST, panel);
@@ -290,19 +287,19 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         // button
         layout.putConstraint(SpringLayout.WEST, addPublicationBtn, 30,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, addPublicationBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, addPublicationBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, editPublicationBtn, 130,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, editPublicationBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, editPublicationBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, deletePublicationBtn, 230,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, deletePublicationBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, deletePublicationBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, clearBtn, 330,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, clearBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, clearBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, sortByNameBtn, 570,
                 SpringLayout.WEST, panel);
@@ -312,6 +309,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, sortByPriceBtn, 950,
                 SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, transferBtn, 80, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferBtn, 390, SpringLayout.NORTH, panel);
 //        layout.putConstraint(SpringLayout.WEST, searchByNameBtn, 1050,
 //                SpringLayout.WEST, panel);
 //        layout.putConstraint(SpringLayout.NORTH, searchByNameBtn, 95,
@@ -321,17 +320,12 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.NORTH, jScrollTable, 150,
                 SpringLayout.NORTH, panel);
-<<<<<<< HEAD
-        layout.putConstraint(SpringLayout.NORTH, filterBtn, 430, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, filterBtn, 250, SpringLayout.WEST, panel);
-=======
         //datepicker
         layout.putConstraint(SpringLayout.WEST, datePicker, 100,
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, datePicker, 127,
                 SpringLayout.NORTH, panel);
 
->>>>>>> origin/master
         //
         this.add(panel);
         this.pack();
@@ -547,14 +541,9 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         quantityField.setText("" + publication.getQuantity());
     }
     @Override
-<<<<<<< HEAD
-    public void actionPerformed(ActionEvent e) {
 
-    }
-=======
     public void actionPerformed(ActionEvent e) {    }
 
->>>>>>> origin/master
     @Override
     public void valueChanged(ListSelectionEvent e) {    }
     public void addAddPublicationListener(ActionListener listener) {
@@ -572,10 +561,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     public void addClearPublicationListener(ActionListener listener){
         clearBtn.addActionListener(listener);
     }
-    
-    public void addFilterPublicationListener(ActionListener listener){
-        filterBtn.addActionListener(listener);
-    }
 
     public void addFillPublicationFromSelectedRow(ListSelectionListener listener) {
         table.getSelectionModel().addListSelectionListener(listener);
@@ -591,6 +576,10 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
     public void addSearchByName(DocumentListener listener) {
         searchField.getDocument().addDocumentListener(listener);
+    }
+    
+    public void addTransferRenterListener(ActionListener listener){
+        transferBtn.addActionListener(listener);
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<renters>
+    <renter>
+        <id>9896</id>
+        <name>An</name>
+        <rentedBook>Anh 1</rentedBook>
+    </renter>
+    <renter>
+        <id>212</id>
+        <name>Linh</name>
+        <rentedBook>Anh 2</rentedBook>
+    </renter>
+    <renter>
+        <id>001</id>
+        <name>Phong</name>
+        <rentedBook>XLA</rentedBook>
+    </renter>
+    <renter>
+        <id>996</id>
+        <name>Phát</name>
+        <rentedBook>OOP</rentedBook>
+    </renter>
+    <renter>
+        <id>225</id>
+        <name>Phát</name>
+        <rentedBook>LTCB</rentedBook>
+    </renter>
+    <renter>
+        <id>123</id>
+        <name>Nguyên</name>
+        <rentedBook>Anh 3</rentedBook>
+    </renter>
+</renters>

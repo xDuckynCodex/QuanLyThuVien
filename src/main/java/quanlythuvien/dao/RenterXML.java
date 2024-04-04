@@ -1,16 +1,14 @@
 package quanlythuvien.dao;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import quanlythuvien.entities.Renter;
 
 //Lưu dsach ấn phẩm vào file xml
 @XmlRootElement(name = "renters")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class RenterXML {
+    @XmlTransient
     private List<Renter> renter;
 
     @XmlElement(name = "renter")

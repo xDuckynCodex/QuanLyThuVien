@@ -9,14 +9,15 @@ package quanlythuvien.entities;
  * @author Admin
  */
 public class Renter {
-    private String name;
-    private int id;
-    Renter(){
+    private String name, rentedBook, id;
+ 
+    public Renter(){
         
     }
-    Renter(String name, int id) {
+    public Renter(String name, String id, String rentedBook) {
         this.name = name;
         this.id = id;
+        this.rentedBook = rentedBook;
     }
 
     public String getName() {
@@ -27,11 +28,20 @@ public class Renter {
         this.name = name;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
+
+    public String getRentedBook() {
+        return rentedBook;
+    }
+
+    public void setRentedBook(String rentedBook) {
+        this.rentedBook = rentedBook;
+    }
+    
 }
