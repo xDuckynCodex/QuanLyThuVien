@@ -66,4 +66,6 @@ public class Card extends JPanel {
         BufferedImage bImg = ImageIO.read(new File(filePath));
         imgCard = new ImageIcon(bImg);
     }
+
+
 }

@@ -29,7 +29,7 @@ public class InputField extends JPanel {
     }
 
     //Xử lý sự kiện
-    public void addSearching(DocumentListener listener) {
+    public void addFieldChange(DocumentListener listener) {
         field.getDocument().addDocumentListener(listener);
     }
 

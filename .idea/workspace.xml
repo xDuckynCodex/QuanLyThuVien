@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="InfoView&#10;ContextMenu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ButtonComp.java" afterDir="false" />
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="InfoView add button&#10;add new Font">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/MangeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/MangeView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +101,7 @@
       <recent name="quanlythuvien.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.InfoView">
+  <component name="RunManager" selected="Application.ManageController">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="quanlythuvien.App" />
       <module name="QuanLyThuVien" />
@@ -171,8 +169,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.InfoView" />
         <item itemvalue="Application.ManageController" />
+        <item itemvalue="Application.InfoView" />
         <item itemvalue="Application.ManagerController" />
         <item itemvalue="Application.MangeView" />
         <item itemvalue="Application.App" />
@@ -263,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712250013446</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="InfoView add button&#10;add new Font">
+      <option name="closed" value="true" />
+      <created>1712282644553</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712282644553</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,7 +293,8 @@
     <MESSAGE value="4/4" />
     <MESSAGE value="searching done" />
     <MESSAGE value="InfoView&#10;ContextMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="InfoView&#10;ContextMenu" />
+    <MESSAGE value="InfoView add button&#10;add new Font" />
+    <option name="LAST_COMMIT_MESSAGE" value="InfoView add button&#10;add new Font" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

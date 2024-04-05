@@ -78,7 +78,7 @@ public class MangeView extends JFrame {
 
     //Xử lý sự kiện
     public void addSearchListener(DocumentListener listener) {
-        inputField.addSearching(listener);
+        inputField.addFieldChange(listener);
     }
 
     public static void main(String[] args) throws IOException {
