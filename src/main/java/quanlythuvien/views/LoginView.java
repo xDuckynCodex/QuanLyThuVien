@@ -45,15 +45,15 @@ public class LoginView extends JFrame implements ActionListener {
         loginBtn.setBackground(Color.darkGray);
         loginBtn.setForeground(Color.white);
         
-        userNameLabel.setForeground(Color.white);
-        passwordlabel.setForeground(Color.white);
-        title.setForeground(Color.white);
+        userNameLabel.setForeground(Color.black);
+        passwordlabel.setForeground(Color.black);
+        title.setForeground(Color.black);
         
         title.setFont(new Font("Serif", Font.PLAIN, 25));
         
         img.setHorizontalAlignment(SwingConstants.LEFT);
         img.setBounds(0, 0, 400, 300);
-        img.setIcon(new ImageIcon("background.jpg"));
+        img.setIcon(new ImageIcon("bg.jpg"));
 
         loginBtn.setText("Login");
         loginBtn.addActionListener(this);
