@@ -6,8 +6,6 @@ import quanlythuvien.views.ContextMenu;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -34,14 +32,15 @@ public class Card extends JPanel {
 
         //context menu
         menu = new ContextMenu();
-//        menu.addMouseClcikedListener(new RightClickMouse());
 
         //css
         imgCardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         nameCard.setFont(new Font(nameCard.getFont().getName(), Font.PLAIN,
                 20));
         nameCard.setAlignmentX(Component.CENTER_ALIGNMENT);
-        authorCard.setFont(new Font(nameCard.getFont().getName(), Font.PLAIN,
+//        authorCard.setFont(new Font(nameCard.getFont().getName(), Font.PLAIN,
+//                15));
+        authorCard.setFont(new Font("Bitter Medium", Font.PLAIN,
                 15));
         authorCard.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -67,9 +66,4 @@ public class Card extends JPanel {
         BufferedImage bImg = ImageIO.read(new File(filePath));
         imgCard = new ImageIcon(bImg);
     }
-
-    public void addMouseClickedListener(MouseListener listener) {
-        this.addMouseListener(listener);
-    }
-
 }

@@ -5,6 +5,7 @@ import quanlythuvien.components.InputField;
 
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
+import quanlythuvien.utils.FontUtil;
 
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
@@ -81,6 +82,7 @@ public class MangeView extends JFrame {
     }
 
     public static void main(String[] args) throws IOException {
+        FontUtil.setFont();
         PublicationDao publicationDao = new PublicationDao();
         MangeView mc = new MangeView();
         mc.showView(publicationDao.getListPublication());
