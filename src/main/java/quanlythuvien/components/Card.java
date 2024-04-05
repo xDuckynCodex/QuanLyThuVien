@@ -22,12 +22,12 @@ public class Card extends JPanel {
     private ImageIcon imgCard;
     private ContextMenu menu;
     private Publication publication;
-    public Card(Publication publication) {
-        initComponent(publication);
+    public Card(Publication publication, GridCards gridCards) {
         this.publication = publication;
+        initComponent(publication, gridCards);
     }
 
-    public void initComponent(Publication publication) {
+    public void initComponent(Publication publication, GridCards gridCards) {
         // constructor elements
         nameCard = new JLabel(publication.getName());
         authorCard = new JLabel(publication.getAuthor());
@@ -35,7 +35,7 @@ public class Card extends JPanel {
         imgCardLabel = new JLabel(imgCard);
 
         //context menu
-        menu = new ContextMenu();
+        menu = new ContextMenu(publication, gridCards);
 
         //mainPanel;
         mainPanel = new JPanel();
@@ -88,7 +88,6 @@ public class Card extends JPanel {
         public void mouseClicked(MouseEvent e) {
             if (SwingUtilities.isRightMouseButton(e)) {
                 menu.show(mainPanel, e.getX(), e.getY());
-                menu.setPublication(publication);
             }
         }
 

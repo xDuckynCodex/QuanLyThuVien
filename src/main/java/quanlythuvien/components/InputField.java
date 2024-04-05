@@ -33,12 +33,13 @@ public class InputField extends JPanel {
         initComponent(label, columns);
     }
 
+    public String getTextField() {
+        return field.getText();
+    }
+
     //Xử lý sự kiện
     public void addFieldChange(DocumentListener listener) {
         field.getDocument().addDocumentListener(listener);
     }
 
-    public String getField() {
-        return field.getText();
-    }
 }

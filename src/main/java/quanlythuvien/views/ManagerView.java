@@ -144,6 +144,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         //cài đặt bảng
         table.setModel(new DefaultTableModel((Object[][]) data, columnNames));
         table.setFont(new Font(table.getFont().getName(), Font.PLAIN, 15));
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jScrollTable.setViewportView(table);
         jScrollTable.setPreferredSize(new Dimension(1350, 780));
 

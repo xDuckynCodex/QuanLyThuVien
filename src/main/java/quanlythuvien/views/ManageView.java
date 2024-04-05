@@ -4,27 +4,27 @@ import quanlythuvien.components.GridCards;
 import quanlythuvien.components.InputField;
 
 import quanlythuvien.dao.PublicationDao;
-import quanlythuvien.entities.Publication;
-import quanlythuvien.utils.FontUtil;
 
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.io.IOException;
-import java.util.List;
 
-public class MangeView extends JFrame {
+public class ManageView extends JFrame {
     //components
     private GridCards gridCards;
-    public InputField inputField;
+    private InputField inputField;
+
+    private PublicationDao publicationDao;
+
 
     private JLabel frameLabel;
     public void initComponent() {
-        gridCards = new GridCards();
+        gridCards = new GridCards(publicationDao, this);
         inputField = new InputField("Tìm kiếm ấn phẩm: ", 20);
         frameLabel = new JLabel("Quản lý ấn phẩm");
         frameLabel.setFont(new Font(frameLabel.getFont().getName(),
                 Font.PLAIN, 40));
+
         //layout giao dien
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel();
@@ -67,12 +67,26 @@ public class MangeView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    public MangeView() {
+    public ManageView() {
         initComponent();
     }
 
-    public void showView(List<Publication> publicationList) {
-        gridCards.setCardList(publicationList);
+    public ManageView(PublicationDao publicationDao) {
+        this.passInstance(publicationDao);
+        initComponent();
+    }
+
+    public void passInstance(PublicationDao publicationDao) {
+        this.publicationDao = publicationDao;
+    }
+
+    public void showView() {
+        gridCards.setCardList();
+        this.setVisible(true);
+    }
+
+    public void showView(String searchText) {
+        gridCards.setCardList(searchText);
         this.setVisible(true);
     }
 
@@ -81,11 +95,7 @@ public class MangeView extends JFrame {
         inputField.addFieldChange(listener);
     }
 
-    public static void main(String[] args) throws IOException {
-        FontUtil.setFont();
-        PublicationDao publicationDao = new PublicationDao();
-        MangeView mc = new MangeView();
-        mc.showView(publicationDao.getListPublication());
-        mc.setVisible(true);
+    public String getInputField() {
+        return inputField.getTextField();
     }
 }
