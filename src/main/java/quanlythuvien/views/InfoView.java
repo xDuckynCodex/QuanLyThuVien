@@ -1,6 +1,7 @@
 package quanlythuvien.views;
 
 import quanlythuvien.components.*;
+import quanlythuvien.entities.Publication;
 
 import javax.swing.*;
 import java.awt.*;
@@ -170,6 +171,16 @@ public class InfoView extends JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
+    public void showEditInfoView(Publication publication) {
+        name.setField(publication.getName());
+        code.setField(publication.getCode());
+        publisher.setField(publication.getPublisher());
+        author.setField(publication.getAuthor());
+        quantity.setField(publication.getQuantity()+"");
+        price.setField(publication.getPrice() + "");
+    }
+
+
     public static void main(String[] args) {
         InfoView view = new InfoView();
     }
@@ -203,6 +214,4 @@ public class InfoView extends JFrame {
             System.exit(0);
         }
     }
-
-
 }

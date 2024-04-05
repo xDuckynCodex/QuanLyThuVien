@@ -20,7 +20,7 @@ public class ManageController {
         mangeView.addSearchListener(new AddSearchListener());
     }
 
-    public void showView() throws IOException {
+    public void showView() {
         List<Publication> publicationList = publicationDao.getListPublication();
         mangeView.showView(publicationList);
     }
@@ -30,21 +30,13 @@ public class ManageController {
     class AddSearchListener implements DocumentListener {
         @Override
         public void insertUpdate(DocumentEvent e) {
-            try {
-                String searchField = mangeView.inputField.getField();
-                mangeView.showView(publicationDao.searchByName(searchField));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            String searchField = mangeView.inputField.getField();
+            mangeView.showView(publicationDao.searchByName(searchField));
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            try {
-                mangeView.showView(publicationDao.searchByName(mangeView.inputField.getField()));
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            mangeView.showView(publicationDao.searchByName(mangeView.inputField.getField()));
         }
 
         @Override
@@ -52,7 +44,7 @@ public class ManageController {
 
         }
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         MangeView mv = new MangeView();
         ManageController mc = new ManageController(mv);
         mc.showView();

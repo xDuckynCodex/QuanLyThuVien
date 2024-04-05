@@ -1,5 +1,7 @@
 package quanlythuvien.views;
 
+import quanlythuvien.entities.Publication;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +13,12 @@ public class ContextMenu extends JPopupMenu {
     }
     private JMenuItem editMenuItem, deleteMenuItem;
     private InfoView infoView;
+
+    public void setPublication(Publication publication) {
+        this.publication = publication;
+    }
+
+    private Publication publication;
     public void initComponent() {
         editMenuItem = new JMenuItem("Edit");
         editMenuItem.addActionListener(new EditMenuItem());
@@ -20,16 +28,17 @@ public class ContextMenu extends JPopupMenu {
         this.add(deleteMenuItem);
     }
 
-    class EditMenuItem implements ActionListener {
 
+
+    class EditMenuItem implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             infoView = new InfoView();
+            infoView.showEditInfoView(publication);
         }
     }
 
     class DeleteMenuItem implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
 

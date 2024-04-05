@@ -5,8 +5,6 @@ import quanlythuvien.views.ContextMenu;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +25,6 @@ public class GridCards extends JScrollPane {
         this.setViewportView(cardPanel);
         this.setPreferredSize(new Dimension(1610, 900));
         this.getVerticalScrollBar().setUnitIncrement(16);
-        this.addMouseListener(new RightClickMouse());
     }
 
     public GridCards() {
@@ -35,7 +32,7 @@ public class GridCards extends JScrollPane {
     }
 
     //call to show info
-    public void getCardList(List<Publication> publicationList) throws IOException {
+    public void setCardList(List<Publication> publicationList) {
         cardList = new ArrayList<Card>();
         for (Publication publication : publicationList) {
             cardList.add(new Card(publication));
@@ -51,34 +48,5 @@ public class GridCards extends JScrollPane {
         layout = new GridLayout(0, gridColumns, 10, 10);
         cardPanel = new JPanel();
         cardPanel.setLayout(layout);
-    }
-
-    class RightClickMouse implements MouseListener {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (SwingUtilities.isRightMouseButton(e)) {
-            menu.show(cardPanel, e.getX(), e.getY());
-            }
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
     }
 }

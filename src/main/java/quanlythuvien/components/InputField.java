@@ -6,6 +6,11 @@ import java.awt.*;
 
 public class InputField extends JPanel {
     private JLabel label;
+
+    public void setField(String field) {
+        this.field.setText(field);
+    }
+
     private JTextField field;
 
     public void initComponent(String label, int columns) {

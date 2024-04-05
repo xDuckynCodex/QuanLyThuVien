@@ -67,12 +67,12 @@ public class MangeView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    public MangeView() throws IOException {
+    public MangeView() {
         initComponent();
     }
 
-    public void showView(List<Publication> publicationList) throws IOException {
-        gridCards.getCardList(publicationList);
+    public void showView(List<Publication> publicationList) {
+        gridCards.setCardList(publicationList);
         this.setVisible(true);
     }
 

@@ -6,6 +6,8 @@ import quanlythuvien.views.ContextMenu;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,17 +15,19 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class Card extends JPanel {
-
+    private JPanel mainPanel;
     private JLabel nameCard;
     private JLabel authorCard;
     private  JLabel imgCardLabel;
     private ImageIcon imgCard;
     private ContextMenu menu;
-    public Card(Publication publication) throws IOException {
+    private Publication publication;
+    public Card(Publication publication) {
         initComponent(publication);
+        this.publication = publication;
     }
 
-    public void initComponent(Publication publication) throws IOException {
+    public void initComponent(Publication publication) {
         // constructor elements
         nameCard = new JLabel(publication.getName());
         authorCard = new JLabel(publication.getAuthor());
@@ -33,26 +37,32 @@ public class Card extends JPanel {
         //context menu
         menu = new ContextMenu();
 
+        //mainPanel;
+        mainPanel = new JPanel();
+        BoxLayout layout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
+        mainPanel.setLayout(layout);
+
         //css
         imgCardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         nameCard.setFont(new Font(nameCard.getFont().getName(), Font.PLAIN,
                 20));
         nameCard.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        authorCard.setFont(new Font(nameCard.getFont().getName(), Font.PLAIN,
-//                15));
         authorCard.setFont(new Font("Bitter Medium", Font.PLAIN,
                 15));
         authorCard.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        //add element to panel
-        this.add(imgCardLabel);
-        this.add(nameCard);
-        this.add(authorCard);
+        //add element to main panel
+        mainPanel.add(imgCardLabel);
+        mainPanel.add(nameCard);
+        mainPanel.add(authorCard);
+
+        //mouse listener
+        mainPanel.addMouseListener(new RightClickMouse());
 
         // set layout card
-        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        this.setSize(150, 230);
-        this.setLayout(layout);
+        mainPanel.setSize(150, 230);
+        this.add(mainPanel);
+        this.setLayout(new GridLayout(1,1));
     }
 
     public void getImageFromURL(String imageUrl) throws IOException {
@@ -62,10 +72,44 @@ public class Card extends JPanel {
         imgCard = new ImageIcon(bImg);
     }
 
-    public void getImageFromFile(String filePath) throws IOException {
-        BufferedImage bImg = ImageIO.read(new File(filePath));
-        imgCard = new ImageIcon(bImg);
+    public void getImageFromFile(String filePath) {
+        BufferedImage bImg;
+        try {
+            bImg = ImageIO.read(new File(filePath));
+            imgCard = new ImageIcon(bImg);
+        } catch (IOException ignored) {
+
+        }
     }
 
 
+    class RightClickMouse implements MouseListener {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (SwingUtilities.isRightMouseButton(e)) {
+                menu.show(mainPanel, e.getX(), e.getY());
+                menu.setPublication(publication);
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
 }

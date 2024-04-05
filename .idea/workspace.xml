@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="InfoView add button&#10;add new Font">
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="commit to edit event contextmenu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ContextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/MangeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/MangeView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -269,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712282644553</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="commit to edit event contextmenu">
+      <option name="closed" value="true" />
+      <created>1712286288693</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712286288693</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,7 +305,8 @@
     <MESSAGE value="searching done" />
     <MESSAGE value="InfoView&#10;ContextMenu" />
     <MESSAGE value="InfoView add button&#10;add new Font" />
-    <option name="LAST_COMMIT_MESSAGE" value="InfoView add button&#10;add new Font" />
+    <MESSAGE value="commit to edit event contextmenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit to edit event contextmenu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
