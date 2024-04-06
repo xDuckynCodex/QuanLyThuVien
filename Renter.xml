@@ -1,43 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <renters>
     <renter>
-        <id>9896</id>
-        <name>An</name>
+        <expiredDate>10/04/2024</expiredDate>
+        <firstName>Lê</firstName>
+        <id>1</id>
+        <name>Phát</name>
+        <quantity>1</quantity>
         <rentedBook>Anh 1</rentedBook>
+        <type>Book</type>
     </renter>
     <renter>
-        <id>212</id>
-        <name>Linh</name>
-        <rentedBook>Anh 2</rentedBook>
-    </renter>
-    <renter>
-        <id>001</id>
+        <expiredDate>10/04/2024</expiredDate>
+        <firstName>Nông Quốc</firstName>
+        <id>2</id>
         <name>Phong</name>
-        <rentedBook>XLA</rentedBook>
-    </renter>
-    <renter>
-        <id>996</id>
-        <name>Phát</name>
-        <rentedBook>OOP</rentedBook>
-    </renter>
-    <renter>
-        <id>225</id>
-        <name>Phát</name>
-        <rentedBook>LTCB</rentedBook>
-    </renter>
-    <renter>
-        <id>123</id>
-        <name>Nguyên</name>
-        <rentedBook>Anh 3</rentedBook>
-    </renter>
-    <renter>
-        <id>003</id>
-        <name>Phạm Minh Duy</name>
-        <rentedBook>Anh 4</rentedBook>
-    </renter>
-    <renter>
-        <id>13</id>
-        <name>Nguyễn Quốc Huy</name>
-        <rentedBook>Anh 5</rentedBook>
+        <quantity>1</quantity>
+        <rentedBook>Anh 2</rentedBook>
+        <type>Book</type>
     </renter>
 </renters>

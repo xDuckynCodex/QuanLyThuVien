@@ -11,6 +11,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Renter;
 import quanlythuvien.views.ManagerView;
@@ -22,12 +23,16 @@ import quanlythuvien.views.RenterView;
  */
 public class RenterController {
     private RenterDao renterDao;
+    private PublicationDao pubDao;
     private RenterView renterView;
     private ManagerView managerView;
     
     public RenterController(RenterView view){
         this.renterView = view;
         renterDao = new RenterDao();
+        pubDao = new PublicationDao();
+        managerView = new ManagerView();
+        
         view.addAddRenterListener(new AddRenterListener());
         view.addEditRenterListener(new EditRenterListener());
         view.addDeleteRenterListener(new DeleteRenterListener());
@@ -35,6 +40,7 @@ public class RenterController {
         view.addClearRenterListener(new ClearRenterListener());
         view.addFillRenterFromSelectedRow(new FillRenterFromSelectedRowListener());
         view.addTransferPublicationListener(new TransferPublicationListener());
+        view.addRentedBookFieldSearch(new rentedBookSearchListener());
     }
     
     public void showRenterView(){
@@ -78,7 +84,7 @@ public class RenterController {
             }
         }
     }
-     class FillRenterFromSelectedRowListener implements ListSelectionListener {
+    class FillRenterFromSelectedRowListener implements ListSelectionListener {
         @Override
         public void valueChanged(ListSelectionEvent e) {
             renterView.fillRenterFromSelectedRow();
@@ -106,6 +112,22 @@ public class RenterController {
         public void actionPerformed(ActionEvent e) {
             renterDao.sortByName();
             renterView.showListRenter(renterDao.getListRenter());
+        }
+    }
+    
+    class rentedBookSearchListener implements DocumentListener{
+        public void insertUpdate(DocumentEvent e) {
+            renterView.showListPublicationToRent(pubDao.searchByName(managerView.getName()));
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            renterView.showListPublicationToRent(pubDao.searchByName(managerView.getName()));
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+
         }
     }
     

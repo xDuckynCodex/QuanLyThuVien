@@ -1,7 +1,9 @@
 package quanlythuvien.views;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -72,8 +74,6 @@ public class LoginView extends JFrame implements ActionListener {
         panel.add(loginBtn);
         panel.add(img);
 
-        setLocationRelativeTo(null);
-
         // cài đặt vị trí các thành phần trên màn hình login
         layout.putConstraint(SpringLayout.WEST, userNameLabel, 100, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, userNameLabel, 200, SpringLayout.NORTH, panel);
@@ -95,6 +95,8 @@ public class LoginView extends JFrame implements ActionListener {
         this.setTitle("Login");
         this.setSize(600, 400);
         this.setResizable(false);
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     public void showMessage(String message) {

@@ -4,11 +4,15 @@
  */
 package quanlythuvien.dao;
 
+import java.text.Collator;
+import java.text.ParseException;
+import java.text.RuleBasedCollator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.entities.Renter;
@@ -21,6 +25,8 @@ import quanlythuvien.utils.FileUtils;
 public class RenterDao {
     private static final String file = "Renter.xml";
     private List<Renter> listRenter = new ArrayList<>();
+    Publication pub = new Publication();
+    Renter renter = new Renter();
     
     public RenterDao(){
         this.listRenter = readRenter();
@@ -53,10 +59,15 @@ public class RenterDao {
     
     public void editRenter(Renter r){
         for(int i = 0; i < listRenter.size(); i++){
-             if(Objects.equals(listRenter.get(i).getId(), r.getId())){
-                 listRenter.get(i).setName(r.getName());
-                 listRenter.get(i).setRentedBook(r.getRentedBook());
-             }
+            if(Objects.equals(listRenter.get(i).getId(), r.getId())){
+                listRenter.get(i).setFirstName(r.getFirstName());
+                listRenter.get(i).setName(r.getName());
+//                listRenter.get(i).setId(r.getId());
+                listRenter.get(i).setRentedBook(r.getRentedBook());
+//                listRenter.get(i).setType(r.getType());
+                listRenter.get(i).setQuantity(r.getQuantity());
+                listRenter.get(i).setExpiredDate(r.getExpiredDate());
+            }
         }
         writeListRenter(listRenter);
     }
@@ -79,11 +90,32 @@ public class RenterDao {
     }
     
     public void sortByName(){
-        Collections.sort(listRenter, new Comparator<Renter>(){
-            public int compare(Renter r1, Renter r2){
+        Collections.sort(listRenter, new Comparator<Renter>() {
+            public int compare(Renter r1, Renter r2) {
+//                Collator collator = Collator.getInstance(new java.util.Locale("vi", "VN"));
                 return r1.getName().compareTo(r2.getName());
             }
         });
+    }
+    
+    public List<Renter> searchByName(String name){
+        List<Renter> searchResult = new ArrayList<Renter>();
+        for(int i = 0; i < listRenter.size(); i++){
+            if(listRenter.get(i).getName().contains(name)) {
+                searchResult.add(listRenter.get(i));
+            }
+        }
+        return searchResult;
+    }
+    
+    public Integer count(String type){
+        int count = 0;
+        for(Renter r : listRenter){
+            if(r.getType() == type){
+                count += r.getQuantity();
+            }
+        }
+        return count;
     }
     
     public List<Renter> getListRenter(){

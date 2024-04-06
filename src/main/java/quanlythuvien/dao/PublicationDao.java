@@ -117,6 +117,15 @@ public class PublicationDao {
         return searchResult;
     }
     
+    public Integer count(String type){
+        int count = 0;
+        for(Publication p : listPub){
+            if(p.getType() == type){
+                count += p.getQuantity();
+            }
+        }
+        return count;
+    }
 
     public List<Publication> getListPublication(){
         return listPub;

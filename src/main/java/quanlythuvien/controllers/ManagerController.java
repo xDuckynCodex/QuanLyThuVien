@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import java.text.ParseException;
+import static java.util.Collections.list;
 import javax.swing.Action;
 
 import quanlythuvien.dao.PublicationDao;
@@ -25,6 +26,7 @@ public class ManagerController {
     
     public ManagerController(ManagerView view) {
         this.managerView = view;
+        renterView = new RenterView();
         pubDao = new PublicationDao();
         
         view.addAddPublicationListener(new AddPublicationListener());
@@ -50,6 +52,7 @@ public class ManagerController {
             Publication publication = managerView.getPublicationInfo();
             if(publication != null){
                 pubDao.add(publication);
+                renterView.showListPublicationToRent(pubDao.getListPublication());
                 managerView.showPublication(publication);
                 managerView.showListPublications(pubDao.getListPublication());
                 managerView.clearPublication();
