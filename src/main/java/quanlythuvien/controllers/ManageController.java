@@ -13,9 +13,9 @@ public class ManageController {
     private final PublicationDao publicationDao;
     private final ManageView manageView;
 
-    public ManageController() {
-        this.publicationDao = new PublicationDao();
-        this.manageView = new ManageView(publicationDao);
+    public ManageController(PublicationDao publicationDao, ManageView manageView) {
+        this.publicationDao = publicationDao;
+        this.manageView = manageView;
 
         manageView.setSearchFieldOnChangeListener(new AddSearchListener());
         manageView.setAddBtnClickListener(new AddBtnClickListener());
@@ -56,8 +56,8 @@ public class ManageController {
         }
     }
 
-    public static void main(String[] args) {
-        ManageController mc = new ManageController();
-        mc.showView();
-    }
+//    public static void main(String[] args) {
+//        ManageController mc = new ManageController();
+//        mc.showView();
+//    }
 }

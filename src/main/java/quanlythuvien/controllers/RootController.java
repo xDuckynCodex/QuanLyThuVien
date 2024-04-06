@@ -31,20 +31,24 @@ public class RootController {
     }
 
     public void initComponent() {
+        //data
+        publicationDao = new PublicationDao();
+
         // view
         loginView = new LoginView();
         manageView = new ManageView();
         infoView = new InfoView();
 
         // controller
-        manageController = new ManageController();
+        manageController = new ManageController(publicationDao, manageView);
         infoController = new InfoController(infoView);
 
         //Component
-        gridCards = new GridCards(publicationDao, infoController);
+        gridCards = new GridCards(publicationDao, manageView, infoController);
 
-        //data
-        publicationDao = new PublicationDao();
+
+        //pass instance
+
     }
 
     public void showLoginView() {

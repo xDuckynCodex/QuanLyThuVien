@@ -66,7 +66,7 @@ public class ManageView extends JFrame {
         //addBtn
         layout.putConstraint(SpringLayout.WEST, addBtn, 750,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, addBtn, 75,
+        layout.putConstraint(SpringLayout.NORTH, addBtn, 73,
                 SpringLayout.NORTH, panel);
         //label
         layout.putConstraint(SpringLayout.WEST, frameLabel, 800,
@@ -79,7 +79,7 @@ public class ManageView extends JFrame {
         this.pack();
         this.setTitle("Manage View");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public ManageView() {

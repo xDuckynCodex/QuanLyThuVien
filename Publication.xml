@@ -1403,26 +1403,6 @@
     <publication>
         <author>asd</author>
         <code>asd</code>
-        <name>sad</name>
-        <price>12.0</price>
-        <publishedDate>03/07/2024</publishedDate>
-        <publisher>ads</publisher>
-        <quantity>12</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>asd</author>
-        <code>asd</code>
-        <name>sad</name>
-        <price>12.0</price>
-        <publishedDate>03/07/2024</publishedDate>
-        <publisher>ads</publisher>
-        <quantity>12</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>asd</author>
-        <code>asd</code>
         <name>asd</name>
         <price>12.0</price>
         <publishedDate>03/04/2024</publishedDate>
@@ -2541,23 +2521,13 @@
         <type>Book</type>
     </publication>
     <publication>
-        <author>asd</author>
-        <code>asd</code>
-        <name>sad</name>
-        <price>12.0</price>
-        <publishedDate>03/07/2024</publishedDate>
-        <publisher>ads</publisher>
-        <quantity>12</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>asd</author>
-        <code>asd</code>
-        <name>sad</name>
-        <price>12.0</price>
-        <publishedDate>03/07/2024</publishedDate>
-        <publisher>ads</publisher>
-        <quantity>12</quantity>
+        <author>qwe</author>
+        <code>qweqw</code>
+        <name>qwewq</name>
+        <price>123.0</price>
+        <publishedDate>10/04/2024</publishedDate>
+        <publisher>qweqw</publisher>
+        <quantity>123</quantity>
         <type>Book</type>
     </publication>
 </publications>

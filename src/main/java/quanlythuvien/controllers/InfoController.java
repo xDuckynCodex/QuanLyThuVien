@@ -13,6 +13,11 @@ import java.text.ParseException;
 public class InfoController {
     private InfoView infoView;
     private PublicationDao publicationDao;
+    private Publication publication;
+    public void setPublication(Publication publication) {
+        this.publication = publication;
+    }
+
     public InfoController() {
         initComponent();
     }
@@ -23,6 +28,8 @@ public class InfoController {
     }
 
     public void initComponent() {
+        infoView.setPublication(publication);
+
         infoView.setAddBtnOnClickListener(new AddClickedListener());
         infoView.setEditBtnOnClickListener(new EditClickedListener());
         infoView.setDeleteBtnOnClickListener(new DeleteClickedListener());
@@ -45,6 +52,11 @@ public class InfoController {
 
     public void setAddMode() {
         this.infoView.setAddMode();
+    }
+
+    public void setEditMode() {
+        this.infoView.setPublication(publication);
+        this.infoView.setEditMode();
     }
 
     class AddClickedListener implements ActionListener {

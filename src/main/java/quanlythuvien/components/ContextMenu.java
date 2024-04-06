@@ -2,6 +2,7 @@ package quanlythuvien.components;
 
 import quanlythuvien.components.GridCards;
 import quanlythuvien.controllers.InfoController;
+import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.views.InfoView;
 
@@ -16,6 +17,12 @@ public class ContextMenu extends JPopupMenu {
     private GridCards gridCards;
     private JMenuItem editMenuItem, deleteMenuItem;
     private InfoController infoController;
+
+    public void setPublicationDao(PublicationDao publicationDao) {
+        this.publicationDao = publicationDao;
+    }
+
+    private PublicationDao publicationDao;
     private Publication publication;
 
     public ContextMenu(Publication publication, GridCards gridCards,
@@ -23,6 +30,7 @@ public class ContextMenu extends JPopupMenu {
         this.publication = publication;
         this.gridCards = gridCards;
         this.infoController = infoController;
+        this.publicationDao = gridCards.getPublicationDao();
         initComponent();
     }
 
@@ -38,7 +46,9 @@ public class ContextMenu extends JPopupMenu {
     class EditMenuItem implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            infoController.setAddMode();
+            infoController.setPublication(publication);
+            infoController.setPublicationDao(publicationDao);
+            infoController.setEditMode();
             infoController.showInfoView();
         }
     }

@@ -6,7 +6,6 @@ import quanlythuvien.entities.Publication;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class InfoView extends JFrame {
@@ -27,6 +26,7 @@ public class InfoView extends JFrame {
     private DropDown typeMenu;
     private GridCards gridCards;
     private PublicationDao publicationDao;
+    private Publication publication;
     private final int north = 50;
     private final int west = 250;
     public void initComponent() {
@@ -174,7 +174,7 @@ public class InfoView extends JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
-    public void showEditInfoView(Publication publication) {
+    public void setEditInfoView(Publication publication) {
         name.setField(publication.getName());
         code.setField(publication.getCode());
         publisher.setField(publication.getPublisher());
@@ -185,7 +185,9 @@ public class InfoView extends JFrame {
         typeMenu.setType(publication.getType());
         this.setVisible(true);
     }
-
+    public void setPublication(Publication publication) {
+        this.publication = publication;
+    }
     public void showInfoView() {
         this.setVisible(true);
     }
@@ -209,6 +211,7 @@ public class InfoView extends JFrame {
     }
 
     public void setEditMode() {
+        this.setEditInfoView(publication);
         addBtn.setEnable(false);
         editBtn.setEnable(true);
         deleteBtn.setEnable(true);

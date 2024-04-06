@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="pass instance to children&#10;handle ContextMenu delete">
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RootController.java" afterDir="false" />
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="add RootController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ButtonComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ButtonComp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DropDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DropDown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ContextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ContextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RootController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RootController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" afterDir="false" />
     </list>
@@ -94,7 +87,7 @@
     "Application.ManagerController.executor": "Debug",
     "Application.ManagerView.executor": "Run",
     "Application.MangeView.executor": "Run",
-    "Application.RootController.executor": "Debug",
+    "Application.RootController.executor": "Run",
     "Application.View.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -184,10 +177,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.RootController" />
+        <item itemvalue="Application.ManageController" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.InfoController" />
         <item itemvalue="Application.ManagerController" />
-        <item itemvalue="Application.ManageController" />
       </list>
     </recent_temporary>
   </component>
@@ -299,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712340083015</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add RootController">
+      <option name="closed" value="true" />
+      <created>1712427828347</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712427828347</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -326,7 +327,8 @@
     <MESSAGE value="InfoView add button&#10;add new Font" />
     <MESSAGE value="commit to edit event contextmenu" />
     <MESSAGE value="pass instance to children&#10;handle ContextMenu delete" />
-    <option name="LAST_COMMIT_MESSAGE" value="pass instance to children&#10;handle ContextMenu delete" />
+    <MESSAGE value="add RootController" />
+    <option name="LAST_COMMIT_MESSAGE" value="add RootController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -335,22 +337,6 @@
           <properties class="javax.xml.bind.UnmarshalException" package="javax.xml.bind" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RootController.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java</url>
-          <line>94</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java</url>
-          <line>28</line>
-          <properties field="gridCards" class="quanlythuvien.views.ManageView" />
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
