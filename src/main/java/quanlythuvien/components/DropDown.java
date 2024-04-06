@@ -2,6 +2,7 @@ package quanlythuvien.components;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class DropDown extends JPanel {
     public DropDown() {
@@ -20,6 +21,21 @@ public class DropDown extends JPanel {
 
         this.add(label);
         this.add(dropdown);
+    }
 
+    public String getTypeString() {
+        return dropdown.getItemAt(dropdown.getSelectedIndex());
+    }
+
+    public void setType(String type) {
+        int typeIndex = 1;
+        for (String s : typeString) {
+            if (!Objects.equals(s, type)) {
+                typeIndex++;
+            } else {
+                break;
+            }
+        }
+        dropdown.setSelectedIndex(typeIndex);
     }
 }

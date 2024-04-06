@@ -15,7 +15,11 @@ public class ButtonComp extends JPanel {
         initComponent(label);
     }
 
-    public void addClickListener(ActionListener listener) {
+    public void setEnable(Boolean bool) {
+        btn.setEnabled(bool);
+    }
+
+    public void onClickListener(ActionListener listener) {
         btn.addActionListener(listener);
     }
 

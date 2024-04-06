@@ -1,7 +1,7 @@
 package quanlythuvien.components;
 
+import quanlythuvien.controllers.InfoController;
 import quanlythuvien.entities.Publication;
-import quanlythuvien.views.ContextMenu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class Card extends JPanel {
+    private InfoController infoController;
     private JPanel mainPanel;
     private JLabel nameCard;
     private JLabel authorCard;
@@ -22,12 +23,14 @@ public class Card extends JPanel {
     private ImageIcon imgCard;
     private ContextMenu menu;
     private Publication publication;
-    public Card(Publication publication, GridCards gridCards) {
+    public Card(Publication publication, GridCards gridCards,
+                InfoController infoController) {
         this.publication = publication;
-        initComponent(publication, gridCards);
+        this.infoController = infoController;
+        initComponent(gridCards);
     }
 
-    public void initComponent(Publication publication, GridCards gridCards) {
+    public void initComponent(GridCards gridCards) {
         // constructor elements
         nameCard = new JLabel(publication.getName());
         authorCard = new JLabel(publication.getAuthor());
@@ -35,7 +38,7 @@ public class Card extends JPanel {
         imgCardLabel = new JLabel(imgCard);
 
         //context menu
-        menu = new ContextMenu(publication, gridCards);
+        menu = new ContextMenu(publication, gridCards, infoController);
 
         //mainPanel;
         mainPanel = new JPanel();

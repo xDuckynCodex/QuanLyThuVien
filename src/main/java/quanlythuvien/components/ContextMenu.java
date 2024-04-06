@@ -1,7 +1,9 @@
-package quanlythuvien.views;
+package quanlythuvien.components;
 
 import quanlythuvien.components.GridCards;
+import quanlythuvien.controllers.InfoController;
 import quanlythuvien.entities.Publication;
+import quanlythuvien.views.InfoView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,15 +13,18 @@ public class ContextMenu extends JPopupMenu {
     public ContextMenu() {
         initComponent();
     }
-    public ContextMenu(Publication publication, GridCards gridCards) {
-        this.publication = publication;
-        this.gridCards = gridCards;
-        initComponent();
-    }
     private GridCards gridCards;
     private JMenuItem editMenuItem, deleteMenuItem;
-    private InfoView infoView;
+    private InfoController infoController;
     private Publication publication;
+
+    public ContextMenu(Publication publication, GridCards gridCards,
+                       InfoController infoController) {
+        this.publication = publication;
+        this.gridCards = gridCards;
+        this.infoController = infoController;
+        initComponent();
+    }
 
     public void initComponent() {
         editMenuItem = new JMenuItem("Edit");
@@ -33,8 +38,8 @@ public class ContextMenu extends JPopupMenu {
     class EditMenuItem implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            infoView = new InfoView();
-            infoView.showEditInfoView(publication);
+            infoController.setAddMode();
+            infoController.showInfoView();
         }
     }
 
@@ -42,7 +47,6 @@ public class ContextMenu extends JPopupMenu {
         @Override
         public void actionPerformed(ActionEvent e) {
             gridCards.deleteCard(publication);
-
         }
     }
 

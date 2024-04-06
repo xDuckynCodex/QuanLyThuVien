@@ -1,6 +1,7 @@
 package quanlythuvien.views;
 
 import quanlythuvien.components.*;
+import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
 
 import javax.swing.*;
@@ -13,16 +14,23 @@ public class InfoView extends JFrame {
         initComponent();
     }
 
+    public InfoView(GridCards gridCards) {
+        this.gridCards = gridCards;
+        this.publicationDao = gridCards.getPublicationDao();
+        initComponent();
+    }
+
     private InputField name, code, publisher, author, quantity, price;
     private ButtonComp addBtn, editBtn, deleteBtn, exitBtn;
     private JLabel title;
-    private DatePickPanel datePickPanel;
+    private DatePickerPanel datePickerPanel;
     private DropDown typeMenu;
-    private Card card;
+    private GridCards gridCards;
+    private PublicationDao publicationDao;
     private final int north = 50;
     private final int west = 250;
     public void initComponent() {
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // label
         title = new JLabel("Thông tin đối tượng");
         title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 20));
@@ -34,17 +42,13 @@ public class InfoView extends JFrame {
         quantity = new InputField("Số lượng");
         price = new InputField("Giá sản phẩm");
         title = new JLabel("Thông tin đối tượng");
-        datePickPanel = new DatePickPanel();
+        datePickerPanel = new DatePickerPanel();
         typeMenu = new DropDown();
         //button
         addBtn = new ButtonComp("Thêm");
-        addBtn.addClickListener(new AddClickedListener());
         editBtn =new ButtonComp("Sửa");
-        editBtn.addClickListener(new EditClickedListener());
         deleteBtn = new ButtonComp("Xóa");
-        deleteBtn.addClickListener(new DeleteClickedListener());
         exitBtn = new ButtonComp("Exit");
-        exitBtn.addClickListener(new ExitClickedListener());
 
 //        card = new Card();
 
@@ -61,7 +65,7 @@ public class InfoView extends JFrame {
         panel.add(author);
         panel.add(quantity);
         panel.add(price);
-        panel.add(datePickPanel);
+        panel.add(datePickerPanel);
         panel.add(typeMenu);
 
         panel.add(addBtn);
@@ -112,10 +116,10 @@ public class InfoView extends JFrame {
                 SpringLayout.NORTH,
                 panel);
         //date picker
-        layout.putConstraint(SpringLayout.WEST, datePickPanel, west,
+        layout.putConstraint(SpringLayout.WEST, datePickerPanel, west,
                 SpringLayout.WEST,
                 panel);
-        layout.putConstraint(SpringLayout.NORTH, datePickPanel,
+        layout.putConstraint(SpringLayout.NORTH, datePickerPanel,
                 north + 40 * 6,
                 SpringLayout.NORTH,
                 panel);
@@ -166,7 +170,6 @@ public class InfoView extends JFrame {
         this.pack();
         this.setTitle("Thông tin đối tượng");
         this.setSize(new Dimension(600,450));
-        this.setVisible(true);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
@@ -178,40 +181,56 @@ public class InfoView extends JFrame {
         author.setField(publication.getAuthor());
         quantity.setField(publication.getQuantity()+"");
         price.setField(publication.getPrice() + "");
+        datePickerPanel.showDate(publication.getPublishedDate());
+        typeMenu.setType(publication.getType());
+        this.setVisible(true);
     }
 
+    public void showInfoView() {
+        this.setVisible(true);
+    }
 
+    public Publication getNewPublication() {
+        Publication publication = new Publication();
+        publication.setName(name.getTextField());
+        publication.setCode(code.getTextField());
+        publication.setAuthor(author.getTextField());
+        publication.setPrice(Double.parseDouble(price.getTextField()));
+        publication.setPublisher(publisher.getTextField());
+        publication.setPublishedDate(datePickerPanel.getDate());
+        publication.setType(typeMenu.getTypeString());
+        publication.setQuantity(Integer.parseInt(quantity.getTextField()));
+        return publication;
+    }
+
+    public void setAddMode() {
+        editBtn.setEnable(false);
+        deleteBtn.setEnable(false);
+    }
+
+    public void setEditMode() {
+        addBtn.setEnable(false);
+        editBtn.setEnable(true);
+        deleteBtn.setEnable(true);
+    }
     public static void main(String[] args) {
         InfoView view = new InfoView();
+        view.showInfoView();
     }
 
-    // Xử lý listener
-    class AddClickedListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //Handler add event
-            JOptionPane.showMessageDialog(new JOptionPane(), "add evnt");
-        }
+    public void setAddBtnOnClickListener(ActionListener listener) {
+        addBtn.onClickListener(listener);
     }
 
-    class EditClickedListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //Handler edit event
-        }
+    public void setEditBtnOnClickListener(ActionListener listener) {
+        editBtn.onClickListener(listener);
     }
 
-    class DeleteClickedListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //Handler delete event
-        }
+    public void setDeleteBtnOnClickListener(ActionListener listener) {
+        deleteBtn.onClickListener(listener);
     }
 
-    class ExitClickedListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
+    public void setExitBtnOnClickListener(ActionListener listener) {
+        exitBtn.onClickListener(listener);
     }
 }

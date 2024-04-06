@@ -1,5 +1,6 @@
 package quanlythuvien.views;
 
+import quanlythuvien.components.ButtonComp;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.components.InputField;
 
@@ -8,26 +9,40 @@ import quanlythuvien.dao.PublicationDao;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ManageView extends JFrame {
+    public void setGridCards(GridCards gridCards) {
+        this.gridCards = gridCards;
+        panel.add(gridCards);
+        //gridCard component
+        layout.putConstraint(SpringLayout.EAST, gridCards, 0,
+                SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.SOUTH, gridCards, 0,
+                SpringLayout.SOUTH, panel);
+    }
+
+    private JPanel panel;
+    private SpringLayout layout;
     //components
     private GridCards gridCards;
-    private InputField inputField;
-
+    private InputField searchField;
+    private ButtonComp addBtn;
     private PublicationDao publicationDao;
-
 
     private JLabel frameLabel;
     public void initComponent() {
-        gridCards = new GridCards(publicationDao, this);
-        inputField = new InputField("Tìm kiếm ấn phẩm: ", 20);
+//        gridCards = new GridCards(publicationDao, this);
+        searchField = new InputField("Tìm kiếm ấn phẩm: ", 20);
         frameLabel = new JLabel("Quản lý ấn phẩm");
         frameLabel.setFont(new Font(frameLabel.getFont().getName(),
                 Font.PLAIN, 40));
 
+        addBtn = new ButtonComp("Thêm ấn phẩm");
         //layout giao dien
-        SpringLayout layout = new SpringLayout();
-        JPanel panel = new JPanel();
+        layout = new SpringLayout();
+        panel = new JPanel();
         panel.setLayout(layout);
         panel.setSize(1900, 1000);
 
@@ -35,23 +50,23 @@ public class ManageView extends JFrame {
 
         //add element to panel
         //component
-        panel.add(gridCards);
-        panel.add(inputField);
-
+        panel.add(searchField);
+        panel.add(addBtn);
         //label
         panel.add(frameLabel);
 
 
         //set vi tri
-        //gridCard component
-        layout.putConstraint(SpringLayout.EAST, gridCards, 0,
-                SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.SOUTH, gridCards, 0,
-                SpringLayout.SOUTH, panel);
+
         //search component
-        layout.putConstraint(SpringLayout.WEST, inputField, 350,
+        layout.putConstraint(SpringLayout.WEST, searchField, 350,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, inputField, 75,
+        layout.putConstraint(SpringLayout.NORTH, searchField, 75,
+                SpringLayout.NORTH, panel);
+        //addBtn
+        layout.putConstraint(SpringLayout.WEST, addBtn, 750,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, addBtn, 75,
                 SpringLayout.NORTH, panel);
         //label
         layout.putConstraint(SpringLayout.WEST, frameLabel, 800,
@@ -72,12 +87,8 @@ public class ManageView extends JFrame {
     }
 
     public ManageView(PublicationDao publicationDao) {
-        this.passInstance(publicationDao);
-        initComponent();
-    }
-
-    public void passInstance(PublicationDao publicationDao) {
         this.publicationDao = publicationDao;
+        initComponent();
     }
 
     public void showView() {
@@ -89,13 +100,16 @@ public class ManageView extends JFrame {
         gridCards.setCardList(searchText);
         this.setVisible(true);
     }
-
-    //Xử lý sự kiện
-    public void addSearchListener(DocumentListener listener) {
-        inputField.addFieldChange(listener);
+    public String getSearchField() {
+        return searchField.getTextField();
     }
 
-    public String getInputField() {
-        return inputField.getTextField();
+    //Thêm sự kiên sự kiện
+    public void setSearchFieldOnChangeListener(DocumentListener listener) {
+        searchField.addFieldChange(listener);
+    }
+
+    public void setAddBtnClickListener(ActionListener listener) {
+        addBtn.onClickListener(listener);
     }
 }

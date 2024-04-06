@@ -1,10 +1,13 @@
 package quanlythuvien.controllers;
 
 import quanlythuvien.dao.PublicationDao;
+import quanlythuvien.views.InfoView;
 import quanlythuvien.views.ManageView;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ManageController {
     private final PublicationDao publicationDao;
@@ -14,8 +17,8 @@ public class ManageController {
         this.publicationDao = new PublicationDao();
         this.manageView = new ManageView(publicationDao);
 
-
-        manageView.addSearchListener(new AddSearchListener());
+        manageView.setSearchFieldOnChangeListener(new AddSearchListener());
+        manageView.setAddBtnClickListener(new AddBtnClickListener());
     }
 
     public void showView() {
@@ -27,13 +30,13 @@ public class ManageController {
     class AddSearchListener implements DocumentListener {
         @Override
         public void insertUpdate(DocumentEvent e) {
-            String searchField = manageView.getInputField();
+            String searchField = manageView.getSearchField();
             manageView.showView(searchField);
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            String searchField = manageView.getInputField();
+            String searchField = manageView.getSearchField();
             manageView.showView(searchField);
         }
 
@@ -42,6 +45,17 @@ public class ManageController {
 
         }
     }
+    class AddBtnClickListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            InfoView infoView = new InfoView();
+            infoView.setAddMode();
+            InfoController infoController = new InfoController(infoView);
+            infoController.setPublicationDao(publicationDao);
+            infoController.showInfoView();
+        }
+    }
+
     public static void main(String[] args) {
         ManageController mc = new ManageController();
         mc.showView();
