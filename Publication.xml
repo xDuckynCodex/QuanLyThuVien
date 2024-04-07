@@ -1,43 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
-    <pub>
+    <publication>
         <author>qwe</author>
-        <code>qwe</code>
+        <code>P000001</code>
         <name>qwe</name>
-        <price>123.0</price>
+        <price>1.0</price>
         <publishedDate>03/04/2024</publishedDate>
         <publisher>qwe</publisher>
-        <quantity>11</quantity>
-        <type>Magazine</type>
-    </pub>
-    <pub>
-        <author>as</author>
-        <code>as</code>
-        <name>as</name>
-        <price>21.0</price>
-        <publishedDate>03/04/2024</publishedDate>
-        <publisher>as</publisher>
-        <quantity>21</quantity>
-        <type>Magazine</type>
-    </pub>
-    <pub>
-        <author>asd</author>
-        <code>asd</code>
-        <name>dasdd</name>
-        <price>11.0</price>
-        <publishedDate>10/04/2024</publishedDate>
-        <publisher>asd</publisher>
-        <quantity>121</quantity>
-        <type>Magazine</type>
-    </pub>
-    <pub>
-        <author>jkl</author>
-        <code>jkl</code>
-        <name>lkjgg</name>
+        <quantity>1</quantity>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>ewr</author>
+        <code>P000002</code>
+        <name>wer</name>
         <price>123.0</price>
-        <publishedDate>04/04/2024</publishedDate>
-        <publisher>jkl</publisher>
+        <publishedDate>03/04/2024</publishedDate>
+        <publisher>wer</publisher>
         <quantity>123</quantity>
-        <type>Novel</type>
-    </pub>
+        <type>Magazine</type>
+    </publication>
 </publications>

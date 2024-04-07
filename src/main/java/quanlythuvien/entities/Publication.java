@@ -1,10 +1,9 @@
 package quanlythuvien.entities;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
+//@XmlElement(name = "publication")
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class Publication implements Serializable {
     // class định nghĩa các ấn phẩm của thư viện
     // chứa các thông tin sau: sách, báo, tạp chí, chuyên san, tập san, sách tranh…, 
@@ -53,10 +52,25 @@ public class Publication implements Serializable {
         return code;
     }
 
-    public void setCode() {
+    public void setCode(String code) {
         this.code = code;
+    }
 
-
+    public void setCodeById() {
+        int id = ++Publication.id;
+        if (id < 10) {
+            this.code = "P00000" + id;
+        } else if (id < 100) {
+            this.code = "P0000" + id;
+        } else if (id < 1000) {
+            this.code = "P000" + id;
+        } else if (id < 10000) {
+            this.code = "P00" + id;
+        } else if (id < 100000) {
+            this.code = "P0" + id;
+        } else {
+            this.code = "P" + id;
+        }
     }
 
     public String getPublisher() {

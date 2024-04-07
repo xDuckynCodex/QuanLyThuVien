@@ -115,11 +115,4 @@ public class InfoController {
             infoView.dispose();
         }
     }
-
-    public static void main(String[] args) {
-        InfoView infoView = new InfoView();
-        infoView.setEditMode();
-        InfoController ic = new InfoController(infoView);
-        ic.showInfoView();
-    }
 }
