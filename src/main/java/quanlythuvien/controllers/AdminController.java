@@ -3,14 +3,18 @@ package quanlythuvien.controllers;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.Publication;
 import quanlythuvien.views.InfoView;
 import quanlythuvien.views.LoginView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
+import java.util.List;
+
 public class AdminController {
     //data
     private PublicationDao publicationDao;
+    private List<Publication> publicationList;
     private RenterDao renterDao;
     // view
     private ManageView manageView;
@@ -34,7 +38,16 @@ public class AdminController {
     public void initComponent() {
         //data
         publicationDao = new PublicationDao();
+        publicationList = publicationDao.getListPublication();
         renterDao = new RenterDao();
+
+        //set id for th
+        if (publicationList.isEmpty()) {
+            Publication.setId(0);
+        } else {
+            Publication.setId(Integer.parseInt(publicationList.getLast().getCode().substring(1)));
+        }
+
         // view
         loginView = new LoginView();
         manageView = new ManageView();

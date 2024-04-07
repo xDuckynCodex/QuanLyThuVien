@@ -38,4 +38,8 @@ public class DropDown extends JPanel {
         }
         dropdown.setSelectedIndex(typeIndex);
     }
+
+    public void clearType() {
+        dropdown.setSelectedIndex(0);
+    }
 }
