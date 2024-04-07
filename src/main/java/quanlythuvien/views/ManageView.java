@@ -9,7 +9,6 @@ import quanlythuvien.dao.PublicationDao;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ManageView extends JFrame {
@@ -29,6 +28,8 @@ public class ManageView extends JFrame {
     private GridCards gridCards;
     private InputField searchField;
     private ButtonComp addBtn;
+
+    private ButtonComp transferBtn;
     private PublicationDao publicationDao;
 
     private JLabel frameLabel;
@@ -40,6 +41,8 @@ public class ManageView extends JFrame {
                 Font.PLAIN, 40));
 
         addBtn = new ButtonComp("Thêm ấn phẩm");
+        transferBtn = new ButtonComp("Chuyển trang quản lý khách " +
+                "hàng");
         //layout giao dien
         layout = new SpringLayout();
         panel = new JPanel();
@@ -52,6 +55,7 @@ public class ManageView extends JFrame {
         //component
         panel.add(searchField);
         panel.add(addBtn);
+        panel.add(transferBtn);
         //label
         panel.add(frameLabel);
 
@@ -64,9 +68,13 @@ public class ManageView extends JFrame {
         layout.putConstraint(SpringLayout.NORTH, searchField, 75,
                 SpringLayout.NORTH, panel);
         //addBtn
-        layout.putConstraint(SpringLayout.WEST, addBtn, 750,
+        layout.putConstraint(SpringLayout.WEST, addBtn, 780,
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, addBtn, 73,
+                SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.EAST, transferBtn, 0,
+                SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferBtn, 73,
                 SpringLayout.NORTH, panel);
         //label
         layout.putConstraint(SpringLayout.WEST, frameLabel, 800,
@@ -111,5 +119,9 @@ public class ManageView extends JFrame {
 
     public void setAddBtnClickListener(ActionListener listener) {
         addBtn.onClickListener(listener);
+    }
+
+    public void setTransferClickListener(ActionListener listener) {
+        transferBtn.onClickListener(listener);
     }
 }

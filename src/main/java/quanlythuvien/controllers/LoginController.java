@@ -15,15 +15,11 @@ public class LoginController {
     private UserDao userDao;
     private LoginView loginView;
     private  ManageController manageController;
-    private ManageView manageView;
 
     public void setManageController(ManageController manageController) {
         this.manageController = manageController;
     }
 
-    public void setManageView(ManageView manageView) {
-        this.manageView = manageView;
-    }
 
 //    private StudentView studentView;
 

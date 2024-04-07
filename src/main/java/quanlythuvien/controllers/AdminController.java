@@ -1,20 +1,22 @@
 package quanlythuvien.controllers;
 
-import quanlythuvien.components.ContextMenu;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.dao.PublicationDao;
+import quanlythuvien.dao.RenterDao;
 import quanlythuvien.views.InfoView;
 import quanlythuvien.views.LoginView;
 import quanlythuvien.views.ManageView;
+import quanlythuvien.views.RenterView;
 
-import java.util.PrimitiveIterator;
-
-public class RootController {
+public class AdminController {
+    //data
+    private PublicationDao publicationDao;
+    private RenterDao renterDao;
     // view
     private ManageView manageView;
     private LoginView loginView;
     private InfoView infoView;
-
+    private RenterView renterView;
     //Component
     private GridCards gridCards;
 
@@ -22,10 +24,9 @@ public class RootController {
     private ManageController manageController;
     private InfoController infoController;
     private LoginController loginController;
-    //data
-    private PublicationDao publicationDao;
+    private RenterController renterController;
 
-    public RootController()
+    public AdminController()
     {
         initComponent();
     }
@@ -33,16 +34,17 @@ public class RootController {
     public void initComponent() {
         //data
         publicationDao = new PublicationDao();
-
+        renterDao = new RenterDao();
         // view
         loginView = new LoginView();
         manageView = new ManageView();
         infoView = new InfoView();
-
+        renterView = new RenterView();
         // controller
-        manageController = new ManageController(publicationDao, manageView);
+        manageController = new ManageController(manageView);
         infoController = new InfoController(infoView);
         loginController = new LoginController(loginView);
+        renterController = new RenterController(renterView);
 
         //Component
         gridCards = new GridCards(publicationDao, manageView, infoController);
@@ -50,10 +52,15 @@ public class RootController {
 
         //pass instance
         loginController.setManageController(manageController);
-        loginController.setManageView(manageView);
-
 
         manageController.setInfoController(infoController);
+        manageController.setPublicationDao(publicationDao);
+        manageController.setRenterController(renterController);
+
+        renterController.setPublicationDao(publicationDao);
+        renterController.setRenterDao(renterDao);
+        renterController.setManageView(manageView);
+        renterController.setManageController(manageController);
 
         infoController.setGridCards(gridCards);
 
@@ -66,10 +73,5 @@ public class RootController {
 
     public void showManageView() {
         manageController.showView();
-    }
-
-    public static void main(String[] args) {
-        RootController rc = new RootController();
-        rc.showManageView();
     }
 }
