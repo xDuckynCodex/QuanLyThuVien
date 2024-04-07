@@ -6,9 +6,13 @@ import java.util.*;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.utils.FileUtils;
 
+
 public class PublicationDao {
     private static final String file_name = "Publication.xml";
     private List<Publication> listPub;
+
+    List<Publication> pubFilter = new ArrayList<Publication>();
+
     public PublicationDao(){
         this.listPub = readPublication();
         if(listPub == null){
@@ -17,9 +21,10 @@ public class PublicationDao {
     }
     
     // in ra file XML
-    public void writeListPub(List<Publication> listPublications) {
+    public void writeListPub(List<Publication> publications) {
         PublicationXML pubXML = new PublicationXML();
-        pubXML.setPublication(listPublications);
+        pubXML.setPublication(publications);
+        List<Publication> existingPublications = readPublication();       
         FileUtils.writeXMLtoFile(file_name, pubXML);
     }
     
@@ -53,6 +58,7 @@ public class PublicationDao {
                 listPub.get(i).setPublishedDate(pub.getPublishedDate());
             }
         }
+        writeListPub(listPub);
     }
     
     // xoa sach
@@ -86,7 +92,7 @@ public class PublicationDao {
         this.listPub.remove(pub);
         return true;
     }
-    
+
     //sap xep theo ten
     public void sortByName(){
         Collections.sort(listPub, new Comparator<Publication>(){
@@ -110,9 +116,9 @@ public class PublicationDao {
         });
     }
     
-    public void filter(){
-        Publication p = listPub.stream().filter(publi -> "Tap chi".equals(publi.getType())).findAny().orElse(null);
-        System.out.println(p);
+    public List<Publication> filter(){
+        pubFilter = listPub.stream().filter(publication -> publication.getType().equals("Tạp chí")).toList();
+        return pubFilter;
     }
     
     public List<Publication> searchByName(String name){
@@ -125,7 +131,21 @@ public class PublicationDao {
         return searchResult;
     }
     
+    public Integer count(String type){
+        int count = 0;
+        for(Publication p : listPub){
+            if(p.getType() == type){
+                count += p.getQuantity();
+            }
+        }
+        return count;
+    }
+
     public List<Publication> getListPublication(){
         return listPub;
     }
+    public List<Publication> getListPubFilter(){
+        return pubFilter;
+    }
+    
 }

@@ -6,6 +6,7 @@ import quanlythuvien.utils.FontUtil;
 import quanlythuvien.views.LoginView;
 
 import java.awt.*;
+import quanlythuvien.controllers.LoginController;
 
 public class App {
     public static void main(String[] args) {

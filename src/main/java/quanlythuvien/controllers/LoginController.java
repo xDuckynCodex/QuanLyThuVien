@@ -13,7 +13,8 @@ import quanlythuvien.views.ManagerView;
 public class LoginController {
     private UserDao userDao;
     private LoginView loginView;
-
+    private  ManageController manageController;
+    private ManageView manageView;
 
     public void setManageController(ManageController manageController) {
         this.manageController = manageController;
@@ -23,8 +24,6 @@ public class LoginController {
         this.manageView = manageView;
     }
 
-    private  ManageController manageController;
-    private ManageView manageView;
 //    private StudentView studentView;
 
     public LoginController(LoginView view) {

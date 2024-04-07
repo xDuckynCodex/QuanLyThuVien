@@ -20,30 +20,37 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import quanlythuvien.component.TableStatistic;
+import quanlythuvien.dao.PublicationDao;
+import quanlythuvien.dao.RenterDao;
 
 // Thiết kế views của giao diện quản lý
 public class ManagerView extends JFrame implements ActionListener, ListSelectionListener {
-    //frame size
-    private double hightFrame;
-    private double widthFrame;
+    PublicationDao pubDao = new PublicationDao();
+    RenterDao renterDao = new RenterDao();
+
     // nút
-    private  JButton addPublicationBtn;
+    private JButton addPublicationBtn;
     private JButton editPublicationBtn;
     private JButton deletePublicationBtn;
     private JButton clearBtn;
     private JButton sortByNameBtn;
     private JButton sortByPriceBtn;
+    private JButton searchByNameBtn;
+    private JButton transferBtn;
+
     // label nhập
     private JLabel nameLabel;
     private JLabel codeLabel;
     private JLabel publisherLabel;
-    private  JLabel authorLabel;
+    private JLabel authorLabel;
     private JLabel publishedDateLabel;
     private JLabel quantityLabel;
-    private  JLabel priceLabel;
+    private JLabel priceLabel;
     private JLabel typeLabel;
     private JLabel tableLabel;
     private JLabel searchLabel;
+    private JLabel transferLabel;
 
     // field nhập
     private JTextField nameField;
@@ -66,13 +73,16 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     // Combobox Type
     private JComboBox typeComboBox;
     private String typeString;
-    private String[] types = {"Chose type","Book", "Magazine", "Novel",
+    private String[] types = {"Choose type","Book", "Magazine", "Novel",
             "Newspapers"};
 
     // bảng
-    private  JScrollPane jScrollTable;
-    private  JTable table;
+
+    private JScrollPane jScrollTable;
+    private JScrollPane paneStatistic;
+    private JTable table;
     private TableFilterHeader tableFilter;
+
 
     // cột của table
     private String [] columnNames = new String [] {
@@ -80,7 +90,11 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             "Giá", "Thể loại"};
     private Object data = new Object [][] {};
 
-
+    // bảng thống kê
+    private JTable tableStatistic;
+    private String[] columnStatistic = new String[] {"Tên thể loại", "Số lượng đã mượn", "Số lượng còn lại", "Tổng"};
+    private Object dataStatistic = new Object[][]{};
+    
     public ManagerView() {
         initComponent();
     }
@@ -88,16 +102,17 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
     public void initComponent() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        hightFrame = getContentPane().getSize().getHeight();
-        widthFrame = getContentPane().getSize().getWidth();
 
         // khởi tạo phim chức năng
         addPublicationBtn = new JButton("Thêm");
         editPublicationBtn = new JButton("Sửa");
         deletePublicationBtn = new JButton("Xóa");
         clearBtn = new JButton("Clear");
+        transferBtn = new JButton("Chuyển");
+
         sortByNameBtn = new JButton("Sort by Name");
         sortByPriceBtn = new JButton("Sort by price");
+
 
         // khởi tạo label
         nameLabel = new JLabel("Tên ấn phẩm");
@@ -112,6 +127,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         tableLabel.setFont(new Font(tableLabel.getFont().getName(),
                 Font.PLAIN, 40));
         searchLabel = new JLabel("Tìm kiếm ấn phẩm:");
+        transferLabel = new JLabel("Chuyển qua chế độ quản lý người mượn");
 
         //date time picker
         dateModel = new UtilDateModel();
@@ -159,6 +175,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(editPublicationBtn);
         panel.add(deletePublicationBtn);
         panel.add(clearBtn);
+        panel.add(transferBtn);
+
         panel.add(sortByNameBtn);
         panel.add(sortByPriceBtn);
 
@@ -172,6 +190,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(typeLabel);
         panel.add(tableLabel);
         panel.add(searchLabel);
+        panel.add(transferLabel);
 
         panel.add(nameField);
         panel.add(codeField);
@@ -183,7 +202,51 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(searchField);
         panel.add(typeComboBox);
 
+        // bảng thống kê
+        paneStatistic = new JScrollPane();
+        tableStatistic = new JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        tableStatistic.getTableHeader().setReorderingAllowed(false);
+        tableStatistic.setModel(new DefaultTableModel((Object[][]) dataStatistic, columnStatistic));
+        paneStatistic.setViewportView(tableStatistic);
+        paneStatistic.setPreferredSize(new Dimension(300, 200));
+        
+        JPanel panelStatistic = new JPanel();
+        panelStatistic.add(paneStatistic);
+        panelStatistic.setSize(310, 210);
+        panelStatistic.setLayout(layout);
+        
+        Object [][] statisticTable = new Object[5][4];
 
+        statisticTable[0][0] = "Book";
+        statisticTable[1][0] = "Magazine";
+        statisticTable[2][0] = "Novel";
+        statisticTable[3][0] = "Newspaper";
+        statisticTable[4][0] = "Tổng";
+        
+        statisticTable[0][1] = String.valueOf(pubDao.count("Book"));
+        statisticTable[1][1] = String.valueOf(pubDao.count("Magazine"));
+        statisticTable[2][1] = String.valueOf(pubDao.count("Novel"));
+        statisticTable[3][1] = String.valueOf(pubDao.count("Newspaper"));
+        
+        statisticTable[0][2] = String.valueOf(renterDao.count("Book"));
+        statisticTable[1][2] = String.valueOf(renterDao.count("Magazine"));
+        statisticTable[2][2] = String.valueOf(renterDao.count("Novel"));
+        statisticTable[3][2] = String.valueOf(renterDao.count("Newspaper"));
+        
+        statisticTable[0][3] = String.valueOf(pubDao.count("Book") + renterDao.count("Book"));
+        statisticTable[1][3] = String.valueOf(pubDao.count("Magazine") + renterDao.count("Magazine"));
+        statisticTable[2][3] = String.valueOf(pubDao.count("Novel") + renterDao.count("Novel"));
+        statisticTable[3][3] = String.valueOf(pubDao.count("Newspaper")+ renterDao.count("Newspaper"));
+        
+        tableStatistic.setModel(new DefaultTableModel(statisticTable, columnStatistic));
+        for(int i = 0; i < 6; i++){
+            tableStatistic.setRowHeight(i, 20);
+        }
+        panel.add(paneStatistic);
         //set vị trí các phần thử của giao diện.
         // label
         layout.putConstraint(SpringLayout.WEST, nameLabel, 10,
@@ -226,6 +289,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, searchLabel, 100,
                 SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, transferLabel, 30, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferLabel, 350, SpringLayout.NORTH, panel);
         // field
         layout.putConstraint(SpringLayout.WEST, nameField, 100,
                 SpringLayout.WEST, panel);
@@ -262,19 +327,19 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         // button
         layout.putConstraint(SpringLayout.WEST, addPublicationBtn, 30,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, addPublicationBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, addPublicationBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, editPublicationBtn, 130,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, editPublicationBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, editPublicationBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, deletePublicationBtn, 230,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, deletePublicationBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, deletePublicationBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, clearBtn, 330,
                 SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, clearBtn, 250,
+        layout.putConstraint(SpringLayout.NORTH, clearBtn, 270,
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, sortByNameBtn, 570,
                 SpringLayout.WEST, panel);
@@ -284,6 +349,14 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, sortByPriceBtn, 950,
                 SpringLayout.NORTH, panel);
+
+        layout.putConstraint(SpringLayout.WEST, transferBtn, 80, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferBtn, 390, SpringLayout.NORTH, panel);
+//        layout.putConstraint(SpringLayout.WEST, searchByNameBtn, 1050,
+//                SpringLayout.WEST, panel);
+//        layout.putConstraint(SpringLayout.NORTH, searchByNameBtn, 95,
+//                SpringLayout.NORTH, panel);
+
         // table
         layout.putConstraint(SpringLayout.EAST, jScrollTable, 0,
                 SpringLayout.EAST, panel);
@@ -294,7 +367,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, datePicker, 127,
                 SpringLayout.NORTH, panel);
-
+        layout.putConstraint(SpringLayout.WEST, paneStatistic, 80, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, paneStatistic, 500, SpringLayout.NORTH, panel);
         //
         this.add(panel);
         this.pack();
@@ -510,6 +584,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         quantityField.setText("" + publication.getQuantity());
     }
     @Override
+
     public void actionPerformed(ActionEvent e) {    }
 
     @Override
@@ -534,7 +609,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
     public void addFillPublicationFromSelectedRow(ListSelectionListener listener) {
         table.getSelectionModel().addListSelectionListener(listener);
-
     }
     public void addSortByName(ActionListener listener) {
         sortByNameBtn.addActionListener(listener);
@@ -546,6 +620,10 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
     public void addSearchByName(DocumentListener listener) {
         searchField.getDocument().addDocumentListener(listener);
+    }
+    
+    public void addTransferRenterListener(ActionListener listener){
+        transferBtn.addActionListener(listener);
     }
 
     public static void main(String[] args) {
