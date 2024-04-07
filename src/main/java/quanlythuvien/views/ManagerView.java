@@ -28,13 +28,13 @@ import quanlythuvien.dao.RenterDao;
 public class ManagerView extends JFrame implements ActionListener, ListSelectionListener {
     PublicationDao pubDao = new PublicationDao();
     RenterDao renterDao = new RenterDao();
+
     // nút
     private JButton addPublicationBtn;
     private JButton editPublicationBtn;
     private JButton deletePublicationBtn;
     private JButton clearBtn;
     private JButton sortByNameBtn;
-
     private JButton sortByPriceBtn;
     private JButton searchByNameBtn;
     private JButton transferBtn;
@@ -57,10 +57,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     private JTextField codeField;
     private JTextField publisherField;
     private JTextField authorField;
-    private JTextField publishedDateField;
     private JTextField quantityField;
     private JTextField priceField;
-    private JTextField typeField;
     private JTextField searchField;
 
     //Date picker
@@ -104,7 +102,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
     public void initComponent() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        
+
         // khởi tạo phim chức năng
         addPublicationBtn = new JButton("Thêm");
         editPublicationBtn = new JButton("Sửa");
@@ -114,7 +112,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
         sortByNameBtn = new JButton("Sort by Name");
         sortByPriceBtn = new JButton("Sort by price");
-        searchByNameBtn = new JButton("Search");
 
 
         // khởi tạo label
@@ -142,17 +139,12 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         codeField = new JTextField(20);
         publisherField = new JTextField(20);
         authorField = new JTextField(20);
-        publishedDateField = new JTextField(20);
         quantityField = new JTextField(20);
         priceField = new JTextField(20);
-        typeField = new JTextField(20);
         searchField = new JTextField(30);
 
         // ComboBo
         typeComboBox = new JComboBox(types);
-        typeString =
-                String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
-
 
         // Tạo bảng lưu dữ liệu
         jScrollTable = new JScrollPane();
@@ -168,6 +160,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         //cài đặt bảng
         table.setModel(new DefaultTableModel((Object[][]) data, columnNames));
         table.setFont(new Font(table.getFont().getName(), Font.PLAIN, 15));
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         jScrollTable.setViewportView(table);
         jScrollTable.setPreferredSize(new Dimension(1350, 780));
 
@@ -186,7 +179,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
         panel.add(sortByNameBtn);
         panel.add(sortByPriceBtn);
-//        panel.add(searchByNameBtn);
 
         panel.add(nameLabel);
         panel.add(codeLabel);
@@ -204,11 +196,9 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         panel.add(codeField);
         panel.add(publisherField);
         panel.add(authorField);
-//        panel.add(publishedDateField);
         panel.add(datePicker);
         panel.add(quantityField);
         panel.add(priceField);
-//        panel.add(typeField);
         panel.add(searchField);
         panel.add(typeComboBox);
 
@@ -359,12 +349,14 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, sortByPriceBtn, 950,
                 SpringLayout.NORTH, panel);
+
         layout.putConstraint(SpringLayout.WEST, transferBtn, 80, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferBtn, 390, SpringLayout.NORTH, panel);
 //        layout.putConstraint(SpringLayout.WEST, searchByNameBtn, 1050,
 //                SpringLayout.WEST, panel);
 //        layout.putConstraint(SpringLayout.NORTH, searchByNameBtn, 95,
 //                SpringLayout.NORTH, panel);
+
         // table
         layout.putConstraint(SpringLayout.EAST, jScrollTable, 0,
                 SpringLayout.EAST, panel);
@@ -385,7 +377,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 //        this.setSize(1920, 1080);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
-        this.setResizable(false);
+//        this.setResizable(false);
     }
 
     public String getSearchField() {
@@ -420,6 +412,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             year =  Integer.parseInt(dateArray[2]);
             month =  Integer.parseInt(dateArray[1]);
             day =  Integer.parseInt(dateArray[0]);
+
             int typeIndex = 0;
             String typeTable = table.getModel().getValueAt(row, 8).toString();
             for (String s : types) {
@@ -429,6 +422,7 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                     break;
                 }
             }
+
             if (row >= 0) {
                 nameField.setText(table.getModel().getValueAt(row, 1).toString());
                 codeField.setText(table.getModel().getValueAt(row, 2).toString());
@@ -436,10 +430,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
                 authorField.setText(table.getModel().getValueAt(row, 4).toString());
                 dateModel.setDate(year, month -1, day);
                 dateModel.setSelected(true);
-//            publishedDateField.setText(table.getModel().getValueAt(row, 5).toString());
                 quantityField.setText(table.getModel().getValueAt(row, 6).toString());
                 priceField.setText(table.getModel().getValueAt(row, 7).toString());
-//            typeField.setText(table.getModel().getValueAt(row, 8).toString());
                 typeComboBox.setSelectedIndex(typeIndex);
                 //enable
                 editPublicationBtn.setEnabled(true);
@@ -457,20 +449,21 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         String name = nameField.getText();
         if(name == null || name.trim().isEmpty()){
             nameField.requestFocus();
-            showMessage("Không được bỏ trống");
+            showMessage("Không được bỏ trống name");
             return false;
         }
         return true;
     }
     
     private boolean validType(){
+        typeString =
+                String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
         String type = "";
-        if (typeComboBox.getSelectedIndex() != -1) {
+        if (typeComboBox.getSelectedIndex() >= 1) {
             type = typeString;
         }
         if(type == null || type.trim().isEmpty()){
-            typeField.requestFocus();
-            showMessage("Không được bỏ trống");
+            showMessage("Type không hợp lệ");
             return false;
         }
         return true;
@@ -547,6 +540,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
             Publication publication = new Publication();
             dateValue = (Date) datePicker.getModel().getValue();
             dateString = DateFomatterUtil.valueToString(dateValue);
+            typeString =
+                    String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
 
             publication.setName(nameField.getText().trim());
             publication.setCode(codeField.getText().trim());
@@ -569,7 +564,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         codeField.setText("");
         publisherField.setText("");
         authorField.setText("");
-        typeField.setText("");
         dateModel.setSelected(false);
         priceField.setText("");
         quantityField.setText("");
@@ -586,8 +580,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
         codeField.setText(publication.getCode());
         publisherField.setText(publication.getPublisher());
         authorField.setText(publication.getAuthor());
-        typeField.setText(publication.getType());
-        publishedDateField.setText(publication.getPublishedDate());
         priceField.setText("" + publication.getPrice());
         quantityField.setText("" + publication.getQuantity());
     }
@@ -597,6 +589,8 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
 
     @Override
     public void valueChanged(ListSelectionEvent e) {    }
+
+    //listener
     public void addAddPublicationListener(ActionListener listener) {
         addPublicationBtn.addActionListener(listener);
     }
@@ -616,7 +610,6 @@ public class ManagerView extends JFrame implements ActionListener, ListSelection
     public void addFillPublicationFromSelectedRow(ListSelectionListener listener) {
         table.getSelectionModel().addListSelectionListener(listener);
     }
-
     public void addSortByName(ActionListener listener) {
         sortByNameBtn.addActionListener(listener);
     }
