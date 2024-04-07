@@ -32,6 +32,7 @@ import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import quanlythuvien.dao.PublicationDao;
+import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.entities.Renter;
 import quanlythuvien.utils.DateFomatterUtil;
@@ -44,6 +45,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     // button
     Publication pub = new Publication();
     Renter renter = new Renter();
+    RenterDao renterDao = new RenterDao();
     
     private JButton addRenterBtn;
     private JButton editRenterBtn;

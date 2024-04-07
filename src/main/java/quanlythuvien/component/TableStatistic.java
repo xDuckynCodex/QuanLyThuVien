@@ -23,7 +23,7 @@ import quanlythuvien.dao.RenterDao;
  *
  * @author Admin
  */
-public class TableStatistic extends JFrame {
+public class TableStatistic extends JPanel {
     private JScrollPane pane;
     private JTable tableStatistic;
     private String[] columnStatistic = new String[] {"Tên thể loại", "Số lượng đã mượn", "Số lượng còn lại", "Tổng"};
@@ -52,7 +52,7 @@ public class TableStatistic extends JFrame {
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel();
         panel.add(pane);
-        panel.setSize(1000, 1000);
+        panel.setSize(300, 200);
         panel.setLayout(layout);
         
         Object [][] statisticTable = new Object[5][4];
@@ -82,15 +82,18 @@ public class TableStatistic extends JFrame {
         for(int i = 0; i < 6; i++){
             tableStatistic.setRowHeight(i, 20);
         }
-        
-        this.add(panel);
-        this.pack();
-        // set jFrame
-        this.setTitle("Manager View");
-//        this.setSize(1920, 1080);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setVisible(true);
-        this.setResizable(false);
-
+        this.add(pane);
+        this.setSize(new Dimension(300, 200));
+    }
+    
+    public static void main(String[] args){
+        JFrame frame = new JFrame();
+        TableStatistic ts = new TableStatistic();
+        frame.add(ts);
+        frame.setVisible(true);
+        frame.setSize(300, 200);
+        frame.pack();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setResizable(false);
     }
 }
