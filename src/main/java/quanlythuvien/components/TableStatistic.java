@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package quanlythuvien.component;
+package quanlythuvien.components;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -18,6 +18,7 @@ import javax.swing.plaf.DimensionUIResource;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.views.ManageView;
 
 /**
  *
@@ -47,12 +48,13 @@ public class TableStatistic extends JPanel {
         tableStatistic.getTableHeader().setReorderingAllowed(false);
         tableStatistic.setModel(new DefaultTableModel((Object[][]) dataStatistic, columnStatistic));
         pane.setViewportView(tableStatistic);
-        pane.setPreferredSize(new Dimension(300, 200));
+        pane.setPreferredSize(new Dimension(300, 175));
         
         SpringLayout layout = new SpringLayout();
         JPanel panel = new JPanel();
         panel.add(pane);
-        panel.setSize(300, 200);
+        panel.setSize(300, 150);
+
         panel.setLayout(layout);
         
         Object [][] statisticTable = new Object[5][4];
@@ -80,20 +82,9 @@ public class TableStatistic extends JPanel {
         
         tableStatistic.setModel(new DefaultTableModel(statisticTable, columnStatistic));
         for(int i = 0; i < 6; i++){
-            tableStatistic.setRowHeight(i, 20);
+            tableStatistic.setRowHeight(i, 30);
         }
         this.add(pane);
-        this.setSize(new Dimension(300, 200));
-    }
-    
-    public static void main(String[] args){
-        JFrame frame = new JFrame();
-        TableStatistic ts = new TableStatistic();
-        frame.add(ts);
-        frame.setVisible(true);
-        frame.setSize(300, 200);
-        frame.pack();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setResizable(false);
+        this.setSize(new Dimension(300, 150));
     }
 }

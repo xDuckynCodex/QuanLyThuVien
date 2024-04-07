@@ -6,7 +6,6 @@ package quanlythuvien.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
@@ -14,7 +13,7 @@ import javax.swing.event.ListSelectionListener;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Renter;
-import quanlythuvien.views.ManagerView;
+import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
 /**
@@ -23,16 +22,32 @@ import quanlythuvien.views.RenterView;
  */
 public class RenterController {
     private RenterDao renterDao;
-    private PublicationDao pubDao;
+    private PublicationDao publicationDao;
+
+    public void setRenterDao(RenterDao renterDao) {
+        this.renterDao = renterDao;
+    }
+
+    public void setPublicationDao(PublicationDao publicationDao) {
+        this.publicationDao = publicationDao;
+    }
+
+    public void setManageView(ManageView manageView) {
+        this.manageView = manageView;
+    }
+
     private RenterView renterView;
-    private ManagerView managerView;
-    
+    private ManageView manageView;
+
+    public void setManageController(ManageController manageController) {
+        this.manageController = manageController;
+    }
+
+    private ManageController manageController;
+
     public RenterController(RenterView view){
         this.renterView = view;
-        renterDao = new RenterDao();
-        pubDao = new PublicationDao();
-        managerView = new ManagerView();
-        
+        view.hideTablePub();
         view.addAddRenterListener(new AddRenterListener());
         view.addEditRenterListener(new EditRenterListener());
         view.addDeleteRenterListener(new DeleteRenterListener());
@@ -40,7 +55,7 @@ public class RenterController {
         view.addClearRenterListener(new ClearRenterListener());
         view.addFillRenterFromSelectedRow(new FillRenterFromSelectedRowListener());
         view.addTransferPublicationListener(new TransferPublicationListener());
-        view.addRentedBookFieldSearch(new rentedBookSearchListener());
+        view.addRentedBookFieldSearch(new addRentedBookSearchListener());
     }
     
     public void showRenterView(){
@@ -100,10 +115,8 @@ public class RenterController {
     
     class TransferPublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            managerView = new ManagerView();
-            ManagerController mc = new ManagerController(managerView);
             renterView.setVisible(false);
-            mc.showPublicationView();
+            manageController.showView();
         }
     }
 
@@ -115,14 +128,20 @@ public class RenterController {
         }
     }
     
-    class rentedBookSearchListener implements DocumentListener{
+    class addRentedBookSearchListener implements DocumentListener{
         public void insertUpdate(DocumentEvent e) {
-            renterView.showListPublicationToRent(pubDao.searchByName(managerView.getName()));
+            String searchRentedBookField = renterView.getSearchRentedBookField();
+            renterView.showResultView(searchRentedBookField);
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            renterView.showListPublicationToRent(pubDao.searchByName(managerView.getName()));
+            String searchRentedBookField = renterView.getSearchRentedBookField();
+            if("".equals(searchRentedBookField)){
+                renterView.hideTablePub();
+            } else{
+                renterView.showResultView(searchRentedBookField);
+            }       
         }
 
         @Override

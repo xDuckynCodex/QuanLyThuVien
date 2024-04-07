@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<publications>
-    <pub>
-        <author>HVAN</author>
-        <code>001</code>
-        <name>Anh 1</name>
-        <price>100000.0</price>
-        <publishedDate>10/04/2024</publishedDate>
-        <publisher>HVAN</publisher>
-        <quantity>100</quantity>
-        <type>Choose type</type>
-    </pub>
-</publications>
+<publications/>

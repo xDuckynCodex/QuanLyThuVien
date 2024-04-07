@@ -42,6 +42,7 @@ public class PublicationDao {
     // them sach
     public void add(Publication pub){
         listPub.add(pub);
+        count(pub.getType());
         writeListPub(listPub);
     }
     
@@ -62,23 +63,28 @@ public class PublicationDao {
     }
     
     // xoa sach
-    public boolean delete(Publication pub){
-        boolean check = false;
-        for(int i = 0; i < listPub.size(); i++){
-            if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
-                pub = listPub.get(i);
-                check = true;
-                break;
-            }
-        }
-        if(check){
-            listPub.remove(pub);
-            writeListPub(listPub);
-            return true;
-        }
-        return false;
+//    public boolean delete(Publication pub){
+//        boolean check = false;
+//        for(int i = 0; i < listPub.size(); i++){
+//            if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
+//                pub = listPub.get(i);
+//                check = true;
+//                break;
+//            }
+//        }
+//        if(check){
+//            listPub.remove(pub);
+//            writeListPub(listPub);
+//            return true;
+//        }
+//        return false;
+//    }
+
+    public void delete(Publication pub){
+        listPub.remove(pub);
+        writeListPub(listPub);
     }
-  
+
     //sap xep theo ten
     public void sortByName(){
         Collections.sort(listPub, new Comparator<Publication>(){
@@ -102,10 +108,10 @@ public class PublicationDao {
         });
     }
     
-    public List<Publication> filter(){
-        pubFilter = listPub.stream().filter(publication -> publication.getType().equals("Tạp chí")).toList();
-        return pubFilter;
-    }
+//    public List<Publication> filter(){
+//        pubFilter = listPub.stream().filter(publication -> publication.getType().equals("Tạp chí")).toList();
+//        return pubFilter;
+//    }
     
     public List<Publication> searchByName(String name){
         List<Publication> searchResult = new ArrayList<Publication>();
@@ -130,8 +136,8 @@ public class PublicationDao {
     public List<Publication> getListPublication(){
         return listPub;
     }
-    public List<Publication> getListPubFilter(){
-        return pubFilter;
-    }
     
+//    public List<Publication> getListPubFilter(){
+//        return pubFilter;
+//    }
 }

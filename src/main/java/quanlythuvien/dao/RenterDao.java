@@ -25,6 +25,7 @@ import quanlythuvien.utils.FileUtils;
 public class RenterDao {
     private static final String file = "Renter.xml";
     private List<Renter> listRenter = new ArrayList<>();
+    PublicationDao pubDao = new PublicationDao();
     Publication pub = new Publication();
     Renter renter = new Renter();
     
@@ -62,9 +63,9 @@ public class RenterDao {
             if(Objects.equals(listRenter.get(i).getId(), r.getId())){
                 listRenter.get(i).setFirstName(r.getFirstName());
                 listRenter.get(i).setName(r.getName());
-//                listRenter.get(i).setId(r.getId());
+                listRenter.get(i).setId(r.getId());
                 listRenter.get(i).setRentedBook(r.getRentedBook());
-//                listRenter.get(i).setType(r.getType());
+                listRenter.get(i).setType(r.getType());
                 listRenter.get(i).setQuantity(r.getQuantity());
                 listRenter.get(i).setExpiredDate(r.getExpiredDate());
             }
@@ -92,7 +93,7 @@ public class RenterDao {
     public void sortByName(){
         Collections.sort(listRenter, new Comparator<Renter>() {
             public int compare(Renter r1, Renter r2) {
-//                Collator collator = Collator.getInstance(new java.util.Locale("vi", "VN"));
+                Collator collator = Collator.getInstance(new java.util.Locale("vi", "VN"));
                 return r1.getName().compareTo(r2.getName());
             }
         });
@@ -117,6 +118,13 @@ public class RenterDao {
         }
         return count;
     }
+    
+//    public void finding(){
+//        List<Publication> list = pubDao.getListPublication();
+//        for(Publication pub : list){
+//            
+//        }
+//    }
     
     public List<Renter> getListRenter(){
         return listRenter;

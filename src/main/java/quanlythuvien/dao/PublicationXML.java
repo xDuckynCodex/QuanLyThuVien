@@ -12,7 +12,7 @@ public class PublicationXML {
     @XmlTransient
     private List<Publication> pub;
 
-    @XmlElement(name = "pub")
+    @XmlElement(name = "publication")
     public List<Publication> getPublication(){
         return pub;
     }
