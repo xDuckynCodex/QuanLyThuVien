@@ -4,6 +4,7 @@ import quanlythuvien.components.ButtonComp;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.components.InputField;
 
+import quanlythuvien.components.TableStatistic;
 import quanlythuvien.dao.PublicationDao;
 
 import javax.swing.*;
@@ -23,6 +24,7 @@ public class ManageView extends JFrame {
     }
 
     private JPanel panel;
+    private TableStatistic tableStatistic;
     private SpringLayout layout;
     //components
     private GridCards gridCards;
@@ -34,7 +36,6 @@ public class ManageView extends JFrame {
 
     private JLabel frameLabel;
     public void initComponent() {
-//        gridCards = new GridCards(publicationDao, this);
         searchField = new InputField("Tìm kiếm ấn phẩm: ", 20);
         frameLabel = new JLabel("Quản lý ấn phẩm");
         frameLabel.setFont(new Font(frameLabel.getFont().getName(),
@@ -43,6 +44,8 @@ public class ManageView extends JFrame {
         addBtn = new ButtonComp("Thêm ấn phẩm");
         transferBtn = new ButtonComp("Chuyển trang quản lý khách " +
                 "hàng");
+        tableStatistic = new TableStatistic();
+
         //layout giao dien
         layout = new SpringLayout();
         panel = new JPanel();
@@ -56,6 +59,7 @@ public class ManageView extends JFrame {
         panel.add(searchField);
         panel.add(addBtn);
         panel.add(transferBtn);
+        panel.add(tableStatistic);
         //label
         panel.add(frameLabel);
 
@@ -72,6 +76,7 @@ public class ManageView extends JFrame {
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, addBtn, 73,
                 SpringLayout.NORTH, panel);
+        //transferBtn
         layout.putConstraint(SpringLayout.EAST, transferBtn, 0,
                 SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferBtn, 73,
@@ -81,7 +86,11 @@ public class ManageView extends JFrame {
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, frameLabel, 10,
                 SpringLayout.NORTH, panel);
-
+        //tableStatistic
+        layout.putConstraint(SpringLayout.WEST, tableStatistic, 0,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, tableStatistic, 300,
+                SpringLayout.NORTH, panel);
         //set frame
         this.add(panel);
         this.pack();

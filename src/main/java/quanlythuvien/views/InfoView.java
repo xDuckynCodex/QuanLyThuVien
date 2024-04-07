@@ -34,7 +34,7 @@ public class InfoView extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // label
         title = new JLabel("Thông tin đối tượng");
-        title.setFont(new Font(FontUtil.Bitter, Font.PLAIN, 40));
+        title.setFont(new Font(FontUtil.Bitter, Font.PLAIN, 30 ));
         //input field
         name = new InputField("Tên sản phẩm");
         code = new InputField("Mã sản phẩm");
@@ -42,7 +42,7 @@ public class InfoView extends JFrame {
         author = new InputField("Tên tác giả");
         quantity = new InputField("Số lượng");
         price = new InputField("Giá sản phẩm");
-        title = new JLabel("Thông tin đối tượng");
+
         datePickerPanel = new DatePickerPanel();
         typeMenu = new DropDown();
         //button
@@ -196,7 +196,7 @@ public class InfoView extends JFrame {
     public Publication getInfoPublication() {
         Publication publication = new Publication();
         publication.setName(name.getTextField());
-        publication.setCode(code.getTextField());
+        publication.setCode();
         publication.setAuthor(author.getTextField());
         publication.setPrice(Double.parseDouble(price.getTextField()));
         publication.setPublisher(publisher.getTextField());
