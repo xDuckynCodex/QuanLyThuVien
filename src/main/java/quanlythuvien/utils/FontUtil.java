@@ -18,4 +18,5 @@ public class FontUtil {
             throw new RuntimeException(e);
         }
     }
+    public static String Bitter = "Bitter Medium";
 }

@@ -10,15 +10,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ManageController {
-    private final PublicationDao publicationDao;
+    private PublicationDao publicationDao;
     private final ManageView manageView;
+    private  InfoController infoController;
+    private  RenterController renterController;
 
-    public ManageController(PublicationDao publicationDao, ManageView manageView) {
+    public void setRenterController(RenterController renterController) {
+        this.renterController = renterController;
+    }
+
+    public void setInfoController(InfoController infoController) {
+        this.infoController = infoController;
+    }
+    public void setPublicationDao(PublicationDao publicationDao) {
         this.publicationDao = publicationDao;
+    }
+
+    public ManageController(ManageView manageView) {
         this.manageView = manageView;
 
-        manageView.setSearchFieldOnChangeListener(new AddSearchListener());
-        manageView.setAddBtnClickListener(new AddBtnClickListener());
+        this.manageView.setSearchFieldOnChangeListener(new AddSearchListener());
+        this.manageView.setAddBtnClickListener(new AddBtnClickListener());
+        this.manageView.setTransferClickListener(new TransferClickListener());
     }
 
     public void showView() {
@@ -48,16 +61,18 @@ public class ManageController {
     class AddBtnClickListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            InfoView infoView = new InfoView();
-            infoView.setAddMode();
-            InfoController infoController = new InfoController(infoView);
+            infoController.setAddMode();
             infoController.setPublicationDao(publicationDao);
             infoController.showInfoView();
         }
     }
 
-//    public static void main(String[] args) {
-//        ManageController mc = new ManageController();
-//        mc.showView();
-//    }
+    class TransferClickListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            manageView.setVisible(false);
+            renterController.showRenterView();
+        }
+    }
 }

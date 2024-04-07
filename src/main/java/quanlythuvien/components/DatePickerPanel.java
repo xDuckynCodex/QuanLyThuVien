@@ -41,7 +41,7 @@ public class DatePickerPanel extends JPanel {
         dateModel.setSelected(true);
     }
 
-    public String getDate() {
+    public String getDateString() {
         date = (Date) datePicker.getModel().getValue();
         return DateFomatterUtil.valueToString(date);
     }

@@ -272,12 +272,15 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         this.pack();
         this.setTitle("Danh sách người mượn ấn phẩm");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setVisible(true);
-        this.setResizable(false);
+//        this.setResizable(false);
     }
     
     public RenterView(){
         initComponent();
+    }
+
+    public void showView() {
+        this.setVisible(true);
     }
     
     public void showListPublicationToRent(List<Publication> list){

@@ -2,34 +2,32 @@ package quanlythuvien.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import quanlythuvien.dao.UserDao;
 import quanlythuvien.entities.User;
 import quanlythuvien.views.LoginView;
 import quanlythuvien.views.ManageView;
-import quanlythuvien.views.ManagerView;
 //import quanlythuvien.views.StudentView;
 
 public class LoginController {
     private UserDao userDao;
     private LoginView loginView;
     private  ManageController manageController;
-    private ManageView manageView;
 
     public void setManageController(ManageController manageController) {
         this.manageController = manageController;
     }
 
-    public void setManageView(ManageView manageView) {
-        this.manageView = manageView;
-    }
 
 //    private StudentView studentView;
 
     public LoginController(LoginView view) {
         this.loginView = view;
         iniComponent();
-        view.addLoginListener(new LoginListener());
+        loginView.addLoginListener(new LoginListener());
+        loginView.addPressEnterListener(new PressEnterListener());
     }
 
     public void iniComponent() {
@@ -57,6 +55,33 @@ public class LoginController {
             } else {
                 loginView.showMessage("username hoặc password không đúng.");
             }
+        }
+    }
+
+    class PressEnterListener implements KeyListener {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                User user = loginView.getUser();
+                if (userDao.checkUser(user)) {
+                    // nếu đăng nhập thành công, mở màn hình quản lý sinh viên
+                    manageController.showView();
+                    loginView.setVisible(false);
+                } else {
+                    loginView.showMessage("username hoặc password không đúng.");
+                }
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
         }
     }
 }

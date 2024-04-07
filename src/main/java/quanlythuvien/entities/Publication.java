@@ -10,6 +10,17 @@ public class Publication implements Serializable {
     // chứa các thông tin sau: sách, báo, tạp chí, chuyên san, tập san, sách tranh…, 
     //giá thành, số lượng, mã số, Nhà xuất bản, tác giả…
     private static final long serialVersionUID = 1L;
+
+    public static int getId() {
+        return id;
+    }
+    public static void setId(int id) {
+        Publication.id = id;
+    }
+    public static void increaseId() {
+        Publication.id++;
+    }
+    private static int id = 0;
     private String type, code, publisher, author, name;
     private double price;
     private int quantity;
@@ -42,8 +53,10 @@ public class Publication implements Serializable {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode() {
         this.code = code;
+
+
     }
 
     public String getPublisher() {

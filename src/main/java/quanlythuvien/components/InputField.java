@@ -1,5 +1,7 @@
 package quanlythuvien.components;
 
+import quanlythuvien.utils.FontUtil;
+
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
@@ -16,7 +18,7 @@ public class InputField extends JPanel {
     public void initComponent(String label, int columns) {
         this.label = new JLabel(label);
         field = new JTextField(columns);
-        field.setFont(new Font(field.getFont().getName(), Font.PLAIN, 15));
+        field.setFont(new Font("Bitter Medium", Font.PLAIN, 15));
 
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
         this.add(this.label);
