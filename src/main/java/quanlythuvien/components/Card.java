@@ -34,7 +34,7 @@ public class Card extends JPanel {
         // constructor elements
         nameCard = new JLabel(publication.getName());
         authorCard = new JLabel(publication.getAuthor());
-        this.getImageFromFile(".\\public\\ph.png");
+        this.getImageFromFile(".\\public\\images\\ph.png");
         imgCardLabel = new JLabel(imgCard);
 
         //context menu
@@ -47,7 +47,7 @@ public class Card extends JPanel {
 
         //css
         imgCardLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        nameCard.setFont(new Font(nameCard.getFont().getName(), Font.PLAIN,
+        nameCard.setFont(new Font("Bitter Medium", Font.PLAIN,
                 20));
         nameCard.setAlignmentX(Component.CENTER_ALIGNMENT);
         authorCard.setFont(new Font("Bitter Medium", Font.PLAIN,

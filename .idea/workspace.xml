@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="add RootController">
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="fix all RootController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ContextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RootController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RootController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/LoginView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +33,6 @@
   </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="quanlythuvien/phongnq" />
-    <option name="OPTIONS">
-      <set>
-        <option value="SQUASH" />
-      </set>
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
     <option name="OPTIONS">
       <set>
         <option value="SQUASH" />
@@ -100,15 +98,18 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "editor.preferences.tabs"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="quanlythuvien.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RootController">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="quanlythuvien.App" />
       <module name="QuanLyThuVien" />
@@ -176,9 +177,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.RootController" />
         <item itemvalue="Application.ManageController" />
-        <item itemvalue="Application.App" />
         <item itemvalue="Application.InfoController" />
         <item itemvalue="Application.ManagerController" />
       </list>
@@ -300,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712427828347</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fix all RootController">
+      <option name="closed" value="true" />
+      <created>1712444346833</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712444346833</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -328,7 +337,8 @@
     <MESSAGE value="commit to edit event contextmenu" />
     <MESSAGE value="pass instance to children&#10;handle ContextMenu delete" />
     <MESSAGE value="add RootController" />
-    <option name="LAST_COMMIT_MESSAGE" value="add RootController" />
+    <MESSAGE value="fix all RootController" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix all RootController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

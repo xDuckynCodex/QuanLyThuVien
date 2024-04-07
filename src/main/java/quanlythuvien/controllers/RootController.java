@@ -21,7 +21,7 @@ public class RootController {
     // controller
     private ManageController manageController;
     private InfoController infoController;
-
+    private LoginController loginController;
     //data
     private PublicationDao publicationDao;
 
@@ -42,24 +42,29 @@ public class RootController {
         // controller
         manageController = new ManageController(publicationDao, manageView);
         infoController = new InfoController(infoView);
+        loginController = new LoginController(loginView);
 
         //Component
         gridCards = new GridCards(publicationDao, manageView, infoController);
 
 
         //pass instance
+        loginController.setManageController(manageController);
+        loginController.setManageView(manageView);
 
+
+        manageController.setInfoController(infoController);
+
+        infoController.setGridCards(gridCards);
+
+        manageView.setGridCards(gridCards);
     }
 
     public void showLoginView() {
-        LoginController loginController = new LoginController(loginView);
-        loginController.setManageController(manageController);
-        loginController.setManageView(manageView);
         loginController.showLoginView();
     }
 
     public void showManageView() {
-        manageView.setGridCards(gridCards);
         manageController.showView();
     }
 

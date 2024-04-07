@@ -12,6 +12,12 @@ import java.awt.event.ActionListener;
 public class ManageController {
     private final PublicationDao publicationDao;
     private final ManageView manageView;
+    private  InfoController infoController;
+    
+    public void setInfoController(InfoController infoController) {
+        this.infoController = infoController;
+    }
+
 
     public ManageController(PublicationDao publicationDao, ManageView manageView) {
         this.publicationDao = publicationDao;
@@ -19,6 +25,7 @@ public class ManageController {
 
         manageView.setSearchFieldOnChangeListener(new AddSearchListener());
         manageView.setAddBtnClickListener(new AddBtnClickListener());
+
     }
 
     public void showView() {
@@ -48,9 +55,7 @@ public class ManageController {
     class AddBtnClickListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            InfoView infoView = new InfoView();
-            infoView.setAddMode();
-            InfoController infoController = new InfoController(infoView);
+            infoController.setAddMode();
             infoController.setPublicationDao(publicationDao);
             infoController.showInfoView();
         }

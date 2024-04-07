@@ -3,6 +3,7 @@ package quanlythuvien.views;
 import quanlythuvien.components.*;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
+import quanlythuvien.utils.FontUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +34,7 @@ public class InfoView extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // label
         title = new JLabel("Thông tin đối tượng");
-        title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 20));
+        title.setFont(new Font(FontUtil.Bitter, Font.PLAIN, 40));
         //input field
         name = new InputField("Tên sản phẩm");
         code = new InputField("Mã sản phẩm");
@@ -192,14 +193,14 @@ public class InfoView extends JFrame {
         this.setVisible(true);
     }
 
-    public Publication getNewPublication() {
+    public Publication getInfoPublication() {
         Publication publication = new Publication();
         publication.setName(name.getTextField());
         publication.setCode(code.getTextField());
         publication.setAuthor(author.getTextField());
         publication.setPrice(Double.parseDouble(price.getTextField()));
         publication.setPublisher(publisher.getTextField());
-        publication.setPublishedDate(datePickerPanel.getDate());
+        publication.setPublishedDate(datePickerPanel.getDateString());
         publication.setType(typeMenu.getTypeString());
         publication.setQuantity(Integer.parseInt(quantity.getTextField()));
         return publication;
