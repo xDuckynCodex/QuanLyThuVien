@@ -56,23 +56,28 @@ public class PublicationDao {
     }
     
     // xoa sach
-    public boolean delete(Publication pub){
-        boolean check = false;
-        for(int i = 0; i < listPub.size(); i++){
-            if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
-                pub = listPub.get(i);
-                check = true;
-                break;
-            }
-        }
-        if(check){
-            listPub.remove(pub);
-            writeListPub(listPub);
-            return true;
-        }
-        return false;
+//    public boolean delete(Publication pub){
+//        boolean check = false;
+//        for(int i = 0; i < listPub.size(); i++){
+//            if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
+//                pub = listPub.get(i);
+//                check = true;
+//                break;
+//            }
+//        }
+//        if(check){
+//            listPub.remove(pub);
+//            writeListPub(listPub);
+//            return true;
+//        }
+//        return false;
+//    }
+
+    public void delete(Publication pub){
+        listPub.remove(pub);
+        writeListPub(listPub);
     }
-    
+
     public boolean Delete(String code){
         Publication pub = listPub.stream().filter(publi -> publi.getCode().equals(code)).findFirst().orElse(null);
         if(pub == null){
