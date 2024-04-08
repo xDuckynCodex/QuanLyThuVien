@@ -32,6 +32,7 @@ import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import quanlythuvien.dao.PublicationDao;
+import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.entities.Renter;
 import quanlythuvien.utils.DateFomatterUtil;
@@ -43,7 +44,9 @@ import quanlythuvien.utils.DateFomatterUtil;
 public class RenterView extends JFrame implements ActionListener, ListSelectionListener {
     // button
     Publication pub = new Publication();
+    PublicationDao pubDao = new PublicationDao();
     Renter renter = new Renter();
+    RenterDao renterDao = new RenterDao();
     
     private JButton addRenterBtn;
     private JButton editRenterBtn;
@@ -138,9 +141,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         
         // ComboBo
         typeComboBox = new JComboBox(types);
-        typeString =
-                String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
-
+        typeString = String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
         
         // khởi tạo table
         table = new JTable(){
@@ -209,9 +210,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         panel.add(pane);
         panelPub.add(panePub);
         panel.add(panelPub);
-        
-//        panelPub.setSize(20, 50);  
-//        panelPub.setLocation(100, 140);
         
         // set location
         layout.putConstraint(SpringLayout.WEST, firstNameLabel, 10, SpringLayout.WEST, panel);
@@ -283,7 +281,8 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         this.setVisible(true);
     }
     
-    public void showListPublicationToRent(List<Publication> list){
+    public void showResultView(String searchText){
+        List<Publication> list = pubDao.searchByName(searchText);
         Object [][] rentedBookTable = new Object[list.size()][1];
         for(int i = 0; i < list.size(); i++){
             rentedBookTable[i][0] = list.get(i).getName();
@@ -292,6 +291,11 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         for(int i = 0; i < list.size(); i++){
             tablePub.setRowHeight(i, 20);
         }
+        panePub.setVisible(true);
+    }
+    
+    public void hideTablePub(){
+        panePub.setVisible(false);
     }
     
     public void showListRenter(List<Renter> list){
@@ -309,6 +313,13 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         table.setModel(new DefaultTableModel(renterTable, column));
         for(int i = 0; i < list.size(); i++){
             table.setRowHeight(i, 20);
+        }
+    }
+    
+    public void fillBookFromSelectedRow(){
+        int row = tablePub.getSelectedRow();
+        if(row != -1){
+            rentedBookField.setText(tablePub.getModel().getValueAt(row, 0).toString());
         }
     }
     
@@ -376,30 +387,10 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             idField.requestFocus();
             showMessage("Không được bỏ trống");
             return false;
-        }
-        if(compareByID(renter, renter)) {
-            if(!compareByName(renter, renter)){
-                showMessage("ID không được trùng nhau");
-                return false;
-            }
-        }              
+        }  
         return true;
     }
-    
-    public static boolean compareByID(Renter r1, Renter r2) {
-        if(r1.getId().equals(r2.getId())){
-            return true;
-        }
-        return false;
-    }
-    
-    public static boolean compareByName(Renter r1, Renter r2) {
-        if(r1.getName().equals(r2.getName())){
-            return true;
-        }
-        return false;
-    }
-    
+
     private boolean validRentedBook(){
         String rentedBook = rentedBookField.getText();
         if(rentedBook == null || rentedBook.trim().isEmpty()){
@@ -503,7 +494,14 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     public void addRentedBookFieldSearch(DocumentListener listener){
         rentedBookField.getDocument().addDocumentListener(listener);
     }
-     
+    
+    public String getSearchRentedBookField(){
+        return rentedBookField.getText();
+    }
+    
+//    public void setRentedBookFieldOnChangeListener(DocumentListener listener){
+//        rentedBookField.getDocument().addDocumentListener(listener);
+//    }
             
     @Override
     public void actionPerformed(ActionEvent e) {

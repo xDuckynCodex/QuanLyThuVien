@@ -7,14 +7,19 @@
     <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="commit to merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Renter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Renter.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DropDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DropDown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/TableStatistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/TableStatistic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RenterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/RenterDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/RenterDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +34,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="quanlythuvien/phongnq" />
+    <option name="BRANCH" value="quanlythuvien/master" />
     <option name="OPTIONS">
       <set>
         <option value="SQUASH" />
@@ -374,8 +379,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="5" />
+          <line>84</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

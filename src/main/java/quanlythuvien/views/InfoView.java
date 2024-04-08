@@ -216,7 +216,8 @@ public class InfoView extends JFrame {
         price.setField("");
         datePickerPanel.clearDate();
         typeMenu.clearType();
-
+        
+        addBtn.setEnable(true);
         editBtn.setEnable(false);
         deleteBtn.setEnable(false);
     }

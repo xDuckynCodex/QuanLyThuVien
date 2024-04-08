@@ -47,8 +47,7 @@ public class RenterController {
 
     public RenterController(RenterView view){
         this.renterView = view;
-
-        
+//        view.hideTablePub();
         view.addAddRenterListener(new AddRenterListener());
         view.addEditRenterListener(new EditRenterListener());
         view.addDeleteRenterListener(new DeleteRenterListener());
@@ -56,7 +55,7 @@ public class RenterController {
         view.addClearRenterListener(new ClearRenterListener());
         view.addFillRenterFromSelectedRow(new FillRenterFromSelectedRowListener());
         view.addTransferPublicationListener(new TransferPublicationListener());
-        view.addRentedBookFieldSearch(new rentedBookSearchListener());
+        view.addRentedBookFieldSearch(new addRentedBookSearchListener());
     }
     
     public void showRenterView(){
@@ -129,14 +128,20 @@ public class RenterController {
         }
     }
     
-    class rentedBookSearchListener implements DocumentListener{
+    class addRentedBookSearchListener implements DocumentListener{
         public void insertUpdate(DocumentEvent e) {
-            renterView.showListPublicationToRent(publicationDao.searchByName(manageView.getName()));
+            String searchRentedBookField = renterView.getSearchRentedBookField();
+            renterView.showResultView(searchRentedBookField);
         }
 
         @Override
         public void removeUpdate(DocumentEvent e) {
-            renterView.showListPublicationToRent(publicationDao.searchByName(manageView.getName()));
+            String searchRentedBookField = renterView.getSearchRentedBookField();
+            if("".equals(searchRentedBookField)){
+                renterView.hideTablePub();
+            } else{
+                renterView.showResultView(searchRentedBookField);
+            }       
         }
 
         @Override
