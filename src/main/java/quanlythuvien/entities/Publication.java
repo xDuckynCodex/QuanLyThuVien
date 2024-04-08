@@ -54,6 +54,7 @@ public class Publication implements Serializable {
 
     public void setCode(String code) {
         this.code = code;
+
     }
 
     public void setCodeById() {

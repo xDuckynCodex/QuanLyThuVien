@@ -6,13 +6,11 @@ import quanlythuvien.components.InputField;
 
 import quanlythuvien.components.TableStatistic;
 import quanlythuvien.dao.PublicationDao;
-import quanlythuvien.entities.Publication;
 
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 public class ManageView extends JFrame {
     public void setGridCards(GridCards gridCards) {
@@ -25,7 +23,12 @@ public class ManageView extends JFrame {
                 SpringLayout.SOUTH, panel);
     }
     TableStatistic ts;
+
+    public void setTableStatistic(TableStatistic tableStatistic) {
+        this.tableStatistic = tableStatistic;
+    }
     private JPanel panel;
+    private TableStatistic tableStatistic;
     private SpringLayout layout;
     //components
     private GridCards gridCards;
@@ -45,6 +48,7 @@ public class ManageView extends JFrame {
         addBtn = new ButtonComp("Thêm ấn phẩm");
         transferBtn = new ButtonComp("Chuyển trang quản lý khách " +
                 "hàng");
+        tableStatistic = new TableStatistic();
 
         //layout giao dien
         layout = new SpringLayout();
@@ -59,7 +63,7 @@ public class ManageView extends JFrame {
         panel.add(searchField);
         panel.add(addBtn);
         panel.add(transferBtn);
-
+        panel.add(tableStatistic);
         //label
         panel.add(frameLabel);
 
@@ -86,7 +90,11 @@ public class ManageView extends JFrame {
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, frameLabel, 10,
                 SpringLayout.NORTH, panel);
-
+        //tableStatistic
+        layout.putConstraint(SpringLayout.WEST, tableStatistic, 0,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, tableStatistic, 300,
+                SpringLayout.NORTH, panel);
         //set frame
         this.add(panel);
         this.pack();
@@ -101,12 +109,6 @@ public class ManageView extends JFrame {
 
     public void setTs(TableStatistic ts) {
         this.ts = ts;
-        panel.add(ts);
-        //tableStatistic
-        layout.putConstraint(SpringLayout.WEST, ts, 0,
-                SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, ts, 300,
-                SpringLayout.NORTH, panel);
     }
 
     public ManageView() {
@@ -121,8 +123,6 @@ public class ManageView extends JFrame {
     public void showView() {
         gridCards.setCardList();
         this.setVisible(true);
-
-
     }
 
     public void showView(String searchText) {

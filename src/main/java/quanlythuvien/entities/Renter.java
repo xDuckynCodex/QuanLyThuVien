@@ -12,19 +12,19 @@ import java.util.Map;
  * @author Admin
  */
 public class Renter {
-    private String name, firstName, id, expiredDate, rentedBook, type;
+    public static int id = 0;
+    private String name, firstName, code, expiredDate, rentedBook, type;
     private Map<Publication, Integer> listRentedBook;
     private int quantity;
     
     public Renter(){
         
     }
-    public Renter(String name, String firstName, String expiredDate, String id, Integer quantity, String rentedBook) {
+    public Renter(String name, String firstName, String expiredDate, String code, Integer quantity, String rentedBook) {
         this.name = name;
         this.firstName = firstName;
         this.expiredDate = expiredDate;
-        this.type = type;
-        this.id = id;
+        this.code = code;
         this.quantity = quantity;
         this.rentedBook = rentedBook;
     }
@@ -61,12 +61,29 @@ public class Renter {
         this.quantity = quantity;
     }
 
-    public String getId() {
-        return id;
+    public String getCode() {
+        return code;
+    }
+    
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCodeByID() {
+        int id = ++Renter.id;
+        if(id < 10){
+            this.code = "R00000" + id;
+        } else if(id < 100){
+            this.code = "R0000" + id;
+        } else if(id < 1000){
+            this.code = "R000" + id;
+        } else if(id < 10000){
+            this.code = "R00" + id;
+        } else if(id < 100000){
+            this.code = "R0" + id;
+        } else{
+            this.code = "R" + id;
+        }
     }
 
     public String getRentedBook() {

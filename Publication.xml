@@ -22,102 +22,22 @@
     </publication>
     <publication>
         <author>HVAN</author>
-        <code>P000019</code>
-        <name>TRung 2</name>
+        <code>P000020</code>
+        <name>Anh 3</name>
         <price>1000.0</price>
         <publishedDate>01/04/2024</publishedDate>
         <publisher>HVAN</publisher>
         <quantity>10</quantity>
-        <type>Book</type>
+        <type>Novel</type>
     </publication>
     <publication>
-        <author>1</author>
-        <code>P000020</code>
-        <name>1</name>
-        <price>1.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>1</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>qwe</author>
-        <code>P000021</code>
-        <name>wqe</name>
-        <price>12.0</price>
-        <publishedDate>08/04/2024</publishedDate>
-        <publisher>qwe</publisher>
-        <quantity>12</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>qwer</author>
+        <author>HVAN</author>
         <code>P000022</code>
-        <name>qwerr</name>
-        <price>123.0</price>
-        <publishedDate>03/04/2024</publishedDate>
-        <publisher>qwee</publisher>
-        <quantity>12</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>qwe</author>
-        <code>P000023</code>
-        <name>wqer</name>
-        <price>124.0</price>
-        <publishedDate>08/04/2024</publishedDate>
-        <publisher>rwqe</publisher>
-        <quantity>124</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>ewrtt</author>
-        <code>P000024</code>
-        <name>rte</name>
-        <price>1.0</price>
-        <publishedDate>08/04/2024</publishedDate>
-        <publisher>ert</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>uytr</author>
-        <code>P000025</code>
-        <name>uytr</name>
-        <price>123.0</price>
-        <publishedDate>08/04/2024</publishedDate>
-        <publisher>uytr</publisher>
-        <quantity>123</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>321</author>
-        <code>P000026</code>
-        <name>432</name>
-        <price>123.0</price>
-        <publishedDate>08/04/2024</publishedDate>
-        <publisher>432</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>nv</author>
-        <code>P000027</code>
-        <name>bvnbv</name>
-        <price>1.0</price>
-        <publishedDate>08/04/2024</publishedDate>
-        <publisher>vbn</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>asd</author>
-        <code>P000028</code>
-        <name>asdd</name>
-        <price>1.0</price>
+        <name>Tiếng Anh Grammar</name>
+        <price>10000.0</price>
         <publishedDate>01/04/2024</publishedDate>
-        <publisher>asd</publisher>
-        <quantity>1</quantity>
+        <publisher>HVAN</publisher>
+        <quantity>10</quantity>
         <type>Book</type>
     </publication>
 </publications>

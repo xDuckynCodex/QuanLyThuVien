@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <renters>
     <renter>
-        <expiredDate>03/04/2024</expiredDate>
-        <firstName>Nông Quốc</firstName>
-        <id>001</id>
-        <name>Phong</name>
-        <quantity>10</quantity>
-        <rentedBook>Anh</rentedBook>
-        <type>Book</type>
-    </renter>
-    <renter>
-        <expiredDate>09/04/2024</expiredDate>
-        <firstName>1</firstName>
-        <id>1</id>
-        <name>1</name>
+        <code>R000001</code>
+        <expiredDate>12/04/2024</expiredDate>
+        <firstName>asd</firstName>
+        <name>sad</name>
         <quantity>1</quantity>
-        <rentedBook>Anh</rentedBook>
+        <rentedBook>Anh 1</rentedBook>
         <type>Book</type>
     </renter>
 </renters>

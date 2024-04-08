@@ -47,7 +47,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     PublicationDao pubDao = new PublicationDao();
     Renter renter = new Renter();
     RenterDao renterDao = new RenterDao();
-    
+
     private JButton addRenterBtn;
     private JButton editRenterBtn;
     private JButton deleteRenterBtn;
@@ -135,6 +135,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         firstNameField = new JTextField(20);
         nameField = new JTextField(20);
         idField = new JTextField(20);
+        idField.setEnabled(false);
         rentedBookField = new JTextField(20);
         quantityField = new JTextField(20);
         expiredDateField = new JTextField(20);
@@ -210,7 +211,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         panel.add(pane);
         panelPub.add(panePub);
         panel.add(panelPub);
-        
+
         // set location
         layout.putConstraint(SpringLayout.WEST, firstNameLabel, 10, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, firstNameLabel, 40, SpringLayout.NORTH, panel);
@@ -293,7 +294,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         }
         panePub.setVisible(true);
     }
-    
+
     public void hideTablePub(){
         panePub.setVisible(false);
     }
@@ -322,7 +323,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             rentedBookField.setText(tablePub.getModel().getValueAt(row, 0).toString());
         }
     }
-    
+
     public void fillRenterFromSelectedRow(){
         int row = table.getSelectedRow();
         if (row != -1 ) {
@@ -387,10 +388,30 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             idField.requestFocus();
             showMessage("Không được bỏ trống");
             return false;
-        }  
+        }
+        if(compareByID(renter, renter)) {
+            if(!compareByName(renter, renter)){
+                showMessage("ID không được trùng nhau");
+                return false;
+            }
+        }              
         return true;
     }
-
+    
+    public static boolean compareByID(Renter r1, Renter r2) {
+        if(r1.getId().equals(r2.getId())){
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean compareByName(Renter r1, Renter r2) {
+        if(r1.getName().equals(r2.getName())){
+            return true;
+        }
+        return false;
+    }
+    
     private boolean validRentedBook(){
         String rentedBook = rentedBookField.getText();
         if(rentedBook == null || rentedBook.trim().isEmpty()){
@@ -494,14 +515,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     public void addRentedBookFieldSearch(DocumentListener listener){
         rentedBookField.getDocument().addDocumentListener(listener);
     }
-    
-    public String getSearchRentedBookField(){
-        return rentedBookField.getText();
-    }
-    
-//    public void setRentedBookFieldOnChangeListener(DocumentListener listener){
-//        rentedBookField.getDocument().addDocumentListener(listener);
-//    }
+     
             
     @Override
     public void actionPerformed(ActionEvent e) {

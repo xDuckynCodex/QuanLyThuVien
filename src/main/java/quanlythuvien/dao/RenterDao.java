@@ -60,10 +60,9 @@ public class RenterDao {
     
     public void editRenter(Renter r){
         for(int i = 0; i < listRenter.size(); i++){
-            if(Objects.equals(listRenter.get(i).getId(), r.getId())){
+            if(Objects.equals(listRenter.get(i).getCode(), r.getCode())){
                 listRenter.get(i).setFirstName(r.getFirstName());
                 listRenter.get(i).setName(r.getName());
-                listRenter.get(i).setId(r.getId());
                 listRenter.get(i).setRentedBook(r.getRentedBook());
                 listRenter.get(i).setType(r.getType());
                 listRenter.get(i).setQuantity(r.getQuantity());
@@ -76,7 +75,7 @@ public class RenterDao {
     public boolean delete(Renter r){
         boolean check = false;
         for(int i = 0; i < listRenter.size(); i++){
-            if(Objects.equals(listRenter.get(i).getId(), r.getId())){
+            if(Objects.equals(listRenter.get(i).getCode(), r.getCode())){
                 r = listRenter.get(i);
                 check = true;
                 break;
@@ -115,10 +114,10 @@ public class RenterDao {
             if(r.getType() == "Book"){
                 count += r.getQuantity();
             }
-        } 
+        }
         return count;
     }
-    
+
     public Integer countMagazine(){
         int count = 0;
         for(Renter r : listRenter){
@@ -127,8 +126,8 @@ public class RenterDao {
             }
         }
         return count;
-    } 
-    
+    }
+
     public Integer countNovel(){
         int count = 0;
         for(Renter r : listRenter){
@@ -137,8 +136,8 @@ public class RenterDao {
             }
         }
         return count;
-    } 
-    
+    }
+
     public Integer countNewspaper(){
         int count = 0;
         for(Renter r : listRenter){
@@ -152,10 +151,10 @@ public class RenterDao {
 //    public void finding(){
 //        List<Publication> list = pubDao.getListPublication();
 //        for(Publication pub : list){
-//            
+//
 //        }
 //    }
-    
+
     public List<Renter> getListRenter(){
         return listRenter;
     }
