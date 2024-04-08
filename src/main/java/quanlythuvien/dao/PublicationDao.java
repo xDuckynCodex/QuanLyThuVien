@@ -84,15 +84,6 @@ public class PublicationDao {
         writeListPub(listPub);
     }
 
-    public boolean Delete(String code){
-        Publication pub = listPub.stream().filter(publi -> publi.getCode().equals(code)).findFirst().orElse(null);
-        if(pub == null){
-            return false;
-        }
-        this.listPub.remove(pub);
-        return true;
-    }
-
     //sap xep theo ten
     public void sortByName(){
         Collections.sort(listPub, new Comparator<Publication>(){
@@ -116,10 +107,10 @@ public class PublicationDao {
         });
     }
     
-    public List<Publication> filter(){
-        pubFilter = listPub.stream().filter(publication -> publication.getType().equals("Tạp chí")).toList();
-        return pubFilter;
-    }
+//    public List<Publication> filter(){
+//        pubFilter = listPub.stream().filter(publication -> publication.getType().equals("Tạp chí")).toList();
+//        return pubFilter;
+//    }
     
     public List<Publication> searchByName(String name){
         List<Publication> searchResult = new ArrayList<Publication>();
@@ -131,10 +122,40 @@ public class PublicationDao {
         return searchResult;
     }
     
-    public Integer count(String type){
+    public Integer countBook(){
         int count = 0;
         for(Publication p : listPub){
-            if(p.getType() == type){
+            if("Book".equals(p.getType())){
+                count += p.getQuantity();
+            }
+        } 
+        return count;
+    }
+    
+    public Integer countMagazine(){
+        int count = 0;
+        for(Publication p : listPub){
+            if("Magazine".equals(p.getType())){
+                count += p.getQuantity();
+            }
+        }
+        return count;
+    } 
+    
+    public Integer countNovel(){
+        int count = 0;
+        for(Publication p : listPub){
+            if("Novel".equals(p.getType())){
+                count += p.getQuantity();
+            }
+        }
+        return count;
+    } 
+    
+    public Integer countNewspaper(){
+        int count = 0;
+        for(Publication p : listPub){
+            if("Newspaper".equals(p.getType())){
                 count += p.getQuantity();
             }
         }
@@ -144,8 +165,4 @@ public class PublicationDao {
     public List<Publication> getListPublication(){
         return listPub;
     }
-    public List<Publication> getListPubFilter(){
-        return pubFilter;
-    }
-    
 }

@@ -10,6 +10,7 @@ import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
 import java.util.List;
+import quanlythuvien.components.TableStatistic;
 
 public class AdminController {
     //data
@@ -23,6 +24,7 @@ public class AdminController {
     private RenterView renterView;
     //Component
     private GridCards gridCards;
+    TableStatistic ts;
 
     // controller
     private ManageController manageController;
@@ -61,7 +63,7 @@ public class AdminController {
 
         //Component
         gridCards = new GridCards(publicationDao, manageView, infoController);
-
+        ts = new TableStatistic();
 
         //pass instance
         loginController.setManageController(manageController);
@@ -69,15 +71,18 @@ public class AdminController {
         manageController.setInfoController(infoController);
         manageController.setPublicationDao(publicationDao);
         manageController.setRenterController(renterController);
-
+        manageController.setTs(ts);
+        
         renterController.setPublicationDao(publicationDao);
         renterController.setRenterDao(renterDao);
         renterController.setManageView(manageView);
         renterController.setManageController(manageController);
 
         infoController.setGridCards(gridCards);
+        infoController.setManageView(manageView);
 
         manageView.setGridCards(gridCards);
+        manageView.setTs(ts);
     }
 
     public void showLoginView() {
