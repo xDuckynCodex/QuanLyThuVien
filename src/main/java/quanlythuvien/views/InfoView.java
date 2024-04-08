@@ -38,6 +38,7 @@ public class InfoView extends JFrame {
         //input field
         name = new InputField("Tên sản phẩm");
         code = new InputField("Mã sản phẩm");
+        code.disableField();
         publisher = new InputField("Nhà xuất bản");
         author = new InputField("Tên tác giả");
         quantity = new InputField("Số lượng");
@@ -196,7 +197,7 @@ public class InfoView extends JFrame {
     public Publication getInfoPublication() {
         Publication publication = new Publication();
         publication.setName(name.getTextField());
-        publication.setCode();
+        publication.setCodeById();
         publication.setAuthor(author.getTextField());
         publication.setPrice(Double.parseDouble(price.getTextField()));
         publication.setPublisher(publisher.getTextField());
@@ -207,6 +208,16 @@ public class InfoView extends JFrame {
     }
 
     public void setAddMode() {
+        name.setField("");
+        code.setField("");
+        publisher.setField("");
+        author.setField("");
+        quantity.setField("");
+        price.setField("");
+        datePickerPanel.clearDate();
+        typeMenu.clearType();
+        
+        addBtn.setEnable(true);
         editBtn.setEnable(false);
         deleteBtn.setEnable(false);
     }

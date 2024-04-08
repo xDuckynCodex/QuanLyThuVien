@@ -141,9 +141,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         
         // ComboBo
         typeComboBox = new JComboBox(types);
-        typeString =
-                String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
-
+        typeString = String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
         
         // khởi tạo table
         table = new JTable(){
@@ -212,9 +210,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         panel.add(pane);
         panelPub.add(panePub);
         panel.add(panelPub);
-        
-//        panelPub.setSize(20, 50);  
-//        panelPub.setLocation(100, 140);
         
         // set location
         layout.putConstraint(SpringLayout.WEST, firstNameLabel, 10, SpringLayout.WEST, panel);

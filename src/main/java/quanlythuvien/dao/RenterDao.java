@@ -109,10 +109,40 @@ public class RenterDao {
         return searchResult;
     }
     
-    public Integer count(String type){
+    public Integer countBook(){
         int count = 0;
         for(Renter r : listRenter){
-            if(r.getType() == type){
+            if(r.getType() == "Book"){
+                count += r.getQuantity();
+            }
+        } 
+        return count;
+    }
+    
+    public Integer countMagazine(){
+        int count = 0;
+        for(Renter r : listRenter){
+            if(r.getType() == "Magazine"){
+                count += r.getQuantity();
+            }
+        }
+        return count;
+    } 
+    
+    public Integer countNovel(){
+        int count = 0;
+        for(Renter r : listRenter){
+            if(r.getType() == "Novel"){
+                count += r.getQuantity();
+            }
+        }
+        return count;
+    } 
+    
+    public Integer countNewspaper(){
+        int count = 0;
+        for(Renter r : listRenter){
+            if(r.getType() == "Newspaper"){
                 count += r.getQuantity();
             }
         }

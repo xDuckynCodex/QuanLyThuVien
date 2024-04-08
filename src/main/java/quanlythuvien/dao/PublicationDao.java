@@ -42,7 +42,6 @@ public class PublicationDao {
     // them sach
     public void add(Publication pub){
         listPub.add(pub);
-        count(pub.getType());
         writeListPub(listPub);
     }
     
@@ -123,10 +122,40 @@ public class PublicationDao {
         return searchResult;
     }
     
-    public Integer count(String type){
+    public Integer countBook(){
         int count = 0;
         for(Publication p : listPub){
-            if(p.getType() == type){
+            if("Book".equals(p.getType())){
+                count += p.getQuantity();
+            }
+        } 
+        return count;
+    }
+    
+    public Integer countMagazine(){
+        int count = 0;
+        for(Publication p : listPub){
+            if("Magazine".equals(p.getType())){
+                count += p.getQuantity();
+            }
+        }
+        return count;
+    } 
+    
+    public Integer countNovel(){
+        int count = 0;
+        for(Publication p : listPub){
+            if("Novel".equals(p.getType())){
+                count += p.getQuantity();
+            }
+        }
+        return count;
+    } 
+    
+    public Integer countNewspaper(){
+        int count = 0;
+        for(Publication p : listPub){
+            if("Newspaper".equals(p.getType())){
                 count += p.getQuantity();
             }
         }
@@ -136,8 +165,4 @@ public class PublicationDao {
     public List<Publication> getListPublication(){
         return listPub;
     }
-    
-//    public List<Publication> getListPubFilter(){
-//        return pubFilter;
-//    }
 }

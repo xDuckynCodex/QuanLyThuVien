@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import quanlythuvien.components.TableStatistic;
+import quanlythuvien.views.ManageView;
 
 
 public class InfoController {
@@ -17,14 +19,28 @@ public class InfoController {
     public void setGridCards(GridCards gridCards) {
         this.gridCards = gridCards;
     }
+    
+    TableStatistic ts;
+    ManageView manageView;
 
+    public void setManageView(ManageView manageView) {
+        this.manageView = manageView;
+    }
     private GridCards gridCards;
     private PublicationDao publicationDao;
     private Publication publication;
     public void setPublication(Publication publication) {
         this.publication = publication;
     }
+    
+    public TableStatistic getTs() {
+        return ts;
+    }
 
+    public void setTs(TableStatistic ts) {
+        this.ts = ts;
+    }
+    
     public InfoController() {
         initComponent();
     }
@@ -67,17 +83,18 @@ public class InfoController {
     }
 
     class AddClickedListener implements ActionListener {
-        @Override
+        TableStatistic ts = new TableStatistic();
+        @Override 
         public void actionPerformed(ActionEvent e) {
             //Handler add event
             Publication publication = infoView.getInfoPublication();
             publicationDao.add(publication);
-
             //reset gridcards
             gridCards.setCardList();
-
+            publicationDao.readPublication();
+            ts.init(publicationDao.getListPublication());
             JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
-
+            manageView.setTableStatistic(ts);
             //dispose frame
             infoView.dispose();
         }
@@ -90,8 +107,7 @@ public class InfoController {
             Publication publication = infoView.getInfoPublication();
             try {
                 publicationDao.edit(publication);
-                JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành " +
-                        "công");
+                JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
                 //reset gridcards
                 gridCards.setCardList();
                 infoView.dispose();
@@ -114,12 +130,5 @@ public class InfoController {
             //dispose frame
             infoView.dispose();
         }
-    }
-
-    public static void main(String[] args) {
-        InfoView infoView = new InfoView();
-        infoView.setEditMode();
-        InfoController ic = new InfoController(infoView);
-        ic.showInfoView();
     }
 }

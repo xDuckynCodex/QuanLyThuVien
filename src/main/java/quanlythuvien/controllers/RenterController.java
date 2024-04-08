@@ -47,7 +47,7 @@ public class RenterController {
 
     public RenterController(RenterView view){
         this.renterView = view;
-        view.hideTablePub();
+//        view.hideTablePub();
         view.addAddRenterListener(new AddRenterListener());
         view.addEditRenterListener(new EditRenterListener());
         view.addDeleteRenterListener(new DeleteRenterListener());

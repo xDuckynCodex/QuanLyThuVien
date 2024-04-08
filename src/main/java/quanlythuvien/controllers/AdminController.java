@@ -3,14 +3,19 @@ package quanlythuvien.controllers;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.Publication;
 import quanlythuvien.views.InfoView;
 import quanlythuvien.views.LoginView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
+import java.util.List;
+import quanlythuvien.components.TableStatistic;
+
 public class AdminController {
     //data
     private PublicationDao publicationDao;
+    private List<Publication> publicationList;
     private RenterDao renterDao;
     // view
     private ManageView manageView;
@@ -19,6 +24,7 @@ public class AdminController {
     private RenterView renterView;
     //Component
     private GridCards gridCards;
+    TableStatistic ts;
 
     // controller
     private ManageController manageController;
@@ -34,7 +40,16 @@ public class AdminController {
     public void initComponent() {
         //data
         publicationDao = new PublicationDao();
+        publicationList = publicationDao.getListPublication();
         renterDao = new RenterDao();
+
+        //set id for th
+        if (publicationList.isEmpty()) {
+            Publication.setId(0);
+        } else {
+            Publication.setId(Integer.parseInt(publicationList.getLast().getCode().substring(1)));
+        }
+
         // view
         loginView = new LoginView();
         manageView = new ManageView();
@@ -48,7 +63,7 @@ public class AdminController {
 
         //Component
         gridCards = new GridCards(publicationDao, manageView, infoController);
-
+        ts = new TableStatistic();
 
         //pass instance
         loginController.setManageController(manageController);
@@ -56,15 +71,18 @@ public class AdminController {
         manageController.setInfoController(infoController);
         manageController.setPublicationDao(publicationDao);
         manageController.setRenterController(renterController);
-
+        manageController.setTs(ts);
+        
         renterController.setPublicationDao(publicationDao);
         renterController.setRenterDao(renterDao);
         renterController.setManageView(manageView);
         renterController.setManageController(manageController);
 
         infoController.setGridCards(gridCards);
+        infoController.setManageView(manageView);
 
         manageView.setGridCards(gridCards);
+        manageView.setTs(ts);
     }
 
     public void showLoginView() {

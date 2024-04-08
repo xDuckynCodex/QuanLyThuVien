@@ -39,6 +39,10 @@ public class InputField extends JPanel {
         return field.getText();
     }
 
+    public void disableField() {
+        this.field.setEnabled(false);
+    }
+
     //Xử lý sự kiện
     public void addFieldChange(DocumentListener listener) {
         field.getDocument().addDocumentListener(listener);

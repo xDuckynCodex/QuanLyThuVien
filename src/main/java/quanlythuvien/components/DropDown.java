@@ -9,8 +9,7 @@ public class DropDown extends JPanel {
         initComponent();
     }
 
-    private final String[] typeString = {"Choose type","Book", "Magazine", "Novel",
-            "Newspapers"};
+    private final String[] typeString = {"Choose Type","Book", "Magazine", "Novel", "Newspapers"};
     private JComboBox<String> dropdown;
     private JLabel label;
     public void initComponent() {
@@ -36,6 +35,10 @@ public class DropDown extends JPanel {
                 break;
             }
         }
-        dropdown.setSelectedIndex(typeIndex);
+        dropdown.setSelectedIndex(typeIndex - 1);
+    }
+
+    public void clearType() {
+        dropdown.setSelectedIndex(0);
     }
 }
