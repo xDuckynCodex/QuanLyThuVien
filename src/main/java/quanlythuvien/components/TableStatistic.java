@@ -73,20 +73,20 @@ public class TableStatistic extends JPanel {
         statisticTable[3][0] = "Newspaper";
         statisticTable[4][0] = "Tổng";
         
-        statisticTable[0][1] = String.valueOf(pubDao.countBook());
-        statisticTable[1][1] = String.valueOf(pubDao.countMagazine());
-        statisticTable[2][1] = String.valueOf(pubDao.countNovel());
-        statisticTable[3][1] = String.valueOf(pubDao.countNewspaper());
+        statisticTable[0][1] = String.valueOf(pubDao.countBook() - renterDao.countBook());
+        statisticTable[1][1] = String.valueOf(pubDao.countMagazine() - renterDao.countMagazine());
+        statisticTable[2][1] = String.valueOf(pubDao.countNovel() - renterDao.countNovel());
+        statisticTable[3][1] = String.valueOf(pubDao.countNewspaper() - renterDao.countNewspaper());
         
         statisticTable[0][2] = String.valueOf(renterDao.countBook());
         statisticTable[1][2] = String.valueOf(renterDao.countMagazine());
         statisticTable[2][2] = String.valueOf(renterDao.countNovel());
         statisticTable[3][2] = String.valueOf(renterDao.countNewspaper());
         
-        statisticTable[0][3] = String.valueOf(pubDao.countBook() + renterDao.countBook());
-        statisticTable[1][3] = String.valueOf(pubDao.countMagazine() + renterDao.countMagazine());
-        statisticTable[2][3] = String.valueOf(pubDao.countNovel() + renterDao.countNovel());
-        statisticTable[3][3] = String.valueOf(pubDao.countNewspaper() + renterDao.countNewspaper());
+        statisticTable[0][3] = String.valueOf(pubDao.countBook());
+        statisticTable[1][3] = String.valueOf(pubDao.countMagazine());
+        statisticTable[2][3] = String.valueOf(pubDao.countNovel());
+        statisticTable[3][3] = String.valueOf(pubDao.countNewspaper());
         
         tableStatistic.setModel(new DefaultTableModel(statisticTable, columnStatistic));
         

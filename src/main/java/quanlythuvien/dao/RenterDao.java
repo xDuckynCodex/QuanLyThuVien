@@ -111,7 +111,7 @@ public class RenterDao {
     public Integer countBook(){
         int count = 0;
         for(Renter r : listRenter){
-            if(r.getType() == "Book"){
+            if("Book".equals(r.getType())){
                 count += r.getQuantity();
             }
         } 
@@ -121,7 +121,7 @@ public class RenterDao {
     public Integer countMagazine(){
         int count = 0;
         for(Renter r : listRenter){
-            if(r.getType() == "Magazine"){
+            if("Magazine".equals(r.getType())){
                 count += r.getQuantity();
             }
         }
@@ -131,7 +131,7 @@ public class RenterDao {
     public Integer countNovel(){
         int count = 0;
         for(Renter r : listRenter){
-            if(r.getType() == "Novel"){
+            if("Novel".equals(r.getType())){
                 count += r.getQuantity();
             }
         }
@@ -141,19 +141,12 @@ public class RenterDao {
     public Integer countNewspaper(){
         int count = 0;
         for(Renter r : listRenter){
-            if(r.getType() == "Newspaper"){
+            if("Newspaper".equals(r.getType())){
                 count += r.getQuantity();
             }
         }
         return count;
     }
-    
-//    public void finding(){
-//        List<Publication> list = pubDao.getListPublication();
-//        for(Publication pub : list){
-//            
-//        }
-//    }
     
     public List<Renter> getListRenter(){
         return listRenter;
