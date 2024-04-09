@@ -43,13 +43,6 @@ public class AdminController {
         publicationList = publicationDao.getListPublication();
         renterDao = new RenterDao();
 
-        //set id for th
-        if (publicationList.isEmpty()) {
-            Publication.setId(0);
-        } else {
-            Publication.setId(Integer.parseInt(publicationList.getLast().getCode().substring(1)));
-        }
-
         // view
         loginView = new LoginView();
         manageView = new ManageView();

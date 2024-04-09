@@ -18,6 +18,12 @@ public class PublicationDao {
         if(listPub == null){
             listPub = new ArrayList<Publication>();
         }
+        //set id for th
+        if (listPub.isEmpty()) {
+            Publication.setId(0);
+        } else {
+            Publication.setId(Integer.parseInt(listPub.getLast().getCode().substring(1)));
+        }
     }
     
     // in ra file XML

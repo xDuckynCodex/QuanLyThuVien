@@ -11,17 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -172,6 +162,10 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
                
         table.setModel(new DefaultTableModel((Object[][]) data, column));
         table.setFont(new Font(table.getFont().getName(), Font.PLAIN, 15));
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.clearSelection();
+
+
         pane.setViewportView(table);
         pane.setPreferredSize(new Dimension(1350, 750));
         
@@ -305,7 +299,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             renterTable[i][0] = i + 1;
             renterTable[i][1] = list.get(i).getFirstName();
             renterTable[i][2] = list.get(i).getName();
-            renterTable[i][3] = list.get(i).getId();
+            renterTable[i][3] = list.get(i).getCode();
             renterTable[i][4] = list.get(i).getRentedBook();
             renterTable[i][5] = list.get(i).getType();
             renterTable[i][6] = list.get(i).getQuantity();
@@ -382,24 +376,24 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         return true;
     }
     
-    private boolean validID(){
-        String id = idField.getText();
-        if(id == null || id.trim().isEmpty()){
-            idField.requestFocus();
-            showMessage("Không được bỏ trống");
-            return false;
-        }
-        if(compareByID(renter, renter)) {
-            if(!compareByName(renter, renter)){
-                showMessage("ID không được trùng nhau");
-                return false;
-            }
-        }              
-        return true;
-    }
+//    private boolean validID(){
+//        String id = idField.getText();
+//        if(id == null || id.trim().isEmpty()){
+//            idField.requestFocus();
+//            showMessage("Không được bỏ trống");
+//            return false;
+//        }
+//        if(compareByID(renter, renter)) {
+//            if(!compareByName(renter, renter)){
+//                showMessage("ID không được trùng nhau");
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
     
     public static boolean compareByID(Renter r1, Renter r2) {
-        if(r1.getId().equals(r2.getId())){
+        if(r1.getCode().equals(r2.getCode())){
             return true;
         }
         return false;
@@ -433,7 +427,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     }
     
     public Renter getRenterInfo(){
-        if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity() || !validID()){
+        if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
             return null;
         }
         try{
@@ -443,7 +437,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             dateString = DateFomatterUtil.valueToString(dateValue);
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
-            renter.setId(idField.getText().trim());
+            renter.setCodeByID();
             renter.setRentedBook(rentedBookField.getText().trim());
             renter.setType(typeString.trim());
             renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
@@ -474,12 +468,18 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     public void showRenter(Renter renter){
         firstNameField.setText(renter.getFirstName());
         nameField.setText(renter.getName());
-        idField.setText(renter.getId());
+        idField.setText(renter.getCode());
         rentedBookField.setText(renter.getRentedBook());
         quantityField.setText("" + renter.getQuantity());
         expiredDateField.setText(renter.getExpiredDate());
     }
-    
+
+    public String getSearchRentedBookField() {
+        return rentedBookField.getText();
+    }
+
+
+
     public String getRentedBookField(){
         return rentedBookField.getText();
     }
