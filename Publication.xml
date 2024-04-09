@@ -40,4 +40,14 @@
         <quantity>10</quantity>
         <type>Book</type>
     </publication>
+    <publication>
+        <author>fgh</author>
+        <code>P000023</code>
+        <name>hggfh</name>
+        <price>123.0</price>
+        <publishedDate>09/04/2024</publishedDate>
+        <publisher>gfhgf</publisher>
+        <quantity>213</quantity>
+        <type>Book</type>
+    </publication>
 </publications>

@@ -17,7 +17,7 @@ public class ManageView extends JFrame {
         this.gridCards = gridCards;
         panel.add(gridCards);
         //gridCard component
-        layout.putConstraint(SpringLayout.EAST, gridCards, 0,
+        layout.putConstraint(SpringLayout.EAST, gridCards, -100,
                 SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.SOUTH, gridCards, 0,
                 SpringLayout.SOUTH, panel);
@@ -81,7 +81,7 @@ public class ManageView extends JFrame {
         layout.putConstraint(SpringLayout.NORTH, addBtn, 73,
                 SpringLayout.NORTH, panel);
         //transferBtn
-        layout.putConstraint(SpringLayout.EAST, transferBtn, 0,
+        layout.putConstraint(SpringLayout.EAST, transferBtn, -100,
                 SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferBtn, 73,
                 SpringLayout.NORTH, panel);
