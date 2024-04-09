@@ -20,7 +20,6 @@ public class InfoController {
         this.gridCards = gridCards;
     }
 
-    TableStatistic ts;
     ManageView manageView;
 
     public void setManageView(ManageView manageView) {
@@ -31,14 +30,6 @@ public class InfoController {
     private Publication publication;
     public void setPublication(Publication publication) {
         this.publication = publication;
-    }
-
-    public TableStatistic getTs() {
-        return ts;
-    }
-
-    public void setTs(TableStatistic ts) {
-        this.ts = ts;
     }
 
     public InfoController() {
@@ -83,7 +74,6 @@ public class InfoController {
     }
 
     class AddClickedListener implements ActionListener {
-        TableStatistic ts = new TableStatistic();
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler add event
@@ -91,10 +81,10 @@ public class InfoController {
             publicationDao.add(publication);
             //reset gridcards
             gridCards.setCardList();
-            publicationDao.readPublication();
-            ts.init(publicationDao.getListPublication());
+            manageView.setTableStatistic();
+
             JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
-            manageView.setTableStatistic(ts);
+
             //dispose frame
             infoView.dispose();
         }

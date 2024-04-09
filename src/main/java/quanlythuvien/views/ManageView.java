@@ -22,10 +22,9 @@ public class ManageView extends JFrame {
         layout.putConstraint(SpringLayout.SOUTH, gridCards, 0,
                 SpringLayout.SOUTH, panel);
     }
-    TableStatistic ts;
 
-    public void setTableStatistic(TableStatistic tableStatistic) {
-        this.tableStatistic = tableStatistic;
+    public void setTableStatistic() {
+        this.tableStatistic.calculateData();
     }
     private JPanel panel;
     private TableStatistic tableStatistic;
@@ -101,14 +100,6 @@ public class ManageView extends JFrame {
         this.setTitle("Manage View");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
-
-    public TableStatistic getTs() {
-        return ts;
-    }
-
-    public void setTs(TableStatistic ts) {
-        this.ts = ts;
     }
 
     public ManageView() {
