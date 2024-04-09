@@ -10,6 +10,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.Publication;
+import quanlythuvien.views.ManageView;
 
 /**
  *
@@ -63,7 +65,7 @@ public class TableStatistic extends JScrollPane {
         dataStatistic[3][3] = String.valueOf(pubDao.countNewspaper() + renterDao.countNewspaper());
 
         tableStatistic.setModel(new DefaultTableModel(dataStatistic, columnStatistic));
-
+      
         for(int i = 0; i < 6; i++){
             tableStatistic.setRowHeight(i, 30);
         }

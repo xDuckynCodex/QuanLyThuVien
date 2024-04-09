@@ -19,9 +19,10 @@ public class InfoController {
     public void setGridCards(GridCards gridCards) {
         this.gridCards = gridCards;
     }
-
+    
+    TableStatistic ts;
     ManageView manageView;
-
+  
     public void setManageView(ManageView manageView) {
         this.manageView = manageView;
     }
@@ -31,7 +32,15 @@ public class InfoController {
     public void setPublication(Publication publication) {
         this.publication = publication;
     }
+    
+    public TableStatistic getTs() {
+        return ts;
+    }
 
+    public void setTs(TableStatistic ts) {
+        this.ts = ts;
+    }
+    
     public InfoController() {
         initComponent();
     }
@@ -74,7 +83,8 @@ public class InfoController {
     }
 
     class AddClickedListener implements ActionListener {
-        @Override
+        TableStatistic ts = new TableStatistic();
+        @Override 
         public void actionPerformed(ActionEvent e) {
             //Handler add event
             Publication publication = infoView.getInfoPublication();
@@ -84,7 +94,6 @@ public class InfoController {
             manageView.setTableStatistic();
 
             JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
-
             //dispose frame
             infoView.dispose();
         }

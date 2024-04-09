@@ -8,8 +8,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import quanlythuvien.components.TableStatistic;
 
 public class ManageController {
+    TableStatistic ts;
     private PublicationDao publicationDao;
     private final ManageView manageView;
     private InfoController infoController;
@@ -32,6 +34,14 @@ public class ManageController {
         this.manageView.setSearchFieldOnChangeListener(new AddSearchListener());
         this.manageView.setAddBtnClickListener(new AddBtnClickListener());
         this.manageView.setTransferClickListener(new TransferClickListener());
+    }
+
+    public TableStatistic getTs() {
+        return ts;
+    }
+
+    public void setTs(TableStatistic ts) {
+        this.ts = ts;
     }
 
     public void showView() {

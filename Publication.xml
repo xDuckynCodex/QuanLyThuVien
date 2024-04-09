@@ -160,4 +160,24 @@
         <quantity>1</quantity>
         <type>Book</type>
     </publication>
+    <publication>
+        <author>HVAN</author>
+        <code>P000020</code>
+        <name>Anh 3</name>
+        <price>1000.0</price>
+        <publishedDate>01/04/2024</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>10</quantity>
+        <type>Novel</type>
+    </publication>
+    <publication>
+        <author>HVAN</author>
+        <code>P000022</code>
+        <name>Tiếng Anh Grammar</name>
+        <price>10000.0</price>
+        <publishedDate>01/04/2024</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>10</quantity>
+        <type>Book</type>
+    </publication>
 </publications>
