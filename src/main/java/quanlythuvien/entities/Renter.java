@@ -12,6 +12,11 @@ import java.util.Map;
  * @author Admin
  */
 public class Renter {
+
+    public static void setId(int id) {
+        Renter.id = id;
+    }
+
     public static int id = 0;
     private String name, firstName, code, expiredDate, rentedBook, type;
     private Map<Publication, Integer> listRentedBook;

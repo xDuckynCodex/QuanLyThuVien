@@ -11,17 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -47,7 +37,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     PublicationDao pubDao = new PublicationDao();
     Renter renter = new Renter();
     RenterDao renterDao = new RenterDao();
-    
+
     private JButton addRenterBtn;
     private JButton editRenterBtn;
     private JButton deleteRenterBtn;
@@ -172,6 +162,10 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
                
         table.setModel(new DefaultTableModel((Object[][]) data, column));
         table.setFont(new Font(table.getFont().getName(), Font.PLAIN, 15));
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.clearSelection();
+
+
         pane.setViewportView(table);
         pane.setPreferredSize(new Dimension(1350, 750));
         
@@ -211,7 +205,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         panel.add(pane);
         panelPub.add(panePub);
         panel.add(panelPub);
-        
+
         // set location
         layout.putConstraint(SpringLayout.WEST, firstNameLabel, 10, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, firstNameLabel, 40, SpringLayout.NORTH, panel);
@@ -294,7 +288,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         }
         panePub.setVisible(true);
     }
-    
+
     public void hideTablePub(){
         panePub.setVisible(false);
     }
@@ -323,7 +317,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             rentedBookField.setText(tablePub.getModel().getValueAt(row, 0).toString());
         }
     }
-    
+
     public void fillRenterFromSelectedRow(){
         int row = table.getSelectedRow();
         if (row != -1 ) {
@@ -380,6 +374,36 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             return false;
         }
         return true;
+    }
+  
+//    private boolean validID(){
+//        String id = idField.getText();
+//        if(id == null || id.trim().isEmpty()){
+//            idField.requestFocus();
+//            showMessage("Không được bỏ trống");
+//            return false;
+//        }
+//        if(compareByID(renter, renter)) {
+//            if(!compareByName(renter, renter)){
+//                showMessage("ID không được trùng nhau");
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+    
+    public static boolean compareByID(Renter r1, Renter r2) {
+        if(r1.getCode().equals(r2.getCode())){
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean compareByName(Renter r1, Renter r2) {
+        if(r1.getName().equals(r2.getName())){
+            return true;
+        }
+        return false;
     }
 
     private boolean validRentedBook(){
@@ -449,7 +473,13 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         quantityField.setText("" + renter.getQuantity());
         expiredDateField.setText(renter.getExpiredDate());
     }
-    
+
+    public String getSearchRentedBookField() {
+        return rentedBookField.getText();
+    }
+
+
+
     public String getRentedBookField(){
         return rentedBookField.getText();
     }

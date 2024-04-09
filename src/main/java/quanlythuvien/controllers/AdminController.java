@@ -43,13 +43,6 @@ public class AdminController {
         publicationList = publicationDao.getListPublication();
         renterDao = new RenterDao();
 
-        //set id for th
-        if (publicationList.isEmpty()) {
-            Publication.setId(0);
-        } else {
-            Publication.setId(Integer.parseInt(publicationList.getLast().getCode().substring(1)));
-        }
-
         // view
         loginView = new LoginView();
         manageView = new ManageView();
@@ -63,7 +56,6 @@ public class AdminController {
 
         //Component
         gridCards = new GridCards(publicationDao, manageView, infoController);
-        ts = new TableStatistic();
 
         //pass instance
         loginController.setManageController(manageController);
@@ -71,7 +63,6 @@ public class AdminController {
         manageController.setInfoController(infoController);
         manageController.setPublicationDao(publicationDao);
         manageController.setRenterController(renterController);
-        manageController.setTs(ts);
         
         renterController.setPublicationDao(publicationDao);
         renterController.setRenterDao(renterDao);

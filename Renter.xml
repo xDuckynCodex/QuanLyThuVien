@@ -2,9 +2,9 @@
 <renters>
     <renter>
         <code>R000001</code>
-        <expiredDate>12/04/2024</expiredDate>
-        <firstName>asd</firstName>
-        <name>sad</name>
+        <expiredDate>02/04/2024</expiredDate>
+        <firstName>kjhgh</firstName>
+        <name>kjh</name>
         <quantity>1</quantity>
         <rentedBook>Anh 1</rentedBook>
         <type>Book</type>

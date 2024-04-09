@@ -5,6 +5,7 @@ import quanlythuvien.entities.Publication;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -32,7 +33,9 @@ public class Card extends JPanel {
 
     public void initComponent(GridCards gridCards) {
         // constructor elements
-        nameCard = new JLabel(publication.getName());
+        nameCard = new JLabel(String.format("<html><div style=\"width:%dpx;" +
+                "text-align: center;" +
+                "\">%s</div></html>", 150, publication.getName()));
         authorCard = new JLabel(publication.getAuthor());
         this.getImageFromFile(".\\public\\images\\ph.png");
         imgCardLabel = new JLabel(imgCard);
