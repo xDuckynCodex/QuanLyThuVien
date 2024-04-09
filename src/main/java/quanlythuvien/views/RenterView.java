@@ -135,6 +135,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         firstNameField = new JTextField(20);
         nameField = new JTextField(20);
         idField = new JTextField(20);
+        idField.setEnabled(false);
         rentedBookField = new JTextField(20);
         quantityField = new JTextField(20);
         expiredDateField = new JTextField(20);
@@ -304,7 +305,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             renterTable[i][0] = i + 1;
             renterTable[i][1] = list.get(i).getFirstName();
             renterTable[i][2] = list.get(i).getName();
-            renterTable[i][3] = list.get(i).getId();
+            renterTable[i][3] = list.get(i).getCode();
             renterTable[i][4] = list.get(i).getRentedBook();
             renterTable[i][5] = list.get(i).getType();
             renterTable[i][6] = list.get(i).getQuantity();
@@ -344,7 +345,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             if(row >= 0){
                 firstNameField.setText(table.getModel().getValueAt(row, 1).toString());
                 nameField.setText(table.getModel().getValueAt(row, 2).toString());
-                idField.setText(table.getModel().getValueAt(row, 3).toString());
+                
                 rentedBookField.setText(table.getModel().getValueAt(row, 4).toString());
                 typeComboBox.setSelectedIndex(typeIndex);
                 quantityField.setText(table.getModel().getValueAt(row, 6).toString());
@@ -380,16 +381,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         }
         return true;
     }
-    
-    private boolean validID(){
-        String id = idField.getText();
-        if(id == null || id.trim().isEmpty()){
-            idField.requestFocus();
-            showMessage("Không được bỏ trống");
-            return false;
-        }  
-        return true;
-    }
 
     private boolean validRentedBook(){
         String rentedBook = rentedBookField.getText();
@@ -412,7 +403,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     }
     
     public Renter getRenterInfo(){
-        if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity() || !validID()){
+        if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
             return null;
         }
         try{
@@ -422,7 +413,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             dateString = DateFomatterUtil.valueToString(dateValue);
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
-            renter.setId(idField.getText().trim());
+            renter.setCodeByID();
             renter.setRentedBook(rentedBookField.getText().trim());
             renter.setType(typeString.trim());
             renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
@@ -453,7 +444,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     public void showRenter(Renter renter){
         firstNameField.setText(renter.getFirstName());
         nameField.setText(renter.getName());
-        idField.setText(renter.getId());
+        idField.setText(renter.getCode());
         rentedBookField.setText(renter.getRentedBook());
         quantityField.setText("" + renter.getQuantity());
         expiredDateField.setText(renter.getExpiredDate());

@@ -60,10 +60,9 @@ public class RenterDao {
     
     public void editRenter(Renter r){
         for(int i = 0; i < listRenter.size(); i++){
-            if(Objects.equals(listRenter.get(i).getId(), r.getId())){
+            if(Objects.equals(listRenter.get(i).getCode(), r.getCode())){
                 listRenter.get(i).setFirstName(r.getFirstName());
                 listRenter.get(i).setName(r.getName());
-                listRenter.get(i).setId(r.getId());
                 listRenter.get(i).setRentedBook(r.getRentedBook());
                 listRenter.get(i).setType(r.getType());
                 listRenter.get(i).setQuantity(r.getQuantity());
@@ -76,7 +75,7 @@ public class RenterDao {
     public boolean delete(Renter r){
         boolean check = false;
         for(int i = 0; i < listRenter.size(); i++){
-            if(Objects.equals(listRenter.get(i).getId(), r.getId())){
+            if(Objects.equals(listRenter.get(i).getCode(), r.getCode())){
                 r = listRenter.get(i);
                 check = true;
                 break;
