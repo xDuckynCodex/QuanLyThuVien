@@ -334,8 +334,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
                 } else {
                     break;
                 }
-            }
-            
+            } 
             if(row >= 0){
                 firstNameField.setText(table.getModel().getValueAt(row, 1).toString());
                 nameField.setText(table.getModel().getValueAt(row, 2).toString());
@@ -426,6 +425,39 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         return true;
     }
     
+    public boolean checkPublication(){
+        List<Publication> list = pubDao.getListPublication();
+        for(Publication p : list){
+            if(!rentedBookField.getText().equals(p.getName())){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean checkQuantityToRent(){
+        List<Publication> list = pubDao.getListPublication();
+        for(Publication p : list){
+            if(rentedBookField.getText().equals(p.getName())){
+                if(Integer.parseInt(quantityField.getText()) - p.getQuantity() > 0){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    public Integer quantityLeft(){
+        int count = 0;
+        List<Publication> list = pubDao.getListPublication();
+        for(Publication p : list){
+            if(rentedBookField.getText().equals(p.getName())){
+                count = p.getQuantity() - Integer.parseInt(quantityField.getText());
+            }
+        }
+        return count;
+    }
+    
     public Renter getRenterInfo(){
         if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
             return null;
@@ -510,6 +542,10 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     
     public void addFillRenterFromSelectedRow(ListSelectionListener listener) {
         table.getSelectionModel().addListSelectionListener(listener);
+    }
+    
+    public void addFillBookFromSelectedRow(ListSelectionListener listener){
+        tablePub.getSelectionModel().addListSelectionListener(listener);
     }
     
     public void addRentedBookFieldSearch(DocumentListener listener){
