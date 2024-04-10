@@ -62,6 +62,7 @@ public class RenterController {
     public void showRenterView(){
         renterView.setVisible(true);
         renterView.showListRenter(renterDao.getListRenter());
+        renterView.clear();
     }
     
     class AddRenterListener implements ActionListener{

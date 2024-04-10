@@ -34,6 +34,12 @@ public class RenterDao {
         if(listRenter == null){
             listRenter = new ArrayList<Renter>();
         }
+        //set id for th
+        if (listRenter.isEmpty()) {
+            Renter.setId(0);
+        } else {
+            Renter.setId(Integer.parseInt(listRenter.getLast().getCode().substring(1)));
+        }
     }
     
     public void writeListRenter(List<Renter> renter) {
@@ -136,8 +142,7 @@ public class RenterDao {
             }
         }
         return count;
-    } 
-    
+    }
     public Integer countNewspaper(){
         int count = 0;
         for(Renter r : listRenter){

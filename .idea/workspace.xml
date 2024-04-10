@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="commit to merge">
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="adjust GridCards in ManageView">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DropDown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DropDown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/InputField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/TableStatistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/TableStatistic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Publication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="quanlythuvien/phongnq" />
+    <option name="BRANCH" value="quanlythuvien/master" />
     <option name="OPTIONS">
       <set>
         <option value="SQUASH" />
@@ -82,6 +79,7 @@
     "Application.ManagerController.executor": "Debug",
     "Application.ManagerView.executor": "Run",
     "Application.MangeView.executor": "Run",
+    "Application.RenterController.executor": "Run",
     "Application.RootController.executor": "Run",
     "Application.TableStatistic.executor": "Run",
     "Application.View.executor": "Run",
@@ -134,8 +132,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InfoController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.InfoController" />
+    <configuration name="ManageController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.ManageController" />
       <module name="QuanLyThuVien" />
       <extension name="coverage">
         <pattern>
@@ -147,8 +145,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManageController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.ManageController" />
+    <configuration name="RenterController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.RenterController" />
       <module name="QuanLyThuVien" />
       <extension name="coverage">
         <pattern>
@@ -176,10 +174,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.RenterController" />
         <item itemvalue="Application.TableStatistic" />
         <item itemvalue="Application.AdminController" />
         <item itemvalue="Application.ManageController" />
-        <item itemvalue="Application.InfoController" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +329,31 @@
       <option name="project" value="LOCAL" />
       <updated>1712475511555</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix">
+      <option name="closed" value="true" />
+      <created>1712602283819</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1712602283819</updated>
+    </task>
+    <task id="LOCAL-00019" summary="09/04/2024">
+      <option name="closed" value="true" />
+      <created>1712644815263</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1712644815263</updated>
+    </task>
+    <task id="LOCAL-00020" summary="adjust GridCards in ManageView">
+      <option name="closed" value="true" />
+      <created>1712652779043</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1712652779043</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -363,7 +385,10 @@
     <MESSAGE value="handle all event in InfoView" />
     <MESSAGE value="add RenterController to AdminController &#10;add button swap two views" />
     <MESSAGE value="commit to merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit to merge" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="09/04/2024" />
+    <MESSAGE value="adjust GridCards in ManageView" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjust GridCards in ManageView" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -372,11 +397,6 @@
           <properties class="javax.xml.bind.UnmarshalException" package="javax.xml.bind" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

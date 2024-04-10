@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<renters/>
+<renters>
+    <renter>
+        <code>R000001</code>
+        <expiredDate>02/04/2024</expiredDate>
+        <firstName>kjhgh</firstName>
+        <name>kjh</name>
+        <quantity>1</quantity>
+        <rentedBook>Anh 1</rentedBook>
+        <type>Book</type>
+    </renter>
+</renters>
