@@ -69,10 +69,6 @@ public class RenterDao {
             if(Objects.equals(listRenter.get(i).getCode(), r.getCode())){
                 listRenter.get(i).setFirstName(r.getFirstName());
                 listRenter.get(i).setName(r.getName());
-                listRenter.get(i).setRentedBook(r.getRentedBook());
-                listRenter.get(i).setType(r.getType());
-                listRenter.get(i).setQuantity(r.getQuantity());
-                listRenter.get(i).setExpiredDate(r.getExpiredDate());
             }
         }
         writeListRenter(listRenter);
@@ -108,42 +104,20 @@ public class RenterDao {
     }
     
     public Integer countBook(){
-        int count = 0;
-        for(Renter r : listRenter){
-            if("Book".equals(r.getType())){
-                count += r.getQuantity();
-            }
-        } 
-        return count;
+        return 0;
     }
     
     public Integer countMagazine(){
-        int count = 0;
-        for(Renter r : listRenter){
-            if("Magazine".equals(r.getType())){
-                count += r.getQuantity();
-            }
-        }
-        return count;
+        return 0;
     } 
     
     public Integer countNovel(){
-        int count = 0;
-        for(Renter r : listRenter){
-            if("Novel".equals(r.getType())){
-                count += r.getQuantity();
-            }
-        }
-        return count;
+        return 0;
+
     }
     public Integer countNewspaper(){
-        int count = 0;
-        for(Renter r : listRenter){
-            if("Newspaper".equals(r.getType())){
-                count += r.getQuantity();
-            }
-        }
-        return count;
+        return 0;
+
     }
     
     public List<Renter> getListRenter(){
