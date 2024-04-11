@@ -74,7 +74,7 @@ public class AdminController {
         
         infoView.setRenterView(renterView);
         infoView.setRenterDao(renterDao);
-        infoView.setPublicationDao(publicationDao);
+
         
         manageView.setGridCards(gridCards);
         manageView.setTs(ts);

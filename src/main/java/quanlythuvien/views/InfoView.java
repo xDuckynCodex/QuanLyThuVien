@@ -35,9 +35,10 @@ public class InfoView extends JFrame {
     private GridCards gridCards;
     private PublicationDao publicationDao;
 
-    public void setPublicationDao(PublicationDao publicationDao) {
-        this.publicationDao = publicationDao;
+    public Publication getPublication() {
+        return publication;
     }
+    
     private Publication publication;
     private RenterDao renterDao;
 
@@ -231,10 +232,23 @@ public class InfoView extends JFrame {
         }   
     }
 
-    public Publication getInfoPublication() {
+    public Publication getNewInfoPublication() {
         Publication publication = new Publication();
         publication.setName(name.getTextField());
         publication.setCodeById();
+        publication.setAuthor(author.getTextField());
+        publication.setPrice(Double.parseDouble(price.getTextField()));
+        publication.setPublisher(publisher.getTextField());
+        publication.setPublishedDate(datePickerPanel.getDateString());
+        publication.setType(typeMenu.getTypeString());
+        publication.setQuantity(Integer.parseInt(quantity.getTextField()));
+        return publication;
+    }
+
+    public Publication getEditInfoPublication() {
+        Publication publication = new Publication();
+        publication.setName(name.getTextField());
+        publication.setCode(code.getTextField());
         publication.setAuthor(author.getTextField());
         publication.setPrice(Double.parseDouble(price.getTextField()));
         publication.setPublisher(publisher.getTextField());
@@ -264,10 +278,6 @@ public class InfoView extends JFrame {
         addBtn.setEnable(false);
         editBtn.setEnable(true);
         deleteBtn.setEnable(true);
-    }
-    public static void main(String[] args) {
-        InfoView view = new InfoView();
-        view.showInfoView();
     }
 
     public void setAddBtnOnClickListener(ActionListener listener) {

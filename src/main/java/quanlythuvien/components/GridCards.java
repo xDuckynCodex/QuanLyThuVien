@@ -97,6 +97,7 @@ public class GridCards extends JScrollPane {
 
     public void deleteCard(Publication publication) {
         publicationDao.delete(publication);
+        manageView.setTableStatistic();
         this.setCardList(manageView.getSearchField());
     }
 }

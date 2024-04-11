@@ -549,8 +549,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     public void addRentedBookFieldSearch(DocumentListener listener){
         rentedBookField.getDocument().addDocumentListener(listener);
     }
-    
-    
+
 //    public void setRentedBookFieldOnChangeListener(DocumentListener listener){
 //        rentedBookField.getDocument().addDocumentListener(listener);
 //    }

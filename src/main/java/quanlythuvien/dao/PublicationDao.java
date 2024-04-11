@@ -30,7 +30,7 @@ public class PublicationDao {
     public void writeListPub(List<Publication> publications) {
         PublicationXML pubXML = new PublicationXML();
         pubXML.setPublication(publications);
-        List<Publication> existingPublications = readPublication();       
+        List<Publication> existingPublications = readPublication();
         FileUtils.writeXMLtoFile(file_name, pubXML);
     }
     
@@ -52,7 +52,8 @@ public class PublicationDao {
     }
     
     // sua thong tin
-    public void edit(Publication pub) {
+
+    public void edit(Publication pub)  {
         for(int i = 0; i < listPub.size(); i++ ){
             if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
                 listPub.get(i).setName(pub.getName());
@@ -67,28 +68,15 @@ public class PublicationDao {
             writeListPub(listPub);
         
     }
-    
-    // xoa sach
-//    public boolean delete(Publication pub){
-//        boolean check = false;
-//        for(int i = 0; i < listPub.size(); i++){
-//            if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
-//                pub = listPub.get(i);
-//                check = true;
-//                break;
-//            }
-//        }
-//        if(check){
-//            listPub.remove(pub);
-//            writeListPub(listPub);
-//            return true;
-//        }
-//        return false;
-//    }
+
 
     public void delete(Publication pub){
         listPub.remove(pub);
         writeListPub(listPub);
+    }
+
+    public void deleteByCode(String code) {
+
     }
 
     //sap xep theo ten
@@ -113,11 +101,6 @@ public class PublicationDao {
             }
         });
     }
-    
-//    public List<Publication> filter(){
-//        pubFilter = listPub.stream().filter(publication -> publication.getType().equals("Tạp chí")).toList();
-//        return pubFilter;
-//    }
     
     public List<Publication> searchByName(String name){
         List<Publication> searchResult = new ArrayList<Publication>();

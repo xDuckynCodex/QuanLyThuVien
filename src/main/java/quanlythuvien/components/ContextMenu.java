@@ -57,6 +57,7 @@ public class ContextMenu extends JPopupMenu {
         @Override
         public void actionPerformed(ActionEvent e) {
             gridCards.deleteCard(publication);
+
         }
     }
 
