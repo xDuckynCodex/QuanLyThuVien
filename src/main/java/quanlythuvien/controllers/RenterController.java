@@ -69,8 +69,7 @@ public class RenterController {
     
     class AddRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Renter renter = renterView.getRenterInfo();
-            InfoView infoView = new InfoView();
+            Renter renter = renterView.getNewRenterInfo();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
                 renterDao.addRenter(renter);
                 renterView.showRenter(renter);
@@ -83,12 +82,13 @@ public class RenterController {
             } else if(!renterView.checkQuantityToRent()){
                 renterView.showMessage("Không còn đủ sách");
             }
+            manageView.setTableStatistic();
         }
     }
     
     class EditRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Renter renter = renterView.getRenterInfo();
+            Renter renter = renterView.getEditRenterInfo();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
                 renterDao.editRenter(renter);
                 renterView.showRenter(renter);
@@ -101,12 +101,14 @@ public class RenterController {
             } else if(!renterView.checkQuantityToRent()){
                 renterView.showMessage("Không còn đủ sách");
             }
+            manageView.setTableStatistic();
+
         }
     }
 
     class DeleteRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Renter renter = renterView.getRenterInfo();
+            Renter renter = renterView.getEditRenterInfo();
             if(renter != null){
                 renterDao.delete(renter);
                 renterView.showRenter(renter);
@@ -114,6 +116,8 @@ public class RenterController {
                 manageView.setTableStatistic();
                 renterView.showMessage("Xoá thành công");
             }
+            renterView.clear();
+            manageView.setTableStatistic();
         }
     }
 
@@ -173,11 +177,5 @@ public class RenterController {
         public void changedUpdate(DocumentEvent e) {
 
         }
-    }
-    
-    public static void main(String[] args){
-        RenterView rv = new RenterView();
-        RenterController rc = new RenterController(rv);
-        rc.showRenterView();
     }
 }

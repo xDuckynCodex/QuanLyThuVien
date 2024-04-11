@@ -458,15 +458,16 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         return count;
     }
     
-    public Renter getRenterInfo(){
+    public Renter getNewRenterInfo(){
         if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
             return null;
         }
         try{
             Renter renter = new Renter();
-            
+
             dateValue = (Date) datePicker.getModel().getValue();
             dateString = DateFomatterUtil.valueToString(dateValue);
+
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCodeByID();
@@ -475,6 +476,32 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
             renter.setExpiredDate(dateString);
             return renter;
+
+        } catch (Exception e){
+            showMessage(e.getMessage());
+        }
+        return null;
+    }
+
+    public Renter getEditRenterInfo(){
+        if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
+            return null;
+        }
+        try{
+            Renter renter = new Renter();
+
+            dateValue = (Date) datePicker.getModel().getValue();
+            dateString = DateFomatterUtil.valueToString(dateValue);
+
+            renter.setFirstName(firstNameField.getText().trim());
+            renter.setName(nameField.getText().trim());
+            renter.setCode(idField.getText().trim());
+            renter.setRentedBook(rentedBookField.getText().trim());
+            renter.setType(typeString.trim());
+            renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
+            renter.setExpiredDate(dateString);
+            return renter;
+
         } catch (Exception e){
             showMessage(e.getMessage());
         }

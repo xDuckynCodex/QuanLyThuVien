@@ -78,21 +78,14 @@ public class RenterDao {
         writeListRenter(listRenter);
     }
     
-    public boolean delete(Renter r){
-        boolean check = false;
+    public void delete(Renter r){
         for(int i = 0; i < listRenter.size(); i++){
-            if(listRenter.get(i).getName().equals(r.getName())){
-                r = listRenter.get(i);
-                check = true;
+            if(listRenter.get(i).getCode().equals(r.getCode())){
+                listRenter.remove(i);
+                writeListRenter(listRenter);
                 break;
             }
         }
-        if(check){
-            listRenter.remove(r);
-            writeListRenter(listRenter);
-            return true;
-        }
-        return false;
     }
     
     public void sortByName(){

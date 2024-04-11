@@ -59,10 +59,10 @@ public class TableStatistic extends JScrollPane {
         dataStatistic[2][2] = String.valueOf(renterDao.countNovel());
         dataStatistic[3][2] = String.valueOf(renterDao.countNewspaper());
 
-        dataStatistic[0][3] = String.valueOf(pubDao.countBook() );
+        dataStatistic[0][3] = String.valueOf(pubDao.countBook());
         dataStatistic[1][3] = String.valueOf(pubDao.countMagazine());
-        dataStatistic[2][3] = String.valueOf(pubDao.countNovel() );
-        dataStatistic[3][3] = String.valueOf(pubDao.countNewspaper() );
+        dataStatistic[2][3] = String.valueOf(pubDao.countNovel());
+        dataStatistic[3][3] = String.valueOf(pubDao.countNewspaper());
 
         tableStatistic.setModel(new DefaultTableModel(dataStatistic, columnStatistic));
 
