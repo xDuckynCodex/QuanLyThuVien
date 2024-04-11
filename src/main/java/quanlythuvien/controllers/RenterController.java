@@ -76,7 +76,7 @@ public class RenterController {
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
                 renterView.clear();
-                infoView.updatePublication();
+                manageView.setTableStatistic();
                 renterView.showMessage("Thêm thành công");
             } else if(!renterView.checkPublication()){
                 renterView.showMessage("Sách không có trong thư viện");
@@ -94,6 +94,7 @@ public class RenterController {
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
                 renterView.clear();
+                manageView.setTableStatistic();
                 renterView.showMessage("Cập nhật thành công");
             } else if(!renterView.checkPublication()){
                 renterView.showMessage("Sách không có trong thư viện");
@@ -110,6 +111,7 @@ public class RenterController {
                 renterDao.delete(renter);
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
+                manageView.setTableStatistic();
                 renterView.showMessage("Xoá thành công");
             }
         }

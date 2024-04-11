@@ -204,9 +204,11 @@ public class InfoView extends JFrame {
         typeMenu.setType(publication.getType());
         this.setVisible(true);
     }
+    
     public void setPublication(Publication publication) {
         this.publication = publication;
     }
+    
     public void showInfoView() {
         this.setVisible(true);
     }
