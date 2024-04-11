@@ -32,12 +32,12 @@ import quanlythuvien.utils.DateFomatterUtil;
  * @author Admin
  */
 public class RenterView extends JFrame implements ActionListener, ListSelectionListener {
+    public void setPublicationDao(PublicationDao publicationDao) {
+        this.publicationDao = publicationDao;
+    }
+    //data
+    private PublicationDao publicationDao;
     // button
-    Publication pub = new Publication();
-    PublicationDao pubDao = new PublicationDao();
-    Renter renter = new Renter();
-    RenterDao renterDao = new RenterDao();
-
     private JButton addRenterBtn;
     private JButton editRenterBtn;
     private JButton deleteRenterBtn;
@@ -277,7 +277,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     }
     
     public void showResultView(String searchText){
-        List<Publication> list = pubDao.searchByName(searchText);
+        List<Publication> list = publicationDao.searchByName(searchText);
         Object [][] rentedBookTable = new Object[list.size()][1];
         for(int i = 0; i < list.size(); i++){
             rentedBookTable[i][0] = list.get(i).getName();
@@ -426,7 +426,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     }
     
     public boolean checkPublication(){
-        List<Publication> list = pubDao.getListPublication();
+        List<Publication> list = publicationDao.getListPublication();
         for(Publication p : list){
             if(!rentedBookField.getText().equals(p.getName())){
                 return false;
@@ -436,7 +436,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     }
     
     public boolean checkQuantityToRent(){
-        List<Publication> list = pubDao.getListPublication();
+        List<Publication> list = publicationDao.getListPublication();
         for(Publication p : list){
             if(rentedBookField.getText().equals(p.getName())){
                 if(Integer.parseInt(quantityField.getText()) - p.getQuantity() > 0){
@@ -449,7 +449,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     
     public Integer quantityLeft(){
         int count = 0;
-        List<Publication> list = pubDao.getListPublication();
+        List<Publication> list = publicationDao.getListPublication();
         for(Publication p : list){
             if(rentedBookField.getText().equals(p.getName())){
                 count = p.getQuantity() - Integer.parseInt(quantityField.getText());
@@ -458,15 +458,16 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         return count;
     }
     
-    public Renter getRenterInfo(){
+    public Renter getNewRenterInfo(){
         if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
             return null;
         }
         try{
             Renter renter = new Renter();
-            
+
             dateValue = (Date) datePicker.getModel().getValue();
             dateString = DateFomatterUtil.valueToString(dateValue);
+
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCodeByID();
@@ -475,6 +476,32 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
             renter.setExpiredDate(dateString);
             return renter;
+
+        } catch (Exception e){
+            showMessage(e.getMessage());
+        }
+        return null;
+    }
+
+    public Renter getEditRenterInfo(){
+        if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
+            return null;
+        }
+        try{
+            Renter renter = new Renter();
+
+            dateValue = (Date) datePicker.getModel().getValue();
+            dateString = DateFomatterUtil.valueToString(dateValue);
+
+            renter.setFirstName(firstNameField.getText().trim());
+            renter.setName(nameField.getText().trim());
+            renter.setCode(idField.getText().trim());
+            renter.setRentedBook(rentedBookField.getText().trim());
+            renter.setType(typeString.trim());
+            renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
+            renter.setExpiredDate(dateString);
+            return renter;
+
         } catch (Exception e){
             showMessage(e.getMessage());
         }

@@ -24,7 +24,6 @@ public class AdminController {
     private RenterView renterView;
     //Component
     private GridCards gridCards;
-    TableStatistic ts;
 
     // controller
     private ManageController manageController;
@@ -77,7 +76,8 @@ public class AdminController {
 
         
         manageView.setGridCards(gridCards);
-        manageView.setTs(ts);
+
+        renterView.setPublicationDao(publicationDao);
     }
 
     public void showLoginView() {
