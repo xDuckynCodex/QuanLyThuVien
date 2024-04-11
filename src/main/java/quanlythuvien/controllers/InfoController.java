@@ -8,7 +8,7 @@ import quanlythuvien.views.InfoView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
+
 import quanlythuvien.components.TableStatistic;
 import quanlythuvien.views.ManageView;
 
@@ -87,7 +87,7 @@ public class InfoController {
         @Override 
         public void actionPerformed(ActionEvent e) {
             //Handler add event
-            Publication publication = infoView.getInfoPublication();
+            Publication publication = infoView.getNewInfoPublication();
             publicationDao.add(publication);
             //reset gridcards
             gridCards.setCardList();
@@ -103,16 +103,15 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler edit event
-            Publication publication = infoView.getInfoPublication();
-            try {
-                publicationDao.edit(publication);
-                JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
-                //reset gridcards
-                gridCards.setCardList();
-                infoView.dispose();
-            } catch (ParseException ex) {
-                throw new RuntimeException(ex);
-            }
+            Publication publication = infoView.getEditInfoPublication();
+            publicationDao.edit(publication);
+
+            //reset gridcards
+            gridCards.setCardList();
+            manageView.setTableStatistic();
+            infoView.dispose();
+
+            JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
         }
     }
 
@@ -120,6 +119,15 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler delete event
+            publicationDao.delete(publication);
+
+            //reset gridcards
+            gridCards.setCardList();
+            manageView.setTableStatistic();
+            infoView.dispose();
+
+            JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
+
         }
     }
 

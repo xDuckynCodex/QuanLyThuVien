@@ -7,7 +7,7 @@
         <price>1000.0</price>
         <publishedDate>01/04/2024</publishedDate>
         <publisher>HVAN</publisher>
-        <quantity>10</quantity>
+        <quantity>11</quantity>
         <type>Book</type>
     </publication>
     <publication>
@@ -71,16 +71,6 @@
         <type>Book</type>
     </publication>
     <publication>
-        <author>erw</author>
-        <code>P000026</code>
-        <name>rtew</name>
-        <price>1.0</price>
-        <publishedDate>09/04/2024</publishedDate>
-        <publisher>erw</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
         <author>wertyu</author>
         <code>P000027</code>
         <name>qwertyu</name>
@@ -121,63 +111,13 @@
         <type>Book</type>
     </publication>
     <publication>
-        <author>qwdefrgty</author>
+        <author>iop</author>
         <code>P000031</code>
-        <name>wqert45y</name>
+        <name>poi</name>
         <price>1.0</price>
-        <publishedDate>02/04/2024</publishedDate>
-        <publisher>qwedfrgthy</publisher>
+        <publishedDate>11/04/2024</publishedDate>
+        <publisher>iopp</publisher>
         <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>wqe</author>
-        <code>P000032</code>
-        <name>wqer</name>
-        <price>1.0</price>
-        <publishedDate>02/04/2024</publishedDate>
-        <publisher>qwer</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>efrgthj</author>
-        <code>P000033</code>
-        <name>fdgh</name>
-        <price>1.0</price>
-        <publishedDate>02/04/2024</publishedDate>
-        <publisher>wfegrth</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>sfdgfh</author>
-        <code>P000034</code>
-        <name>qwaefsgrdht</name>
-        <price>1.0</price>
-        <publishedDate>09/04/2024</publishedDate>
-        <publisher>wdefrgth</publisher>
-        <quantity>1</quantity>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>HVAN</author>
-        <code>P000020</code>
-        <name>Anh 3</name>
-        <price>1000.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>HVAN</publisher>
-        <quantity>10</quantity>
-        <type>Novel</type>
-    </publication>
-    <publication>
-        <author>HVAN</author>
-        <code>P000022</code>
-        <name>Tiếng Anh Grammar</name>
-        <price>10000.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>HVAN</publisher>
-        <quantity>10</quantity>
         <type>Book</type>
     </publication>
 </publications>

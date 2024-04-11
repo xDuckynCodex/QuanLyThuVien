@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="adjust GridCards in ManageView">
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="fix TableStatistic update when add new Publication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/TableStatistic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/TableStatistic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Renter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Renter.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/InfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/ManageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/ManageView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,35 +68,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "Application.InfoController.executor": "Run",
-    "Application.InfoView.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.ManageController (1).executor": "Run",
-    "Application.ManageController.executor": "Run",
-    "Application.ManagerController.executor": "Debug",
-    "Application.ManagerView.executor": "Run",
-    "Application.MangeView.executor": "Run",
-    "Application.RenterController.executor": "Run",
-    "Application.RootController.executor": "Run",
-    "Application.TableStatistic.executor": "Run",
-    "Application.View.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "platlt",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/phati/Desktop/OOP/QuanLyThuVien/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.tabs"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InfoController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InfoView.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ManageController (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.ManageController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ManagerController.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.ManagerView.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MangeView.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RenterController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RootController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TableStatistic.executor&quot;: &quot;Run&quot;,
+    &quot;Application.View.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;platlt&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/phati/Desktop/OOP/QuanLyThuVien/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images" />
@@ -105,20 +105,7 @@
       <recent name="quanlythuvien.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="AdminController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.AdminController" />
-      <module name="QuanLyThuVien" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="quanlythuvien.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="quanlythuvien.App" />
       <module name="QuanLyThuVien" />
@@ -132,52 +119,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ManageController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.ManageController" />
-      <module name="QuanLyThuVien" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="quanlythuvien.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RenterController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quanlythuvien.controllers.RenterController" />
-      <module name="QuanLyThuVien" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="quanlythuvien.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TableStatistic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="quanlythuvien.components.TableStatistic" />
-      <module name="QuanLyThuVien" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="quanlythuvien.components.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
-        <item itemvalue="Application.RenterController" />
-        <item itemvalue="Application.TableStatistic" />
-        <item itemvalue="Application.AdminController" />
-        <item itemvalue="Application.ManageController" />
       </list>
     </recent_temporary>
   </component>
@@ -353,15 +297,50 @@
       <option name="project" value="LOCAL" />
       <updated>1712652779043</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix TableStatistic update when add new Publication">
+      <option name="closed" value="true" />
+      <created>1712656879944</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1712656879944</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="github/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -388,7 +367,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="09/04/2024" />
     <MESSAGE value="adjust GridCards in ManageView" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjust GridCards in ManageView" />
+    <MESSAGE value="fix TableStatistic update when add new Publication" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix TableStatistic update when add new Publication" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
