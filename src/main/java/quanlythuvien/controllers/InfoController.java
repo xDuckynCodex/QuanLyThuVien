@@ -105,15 +105,13 @@ public class InfoController {
         public void actionPerformed(ActionEvent e) {
             //Handler edit event
             Publication publication = infoView.getInfoPublication();
-            try {
+           
                 publicationDao.edit(publication);
                 JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
                 //reset gridcards
                 gridCards.setCardList();
                 infoView.dispose();
-            } catch (ParseException ex) {
-                throw new RuntimeException(ex);
-            }
+           
         }
     }
 

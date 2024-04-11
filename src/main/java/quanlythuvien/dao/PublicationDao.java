@@ -46,7 +46,7 @@ public class PublicationDao {
     }
     
     // sua thong tin
-    public void edit(Publication pub) throws ParseException {
+    public void edit(Publication pub) {
         for(int i = 0; i < listPub.size(); i++ ){
             if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
                 listPub.get(i).setName(pub.getName());
@@ -58,7 +58,13 @@ public class PublicationDao {
                 listPub.get(i).setPublishedDate(pub.getPublishedDate());
             }
         }
-        writeListPub(listPub);
+        
+        try {
+            writeListPub(listPub);
+
+        } catch (Exception e) {
+            throw e;
+        }
     }
     
     // xoa sach

@@ -8,6 +8,9 @@ import quanlythuvien.utils.FontUtil;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.List;
+import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.Renter;
 
 public class InfoView extends JFrame {
     public InfoView() {
@@ -19,7 +22,11 @@ public class InfoView extends JFrame {
         this.publicationDao = gridCards.getPublicationDao();
         initComponent();
     }
+    RenterView renterView;
 
+    public void setRenterView(RenterView renterView) {
+        this.renterView = renterView;
+    }
     private InputField name, code, publisher, author, quantity, price;
     private ButtonComp addBtn, editBtn, deleteBtn, exitBtn;
     private JLabel title;
@@ -27,7 +34,16 @@ public class InfoView extends JFrame {
     private DropDown typeMenu;
     private GridCards gridCards;
     private PublicationDao publicationDao;
+
+    public void setPublicationDao(PublicationDao publicationDao) {
+        this.publicationDao = publicationDao;
+    }
     private Publication publication;
+    private RenterDao renterDao;
+
+    public void setRenterDao(RenterDao renterDao) {
+        this.renterDao = renterDao;
+    }
     private final int north = 50;
     private final int west = 250;
     public void initComponent() {
@@ -192,6 +208,27 @@ public class InfoView extends JFrame {
     }
     public void showInfoView() {
         this.setVisible(true);
+    }
+    
+    public void updatePublication(){
+//        Publication publication = new Publication();
+//        publication.setName(name.getTextField());
+//        publication.setCodeById();
+//        publication.setAuthor(author.getTextField());
+//        publication.setPrice(Double.parseDouble(price.getTextField()));
+//        publication.setPublisher(publisher.getTextField());
+//        publication.setPublishedDate(datePickerPanel.getDateString());
+//        publication.setType(typeMenu.getTypeString());
+        List<Publication> listP = publicationDao.getListPublication();
+        List<Renter> listR = renterDao.getListRenter();
+        for(Renter r : listR){
+            for(Publication p : listP){
+                if(p.getName().equals(r.getRentedBook())){
+                    p.setQuantity(p.getQuantity() - r.getQuantity());
+                    publicationDao.edit(p);
+                }
+            }
+        }   
     }
 
     public Publication getInfoPublication() {
