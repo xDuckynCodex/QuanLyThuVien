@@ -75,7 +75,6 @@ public class RenterController {
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
                 renterView.clear();
-                manageView.setTableStatistic();
                 renterView.showMessage("Thêm thành công");
             } else if(!renterView.checkPublication()){
                 renterView.showMessage("Sách không có trong thư viện");
@@ -88,8 +87,8 @@ public class RenterController {
     
     class EditRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Renter renter = renterView.getEditRenterInfo();
-            if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
+            Renter renter = renterView.getRenterInfo();
+            if(renter != null){
                 renterDao.editRenter(renter);
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
