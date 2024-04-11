@@ -1,3 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
+    <publication>
+        <author>HVAN</author>
+        <code>P000001</code>
+        <name>Anh</name>
+        <price>5.0</price>
+        <publishedDate>09/04/2024</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>10</quantity>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>HVAN</author>
+        <code>P000002</code>
+        <name>Triết</name>
+        <price>5.0</price>
+        <publishedDate>10/04/2024</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>5</quantity>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>HVAN</author>
+        <code>P000003</code>
+        <name>Trung 1</name>
+        <price>1.0</price>
+        <publishedDate>10/04/2024</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>10</quantity>
+        <type>Book</type>
+    </publication>
 </publications>

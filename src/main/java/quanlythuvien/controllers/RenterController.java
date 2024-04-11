@@ -28,11 +28,9 @@ public class RenterController {
     public void setRenterDao(RenterDao renterDao) {
         this.renterDao = renterDao;
     }
-
     public void setPublicationDao(PublicationDao publicationDao) {
         this.publicationDao = publicationDao;
     }
-
     public void setManageView(ManageView manageView) {
         this.manageView = manageView;
     }
