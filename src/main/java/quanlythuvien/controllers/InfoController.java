@@ -88,6 +88,7 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler edit event
+
             Publication publication = infoView.getEditInfoPublication();
             publicationDao.edit(publication);
 
@@ -104,6 +105,7 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler delete event
+
             publicationDao.delete(publication);
 
             //reset gridcards
@@ -112,7 +114,6 @@ public class InfoController {
             infoView.dispose();
 
             JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
-
         }
     }
 

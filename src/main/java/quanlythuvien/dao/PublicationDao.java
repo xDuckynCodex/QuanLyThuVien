@@ -52,6 +52,7 @@ public class PublicationDao {
     }
     
     // sua thong tin
+
     public void edit(Publication pub)  {
         for(int i = 0; i < listPub.size(); i++ ){
             if(Objects.equals(listPub.get(i).getCode(), pub.getCode())){
@@ -64,7 +65,8 @@ public class PublicationDao {
                 listPub.get(i).setPublishedDate(pub.getPublishedDate());
             }
         }
-        writeListPub(listPub);
+            writeListPub(listPub);
+        
     }
 
 

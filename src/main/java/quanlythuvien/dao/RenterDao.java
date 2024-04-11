@@ -81,7 +81,7 @@ public class RenterDao {
     public boolean delete(Renter r){
         boolean check = false;
         for(int i = 0; i < listRenter.size(); i++){
-            if(Objects.equals(listRenter.get(i).getCode(), r.getCode())){
+            if(listRenter.get(i).getName().equals(r.getName())){
                 r = listRenter.get(i);
                 check = true;
                 break;

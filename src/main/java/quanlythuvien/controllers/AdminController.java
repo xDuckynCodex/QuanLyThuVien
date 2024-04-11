@@ -71,7 +71,11 @@ public class AdminController {
 
         infoController.setGridCards(gridCards);
         infoController.setManageView(manageView);
+        
+        infoView.setRenterView(renterView);
+        infoView.setRenterDao(renterDao);
 
+        
         manageView.setGridCards(gridCards);
         manageView.setTs(ts);
     }

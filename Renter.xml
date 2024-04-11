@@ -2,20 +2,11 @@
 <renters>
     <renter>
         <code>R000001</code>
-        <expiredDate>02/04/2024</expiredDate>
-        <firstName>kjhgh</firstName>
-        <name>kjh</name>
+        <expiredDate>01/04/2024</expiredDate>
+        <firstName>1</firstName>
+        <name>1</name>
         <quantity>1</quantity>
-        <rentedBook>Anh 1</rentedBook>
-        <type>Book</type>
-    </renter>
-    <renter>
-        <code>R000003</code>
-        <expiredDate>10/04/2024</expiredDate>
-        <firstName>ưqefr</firstName>
-        <name>qưee</name>
-        <quantity>1</quantity>
-        <rentedBook>Anh 1</rentedBook>
+        <rentedBook>Anh</rentedBook>
         <type>Book</type>
     </renter>
 </renters>
