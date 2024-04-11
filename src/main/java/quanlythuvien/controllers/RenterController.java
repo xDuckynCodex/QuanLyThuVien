@@ -87,7 +87,7 @@ public class RenterController {
     
     class EditRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Renter renter = renterView.getRenterInfo();
+            Renter renter = renterView.getEditRenterInfo();
             if(renter != null){
                 renterDao.editRenter(renter);
                 renterView.showRenter(renter);
