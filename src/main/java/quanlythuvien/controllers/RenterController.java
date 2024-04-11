@@ -138,7 +138,6 @@ public class RenterController {
     
     class TransferPublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-
             renterView.setVisible(false);
             manageController.showView();
         }
