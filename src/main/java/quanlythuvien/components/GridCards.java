@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GridCards extends JScrollPane {
     JPanel cardPanel;
-    private final int gridColumns = 8;
+    private final int gridColumns = 6;
     private List<Card> cardList;
     private GridLayout layout;
 
@@ -31,7 +31,7 @@ public class GridCards extends JScrollPane {
         this.setCardPanel();
 
         this.setViewportView(cardPanel);
-        this.setPreferredSize(new Dimension(1610, 900));
+        this.setPreferredSize(new Dimension(1350, 900));
         this.getVerticalScrollBar().setUnitIncrement(16);
     }
 

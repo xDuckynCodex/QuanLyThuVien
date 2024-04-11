@@ -22,7 +22,7 @@ public class InfoController {
     
     TableStatistic ts;
     ManageView manageView;
-
+  
     public void setManageView(ManageView manageView) {
         this.manageView = manageView;
     }
@@ -91,10 +91,9 @@ public class InfoController {
             publicationDao.add(publication);
             //reset gridcards
             gridCards.setCardList();
-            publicationDao.readPublication();
-            ts.init(publicationDao.getListPublication());
+            manageView.setTableStatistic();
+
             JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
-            manageView.setTableStatistic(ts);
             //dispose frame
             infoView.dispose();
         }
