@@ -57,20 +57,17 @@ public class ManageView extends JFrame {
         panel.setLayout(layout);
         panel.setSize(1900, 1000);
 
-
-
         //add element to panel
         //component
         panel.add(searchField);
         panel.add(addBtn);
         panel.add(transferBtn);
         panel.add(tableStatistic);
+        
         //label
         panel.add(frameLabel);
-
-
+        
         //set vi tri
-
         //search component
         layout.putConstraint(SpringLayout.WEST, searchField, 350,
                 SpringLayout.WEST, panel);

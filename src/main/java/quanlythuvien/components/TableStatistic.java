@@ -48,24 +48,24 @@ public class TableStatistic extends JScrollPane {
         dataStatistic[2][0] = "Novel";
         dataStatistic[3][0] = "Newspaper";
         dataStatistic[4][0] = "Tổng";
-
-        dataStatistic[0][1] = String.valueOf(pubDao.countBook());
-        dataStatistic[1][1] = String.valueOf(pubDao.countMagazine());
-        dataStatistic[2][1] = String.valueOf(pubDao.countNovel());
-        dataStatistic[3][1] = String.valueOf(pubDao.countNewspaper());
-
+        
+        dataStatistic[0][1] = String.valueOf(pubDao.countBook() - renterDao.countBook());
+        dataStatistic[1][1] = String.valueOf(pubDao.countMagazine() - renterDao.countMagazine());
+        dataStatistic[2][1] = String.valueOf(pubDao.countNovel() - renterDao.countNovel());
+        dataStatistic[3][1] = String.valueOf(pubDao.countNewspaper() - renterDao.countNewspaper());
+        
         dataStatistic[0][2] = String.valueOf(renterDao.countBook());
         dataStatistic[1][2] = String.valueOf(renterDao.countMagazine());
         dataStatistic[2][2] = String.valueOf(renterDao.countNovel());
         dataStatistic[3][2] = String.valueOf(renterDao.countNewspaper());
-
-        dataStatistic[0][3] = String.valueOf(pubDao.countBook() + renterDao.countBook());
-        dataStatistic[1][3] = String.valueOf(pubDao.countMagazine() + renterDao.countMagazine());
-        dataStatistic[2][3] = String.valueOf(pubDao.countNovel() + renterDao.countNovel());
-        dataStatistic[3][3] = String.valueOf(pubDao.countNewspaper() + renterDao.countNewspaper());
-
+        
+        dataStatistic[0][3] = String.valueOf(pubDao.countBook());
+        dataStatistic[1][3] = String.valueOf(pubDao.countMagazine());
+        dataStatistic[2][3] = String.valueOf(pubDao.countNovel());
+        dataStatistic[3][3] = String.valueOf(pubDao.countNewspaper());
+        
         tableStatistic.setModel(new DefaultTableModel(dataStatistic, columnStatistic));
-      
+        
         for(int i = 0; i < 6; i++){
             tableStatistic.setRowHeight(i, 30);
         }
