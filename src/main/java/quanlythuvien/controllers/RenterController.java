@@ -13,6 +13,7 @@ import javax.swing.event.ListSelectionListener;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Renter;
+import quanlythuvien.views.InfoView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
@@ -35,9 +36,10 @@ public class RenterController {
     public void setManageView(ManageView manageView) {
         this.manageView = manageView;
     }
-    
+
     private RenterView renterView;
     private ManageView manageView;
+    private InfoView infoView;
 
     public void setManageController(ManageController manageController) {
         this.manageController = manageController;
@@ -68,12 +70,13 @@ public class RenterController {
     class AddRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getRenterInfo();
+            InfoView infoView = new InfoView();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
                 renterDao.addRenter(renter);
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
                 renterView.clear();
-                
+                manageView.setTableStatistic();
                 renterView.showMessage("Thêm thành công");
             } else if(!renterView.checkPublication()){
                 renterView.showMessage("Sách không có trong thư viện");
@@ -91,6 +94,7 @@ public class RenterController {
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
                 renterView.clear();
+                manageView.setTableStatistic();
                 renterView.showMessage("Cập nhật thành công");
             } else if(!renterView.checkPublication()){
                 renterView.showMessage("Sách không có trong thư viện");
@@ -99,7 +103,7 @@ public class RenterController {
             }
         }
     }
-    
+
     class DeleteRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getRenterInfo();
@@ -107,18 +111,19 @@ public class RenterController {
                 renterDao.delete(renter);
                 renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
+                manageView.setTableStatistic();
                 renterView.showMessage("Xoá thành công");
             }
         }
     }
-    
+
     class FillRenterFromSelectedRowListener implements ListSelectionListener {
         @Override
         public void valueChanged(ListSelectionEvent e) {
             renterView.fillRenterFromSelectedRow();
         }
     }
-    
+
     class FillBookFromSelectedRowListener implements ListSelectionListener{
         public void valueChanged(ListSelectionEvent e){
             renterView.fillBookFromSelectedRow();
@@ -134,6 +139,7 @@ public class RenterController {
     
     class TransferPublicationListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
+
             renterView.setVisible(false);
             manageController.showView();
         }
