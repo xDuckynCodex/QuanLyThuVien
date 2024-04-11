@@ -211,7 +211,7 @@ public class InfoView extends JFrame {
     }
     
     public void updatePublication(){
-//        Publication publication = new Publication();
+        PublicationDao publicationDao = new PublicationDao();
 //        publication.setName(name.getTextField());
 //        publication.setCodeById();
 //        publication.setAuthor(author.getTextField());

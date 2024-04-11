@@ -109,8 +109,8 @@ public class InfoController {
                 JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
                 //reset gridcards
                 gridCards.setCardList();
-                infoView.dispose();
-           
+                manageView.setTableStatistic();
+                infoView.dispose(); 
         }
     }
 
@@ -118,6 +118,7 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler delete event
+            manageView.setTableStatistic();
         }
     }
 

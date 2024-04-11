@@ -338,7 +338,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             if(row >= 0){
                 firstNameField.setText(table.getModel().getValueAt(row, 1).toString());
                 nameField.setText(table.getModel().getValueAt(row, 2).toString());
-                
+                idField.setText(table.getModel().getValueAt(row, 3).toString());
                 rentedBookField.setText(table.getModel().getValueAt(row, 4).toString());
                 typeComboBox.setSelectedIndex(typeIndex);
                 quantityField.setText(table.getModel().getValueAt(row, 6).toString());
@@ -510,8 +510,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         return rentedBookField.getText();
     }
 
-
-
     public String getRentedBookField(){
         return rentedBookField.getText();
     }
@@ -552,9 +550,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         rentedBookField.getDocument().addDocumentListener(listener);
     }
     
-    public String getSearchRentedBookField(){
-        return rentedBookField.getText();
-    }
     
 //    public void setRentedBookFieldOnChangeListener(DocumentListener listener){
 //        rentedBookField.getDocument().addDocumentListener(listener);

@@ -64,13 +64,8 @@ public class PublicationDao {
                 listPub.get(i).setPublishedDate(pub.getPublishedDate());
             }
         }
-        
-        try {
             writeListPub(listPub);
-
-        } catch (Exception e) {
-            throw e;
-        }
+        
     }
     
     // xoa sach
