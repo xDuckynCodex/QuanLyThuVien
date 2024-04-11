@@ -8,7 +8,7 @@ import quanlythuvien.views.InfoView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
+
 import quanlythuvien.components.TableStatistic;
 import quanlythuvien.views.ManageView;
 
@@ -19,8 +19,7 @@ public class InfoController {
     public void setGridCards(GridCards gridCards) {
         this.gridCards = gridCards;
     }
-    
-    TableStatistic ts;
+
     ManageView manageView;
   
     public void setManageView(ManageView manageView) {
@@ -31,14 +30,6 @@ public class InfoController {
     private Publication publication;
     public void setPublication(Publication publication) {
         this.publication = publication;
-    }
-    
-    public TableStatistic getTs() {
-        return ts;
-    }
-
-    public void setTs(TableStatistic ts) {
-        this.ts = ts;
     }
     
     public InfoController() {
@@ -57,11 +48,6 @@ public class InfoController {
         infoView.setEditBtnOnClickListener(new EditClickedListener());
         infoView.setDeleteBtnOnClickListener(new DeleteClickedListener());
         infoView.setExitBtnOnClickListener(new ExitClickedListener());
-    }
-
-    // setter
-    public void setInfoView(InfoView infoView) {
-        this.infoView = infoView;
     }
 
     public void setPublicationDao(PublicationDao publicationDao) {
@@ -83,11 +69,10 @@ public class InfoController {
     }
 
     class AddClickedListener implements ActionListener {
-        TableStatistic ts = new TableStatistic();
         @Override 
         public void actionPerformed(ActionEvent e) {
             //Handler add event
-            Publication publication = infoView.getInfoPublication();
+            Publication publication = infoView.getNewInfoPublication();
             publicationDao.add(publication);
             //reset gridcards
             gridCards.setCardList();
@@ -103,16 +88,15 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler edit event
-            Publication publication = infoView.getInfoPublication();
-            try {
-                publicationDao.edit(publication);
-                JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
-                //reset gridcards
-                gridCards.setCardList();
-                infoView.dispose();
-            } catch (ParseException ex) {
-                throw new RuntimeException(ex);
-            }
+            Publication publication = infoView.getEditInfoPublication();
+            publicationDao.edit(publication);
+
+            //reset gridcards
+            gridCards.setCardList();
+            manageView.setTableStatistic();
+            infoView.dispose();
+
+            JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
         }
     }
 
@@ -120,6 +104,15 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler delete event
+            publicationDao.delete(publication);
+
+            //reset gridcards
+            gridCards.setCardList();
+            manageView.setTableStatistic();
+            infoView.dispose();
+
+            JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
+
         }
     }
 
