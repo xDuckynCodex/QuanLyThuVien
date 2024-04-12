@@ -7,6 +7,7 @@ package quanlythuvien.views;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,7 @@ import net.coderazzi.filters.gui.TableFilterHeader;
 import quanlythuvien.components.DatePickerPanel;
 import quanlythuvien.components.ListRentedBookScroll;
 import quanlythuvien.dao.PublicationDao;
+import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.entities.RentedBook;
 import quanlythuvien.entities.Renter;
@@ -65,6 +67,7 @@ public class RenterView extends JFrame {
     private JButton addBookBtn;
     private JButton removeBookBtn;
     
+    private InfoView infoView;
     // label
     private JLabel firstNameLabel;
     private JLabel nameLabel;
@@ -358,10 +361,7 @@ public class RenterView extends JFrame {
     public void fillRenterFromSelectedRow(){
         int row = renterTable.getSelectedRow();
         if (row != -1) {
-            Renter renter =
-                    renterDao.getByCode(renterTable.getModel().getValueAt(row
-                            , 3).toString());
-
+            Renter renter = renterDao.getByCode(renterTable.getModel().getValueAt(row, 3).toString());
             firstNameField.setText(renter.getFirstName());
             nameField.setText(renter.getName());
             codeField.setText(renter.getCode());
@@ -371,7 +371,6 @@ public class RenterView extends JFrame {
             deleteRenterBtn.setEnabled(true);
             editRenterBtn.setEnabled(true);
             addRenterBtn.setEnabled(false);
-
         }
     }
     public void showMessage(String message){
@@ -421,7 +420,6 @@ public class RenterView extends JFrame {
         return true;
     }
     
-<<<<<<< HEAD
     public boolean checkPublication(){
         List<Publication> list = publicationDao.getListPublication();
         for(Publication p : list){
@@ -431,9 +429,7 @@ public class RenterView extends JFrame {
         }
         return false;
     }
-    
-=======
->>>>>>> origin/master
+
     public boolean checkQuantityToRent(){
         List<Publication> list = publicationDao.getListPublication();
         for(Publication p : list){
@@ -455,6 +451,28 @@ public class RenterView extends JFrame {
             }
         }
         return count;
+    }
+    
+    public boolean checkDate(){
+        infoView = new InfoView();
+        String ngayhh = datePickerPanel.getDateString();
+        String ngayxb = infoView.getDatePickerPanel().getDateString();
+        String[] expiredDate = ngayhh.split("/");
+        String[] publishedDate = ngayxb.split("/");
+        
+        int ngayHH = Integer.parseInt(expiredDate[0]);
+        int thangHH = Integer.parseInt(expiredDate[1]);
+        int namHH = Integer.parseInt(expiredDate[2]);
+        
+        int ngayXB = Integer.parseInt(publishedDate[0]);
+        int thangXB = Integer.parseInt(publishedDate[1]);
+        int namXB = Integer.parseInt(publishedDate[2]);
+        
+        if (namHH > namXB || (namHH == namXB && thangHH > thangXB) || (namHH == namXB && thangHH == thangXB && ngayHH > ngayXB)) {
+            return true;
+        } else {
+            return false;
+        }   
     }
     
     public Renter getNewRenterInfo(){

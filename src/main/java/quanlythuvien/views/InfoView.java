@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.List;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.RentedBook;
 import quanlythuvien.entities.Renter;
 
 public class InfoView extends JFrame {
@@ -31,9 +32,14 @@ public class InfoView extends JFrame {
     private ButtonComp addBtn, editBtn, deleteBtn, exitBtn;
     private JLabel title;
     private DatePickerPanel datePickerPanel;
+
+    public DatePickerPanel getDatePickerPanel() {
+        return datePickerPanel;
+    }
     private DropDown typeMenu;
     private GridCards gridCards;
     private PublicationDao publicationDao;
+    private RentedBook rentedBook;
 
     public Publication getPublication() {
         return publication;
@@ -223,23 +229,20 @@ public class InfoView extends JFrame {
     public void showInfoView() {
         this.setVisible(true);
     }
-<<<<<<< HEAD
-    
+   
     public void updatePublication(){
         PublicationDao publicationDao = new PublicationDao();
         RenterDao renterDao = new RenterDao();
+        RentedBook rentedBook = new RentedBook();
         List<Publication> listP = publicationDao.getListPublication();
         List<Renter> listR = renterDao.getListRenter();
         for(Renter r : listR){
-            if(publication.getName().equals(r.getRentedBook())){    
-                int n = publication.getQuantity() - r.getQuantity();
+            if(publication.getName().equals(r.getRentedBookList())){    
+                int n = publication.getQuantity() - rentedBook.getQuantity();
                 publication.setQuantity(n); 
             }
         }   
     }
-=======
-
->>>>>>> origin/master
 
     public Publication getNewInfoPublication() {
         if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
