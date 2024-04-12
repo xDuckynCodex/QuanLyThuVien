@@ -100,11 +100,20 @@ public class PublicationDao {
             }
         });
     }
+
+    public Publication searchByCode(String code) {
+        for (Publication p : listPub) {
+            if (Objects.equals(p.getCode(), code)) {
+                return p;
+            }
+        }
+        return null;
+    }
     
     public List<Publication> searchByName(String name){
         List<Publication> searchResult = new ArrayList<Publication>();
         for(int i = 0; i < listPub.size(); i++){
-            if(listPub.get(i).getName().contains(name)) {
+            if(listPub.get(i).getName().contains(name) || listPub.get(i).getName().toLowerCase(Locale.ROOT).contains(name)) {
                 searchResult.add(listPub.get(i));
             }
         }

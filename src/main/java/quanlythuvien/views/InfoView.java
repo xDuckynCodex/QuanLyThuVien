@@ -69,7 +69,7 @@ public class InfoView extends JFrame {
         quantity = new InputField("Số lượng");
         price = new InputField("Giá sản phẩm");
 
-        datePickerPanel = new DatePickerPanel();
+        datePickerPanel = new DatePickerPanel("Ngày xuât bản");
         typeMenu = new DropDown();
         //button
         addBtn = new ButtonComp("Thêm");
@@ -223,6 +223,7 @@ public class InfoView extends JFrame {
     public void showInfoView() {
         this.setVisible(true);
     }
+<<<<<<< HEAD
     
     public void updatePublication(){
         PublicationDao publicationDao = new PublicationDao();
@@ -236,6 +237,9 @@ public class InfoView extends JFrame {
             }
         }   
     }
+=======
+
+>>>>>>> origin/master
 
     public Publication getNewInfoPublication() {
         if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
