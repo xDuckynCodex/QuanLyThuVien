@@ -74,10 +74,10 @@ public class AdminController {
         infoView.setRenterView(renterView);
         infoView.setRenterDao(renterDao);
 
-        
         manageView.setGridCards(gridCards);
 
         renterView.setPublicationDao(publicationDao);
+        renterView.setRenterDao(renterDao);
     }
 
     public void showLoginView() {

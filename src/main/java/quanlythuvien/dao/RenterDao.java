@@ -119,6 +119,15 @@ public class RenterDao {
         return 0;
 
     }
+
+    public Renter getByCode(String code) {
+        for (Renter r : listRenter) {
+            if (Objects.equals(code, r.getCode())) {
+                return r;
+            }
+        }
+        return null;
+    }
     
     public List<Renter> getListRenter(){
         return listRenter;

@@ -30,4 +30,14 @@
         <quantity>10</quantity>
         <type>Book</type>
     </publication>
+    <publication>
+        <author>qq</author>
+        <code>P000004</code>
+        <name>qweqqq</name>
+        <price>1.0</price>
+        <publishedDate>13/04/2024</publishedDate>
+        <publisher>qweeqq</publisher>
+        <quantity>10</quantity>
+        <type>Book</type>
+    </publication>
 </publications>

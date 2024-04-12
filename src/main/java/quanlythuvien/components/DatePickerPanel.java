@@ -15,20 +15,23 @@ public class DatePickerPanel extends JPanel {
     public DatePickerPanel() {
         initComponent();
     }
+    public DatePickerPanel(String label) {
+        initComponent();
+        dateLabel = new JLabel(label);
+        this.add(dateLabel);
+    }
 
-    public UtilDateModel dateModel;
-    public JDatePanelImpl datePanel;
-    public JDatePickerImpl datePicker;
+    private UtilDateModel dateModel;
+    private JDatePanelImpl datePanel;
+    private JDatePickerImpl datePicker;
     private JLabel dateLabel;
     public Date date;
     public void initComponent() {
         dateModel = new UtilDateModel();
         datePanel = new JDatePanelImpl(dateModel);
         datePicker = new JDatePickerImpl(datePanel);
-        dateLabel = new JLabel("Ngày xuất bản");
         this.setLayout(new FlowLayout());
 
-        this.add(dateLabel);
         this.add(datePicker);
     }
 

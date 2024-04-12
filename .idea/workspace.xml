@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="update resultTable in RenterView">
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ListRentedBookScroll.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/RentedBook.java" afterDir="false" />
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="Renter can rent more than one publication">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Renter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Renter.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ButtonComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ButtonComp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ListRentedBookScroll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ListRentedBookScroll.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RenterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/PublicationDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/RenterDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/RenterDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Renter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/entities/Renter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" afterDir="false" />
     </list>
@@ -31,13 +31,6 @@
   </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="quanlythuvien/master" />
-    <option name="OPTIONS">
-      <set>
-        <option value="SQUASH" />
-      </set>
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
     <option name="OPTIONS">
       <set>
         <option value="SQUASH" />
@@ -364,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712818081784</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Renter can rent more than one publication">
+      <option name="closed" value="true" />
+      <created>1712868203021</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1712868203021</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -406,7 +407,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tạo file cần thực hiện" />
     <MESSAGE value="ManagerView done" />
     <MESSAGE value="ManagerView add method" />
     <MESSAGE value="99%" />
@@ -431,7 +431,8 @@
     <MESSAGE value="merge from master" />
     <MESSAGE value="fix in RenterView" />
     <MESSAGE value="update resultTable in RenterView" />
-    <option name="LAST_COMMIT_MESSAGE" value="update resultTable in RenterView" />
+    <MESSAGE value="Renter can rent more than one publication" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renter can rent more than one publication" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
