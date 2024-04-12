@@ -47,6 +47,7 @@ public class RenterController {
     public RenterController(RenterView view){
         this.renterView = view;
 //        view.hideTablePub();
+
         view.addAddRenterListener(new AddNewRenterListener());
         view.addEditRenterListener(new EditRenterListener());
         view.addDeleteRenterListener(new DeleteRenterListener());
@@ -57,7 +58,7 @@ public class RenterController {
         view.addTransferPublicationListener(new TransferPublicationListener());
         view.addRentedBookFieldSearch(new RentedBookSearchListener());
         view.addNewBookToRentedBookList(new NewBookToRentedBookList());
-
+        view.addRemoveBookInRentedBookList(new RemoveBookInRentedBookList());
     }
     
     public void showRenterView(){
@@ -72,13 +73,14 @@ public class RenterController {
             if(renter != null){
                 renterDao.addRenter(renter);
 //                renterView.showRenter(renter);
-//                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showListRenter(renterDao.getListRenter());
 
                 renterView.clear();
                 renterView.showMessage("Thêm thành công");
             }
             manageView.setTableStatistic();
             renterView.setRentedBookList(new ArrayList<>());
+            renterView.setListToListRentedBookScroll();
         }
     }
 
@@ -89,7 +91,6 @@ public class RenterController {
             Renter renter = renterView.getEditRenterInfo();
             if(renter != null){
                 renterDao.editRenter(renter);
-                renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
                 renterView.clear();
                 manageView.setTableStatistic();
@@ -105,7 +106,6 @@ public class RenterController {
             Renter renter = renterView.getEditRenterInfo();
             if(renter != null){
                 renterDao.delete(renter);
-                renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
                 manageView.setTableStatistic();
                 renterView.showMessage("Xoá thành công");
@@ -179,6 +179,17 @@ public class RenterController {
             renterView.addBookToRentedBookList(renterView.getRentedBookInfo());
             renterView.setListToListRentedBookScroll();
             renterView.clearBook();
+        }
+    }
+
+    class RemoveBookInRentedBookList implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            renterView.removeBookInRentedBook();
+            renterView.setListToListRentedBookScroll();
+            renterView.clearBook();
+            renterView.setEnableRemoveBookBtn(false);
         }
     }
 }

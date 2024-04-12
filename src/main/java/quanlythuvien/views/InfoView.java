@@ -61,7 +61,7 @@ public class InfoView extends JFrame {
         quantity = new InputField("Số lượng");
         price = new InputField("Giá sản phẩm");
 
-        datePickerPanel = new DatePickerPanel();
+        datePickerPanel = new DatePickerPanel("Ngày xuât bản");
         typeMenu = new DropDown();
         //button
         addBtn = new ButtonComp("Thêm");

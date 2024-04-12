@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<renters/>
+<renters>
+    <renter>
+        <code>R000001</code>
+        <firstName>Le</firstName>
+        <name>Phat</name>
+    </renter>
+</renters>
