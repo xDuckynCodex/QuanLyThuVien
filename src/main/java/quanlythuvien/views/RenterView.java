@@ -22,7 +22,6 @@ import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
 import quanlythuvien.dao.PublicationDao;
-import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.entities.Renter;
 import quanlythuvien.utils.DateFomatterUtil;
@@ -101,6 +100,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         sortByNameRenterBtn = new JButton("Sắp xếp theo tên");
         clearBtn = new JButton("Xoá");
         transferBtn = new JButton("Chuyển");
+        
         
         //date time picker
         dateModel = new UtilDateModel();
@@ -421,6 +421,9 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             rentedBookField.requestFocus();
             showMessage("Không được bỏ trống");
             return false;
+        } else if(Integer.parseInt(quantity) <= 0) {
+            showMessage("Số lượng không hợp lệ");
+            return false;
         }
         return true;
     }
@@ -429,10 +432,10 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         List<Publication> list = publicationDao.getListPublication();
         for(Publication p : list){
             if(!rentedBookField.getText().equals(p.getName())){
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     
     public boolean checkQuantityToRent(){

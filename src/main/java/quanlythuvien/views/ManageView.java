@@ -10,7 +10,10 @@ import quanlythuvien.dao.PublicationDao;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.util.List;
 import java.awt.event.ActionListener;
+import quanlythuvien.entities.Publication;
+
 
 public class ManageView extends JFrame {
     public void setGridCards(GridCards gridCards) {
@@ -34,11 +37,18 @@ public class ManageView extends JFrame {
     private GridCards gridCards;
     private InputField searchField;
     private ButtonComp addBtn;
+    private JButton filterBtn;
 
     private ButtonComp transferBtn;
     private PublicationDao publicationDao;
+    
+    private JComboBox typeSelection;
+    private String typeString;
+    private String[] types = {"Choose type", "Book", "Magazine", "Novel", "Newspapers"};
 
     private JLabel frameLabel;
+    
+    PublicationDao pubDao = new PublicationDao();
     public void initComponent() {
         searchField = new InputField("Tìm kiếm ấn phẩm: ", 20);
         frameLabel = new JLabel("Quản lý ấn phẩm");
@@ -48,7 +58,12 @@ public class ManageView extends JFrame {
         addBtn = new ButtonComp("Thêm ấn phẩm");
         transferBtn = new ButtonComp("Chuyển trang quản lý khách " +
                 "hàng");
+        filterBtn = new JButton("Lọc");
         tableStatistic = new TableStatistic();
+        
+        
+        typeSelection = new JComboBox(types);
+//        typeString = String.valueOf(typeSelection.getItemAt(typeSelection.getSelectedIndex()));
 
         //layout giao dien
         layout = new SpringLayout();
@@ -62,7 +77,11 @@ public class ManageView extends JFrame {
         panel.add(addBtn);
         panel.add(transferBtn);
         panel.add(tableStatistic);
+        panel.add(filterBtn);
         
+        // select type
+        panel.add(typeSelection);
+       
         //label
         panel.add(frameLabel);
         
@@ -72,32 +91,64 @@ public class ManageView extends JFrame {
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, searchField, 75,
                 SpringLayout.NORTH, panel);
-        //addBtn
+        
+        // select type component
+        layout.putConstraint(SpringLayout.WEST, typeSelection, 1000,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, typeSelection, 73,
+                SpringLayout.NORTH, panel);
+        
+        //addBtn and filterBtn
         layout.putConstraint(SpringLayout.WEST, addBtn, 780,
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, addBtn, 73,
                 SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, addBtn, 780,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, addBtn, 73,
+                SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, filterBtn, 1130,
+                SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, filterBtn, 73,
+                SpringLayout.NORTH, panel);
+        
         //transferBtn
         layout.putConstraint(SpringLayout.EAST, transferBtn, -100,
                 SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferBtn, 73,
                 SpringLayout.NORTH, panel);
+        
         //label
         layout.putConstraint(SpringLayout.WEST, frameLabel, 800,
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, frameLabel, 10,
                 SpringLayout.NORTH, panel);
+        
         //tableStatistic
         layout.putConstraint(SpringLayout.WEST, tableStatistic, 0,
                 SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, tableStatistic, 300,
                 SpringLayout.NORTH, panel);
+        
         //set frame
         this.add(panel);
         this.pack();
         this.setTitle("Manage View");
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    public JComboBox getTypeSelection() {
+        return typeSelection;
+    }
+    
+    public void filterByType(String typeString){    
+        List<Publication> list = pubDao.getListPublication();
+        for(Publication p : list){
+            if(p.getType().equals(typeString)){
+                showView(typeString);
+            }
+        }
     }
 
     public ManageView() {
@@ -118,6 +169,14 @@ public class ManageView extends JFrame {
         gridCards.setCardList(searchText);
         this.setVisible(true);
     }
+    
+    public void filter(){
+        typeString = (String) typeSelection.getItemAt(typeSelection.getSelectedIndex());
+        typeString = typeString.equals("Choose type") ? "" : typeString;
+        gridCards.filterByType(typeString);
+        this.setVisible(true);
+    }
+    
     public String getSearchField() {
         return searchField.getTextField();
     }
@@ -129,6 +188,10 @@ public class ManageView extends JFrame {
 
     public void setAddBtnClickListener(ActionListener listener) {
         addBtn.onClickListener(listener);
+    }
+    
+    public void setFilterByTypeBtnClickListener(ActionListener listener){
+        filterBtn.addActionListener(listener);
     }
 
     public void setTransferClickListener(ActionListener listener) {

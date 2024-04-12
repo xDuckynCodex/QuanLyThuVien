@@ -87,7 +87,18 @@ public class GridCards extends JScrollPane {
         }
         this.setViewportView(cardPanel);
     }
-
+    
+    public void filterByType(String type){
+        cardList = new ArrayList<Card>();
+        for (Publication publication : publicationDao.filterByType(type)) {
+            cardList.add(new Card(publication, this, infoController));
+        }
+        this.setCardPanel();
+        for (Card c : cardList) {
+            cardPanel.add(c);
+        }
+        this.setViewportView(cardPanel);
+    }
 
     public void setCardPanel() {
         layout = new GridLayout(0, gridColumns, 10, 10);
@@ -99,5 +110,9 @@ public class GridCards extends JScrollPane {
         publicationDao.delete(publication);
         manageView.setTableStatistic();
         this.setCardList(manageView.getSearchField());
+    }
+    
+    public List<Card> getCardList(){
+        return cardList;
     }
 }

@@ -79,10 +79,6 @@ public class RenterDao {
     }
     
     public void delete(Renter r){
-<<<<<<< HEAD
-        boolean check = false;
-=======
->>>>>>> origin/master
         for(int i = 0; i < listRenter.size(); i++){
             if(listRenter.get(i).getCode().equals(r.getCode())){
                 listRenter.remove(i);

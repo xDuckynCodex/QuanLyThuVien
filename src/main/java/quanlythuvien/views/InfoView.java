@@ -38,6 +38,14 @@ public class InfoView extends JFrame {
     public Publication getPublication() {
         return publication;
     }
+
+    public InputField getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(InputField quantity) {
+        this.quantity = quantity;
+    }
     
     private Publication publication;
     private RenterDao renterDao;
@@ -194,6 +202,9 @@ public class InfoView extends JFrame {
     }
 
     public void setEditInfoView(Publication publication) {
+        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
+            return;
+        }
         name.setField(publication.getName());
         code.setField(publication.getCode());
         publisher.setField(publication.getPublisher());
@@ -215,49 +226,57 @@ public class InfoView extends JFrame {
     
     public void updatePublication(){
         PublicationDao publicationDao = new PublicationDao();
-//        publication.setName(name.getTextField());
-//        publication.setCodeById();
-//        publication.setAuthor(author.getTextField());
-//        publication.setPrice(Double.parseDouble(price.getTextField()));
-//        publication.setPublisher(publisher.getTextField());
-//        publication.setPublishedDate(datePickerPanel.getDateString());
-//        publication.setType(typeMenu.getTypeString());
+        RenterDao renterDao = new RenterDao();
         List<Publication> listP = publicationDao.getListPublication();
         List<Renter> listR = renterDao.getListRenter();
         for(Renter r : listR){
-            for(Publication p : listP){
-                if(p.getName().equals(r.getRentedBook())){
-                    p.setQuantity(p.getQuantity() - r.getQuantity());
-                    publicationDao.edit(p);
-                }
+            if(publication.getName().equals(r.getRentedBook())){    
+                int n = publication.getQuantity() - r.getQuantity();
+                publication.setQuantity(n); 
             }
         }   
     }
 
     public Publication getNewInfoPublication() {
-        Publication publication = new Publication();
-        publication.setName(name.getTextField());
-        publication.setCodeById();
-        publication.setAuthor(author.getTextField());
-        publication.setPrice(Double.parseDouble(price.getTextField()));
-        publication.setPublisher(publisher.getTextField());
-        publication.setPublishedDate(datePickerPanel.getDateString());
-        publication.setType(typeMenu.getTypeString());
-        publication.setQuantity(Integer.parseInt(quantity.getTextField()));
-        return publication;
+        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
+            return null;
+        }
+        try{
+            Publication publication = new Publication();
+            publication.setName(name.getTextField());
+            publication.setCodeById();
+            publication.setAuthor(author.getTextField());
+            publication.setPrice(Double.parseDouble(price.getTextField()));
+            publication.setPublisher(publisher.getTextField());
+            publication.setPublishedDate(datePickerPanel.getDateString());
+            publication.setType(typeMenu.getTypeString());
+            publication.setQuantity(Integer.parseInt(quantity.getTextField()));
+            return publication;
+        } catch(Exception e) {
+            showMessage(e.getMessage());
+        } 
+        return null;
     }
 
     public Publication getEditInfoPublication() {
-        Publication publication = new Publication();
-        publication.setName(name.getTextField());
-        publication.setCode(code.getTextField());
-        publication.setAuthor(author.getTextField());
-        publication.setPrice(Double.parseDouble(price.getTextField()));
-        publication.setPublisher(publisher.getTextField());
-        publication.setPublishedDate(datePickerPanel.getDateString());
-        publication.setType(typeMenu.getTypeString());
-        publication.setQuantity(Integer.parseInt(quantity.getTextField()));
-        return publication;
+        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
+            return null;
+        }
+        try{
+            Publication publication = new Publication();
+            publication.setName(name.getTextField());
+            publication.setCode(code.getTextField());
+            publication.setAuthor(author.getTextField());
+            publication.setPrice(Double.parseDouble(price.getTextField()));
+            publication.setPublisher(publisher.getTextField());
+            publication.setPublishedDate(datePickerPanel.getDateString());
+            publication.setType(typeMenu.getTypeString());
+            publication.setQuantity(Integer.parseInt(quantity.getTextField()));
+            return publication;
+        } catch(Exception e){
+            showMessage(e.getMessage());
+        }
+        return null;
     }
 
     public void setAddMode() {
@@ -280,6 +299,63 @@ public class InfoView extends JFrame {
         addBtn.setEnable(false);
         editBtn.setEnable(true);
         deleteBtn.setEnable(true);
+    }
+    
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    public boolean validName(){
+        String checkName = name.getTextField();
+        if(checkName == null || checkName.trim().isEmpty()){
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean validPublisher(){
+        String checkPublisher = publisher.getTextField();
+        if(checkPublisher == null || checkPublisher.trim().isEmpty()){
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean validAuthor(){
+        String checkAuthor = author.getTextField();
+        if(checkAuthor == null || checkAuthor.trim().isEmpty()){
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean validQuantity(){
+        String checkQuantity = quantity.getTextField();
+        if(checkQuantity == null || checkQuantity.trim().isEmpty()){
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        if(Integer.parseInt(checkQuantity) <= 0){
+            showMessage("Số lượng không hợp lệ");
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean validPrice(){
+        String checkPrice = price.getTextField();
+        if(checkPrice == null || checkPrice.trim().isEmpty()){
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        if(Integer.parseInt(checkPrice) <= 0){
+            showMessage("Giá không hợp lệ");
+            return false;
+        }
+        return true;
     }
 
     public void setAddBtnOnClickListener(ActionListener listener) {

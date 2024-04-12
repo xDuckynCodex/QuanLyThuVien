@@ -68,6 +68,7 @@ public class RenterController {
     class AddRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getNewRenterInfo();
+            InfoView infoView = new InfoView();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
                 renterDao.addRenter(renter);
                 renterView.showRenter(renter);
