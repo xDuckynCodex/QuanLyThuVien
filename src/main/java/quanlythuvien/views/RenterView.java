@@ -8,9 +8,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import javax.swing.*;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
@@ -21,9 +21,10 @@ import net.coderazzi.filters.gui.TableFilterHeader;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
+import quanlythuvien.components.ListRentedBookScroll;
 import quanlythuvien.dao.PublicationDao;
-import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Publication;
+import quanlythuvien.entities.RentedBook;
 import quanlythuvien.entities.Renter;
 import quanlythuvien.utils.DateFomatterUtil;
 
@@ -37,6 +38,21 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     }
     //data
     private PublicationDao publicationDao;
+
+    public List<RentedBook> getRentedBookList() {
+        return rentedBookList;
+    }
+
+    public void setRentedBookList(List<RentedBook> rentedBookList) {
+        this.rentedBookList = rentedBookList;
+    }
+    public void addBookToRentedBookList(RentedBook rentedBook) {
+        if (rentedBookList == null) {
+            rentedBookList = new ArrayList<>();
+        }
+        rentedBookList.add(rentedBook);
+    }
+    private List<RentedBook> rentedBookList;
     // button
     private JButton addRenterBtn;
     private JButton editRenterBtn;
@@ -44,6 +60,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     private JButton sortByNameRenterBtn;
     private JButton clearBtn;
     private JButton transferBtn;
+    private JButton addBookBtn;
     
     // label
     private JLabel firstNameLabel;
@@ -52,7 +69,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     private JLabel rentedBookLabel;
     private JLabel tableLabel;
     private JLabel quantityLabel;
-    private JLabel typeLabel;
     private JLabel expiredDateLabel;
     private JLabel transferLabel;
     
@@ -61,7 +77,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     private JTextField nameField;
     private JTextField idField;
     private JTextField rentedBookField;
-    private JTextField typeField;
     private JTextField quantityField;
     private JTextField expiredDateField;
     
@@ -73,7 +88,9 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     private String dateString;
     private String[] dateArray;
     private int year, month, day;
-    
+    //scroll pane
+    private ListRentedBookScroll listRentedBookScroll;
+
     // bang
     private JScrollPane pane;
     private JScrollPane panePub;
@@ -81,15 +98,11 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     private JTable tablePub;
     private TableFilterHeader tableFilter;
     
-    // Combobox Type
-    private JComboBox typeComboBox;
-    private String typeString;
-    private String[] types = {"Book", "Magazine", "Novel", "Newspapers"};
-    
     // cot
     private String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
     private Object data = new Object[][] {};
-    private Object dataPub = new Object[][] {};
+    private int dataPubRows = 0;
+    private Object[][] dataPub;
     private String[] columnPub = new String[] {"Ấn phẩm"};
     
     public void initComponent(){
@@ -101,6 +114,7 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         sortByNameRenterBtn = new JButton("Sắp xếp theo tên");
         clearBtn = new JButton("Xoá");
         transferBtn = new JButton("Chuyển");
+        addBookBtn = new JButton("+");
         
         //date time picker
         dateModel = new UtilDateModel();
@@ -112,7 +126,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         nameLabel = new JLabel("Tên người mượn");
         idLabel = new JLabel("ID");
         rentedBookLabel = new JLabel("Sách đã mượn");
-        typeLabel = new JLabel("Thể loại");
         quantityLabel = new JLabel("Số lượng");
         expiredDateLabel = new JLabel("Ngày hết hạn");
         transferLabel = new JLabel("Chuyển qua chế độ quản lý ấn phẩm");
@@ -130,10 +143,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         quantityField = new JTextField(20);
         expiredDateField = new JTextField(20);
         
-        // ComboBo
-        typeComboBox = new JComboBox(types);
-        typeString = String.valueOf(typeComboBox.getItemAt(typeComboBox.getSelectedIndex()));
-        
         // khởi tạo table
         table = new JTable(){
             @Override
@@ -150,7 +159,10 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
                 return false;
             }
         };
-            
+
+        //scroll pane
+        listRentedBookScroll = new ListRentedBookScroll();
+
         // cài đặt bảng
         pane = new JScrollPane();
         panePub = new JScrollPane();
@@ -183,12 +195,13 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         panel.add(sortByNameRenterBtn);
         panel.add(transferBtn);
         panel.add(clearBtn);
+        panel.add(addBookBtn);
         
         panel.add(firstNameLabel);
         panel.add(nameLabel);
         panel.add(idLabel);
         panel.add(rentedBookLabel);
-        panel.add(typeLabel);
+//        panel.add(typeLabel);
         panel.add(quantityLabel);
         panel.add(expiredDateLabel);
         panel.add(tableLabel);
@@ -199,8 +212,9 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         panel.add(idField);
         panel.add(rentedBookField);
         panel.add(quantityField);
-        panel.add(typeComboBox);
-        
+//        panel.add(typeComboBox);
+
+        panel.add(listRentedBookScroll);
         panel.add(datePicker);
         panel.add(pane);
         panelPub.add(panePub);
@@ -217,10 +231,9 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         layout.putConstraint(SpringLayout.NORTH, rentedBookLabel, 130, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, quantityLabel, 10, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, quantityLabel, 160, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, typeLabel, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, typeLabel, 190, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, expiredDateLabel, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, expiredDateLabel, 220, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, expiredDateLabel, 190,
+                SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, transferLabel, 50, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferLabel, 550, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, panelPub, 300, SpringLayout.WEST, panel);
@@ -236,8 +249,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         layout.putConstraint(SpringLayout.NORTH, rentedBookField, 130, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, quantityField, 180, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, quantityField, 160, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, typeComboBox, 180, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, typeComboBox, 190, SpringLayout.NORTH, panel);
    
         layout.putConstraint(SpringLayout.WEST, addRenterBtn, 100, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, addRenterBtn, 250, SpringLayout.NORTH, panel);
@@ -251,6 +262,19 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         layout.putConstraint(SpringLayout.NORTH, clearBtn, 450, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, transferBtn, 150, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferBtn, 600, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, addBookBtn, 420,
+                SpringLayout.WEST,
+                panel);
+        layout.putConstraint(SpringLayout.NORTH, addBookBtn, 170,
+                SpringLayout.NORTH,
+                panel);
+
+        layout.putConstraint(SpringLayout.WEST, listRentedBookScroll, 10,
+                SpringLayout.WEST,
+                panel);
+        layout.putConstraint(SpringLayout.NORTH, listRentedBookScroll, 220,
+                SpringLayout.NORTH,
+                panel);
         
         layout.putConstraint(SpringLayout.EAST, pane, 0, SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.NORTH, pane, 150, SpringLayout.NORTH, panel);
@@ -259,7 +283,8 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         
         //datepicker
         layout.putConstraint(SpringLayout.WEST, datePicker, 180, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, datePicker, 220, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, datePicker, 190,
+                SpringLayout.NORTH, panel);
         
         this.add(panel);
         this.pack();
@@ -278,11 +303,12 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     
     public void showResultView(String searchText){
         List<Publication> list = publicationDao.searchByName(searchText);
-        Object [][] rentedBookTable = new Object[list.size()][1];
-        for(int i = 0; i < list.size(); i++){
-            rentedBookTable[i][0] = list.get(i).getName();
+        dataPubRows = list.size();
+        dataPub = new Object[dataPubRows][1];
+        for(int i = 0; i < dataPubRows; i++){
+            dataPub[i][0] = list.get(i).getName();
         }
-        tablePub.setModel(new DefaultTableModel(rentedBookTable, columnPub));
+        tablePub.setModel(new DefaultTableModel(dataPub, columnPub));
         for(int i = 0; i < list.size(); i++){
             tablePub.setRowHeight(i, 20);
         }
@@ -300,10 +326,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             renterTable[i][1] = list.get(i).getFirstName();
             renterTable[i][2] = list.get(i).getName();
             renterTable[i][3] = list.get(i).getCode();
-            renterTable[i][4] = list.get(i).getRentedBook();
-            renterTable[i][5] = list.get(i).getType();
-            renterTable[i][6] = list.get(i).getQuantity();
-            renterTable[i][7] = list.get(i).getExpiredDate();
         }
         table.setModel(new DefaultTableModel(renterTable, column));
         for(int i = 0; i < list.size(); i++){
@@ -326,21 +348,12 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             year =  Integer.parseInt(dateArray[2]);
             month =  Integer.parseInt(dateArray[1]);
             day =  Integer.parseInt(dateArray[0]);
-            int typeIndex = 0;
-            String typeTable = table.getModel().getValueAt(row, 5).toString();
-            for (String s : types) {
-                if (!Objects.equals(s, typeTable)) {
-                    typeIndex++;
-                } else {
-                    break;
-                }
-            } 
+
             if(row >= 0){
                 firstNameField.setText(table.getModel().getValueAt(row, 1).toString());
                 nameField.setText(table.getModel().getValueAt(row, 2).toString());
                 idField.setText(table.getModel().getValueAt(row, 3).toString());
                 rentedBookField.setText(table.getModel().getValueAt(row, 4).toString());
-                typeComboBox.setSelectedIndex(typeIndex);
                 quantityField.setText(table.getModel().getValueAt(row, 6).toString());
                 dateModel.setDate(year, month -1, day);
                 dateModel.setSelected(true);
@@ -425,15 +438,15 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         return true;
     }
     
-    public boolean checkPublication(){
-        List<Publication> list = publicationDao.getListPublication();
-        for(Publication p : list){
-            if(!rentedBookField.getText().equals(p.getName())){
-                return false;
-            }
-        }
-        return true;
-    }
+//    public boolean checkPublication(){
+//        List<Publication> list = publicationDao.getListPublication();
+//        for(Publication p : list){
+//            if(rentedBookField.getText().equals(p.getName())){
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
     
     public boolean checkQuantityToRent(){
         List<Publication> list = publicationDao.getListPublication();
@@ -459,24 +472,18 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     }
     
     public Renter getNewRenterInfo(){
-        if(!validName() || !validRentedBook() || !validFirstName() || !validQuantity()){
+        if(!validName() || !validFirstName()){
             return null;
         }
         try{
             Renter renter = new Renter();
 
-            dateValue = (Date) datePicker.getModel().getValue();
-            dateString = DateFomatterUtil.valueToString(dateValue);
-
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCodeByID();
-            renter.setRentedBook(rentedBookField.getText().trim());
-            renter.setType(typeString.trim());
-            renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
-            renter.setExpiredDate(dateString);
-            return renter;
+            renter.setRentedBookList(rentedBookList);
 
+            return renter;
         } catch (Exception e){
             showMessage(e.getMessage());
         }
@@ -496,10 +503,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCode(idField.getText().trim());
-            renter.setRentedBook(rentedBookField.getText().trim());
-            renter.setType(typeString.trim());
-            renter.setQuantity(Integer.parseInt(quantityField.getText().trim()));
-            renter.setExpiredDate(dateString);
             return renter;
 
         } catch (Exception e){
@@ -513,7 +516,6 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         nameField.setText("");
         idField.setText("");
         rentedBookField.setText("");
-        typeComboBox.setSelectedIndex(0);
         quantityField.setText("");
         dateModel.setSelected(false);
         
@@ -523,14 +525,19 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         addRenterBtn.setEnabled(true);
         table.clearSelection();
     }
+
+    public void clearBook() {
+        rentedBookField.setText("");
+        quantityField.setText("");
+        dateModel.setSelected(false);
+
+
+    }
     
     public void showRenter(Renter renter){
         firstNameField.setText(renter.getFirstName());
         nameField.setText(renter.getName());
         idField.setText(renter.getCode());
-        rentedBookField.setText(renter.getRentedBook());
-        quantityField.setText("" + renter.getQuantity());
-        expiredDateField.setText(renter.getExpiredDate());
     }
 
     public String getSearchRentedBookField() {
@@ -577,6 +584,10 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
         rentedBookField.getDocument().addDocumentListener(listener);
     }
 
+    public void addNewBookToRentedBookList(ActionListener listener) {
+        addBookBtn.addActionListener(listener);
+    }
+
 //    public void setRentedBookFieldOnChangeListener(DocumentListener listener){
 //        rentedBookField.getDocument().addDocumentListener(listener);
 //    }
@@ -589,6 +600,23 @@ public class RenterView extends JFrame implements ActionListener, ListSelectionL
     @Override
     public void valueChanged(ListSelectionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public RentedBook getRentedBookInfo() {
+        if (validQuantity() && validRentedBook()) {
+            RentedBook rentedBook = new RentedBook();
+            rentedBook.setPublication(publicationDao.searchByName(rentedBookField.getText()).getFirst());
+            rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));
+            dateString =
+                    DateFomatterUtil.valueToString((Date) datePicker.getModel().getValue());
+            rentedBook.setExpiredDate(dateString);
+            return rentedBook;
+        }
+        return null;
+    }
+
+    public void setListToListRentedBookScroll() {
+        listRentedBookScroll.setRentedBookList(rentedBookList);
     }
     
     public static void main(String[] args){

@@ -22,5 +22,4 @@ public class ButtonComp extends JPanel {
     public void onClickListener(ActionListener listener) {
         btn.addActionListener(listener);
     }
-
 }

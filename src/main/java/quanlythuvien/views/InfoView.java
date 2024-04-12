@@ -212,27 +212,7 @@ public class InfoView extends JFrame {
     public void showInfoView() {
         this.setVisible(true);
     }
-    
-    public void updatePublication(){
-        PublicationDao publicationDao = new PublicationDao();
-//        publication.setName(name.getTextField());
-//        publication.setCodeById();
-//        publication.setAuthor(author.getTextField());
-//        publication.setPrice(Double.parseDouble(price.getTextField()));
-//        publication.setPublisher(publisher.getTextField());
-//        publication.setPublishedDate(datePickerPanel.getDateString());
-//        publication.setType(typeMenu.getTypeString());
-        List<Publication> listP = publicationDao.getListPublication();
-        List<Renter> listR = renterDao.getListRenter();
-        for(Renter r : listR){
-            for(Publication p : listP){
-                if(p.getName().equals(r.getRentedBook())){
-                    p.setQuantity(p.getQuantity() - r.getQuantity());
-                    publicationDao.edit(p);
-                }
-            }
-        }   
-    }
+
 
     public Publication getNewInfoPublication() {
         Publication publication = new Publication();

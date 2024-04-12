@@ -4,8 +4,8 @@
  */
 package quanlythuvien.entities;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.xml.bind.annotation.XmlElement;
+import java.util.*;
 
 /**
  *
@@ -18,20 +18,29 @@ public class Renter {
     }
 
     public static int id = 0;
-    private String name, firstName, code, expiredDate, rentedBook, type;
-    private Map<Publication, Integer> listRentedBook;
-    private int quantity;
-    
-    public Renter(){
-        
+    private String name, firstName, code;
+
+    public List<RentedBook> getRentedBookList() {
+        return rentedBook;
     }
-    public Renter(String name, String firstName, String expiredDate, String code, Integer quantity, String rentedBook) {
+
+    public void setRentedBookList(List<RentedBook> rentedBookList) {
+        this.rentedBook = rentedBookList;
+    }
+    public  void addRentedBook(RentedBook rentedBook) {
+        this.rentedBook.add(rentedBook);
+    }
+//    @XmlElement(name = "rentedBooks")
+    private List<RentedBook> rentedBook;
+
+    public Renter(){
+
+        rentedBook = new ArrayList<>();
+    }
+    public Renter(String name, String firstName,  String code) {
         this.name = name;
         this.firstName = firstName;
-        this.expiredDate = expiredDate;
         this.code = code;
-        this.quantity = quantity;
-        this.rentedBook = rentedBook;
     }
 
     public String getName() {
@@ -48,22 +57,6 @@ public class Renter {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getExpiredDate() {
-        return expiredDate;
-    }
-
-    public void setExpiredDate(String expiredDate) {
-        this.expiredDate = expiredDate;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public String getCode() {
@@ -90,21 +83,4 @@ public class Renter {
             this.code = "R" + id;
         }
     }
-
-    public String getRentedBook() {
-        return rentedBook;
-    }
-
-    public void setRentedBook(String rentedBook) {
-        this.rentedBook = rentedBook;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-    
 }
