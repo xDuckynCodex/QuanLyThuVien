@@ -27,7 +27,7 @@ public class Renter {
     public void setRentedBookList(List<RentedBook> rentedBookList) {
         this.rentedBook = rentedBookList;
     }
-    public  void addRentedBook(RentedBook rentedBook) {
+    public void addRentedBook(RentedBook rentedBook) {
         this.rentedBook.add(rentedBook);
     }
 //    @XmlElement(name = "rentedBooks")

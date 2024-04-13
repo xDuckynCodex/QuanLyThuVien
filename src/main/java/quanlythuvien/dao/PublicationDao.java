@@ -65,8 +65,7 @@ public class PublicationDao {
                 listPub.get(i).setPublishedDate(pub.getPublishedDate());
             }
         }
-            writeListPub(listPub);
-        
+        writeListPub(listPub);    
     }
 
 
@@ -115,6 +114,16 @@ public class PublicationDao {
         List<Publication> searchResult = new ArrayList<Publication>();
         for(int i = 0; i < listPub.size(); i++){
             if(listPub.get(i).getName().contains(name) || listPub.get(i).getName().toLowerCase(Locale.ROOT).contains(name)) {
+                searchResult.add(listPub.get(i));
+            }
+        }
+        return searchResult;
+    }
+    
+    public List<Publication> filterByType(String type){
+        List<Publication> searchResult = new ArrayList<Publication>();
+        for(int i = 0; i < listPub.size(); i++){
+            if(listPub.get(i).getType().contains(type)) {
                 searchResult.add(listPub.get(i));
             }
         }
