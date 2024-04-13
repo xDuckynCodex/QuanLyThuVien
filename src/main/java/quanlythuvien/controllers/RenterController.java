@@ -13,6 +13,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.RentedBook;
 import quanlythuvien.entities.Renter;
 import quanlythuvien.views.InfoView;
 import quanlythuvien.views.ManageView;
@@ -36,7 +37,7 @@ public class RenterController {
         this.manageView = manageView;
     }
 
-    private RenterView renterView;
+    private final RenterView renterView;
     private ManageView manageView;
 
     public void setManageController(ManageController manageController) {
@@ -71,16 +72,18 @@ public class RenterController {
     class AddNewRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getNewRenterInfo();
-            InfoView infoView = new InfoView();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
 
                 renterDao.addRenter(renter);
-//                renterView.showRenter(renter);
+                for (RentedBook rentedBook : renter.getRentedBookList()) {
+                    publicationDao.edit(rentedBook.getPublication());
+                }
+
                 renterView.showListRenter(renterDao.getListRenter());
 
-                renterView.clear();
                 renterView.showMessage("Thêm thành công");
             }
+            renterView.clear();
             manageView.setTableStatistic();
             renterView.setRentedBookList(new ArrayList<>());
             renterView.setListToListRentedBookScroll();
@@ -94,13 +97,19 @@ public class RenterController {
             Renter renter = renterView.getEditRenterInfo();
             if(renter != null){
                 renterDao.editRenter(renter);
+
+                for (RentedBook rentedBook : renter.getRentedBookList()) {
+                    publicationDao.edit(rentedBook.getPublication());
+                }
+
                 renterView.showListRenter(renterDao.getListRenter());
-                renterView.clear();
-                manageView.setTableStatistic();
                 renterView.showMessage("Cập nhật thành công");
             }
+            renterView.clear();
+            manageView.setTableStatistic();
             manageView.setTableStatistic();
             renterView.setRentedBookList(new ArrayList<>());
+            renterView.setListToListRentedBookScroll();
         }
     }
 

@@ -25,10 +25,7 @@ import quanlythuvien.utils.FileUtils;
 public class RenterDao {
     private static final String file = "Renter.xml";
     private List<Renter> listRenter = new ArrayList<>();
-    PublicationDao pubDao = new PublicationDao();
-    Publication pub = new Publication();
-    Renter renter = new Renter();
-    
+
     public RenterDao(){
         this.listRenter = readRenter();
         if(listRenter == null){

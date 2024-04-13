@@ -208,9 +208,6 @@ public class InfoView extends JFrame {
     }
 
     public void setEditInfoView(Publication publication) {
-        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
-            return;
-        }
         name.setField(publication.getName());
         code.setField(publication.getCode());
         publisher.setField(publication.getPublisher());
