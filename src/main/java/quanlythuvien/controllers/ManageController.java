@@ -34,6 +34,7 @@ public class ManageController {
         this.manageView.setSearchFieldOnChangeListener(new AddSearchListener());
         this.manageView.setAddBtnClickListener(new AddBtnClickListener());
         this.manageView.setTransferClickListener(new TransferClickListener());
+        this.manageView.setFilterByTypeBtnClickListener(new FilterByTypeClickListener());
     }
 
     public TableStatistic getTs() {
@@ -82,6 +83,12 @@ public class ManageController {
         public void actionPerformed(ActionEvent e) {
             manageView.setVisible(false);
             renterController.showRenterView();
+        }
+    }
+    
+    class FilterByTypeClickListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            manageView.filter();
         }
     }
 }

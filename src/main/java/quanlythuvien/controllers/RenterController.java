@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.Renter;
+import quanlythuvien.views.InfoView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
@@ -70,7 +71,9 @@ public class RenterController {
     class AddNewRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getNewRenterInfo();
-            if(renter != null){
+            InfoView infoView = new InfoView();
+            if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
+
                 renterDao.addRenter(renter);
 //                renterView.showRenter(renter);
                 renterView.showListRenter(renterDao.getListRenter());
