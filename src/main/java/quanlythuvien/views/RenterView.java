@@ -99,11 +99,11 @@ public class RenterView extends JFrame {
     private TableFilterHeader tableFilter;
     
     // cot
-    private String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
-    private Object data = new Object[][] {};
+    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
+    private final Object data = new Object[][] {};
     private int dataPubRows = 0;
     private Object[][] dataPub;
-    private String[] columnPub = new String[] {"Ấn phẩm"};
+    private final String[] columnPub = new String[] {"Ấn phẩm"};
     
     public void initComponent(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

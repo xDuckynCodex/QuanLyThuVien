@@ -18,8 +18,8 @@ import quanlythuvien.views.ManageView;
  */
 public class TableStatistic extends JScrollPane {
     private JTable tableStatistic;
-    private String[] columnStatistic = new String[] {"Tên thể loại", "Số lượng còn lại", "Số lượng đã mượn", "Tổng"};
-    private Object[][] dataStatistic = new Object[5][4];
+    private final String[] columnStatistic = new String[] {"Tên thể loại", "Số lượng còn lại", "Số lượng đã mượn", "Tổng"};
+    private final Object[][] dataStatistic = new Object[5][4];
     PublicationDao pubDao = new PublicationDao();
     RenterDao renterDao = new RenterDao();
 

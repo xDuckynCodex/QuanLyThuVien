@@ -44,7 +44,7 @@ public class ManageView extends JFrame {
     
     private JComboBox typeSelection;
     private String typeString;
-    private String[] types = {"Choose type", "Book", "Magazine", "Novel", "Newspapers"};
+    private final String[] types = {"Choose type", "Book", "Magazine", "Novel", "Newspapers"};
 
     private JLabel frameLabel;
     
