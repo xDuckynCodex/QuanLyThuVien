@@ -14,11 +14,13 @@ public class DatePickerPanel extends JPanel {
 
     public DatePickerPanel() {
         initComponent();
+        this.add(datePicker);
     }
     public DatePickerPanel(String label) {
         initComponent();
         dateLabel = new JLabel(label);
         this.add(dateLabel);
+        this.add(datePicker);
     }
 
     private UtilDateModel dateModel;
@@ -32,7 +34,6 @@ public class DatePickerPanel extends JPanel {
         datePicker = new JDatePickerImpl(datePanel);
         this.setLayout(new FlowLayout());
 
-        this.add(datePicker);
     }
 
     public void showDate(String dateString) {
