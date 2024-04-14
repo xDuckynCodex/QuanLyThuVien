@@ -57,5 +57,4 @@ public class DatePickerPanel extends JPanel {
     public Date getDateValue() {
         return (Date) datePicker.getModel().getValue();
     }
-    
 }

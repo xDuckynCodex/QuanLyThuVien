@@ -8,18 +8,7 @@
         <publishedDate>09/04/2024</publishedDate>
         <publisher>HVAN</publisher>
         <quantity>10</quantity>
-        <rented>0</rented>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>HVAN</author>
-        <code>P000002</code>
-        <name>Trung</name>
-        <price>1.0</price>
-        <publishedDate>09/04/2024</publishedDate>
-        <publisher>HVAN</publisher>
-        <quantity>10</quantity>
-        <rented>0</rented>
+        <rented>8</rented>
         <type>Book</type>
     </publication>
 </publications>

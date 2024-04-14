@@ -7,6 +7,7 @@ package quanlythuvien.views;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -470,8 +471,6 @@ public class RenterView extends JFrame {
         }
         return count;
     }
-    
-
     
     public Renter getNewRenterInfo(){
         if(!validName() || !validFirstName()){
