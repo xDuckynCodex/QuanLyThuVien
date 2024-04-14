@@ -1,23 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<renters>
-    <renter>
-        <code>R000001</code>
-        <firstName>Le</firstName>
-        <name>Phat</name>
-        <rentedBookList>
-            <expiredDate>17/04/2024</expiredDate>
-            <publication>
-                <author>HVAN</author>
-                <code>P000001</code>
-                <name>Anh</name>
-                <price>5.0</price>
-                <publishedDate>09/04/2024</publishedDate>
-                <publisher>HVAN</publisher>
-                <quantity>10</quantity>
-                <rented>8</rented>
-                <type>Book</type>
-            </publication>
-            <quantity>8</quantity>
-        </rentedBookList>
-    </renter>
-</renters>
+<renters/>

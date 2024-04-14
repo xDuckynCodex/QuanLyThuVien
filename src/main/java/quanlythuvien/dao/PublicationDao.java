@@ -65,7 +65,17 @@ public class PublicationDao {
                 listPub.get(i).setPublishedDate(pub.getPublishedDate());
             }
         }
-        writeListPub(listPub);    
+        writeListPub(listPub);
+    }
+
+    public void setRentedInDeleting(Publication publication,
+                                    int quantityRented) {
+        for (Publication p : listPub) {
+            if (Objects.equals(p.getCode(), publication.getCode())) {
+                p.setRented(p.getRented() - quantityRented);
+            }
+        }
+        writeListPub(listPub);
     }
 
 
@@ -129,42 +139,22 @@ public class PublicationDao {
         }
         return searchResult;
     }
-    
-    public Integer countBook(){
+
+    public Integer countType(String type) {
         int count = 0;
         for(Publication p : listPub){
-            if("Book".equals(p.getType())){
+            if(Objects.equals(type, p.getType())){
                 count += p.getQuantity();
             }
-        } 
+        }
         return count;
     }
-    
-    public Integer countMagazine(){
+
+    public int countRentedType(String type) {
         int count = 0;
         for(Publication p : listPub){
-            if("Magazine".equals(p.getType())){
-                count += p.getQuantity();
-            }
-        }
-        return count;
-    } 
-    
-    public Integer countNovel(){
-        int count = 0;
-        for(Publication p : listPub){
-            if("Novel".equals(p.getType())){
-                count += p.getQuantity();
-            }
-        }
-        return count;
-    } 
-    
-    public Integer countNewspaper(){
-        int count = 0;
-        for(Publication p : listPub){
-            if("Newspaper".equals(p.getType())){
-                count += p.getQuantity();
+            if(Objects.equals(type, p.getType())){
+                count += p.getRented();
             }
         }
         return count;
