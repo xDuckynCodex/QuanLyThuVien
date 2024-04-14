@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <renters>
     <renter>
-        <code>R000001</code>
-<<<<<<< HEAD
-        <expiredDate>01/04/2024</expiredDate>
+        <code>R000003</code>
         <firstName>1</firstName>
         <name>1</name>
-        <quantity>1</quantity>
-        <rentedBook>Anh</rentedBook>
-        <type>Book</type>
-=======
-        <firstName>Le</firstName>
-        <name>Phat</name>
->>>>>>> origin/master
+        <rentedBookList>
+            <expiredDate>01/04/2024</expiredDate>
+            <publication>
+                <author>1</author>
+                <code>P000001</code>
+                <name>1</name>
+                <price>1.0</price>
+                <publishedDate>01/04/2024</publishedDate>
+                <publisher>1</publisher>
+                <quantity>1</quantity>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+        <rentedBookList>
+            <expiredDate>01/04/2024</expiredDate>
+            <publication>
+                <author>2</author>
+                <code>P000002</code>
+                <name>2</name>
+                <price>2.0</price>
+                <publishedDate>01/04/2024</publishedDate>
+                <publisher>2</publisher>
+                <quantity>2</quantity>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
     </renter>
 </renters>

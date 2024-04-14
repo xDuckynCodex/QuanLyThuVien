@@ -122,7 +122,9 @@ public class RenterController {
     class FillRenterFromSelectedRowListener implements ListSelectionListener {
         @Override
         public void valueChanged(ListSelectionEvent e) {
-            renterView.fillRenterFromSelectedRow();
+            if (!e.getValueIsAdjusting()) {
+               renterView.fillRenterFromSelectedRow();
+            }
         }
     }
 

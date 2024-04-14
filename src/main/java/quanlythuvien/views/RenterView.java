@@ -7,6 +7,8 @@ package quanlythuvien.views;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -373,6 +375,7 @@ public class RenterView extends JFrame {
             addRenterBtn.setEnabled(false);
         }
     }
+    
     public void showMessage(String message){
         JOptionPane.showMessageDialog(this, message);
     }
@@ -454,7 +457,6 @@ public class RenterView extends JFrame {
     }
     
     public boolean checkDate(){
-        infoView = new InfoView();
         String ngayhh = datePickerPanel.getDateString();
         String ngayxb = infoView.getDatePickerPanel().getDateString();
         String[] expiredDate = ngayhh.split("/");
@@ -481,12 +483,10 @@ public class RenterView extends JFrame {
         }
         try{
             Renter renter = new Renter();
-
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCodeByID();
             renter.setRentedBookList(rentedBookList);
-
             return renter;
         } catch (Exception e){
             showMessage(e.getMessage());
@@ -500,12 +500,10 @@ public class RenterView extends JFrame {
         }
         try{
             Renter renter = new Renter();
-
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCode(codeField.getText().trim());
             return renter;
-
         } catch (Exception e){
             showMessage(e.getMessage());
         }
@@ -622,6 +620,14 @@ public class RenterView extends JFrame {
 
     public void setEnableRemoveBookBtn(boolean bool) {
         removeBookBtn.setEnabled(bool);
+    }
+    
+    public static void fixSingleColumnSelection(JTable table) {
+        // Lấy selection model của bảng
+        ListSelectionModel selectionModel = table.getSelectionModel();
+        
+        // Set chế độ lựa chọn chỉ cho một cột (SINGLE_SELECTION)
+        selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     
     public static void main(String[] args){
