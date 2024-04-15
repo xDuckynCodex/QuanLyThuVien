@@ -177,8 +177,7 @@ public class RenterView extends JFrame {
                
         renterTable.setModel(new DefaultTableModel((Object[][]) data, column));
         renterTable.setFont(new Font(renterTable.getFont().getName(), Font.PLAIN, 15));
-//        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//        table.clearSelection();
+        renterTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 
         renterSrcollPane.setViewportView(renterTable);
@@ -644,10 +643,5 @@ public class RenterView extends JFrame {
 
     public void setEnableRemoveBookBtn(boolean bool) {
         removeBookBtn.setEnabled(bool);
-    }
-    
-    public static void main(String[] args){
-        RenterView renterView = new RenterView();
-        renterView.setVisible(true);
     }
 }
