@@ -1,23 +1,103 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <renters>
     <renter>
-        <code>R000001</code>
-        <firstName>Le</firstName>
-        <name>Phat</name>
+        <code>R000002</code>
+        <firstName>Nông Quốc</firstName>
+        <name>Phong</name>
         <rentedBookList>
             <expiredDate>17/04/2024</expiredDate>
             <publication>
                 <author>HVAN</author>
                 <code>P000001</code>
                 <name>Anh</name>
-                <price>5.0</price>
-                <publishedDate>09/04/2024</publishedDate>
+                <price>10000.0</price>
+                <publishedDate>01/04/2024</publishedDate>
                 <publisher>HVAN</publisher>
                 <quantity>10</quantity>
-                <rented>8</rented>
+                <rented>1</rented>
                 <type>Book</type>
             </publication>
-            <quantity>8</quantity>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <code>R000003</code>
+        <firstName>Lê Thế</firstName>
+        <name>Phát</name>
+        <rentedBookList>
+            <expiredDate>17/04/2024</expiredDate>
+            <publication>
+                <author>HVAN</author>
+                <code>P000002</code>
+                <name>Trung</name>
+                <price>1000.0</price>
+                <publishedDate>08/04/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>1</rented>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <code>R000004</code>
+        <firstName>Phạm Võ Duy</firstName>
+        <name>Vũ</name>
+        <rentedBookList>
+            <expiredDate>18/04/2024</expiredDate>
+            <publication>
+                <author>Phong</author>
+                <code>P000007</code>
+                <name>cogaikhonglon</name>
+                <price>10.0</price>
+                <publishedDate>15/04/2024</publishedDate>
+                <publisher>Phong</publisher>
+                <quantity>10</quantity>
+                <rented>2</rented>
+                <type>Novel</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <code>R000005</code>
+        <firstName>Nguyễn Văn Thành</firstName>
+        <name>An</name>
+        <rentedBookList>
+            <expiredDate>17/04/2024</expiredDate>
+            <publication>
+                <author>Phong</author>
+                <code>P000007</code>
+                <name>cogaikhonglon</name>
+                <price>10.0</price>
+                <publishedDate>15/04/2024</publishedDate>
+                <publisher>Phong</publisher>
+                <quantity>10</quantity>
+                <rented>2</rented>
+                <type>Novel</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <code>R000006</code>
+        <firstName>Hồ Chí</firstName>
+        <name>Vinh</name>
+        <rentedBookList>
+            <expiredDate>17/04/2024</expiredDate>
+            <publication>
+                <author>1</author>
+                <code>P000008</code>
+                <name>Tin</name>
+                <price>1.0</price>
+                <publishedDate>01/04/2024</publishedDate>
+                <publisher>1</publisher>
+                <quantity>1</quantity>
+                <rented>1</rented>
+                <type>Newspaper</type>
+            </publication>
+            <quantity>1</quantity>
         </rentedBookList>
     </renter>
 </renters>

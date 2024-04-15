@@ -71,49 +71,50 @@ public class InfoController {
     class AddClickedListener implements ActionListener {
         @Override 
         public void actionPerformed(ActionEvent e) {
-            //Handler add event
             Publication publication = infoView.getNewInfoPublication();
-            publicationDao.add(publication);
-            //reset gridcards
-            gridCards.setCardList();
-            manageView.setTableStatistic();
-
-            JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
-            //dispose frame
-            infoView.dispose();
-        }
+            if(publication != null){
+                publicationDao.add(publication);
+                //reset gridcards
+                gridCards.setCardList();
+                manageView.setTableStatistic();
+                JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
+                //dispose frame
+                infoView.dispose();
+//            } else{
+//                JOptionPane.showMessageDialog(infoView, "Lỗi");
+//            }
+            //Handler add event
+        }}
     }
 
     class EditClickedListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler edit event
-
             Publication publication = infoView.getEditInfoPublication();
-            publicationDao.edit(publication);
-
-            //reset gridcards
-            gridCards.setCardList();
-            manageView.setTableStatistic();
-            infoView.dispose();
-
-            JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
-        }
+            if(publication != null){
+                publicationDao.edit(publication);
+                //reset gridcards
+                gridCards.setCardList();
+                manageView.setTableStatistic();
+                infoView.dispose();
+                JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
+//            } else {
+//                JOptionPane.showMessageDialog(infoView, "Lỗi");
+//            }   
+        }}
     }
 
     class DeleteClickedListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler delete event
-
             publicationDao.delete(publication);
-
             //reset gridcards
             gridCards.setCardList();
             manageView.setTableStatistic();
             infoView.dispose();
-
-            JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
+            JOptionPane.showMessageDialog(infoView, "Xoá ấn phẩm thành công");
         }
     }
 

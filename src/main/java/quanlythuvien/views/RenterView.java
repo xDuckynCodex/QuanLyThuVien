@@ -7,6 +7,8 @@ package quanlythuvien.views;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -373,6 +375,7 @@ public class RenterView extends JFrame {
             addRenterBtn.setEnabled(false);
         }
     }
+    
     public void showMessage(String message){
         JOptionPane.showMessageDialog(this, message);
     }
@@ -407,7 +410,6 @@ public class RenterView extends JFrame {
         return true;
     }
 
-    
     private boolean validQuantity(Publication publication){
         String quantity = quantityField.getText();
         if(quantity == null || quantity.trim().isEmpty()){
@@ -422,10 +424,10 @@ public class RenterView extends JFrame {
         return true;
     }
 
-    private boolean validDate() {
+    public boolean validDate() {
         Date date = datePickerPanel.getDateValue();
         Date dateNow = new Date();
-        return dateNow.after(date);
+        return dateNow.before(date);
     }
 
     private RentedBook checkExist(Publication publication) {
@@ -470,19 +472,17 @@ public class RenterView extends JFrame {
         }
         return count;
     }
-    
+
     public Renter getNewRenterInfo(){
         if(!validName() || !validFirstName()){
             return null;
         }
         try{
             Renter renter = new Renter();
-
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCodeByID();
             renter.setRentedBookList(rentedBookList);
-
             return renter;
         } catch (Exception e){
             showMessage(e.getMessage());
@@ -496,7 +496,6 @@ public class RenterView extends JFrame {
         }
         try{
             Renter renter = new Renter();
-
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCode(codeField.getText().trim());
@@ -504,7 +503,6 @@ public class RenterView extends JFrame {
             renter.setRentedBookList(rentedBookList);
 
             return renter;
-
         } catch (Exception e){
             showMessage(e.getMessage());
         }
@@ -597,7 +595,7 @@ public class RenterView extends JFrame {
         Publication publication =
                 publicationDao.searchByName(rentedBookField.getText()).getFirst();
         if (checkExist(publication) == null) {
-            if (validQuantity(publication) && validRentedBook()) {
+            if (validQuantity(publication) && validRentedBook() && validDate()) {
                 publication.setRented(publication.getRented()+Integer.parseInt(quantityField.getText()));
 
                 RentedBook rentedBook = new RentedBook();
@@ -613,7 +611,7 @@ public class RenterView extends JFrame {
             rentedBookList.remove(rentedBook);
             publication.setRented(publication.getRented() -
                     rentedBook.getQuantity());
-            if (validQuantity(publication) && validRentedBook()) {
+            if (validQuantity(publication) && validRentedBook() && validDate()) {
                 publication.setRented(publication.getRented() + Integer.parseInt(quantityField.getText()));
 
                 rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));
@@ -632,9 +630,12 @@ public class RenterView extends JFrame {
 
     public void removeBookInRentedBook() {
         String name = rentedBookField.getText();
+        if(rentedBookList.isEmpty()){
+            showMessage("Không được xoá sách đang mượn");
+        }
         for (int i = 0; i < rentedBookList.size(); i++) {
             if (Objects.equals(name,
-                    rentedBookList.get(i).getPublication().getName())) {
+                rentedBookList.get(i).getPublication().getName())) {
                 rentedBookList.remove(i);
             }
         }

@@ -68,8 +68,7 @@ public class PublicationDao {
         writeListPub(listPub);
     }
 
-    public void setRentedInDeleting(Publication publication,
-                                    int quantityRented) {
+    public void setRentedInDeleting(Publication publication, int quantityRented) {
         for (Publication p : listPub) {
             if (Objects.equals(p.getCode(), publication.getCode())) {
                 p.setRented(p.getRented() - quantityRented);

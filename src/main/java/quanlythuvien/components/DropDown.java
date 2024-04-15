@@ -9,7 +9,7 @@ public class DropDown extends JPanel {
         initComponent();
     }
 
-    private final String[] typeString = {"Choose Type","Book", "Magazine", "Novel", "Newspapers"};
+    private final String[] typeString = {"Choose Type","Book", "Magazine", "Novel", "Newspaper"};
     private JComboBox<String> dropdown;
     private JLabel label;
     public void initComponent() {
