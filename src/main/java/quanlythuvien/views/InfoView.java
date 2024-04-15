@@ -244,7 +244,7 @@ public class InfoView extends JFrame {
     }
 
     public Publication getNewInfoPublication() {
-        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity() || !validDate()){
+        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity() || !validDate() || !validType()){
             return null;
         } 
         try{
@@ -265,7 +265,7 @@ public class InfoView extends JFrame {
     }
 
     public Publication getEditInfoPublication() {
-        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity() || !validDate()){
+        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity() || !validDate() || !validType()){
             return null;
         } 
         try{
@@ -361,6 +361,15 @@ public class InfoView extends JFrame {
             showMessage("Giá không hợp lệ");
             return false;
         }
+        return true;
+    }
+    
+    public boolean validType(){
+        String type = typeMenu.getTypeString();
+        if(type == "Choose Type"){
+            showMessage("Thể loại không hợp lệ");
+            return false;
+        } 
         return true;
     }
     
