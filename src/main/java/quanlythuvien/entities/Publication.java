@@ -23,9 +23,19 @@ public class Publication implements Serializable {
     private String type, code, publisher, author, name;
     private double price;
     private int quantity;
+
+    public int getRented() {
+        return rented;
+    }
+
+    public void setRented(int rented) {
+        this.rented = rented;
+    }
+
+    private int rented;
     private String publishedDate;
     public Publication(){
-       
+       rented = 0;
     }
     public Publication(String type, String code, String publisher,
                        String author, double price, int quantity,

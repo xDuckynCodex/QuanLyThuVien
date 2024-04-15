@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="Renter can rent more than one publication">
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="add final key word">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Renter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Renter.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ButtonComp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ButtonComp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/DatePickerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ListRentedBookScroll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ListRentedBookScroll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RenterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/RenterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/RenterDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/dao/RenterDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/RenterView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +22,13 @@
   </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="quanlythuvien/master" />
+    <option name="OPTIONS">
+      <set>
+        <option value="SQUASH" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Pull.Settings">
     <option name="OPTIONS">
       <set>
         <option value="SQUASH" />
@@ -94,9 +92,9 @@
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/phati/Desktop/OOP/QuanLyThuVien/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   }
@@ -365,7 +363,47 @@
       <option name="project" value="LOCAL" />
       <updated>1712868203021</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fill rented book info">
+      <option name="closed" value="true" />
+      <created>1712917964150</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1712917964150</updated>
+    </task>
+    <task id="LOCAL-00030" summary="pull from master">
+      <option name="closed" value="true" />
+      <created>1712997955738</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1712997955738</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Fix add &amp; edit in RenterController">
+      <option name="closed" value="true" />
+      <created>1713009799676</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1713009799676</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Fix delete RenterController">
+      <option name="closed" value="true" />
+      <created>1713083805563</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1713083805563</updated>
+    </task>
+    <task id="LOCAL-00033" summary="add final key word">
+      <option name="closed" value="true" />
+      <created>1713084063167</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1713084063167</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -407,11 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ManagerView done" />
-    <MESSAGE value="ManagerView add method" />
-    <MESSAGE value="99%" />
-    <MESSAGE value="add DatePicker&#10;edit date type" />
-    <MESSAGE value="4/4" />
     <MESSAGE value="searching done" />
     <MESSAGE value="InfoView&#10;ContextMenu" />
     <MESSAGE value="InfoView add button&#10;add new Font" />
@@ -432,7 +465,12 @@
     <MESSAGE value="fix in RenterView" />
     <MESSAGE value="update resultTable in RenterView" />
     <MESSAGE value="Renter can rent more than one publication" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renter can rent more than one publication" />
+    <MESSAGE value="fill rented book info" />
+    <MESSAGE value="pull from master" />
+    <MESSAGE value="Fix add &amp; edit in RenterController" />
+    <MESSAGE value="Fix delete RenterController" />
+    <MESSAGE value="add final key word" />
+    <option name="LAST_COMMIT_MESSAGE" value="add final key word" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -443,5 +481,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="quanlythuvien.entities.Publication" memberName="rented" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
