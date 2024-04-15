@@ -7,8 +7,11 @@ package quanlythuvien.views;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.swing.*;
@@ -99,11 +102,11 @@ public class RenterView extends JFrame {
     private TableFilterHeader tableFilter;
     
     // cot
-    private String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
-    private Object data = new Object[][] {};
+    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
+    private final Object data = new Object[][] {};
     private int dataPubRows = 0;
     private Object[][] dataPub;
-    private String[] columnPub = new String[] {"Ấn phẩm"};
+    private final String[] columnPub = new String[] {"Ấn phẩm"};
     
     public void initComponent(){
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -373,6 +376,7 @@ public class RenterView extends JFrame {
             addRenterBtn.setEnabled(false);
         }
     }
+    
     public void showMessage(String message){
         JOptionPane.showMessageDialog(this, message);
     }
@@ -406,18 +410,35 @@ public class RenterView extends JFrame {
         }
         return true;
     }
-    
-    private boolean validQuantity(){
+
+    private boolean validQuantity(Publication publication){
         String quantity = quantityField.getText();
         if(quantity == null || quantity.trim().isEmpty()){
             rentedBookField.requestFocus();
             showMessage("Không được bỏ trống");
             return false;
-        } else if(Integer.parseInt(quantity) <= 0) {
+        } else if(Integer.parseInt(quantity) <= 0
+                ||  Integer.parseInt(quantity) > (publication.getQuantity() - publication.getRented())) {
             showMessage("Số lượng không hợp lệ");
             return false;
         }
         return true;
+    }
+
+    public boolean validDate() {
+        Date date = datePickerPanel.getDateValue();
+        Date dateNow = new Date();
+        return dateNow.before(date);
+    }
+
+    private RentedBook checkExist(Publication publication) {
+        for (RentedBook rentedBook : rentedBookList) {
+            if (Objects.equals(publication.getCode(),
+                    rentedBook.getPublication().getCode())) {
+                return rentedBook;
+            }
+        }
+        return null;
     }
     
     public boolean checkPublication(){
@@ -452,41 +473,17 @@ public class RenterView extends JFrame {
         }
         return count;
     }
-    
-    public boolean checkDate(){
-        infoView = new InfoView();
-        String ngayhh = datePickerPanel.getDateString();
-        String ngayxb = infoView.getDatePickerPanel().getDateString();
-        String[] expiredDate = ngayhh.split("/");
-        String[] publishedDate = ngayxb.split("/");
-        
-        int ngayHH = Integer.parseInt(expiredDate[0]);
-        int thangHH = Integer.parseInt(expiredDate[1]);
-        int namHH = Integer.parseInt(expiredDate[2]);
-        
-        int ngayXB = Integer.parseInt(publishedDate[0]);
-        int thangXB = Integer.parseInt(publishedDate[1]);
-        int namXB = Integer.parseInt(publishedDate[2]);
-        
-        if (namHH > namXB || (namHH == namXB && thangHH > thangXB) || (namHH == namXB && thangHH == thangXB && ngayHH > ngayXB)) {
-            return true;
-        } else {
-            return false;
-        }   
-    }
-    
+
     public Renter getNewRenterInfo(){
         if(!validName() || !validFirstName()){
             return null;
         }
         try{
             Renter renter = new Renter();
-
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCodeByID();
             renter.setRentedBookList(rentedBookList);
-
             return renter;
         } catch (Exception e){
             showMessage(e.getMessage());
@@ -500,12 +497,13 @@ public class RenterView extends JFrame {
         }
         try{
             Renter renter = new Renter();
-
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCode(codeField.getText().trim());
-            return renter;
 
+            renter.setRentedBookList(rentedBookList);
+
+            return renter;
         } catch (Exception e){
             showMessage(e.getMessage());
         }
@@ -595,14 +593,36 @@ public class RenterView extends JFrame {
     }
 
     public RentedBook getRentedBookInfo() {
-        if (validQuantity() && validRentedBook()) {
-            RentedBook rentedBook = new RentedBook();
-            rentedBook.setPublication(publicationDao.searchByName(rentedBookField.getText()).getFirst());
-            rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));
-            rentedBook.setExpiredDate(datePickerPanel.getDateString());
-            return rentedBook;
+        Publication publication =
+                publicationDao.searchByName(rentedBookField.getText()).getFirst();
+        if (checkExist(publication) == null) {
+            if (validQuantity(publication) && validRentedBook() && validDate()) {
+                publication.setRented(publication.getRented()+Integer.parseInt(quantityField.getText()));
+
+                RentedBook rentedBook = new RentedBook();
+                rentedBook.setPublication(publication);
+                rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));
+                rentedBook.setExpiredDate(datePickerPanel.getDateString());
+
+                return rentedBook;
+            }
+            return null;
+        } else {
+            RentedBook rentedBook = checkExist(publication);
+            rentedBookList.remove(rentedBook);
+            publication.setRented(publication.getRented() -
+                    rentedBook.getQuantity());
+            if (validQuantity(publication) && validRentedBook() && validDate()) {
+                publication.setRented(publication.getRented() + Integer.parseInt(quantityField.getText()));
+
+                rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));
+                rentedBook.setExpiredDate(datePickerPanel.getDateString());
+                rentedBook.setPublication(publication);
+
+                return rentedBook;
+            }
+            return null;
         }
-        return null;
     }
 
     public void setListToListRentedBookScroll() {
@@ -611,9 +631,12 @@ public class RenterView extends JFrame {
 
     public void removeBookInRentedBook() {
         String name = rentedBookField.getText();
+        if(rentedBookList.isEmpty()){
+            showMessage("Không được xoá sách đang mượn");
+        }
         for (int i = 0; i < rentedBookList.size(); i++) {
             if (Objects.equals(name,
-                    rentedBookList.get(i).getPublication().getName())) {
+                rentedBookList.get(i).getPublication().getName())) {
                 rentedBookList.remove(i);
             }
         }

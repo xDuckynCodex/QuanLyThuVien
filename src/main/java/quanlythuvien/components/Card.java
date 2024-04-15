@@ -16,14 +16,14 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class Card extends JPanel {
-    private InfoController infoController;
+    private final InfoController infoController;
     private JPanel mainPanel;
     private JLabel nameCard;
     private JLabel authorCard;
     private  JLabel imgCardLabel;
     private ImageIcon imgCard;
     private ContextMenu menu;
-    private Publication publication;
+    private final Publication publication;
     public Card(Publication publication, GridCards gridCards,
                 InfoController infoController) {
         this.publication = publication;

@@ -8,10 +8,12 @@ import quanlythuvien.utils.FontUtil;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import quanlythuvien.dao.RenterDao;
 import quanlythuvien.entities.RentedBook;
 import quanlythuvien.entities.Renter;
+import quanlythuvien.utils.DateFomatterUtil;
 
 public class InfoView extends JFrame {
     public InfoView() {
@@ -208,9 +210,6 @@ public class InfoView extends JFrame {
     }
 
     public void setEditInfoView(Publication publication) {
-        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
-            return;
-        }
         name.setField(publication.getName());
         code.setField(publication.getCode());
         publisher.setField(publication.getPublisher());
@@ -245,9 +244,9 @@ public class InfoView extends JFrame {
     }
 
     public Publication getNewInfoPublication() {
-        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
+        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity() || !validDate()){
             return null;
-        }
+        } 
         try{
             Publication publication = new Publication();
             publication.setName(name.getTextField());
@@ -266,9 +265,9 @@ public class InfoView extends JFrame {
     }
 
     public Publication getEditInfoPublication() {
-        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity()){
+        if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity() || !validDate()){
             return null;
-        }
+        } 
         try{
             Publication publication = new Publication();
             publication.setName(name.getTextField());
@@ -363,6 +362,21 @@ public class InfoView extends JFrame {
             return false;
         }
         return true;
+    }
+    
+    public boolean validDate(){
+        Date date = datePickerPanel.getDateValue();
+        Date dateNow = new Date();
+        if(date == null || DateFomatterUtil.valueToString(date).trim().isEmpty()){
+            showMessage("Không được bỏ trống");
+            return false;
+        }
+        if(dateNow.after(date)){
+            return true;
+        } else{
+            showMessage("Ngày không hợp lệ");
+            return false;
+        }
     }
 
     public void setAddBtnOnClickListener(ActionListener listener) {

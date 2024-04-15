@@ -5,8 +5,7 @@
 package quanlythuvien.components;
 
 import java.awt.Dimension;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
@@ -19,8 +18,8 @@ import quanlythuvien.views.ManageView;
  */
 public class TableStatistic extends JScrollPane {
     private JTable tableStatistic;
-    private String[] columnStatistic = new String[] {"Tên thể loại", "Số lượng còn lại", "Số lượng đã mượn", "Tổng"};
-    private Object[][] dataStatistic = new Object[5][4];
+    private final String[] columnStatistic = new String[] {"Tên thể loại", "Số lượng còn lại", "Số lượng đã mượn", "Tổng"};
+    private final Object[][] dataStatistic = new Object[5][4];
     PublicationDao pubDao = new PublicationDao();
     RenterDao renterDao = new RenterDao();
 
@@ -34,6 +33,7 @@ public class TableStatistic extends JScrollPane {
                 return false;
             }
         };
+        tableStatistic.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         tableStatistic.getTableHeader().setReorderingAllowed(false);
 
         this.calculateData();
@@ -49,20 +49,28 @@ public class TableStatistic extends JScrollPane {
         dataStatistic[3][0] = "Newspaper";
         dataStatistic[4][0] = "Tổng";
 
-        dataStatistic[0][1] = String.valueOf(pubDao.countBook() - renterDao.countBook());
-        dataStatistic[1][1] = String.valueOf(pubDao.countMagazine() - renterDao.countMagazine());
-        dataStatistic[2][1] = String.valueOf(pubDao.countNovel() - renterDao.countNovel());
-        dataStatistic[3][1] = String.valueOf(pubDao.countNewspaper() - renterDao.countNewspaper());
+        dataStatistic[0][1] =
+               pubDao.countType((String) dataStatistic[0][0]) - pubDao.countRentedType((String) dataStatistic[0][0]);
+        dataStatistic[1][1] =
+               pubDao.countType((String) dataStatistic[1][0]) - pubDao.countRentedType((String) dataStatistic[1][0]);
+        dataStatistic[2][1] =
+               pubDao.countType((String) dataStatistic[2][0]) - pubDao.countRentedType((String) dataStatistic[2][0]);
+        dataStatistic[3][1] =
+               pubDao.countType((String) dataStatistic[3][0]) - pubDao.countRentedType((String) dataStatistic[3][0]);
 
-        dataStatistic[0][2] = String.valueOf(renterDao.countBook());
-        dataStatistic[1][2] = String.valueOf(renterDao.countMagazine());
-        dataStatistic[2][2] = String.valueOf(renterDao.countNovel());
-        dataStatistic[3][2] = String.valueOf(renterDao.countNewspaper());
+        dataStatistic[0][2] = pubDao.countRentedType((String) dataStatistic[0][0]);
+        dataStatistic[1][2] = pubDao.countRentedType((String) dataStatistic[1][0]);
+        dataStatistic[2][2] = pubDao.countRentedType((String) dataStatistic[2][0]);
+        dataStatistic[3][2] = pubDao.countRentedType((String) dataStatistic[3][0]);
 
-        dataStatistic[0][3] = String.valueOf(pubDao.countBook());
-        dataStatistic[1][3] = String.valueOf(pubDao.countMagazine());
-        dataStatistic[2][3] = String.valueOf(pubDao.countNovel());
-        dataStatistic[3][3] = String.valueOf(pubDao.countNewspaper());
+        dataStatistic[0][3] =
+                pubDao.countType((String) dataStatistic[0][0]);
+        dataStatistic[1][3] =
+                pubDao.countType((String) dataStatistic[1][0]);
+        dataStatistic[2][3] =
+                pubDao.countType((String) dataStatistic[2][0]);
+        dataStatistic[3][3] =
+                pubDao.countType((String) dataStatistic[3][0]);
 
         tableStatistic.setModel(new DefaultTableModel(dataStatistic, columnStatistic));
 

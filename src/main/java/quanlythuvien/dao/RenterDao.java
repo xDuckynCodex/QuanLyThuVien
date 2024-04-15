@@ -25,10 +25,7 @@ import quanlythuvien.utils.FileUtils;
 public class RenterDao {
     private static final String file = "Renter.xml";
     private List<Renter> listRenter = new ArrayList<>();
-    PublicationDao pubDao = new PublicationDao();
-    Publication pub = new Publication();
-    Renter renter = new Renter();
-    
+
     public RenterDao(){
         this.listRenter = readRenter();
         if(listRenter == null){
@@ -102,22 +99,14 @@ public class RenterDao {
         }
         return searchResult;
     }
-    
-    public Integer countBook(){
-        return 0;
-    }
-    
-    public Integer countMagazine(){
-        return 0;
-    } 
-    
-    public Integer countNovel(){
-        return 0;
 
-    }
-    public Integer countNewspaper(){
-        return 0;
-
+    public Renter getRenterByCode(String code) {
+        for (Renter renter : listRenter) {
+            if (Objects.equals(code, renter.getCode())) {
+                return renter;
+            }
+        }
+        return null;
     }
 
     public Renter getByCode(String code) {

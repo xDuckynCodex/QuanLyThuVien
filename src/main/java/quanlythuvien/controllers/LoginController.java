@@ -13,7 +13,7 @@ import quanlythuvien.views.ManageView;
 
 public class LoginController {
     private UserDao userDao;
-    private LoginView loginView;
+    private final LoginView loginView;
     private  ManageController manageController;
 
     public void setManageController(ManageController manageController) {

@@ -1,6 +1,12 @@
 package quanlythuvien.entities;
 
 public class RentedBook {
+    private Publication publication;
+    private int quantity;
+    private String expiredDate;
+    public RentedBook() {
+
+    }
     public Publication getPublication() {
         return publication;
     }
@@ -23,12 +29,5 @@ public class RentedBook {
 
     public void setExpiredDate(String expiredDate) {
         this.expiredDate = expiredDate;
-    }
-
-    private Publication publication;
-    private int quantity;
-    private String expiredDate;
-    public RentedBook() {
-
     }
 }
