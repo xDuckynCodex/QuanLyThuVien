@@ -7,9 +7,6 @@ package quanlythuvien.views;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -69,8 +66,7 @@ public class RenterView extends JFrame {
     private JButton transferBtn;
     private JButton addBookBtn;
     private JButton removeBookBtn;
-    
-    private InfoView infoView;
+
     // label
     private JLabel firstNameLabel;
     private JLabel nameLabel;
@@ -96,13 +92,13 @@ public class RenterView extends JFrame {
 
     // bang
     private JScrollPane renterSrcollPane;
-    private JScrollPane reslutTableScrollPane;
+    private JScrollPane resultTableScrollPane;
     private JTable renterTable;
     private JTable resultTable;
     private TableFilterHeader tableFilter;
     
     // cot
-    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
+    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID"};
     private final Object data = new Object[][] {};
     private int dataPubRows = 0;
     private Object[][] dataPub;
@@ -169,18 +165,17 @@ public class RenterView extends JFrame {
 
         // cài đặt bảng
         renterSrcollPane = new JScrollPane();
-        reslutTableScrollPane = new JScrollPane();
+        resultTableScrollPane = new JScrollPane();
         
         resultTable.setModel(new DefaultTableModel(dataPub, columnPub));
         resultTable.setFont(new Font(resultTable.getFont().getName(), Font.PLAIN, 15));
-        reslutTableScrollPane.setViewportView(resultTable);
-        reslutTableScrollPane.setPreferredSize(new Dimension(225, 100));
-        reslutTableScrollPane.setVisible(false);
+        resultTableScrollPane.setViewportView(resultTable);
+        resultTableScrollPane.setPreferredSize(new Dimension(225, 100));
+        resultTableScrollPane.setVisible(false);
                
         renterTable.setModel(new DefaultTableModel((Object[][]) data, column));
         renterTable.setFont(new Font(renterTable.getFont().getName(), Font.PLAIN, 15));
-//        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//        table.clearSelection();
+        renterTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 
         renterSrcollPane.setViewportView(renterTable);
@@ -193,7 +188,7 @@ public class RenterView extends JFrame {
         panel.setSize(1900, 1050);
         panel.setLayout(layout);
 
-        panel.add(reslutTableScrollPane);
+        panel.add(resultTableScrollPane);
 
 
         panel.add(addRenterBtn);
@@ -240,10 +235,10 @@ public class RenterView extends JFrame {
                 SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, transferLabel, 50, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferLabel, 550, SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, reslutTableScrollPane, 180,
+        layout.putConstraint(SpringLayout.WEST, resultTableScrollPane, 180,
                 SpringLayout.WEST,
                 panel);
-        layout.putConstraint(SpringLayout.NORTH, reslutTableScrollPane, 150,
+        layout.putConstraint(SpringLayout.NORTH, resultTableScrollPane, 150,
                 SpringLayout.NORTH,
                 panel);
         
@@ -315,10 +310,6 @@ public class RenterView extends JFrame {
     public RenterView(){
         initComponent();
     }
-
-    public void showView() {
-        this.setVisible(true);
-    }
     
     public void showResultView(String searchText){
         List<Publication> list = publicationDao.searchByName(searchText);
@@ -331,11 +322,11 @@ public class RenterView extends JFrame {
         for(int i = 0; i < list.size(); i++){
             resultTable.setRowHeight(i, 20);
         }
-        reslutTableScrollPane.setVisible(true);
+        resultTableScrollPane.setVisible(true);
     }
 
     public void hideTablePub(){
-        reslutTableScrollPane.setVisible(false);
+        resultTableScrollPane.setVisible(false);
     }
     
     public void showListRenter(List<Renter> list){
@@ -358,7 +349,7 @@ public class RenterView extends JFrame {
         if(row != -1){
             rentedBookField.setText(resultTable.getModel().getValueAt(row, 0).toString());
         }
-        reslutTableScrollPane.setVisible(false);
+        resultTableScrollPane.setVisible(false);
     }
 
     public void fillRenterFromSelectedRow(){
@@ -370,6 +361,7 @@ public class RenterView extends JFrame {
             codeField.setText(renter.getCode());
             setRentedBookList(renter.getRentedBookList());
             setListToListRentedBookScroll();
+            clearBook();
 
             deleteRenterBtn.setEnabled(true);
             editRenterBtn.setEnabled(true);
@@ -461,17 +453,6 @@ public class RenterView extends JFrame {
             }
         }
         return true;
-    }
-    
-    public Integer quantityLeft(){
-        int count = 0;
-        List<Publication> list = publicationDao.getListPublication();
-        for(Publication p : list){
-            if(rentedBookField.getText().equals(p.getName())){
-                count = p.getQuantity() - Integer.parseInt(quantityField.getText());
-            }
-        }
-        return count;
     }
 
     public Renter getNewRenterInfo(){
@@ -645,10 +626,5 @@ public class RenterView extends JFrame {
 
     public void setEnableRemoveBookBtn(boolean bool) {
         removeBookBtn.setEnabled(bool);
-    }
-    
-    public static void main(String[] args){
-        RenterView renterView = new RenterView();
-        renterView.setVisible(true);
     }
 }

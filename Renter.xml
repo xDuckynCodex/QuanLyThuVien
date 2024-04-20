@@ -100,4 +100,94 @@
             <quantity>1</quantity>
         </rentedBookList>
     </renter>
+    <renter>
+        <code>R000007</code>
+        <firstName>Nguyễn Văn Thành</firstName>
+        <name>An</name>
+        <rentedBookList>
+            <expiredDate>30/04/2024</expiredDate>
+            <publication>
+                <author>HVAN</author>
+                <code>P000001</code>
+                <name>Anh</name>
+                <price>10000.0</price>
+                <publishedDate>01/04/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>6</rented>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <code>R000008</code>
+        <firstName>Lê Nguyễn Nhật</firstName>
+        <name>Minh</name>
+        <rentedBookList>
+            <expiredDate>21/06/2024</expiredDate>
+            <publication>
+                <author>Haruki</author>
+                <code>P000009</code>
+                <name>Rừng Na Uy</name>
+                <price>10000.0</price>
+                <publishedDate>01/04/2024</publishedDate>
+                <publisher>Kim Đồng</publisher>
+                <quantity>10</quantity>
+                <rented>1</rented>
+                <type>Novel</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+        <rentedBookList>
+            <expiredDate>17/06/2024</expiredDate>
+            <publication>
+                <author>HVAN</author>
+                <code>P000002</code>
+                <name>Trung</name>
+                <price>1000.0</price>
+                <publishedDate>08/04/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>2</rented>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <code>R000009</code>
+        <firstName>Chu Thị Hồng</firstName>
+        <name>Anh</name>
+        <rentedBookList>
+            <expiredDate>30/04/2024</expiredDate>
+            <publication>
+                <author>HVAN</author>
+                <code>P000002</code>
+                <name>Trung</name>
+                <price>1000.0</price>
+                <publishedDate>08/04/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>3</rented>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+        <rentedBookList>
+            <expiredDate>19/04/2024</expiredDate>
+            <publication>
+                <author>HVAN</author>
+                <code>P000005</code>
+                <name>Toán</name>
+                <price>1.0</price>
+                <publishedDate>01/04/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>1</rented>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
 </renters>
