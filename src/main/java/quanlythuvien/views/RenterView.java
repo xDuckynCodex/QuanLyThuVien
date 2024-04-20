@@ -98,7 +98,7 @@ public class RenterView extends JFrame {
     private TableFilterHeader tableFilter;
     
     // cot
-    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
+    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID"};
     private final Object data = new Object[][] {};
     private int dataPubRows = 0;
     private Object[][] dataPub;
