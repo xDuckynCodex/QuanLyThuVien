@@ -19,6 +19,7 @@ public class Renter {
 
     public static int id = 0;
     private String name, firstName, code;
+    public boolean isPaidBack;
 
     public List<RentedBook> getRentedBookList() {
         return rentedBook;
@@ -34,9 +35,10 @@ public class Renter {
     private List<RentedBook> rentedBook;
 
     public Renter(){
-
         rentedBook = new ArrayList<>();
+        this.isPaidBack = false;
     }
+    
     public Renter(String name, String firstName,  String code) {
         this.name = name;
         this.firstName = firstName;
