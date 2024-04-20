@@ -314,7 +314,7 @@ public class InfoView extends JFrame {
     public boolean validName(){
         String checkName = name.getTextField();
         if(checkName == null || checkName.trim().isEmpty()){
-            showMessage("Không được bỏ trống");
+            showMessage("Không được bỏ trống 1");
             return false;
         }
         return true;
@@ -323,7 +323,7 @@ public class InfoView extends JFrame {
     public boolean validPublisher(){
         String checkPublisher = publisher.getTextField();
         if(checkPublisher == null || checkPublisher.trim().isEmpty()){
-            showMessage("Không được bỏ trống");
+            showMessage("Không được bỏ trống 2");
             return false;
         }
         return true;
@@ -332,7 +332,7 @@ public class InfoView extends JFrame {
     public boolean validAuthor(){
         String checkAuthor = author.getTextField();
         if(checkAuthor == null || checkAuthor.trim().isEmpty()){
-            showMessage("Không được bỏ trống");
+            showMessage("Không được bỏ trống 3");
             return false;
         }
         return true;
@@ -341,7 +341,7 @@ public class InfoView extends JFrame {
     public boolean validQuantity(){
         String checkQuantity = quantity.getTextField();
         if(checkQuantity == null || checkQuantity.trim().isEmpty()){
-            showMessage("Không được bỏ trống");
+            showMessage("Không được bỏ trống 4");
             return false;
         }
         if(Integer.parseInt(checkQuantity) <= 0){
@@ -354,7 +354,7 @@ public class InfoView extends JFrame {
     public boolean validPrice(){
         String checkPrice = price.getTextField();
         if(checkPrice == null || checkPrice.trim().isEmpty()){
-            showMessage("Không được bỏ trống");
+            showMessage("Không được bỏ trống 5");
             return false;
         }
         if(Integer.parseInt(checkPrice) <= 0){
