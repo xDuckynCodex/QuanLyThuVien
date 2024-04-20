@@ -56,8 +56,7 @@ public class ManageView extends JFrame {
                 Font.PLAIN, 40));
 
         addBtn = new ButtonComp("Thêm ấn phẩm");
-        transferBtn = new ButtonComp("Chuyển trang quản lý khách " +
-                "hàng");
+        transferBtn = new ButtonComp("Chuyển sang quản lý người mượn");
         filterBtn = new JButton("Lọc");
         tableStatistic = new TableStatistic();
         

@@ -121,4 +121,24 @@ public class RenterDao {
     public List<Renter> getListRenter(){
         return listRenter;
     }
+    
+    public List<Renter> getListRenterPayingBack(){
+        List<Renter> listRenterPayingBack = new ArrayList<Renter>();
+        for(Renter r : listRenter){
+            if(r.isPaidBack == true){
+                listRenterPayingBack.add(r);
+            } 
+        }
+        return listRenterPayingBack;
+    }
+    
+    public List<Renter> getListRenterNotPayingBack(){
+        List<Renter> listRenterNotPayingBack = new ArrayList<Renter>();
+        for(Renter r : listRenter){
+            if(r.isPaidBack == false){
+                listRenterNotPayingBack.add(r);
+            }
+        }
+        return listRenterNotPayingBack;
+    }
 }
