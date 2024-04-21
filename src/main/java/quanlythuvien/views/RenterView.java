@@ -66,9 +66,11 @@ public class RenterView extends JFrame {
     private JButton deleteRenterBtn;
     private JButton sortByNameRenterBtn;
     private JButton clearBtn;
-    private JButton transferBtn;
+    private JButton transferToManageViewBtn;
+    private JButton transferToPayerViewBtn;
     private JButton addBookBtn;
     private JButton removeBookBtn;
+    
     
     private InfoView infoView;
     // label
@@ -79,7 +81,6 @@ public class RenterView extends JFrame {
     private JLabel tableLabel;
     private JLabel quantityLabel;
     private JLabel expiredDateLabel;
-    private JLabel transferLabel;
     
     // field nhap
     private JTextField firstNameField;
@@ -102,7 +103,7 @@ public class RenterView extends JFrame {
     private TableFilterHeader tableFilter;
     
     // cot
-    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Sách đã mượn", "Thể loại", "Số lượng", "Ngày trả"};
+    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Ngày trả"};
     private final Object data = new Object[][] {};
     private int dataPubRows = 0;
     private Object[][] dataPub;
@@ -116,7 +117,8 @@ public class RenterView extends JFrame {
         deleteRenterBtn = new JButton("Xoá người mượn");
         sortByNameRenterBtn = new JButton("Sắp xếp theo tên");
         clearBtn = new JButton("Xoá");
-        transferBtn = new JButton("Chuyển");
+        transferToManageViewBtn = new JButton("Chuyển sang quản lý ấn phẩm");
+        transferToPayerViewBtn = new JButton("Chuyển sang quản lý người trả");
         addBookBtn = new JButton("+");
         removeBookBtn = new JButton("-");
         removeBookBtn.setEnabled(false);
@@ -132,8 +134,6 @@ public class RenterView extends JFrame {
         rentedBookLabel = new JLabel("Sách đã mượn");
         quantityLabel = new JLabel("Số lượng");
         expiredDateLabel = new JLabel("Ngày hết hạn");
-        transferLabel = new JLabel("Chuyển qua chế độ quản lý ấn phẩm");
-        transferLabel.setFont(new Font(transferLabel.getFont().getName(), Font.BOLD, 20));
         tableLabel = new JLabel("Danh sách người mượn ấn phẩm");
         tableLabel.setFont(new Font(tableLabel.getFont().getName(),
                 Font.PLAIN, 40));
@@ -200,7 +200,8 @@ public class RenterView extends JFrame {
         panel.add(editRenterBtn);
         panel.add(deleteRenterBtn);
         panel.add(sortByNameRenterBtn);
-        panel.add(transferBtn);
+        panel.add(transferToManageViewBtn);
+        panel.add(transferToPayerViewBtn);
         panel.add(clearBtn);
         panel.add(addBookBtn);
         panel.add(removeBookBtn);
@@ -212,7 +213,6 @@ public class RenterView extends JFrame {
         panel.add(quantityLabel);
         panel.add(expiredDateLabel);
         panel.add(tableLabel);
-        panel.add(transferLabel);
         
         panel.add(firstNameField);
         panel.add(nameField);
@@ -238,8 +238,6 @@ public class RenterView extends JFrame {
         layout.putConstraint(SpringLayout.WEST, expiredDateLabel, 10, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, expiredDateLabel, 190,
                 SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, transferLabel, 50, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, transferLabel, 550, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, reslutTableScrollPane, 180,
                 SpringLayout.WEST,
                 panel);
@@ -273,8 +271,10 @@ public class RenterView extends JFrame {
         layout.putConstraint(SpringLayout.WEST, clearBtn, 100, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, clearBtn, 480,
                 SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.WEST, transferBtn, 150, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, transferBtn, 600, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, transferToManageViewBtn, 100, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferToManageViewBtn, 600, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.WEST, transferToPayerViewBtn, 100, SpringLayout.WEST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferToPayerViewBtn, 650, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, addBookBtn, 420,
                 SpringLayout.WEST,
                 panel);
@@ -339,12 +339,13 @@ public class RenterView extends JFrame {
     }
     
     public void showListRenter(List<Renter> list){
-        Object [][] data = new Object[list.size()][8];
+        Object [][] data = new Object[list.size()][5];
         for(int i = 0; i < list.size(); i++){
             data[i][0] = i + 1;
             data[i][1] = list.get(i).getFirstName();
             data[i][2] = list.get(i).getName();
             data[i][3] = list.get(i).getCode();
+            data[i][4] = list.get(i).getExpiredDate();
         }
         this.renterTable.setModel(new DefaultTableModel(data, column));
         for(int i = 0; i < list.size(); i++){
@@ -368,6 +369,7 @@ public class RenterView extends JFrame {
             firstNameField.setText(renter.getFirstName());
             nameField.setText(renter.getName());
             codeField.setText(renter.getCode());
+            datePickerPanel.showDate(renter.getExpiredDate());
             setRentedBookList(renter.getRentedBookList());
             setListToListRentedBookScroll();
 
@@ -484,6 +486,7 @@ public class RenterView extends JFrame {
             renter.setName(nameField.getText().trim());
             renter.setCodeByID();
             renter.setRentedBookList(rentedBookList);
+            renter.setExpiredDate(datePickerPanel.getDateString());
             return renter;
         } catch (Exception e){
             showMessage(e.getMessage());
@@ -500,9 +503,8 @@ public class RenterView extends JFrame {
             renter.setFirstName(firstNameField.getText().trim());
             renter.setName(nameField.getText().trim());
             renter.setCode(codeField.getText().trim());
-
+            renter.setExpiredDate(datePickerPanel.getDateString());
             renter.setRentedBookList(rentedBookList);
-
             return renter;
         } catch (Exception e){
             showMessage(e.getMessage());
@@ -530,14 +532,12 @@ public class RenterView extends JFrame {
     public void clearBook() {
         rentedBookField.setText("");
         quantityField.setText("");
-        datePickerPanel.clearDate();
+//        datePickerPanel.clearDate();
     }
 
     public void fillRentedBook(RentedBook rentedBook) {
         rentedBookField.setText(rentedBook.getPublication().getName());
-        quantityField.setText(""+rentedBook.getQuantity());
-        datePickerPanel.showDate(rentedBook.getExpiredDate());
-
+        quantityField.setText("" +rentedBook.getQuantity());
     }
 
     public String getSearchRentedBookField() {
@@ -569,7 +569,11 @@ public class RenterView extends JFrame {
     }
     
     public void addTransferPublicationListener(ActionListener listener){
-        transferBtn.addActionListener(listener);
+        transferToManageViewBtn.addActionListener(listener);
+    }
+    
+    public void addTransferToPayerViewListener(ActionListener listener){
+        transferToPayerViewBtn.addActionListener(listener);
     }
     
     public void addFillRenterFromSelectedRow(ListSelectionListener listener) {
@@ -596,13 +600,12 @@ public class RenterView extends JFrame {
         Publication publication =
                 publicationDao.searchByName(rentedBookField.getText()).getFirst();
         if (checkExist(publication) == null) {
-            if (validQuantity(publication) && validRentedBook() && validDate()) {
+            if (validQuantity(publication) && validRentedBook()) {
                 publication.setRented(publication.getRented()+Integer.parseInt(quantityField.getText()));
 
                 RentedBook rentedBook = new RentedBook();
                 rentedBook.setPublication(publication);
                 rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));
-                rentedBook.setExpiredDate(datePickerPanel.getDateString());
 
                 return rentedBook;
             }
@@ -612,11 +615,10 @@ public class RenterView extends JFrame {
             rentedBookList.remove(rentedBook);
             publication.setRented(publication.getRented() -
                     rentedBook.getQuantity());
-            if (validQuantity(publication) && validRentedBook() && validDate()) {
+            if (validQuantity(publication) && validRentedBook()) {
                 publication.setRented(publication.getRented() + Integer.parseInt(quantityField.getText()));
 
                 rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));
-                rentedBook.setExpiredDate(datePickerPanel.getDateString());
                 rentedBook.setPublication(publication);
 
                 return rentedBook;
