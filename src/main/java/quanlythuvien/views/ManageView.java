@@ -39,7 +39,8 @@ public class ManageView extends JFrame {
     private ButtonComp addBtn;
     private JButton filterBtn;
 
-    private ButtonComp transferBtn;
+    private ButtonComp transferToRenterViewBtn;
+    private ButtonComp transferToPayerViewBtn;
     private PublicationDao publicationDao;
     
     private JComboBox typeSelection;
@@ -56,7 +57,8 @@ public class ManageView extends JFrame {
                 Font.PLAIN, 40));
 
         addBtn = new ButtonComp("Thêm ấn phẩm");
-        transferBtn = new ButtonComp("Chuyển sang quản lý người mượn");
+        transferToRenterViewBtn = new ButtonComp("Chuyển sang quản lý người mượn");
+        transferToPayerViewBtn = new ButtonComp("Chuyển qua quản lý người trả");
         filterBtn = new JButton("Lọc");
         tableStatistic = new TableStatistic();
         
@@ -74,7 +76,8 @@ public class ManageView extends JFrame {
         //component
         panel.add(searchField);
         panel.add(addBtn);
-        panel.add(transferBtn);
+        panel.add(transferToRenterViewBtn);
+        panel.add(transferToPayerViewBtn);
         panel.add(tableStatistic);
         panel.add(filterBtn);
         
@@ -112,11 +115,12 @@ public class ManageView extends JFrame {
                 SpringLayout.NORTH, panel);
         
         //transferBtn
-        layout.putConstraint(SpringLayout.EAST, transferBtn, -100,
+        layout.putConstraint(SpringLayout.EAST, transferToRenterViewBtn, -100,
                 SpringLayout.EAST, panel);
-        layout.putConstraint(SpringLayout.NORTH, transferBtn, 73,
+        layout.putConstraint(SpringLayout.NORTH, transferToRenterViewBtn, 73,
                 SpringLayout.NORTH, panel);
-        
+        layout.putConstraint(SpringLayout.EAST, transferToPayerViewBtn, -127, SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.NORTH, transferToPayerViewBtn, 33, SpringLayout.NORTH, panel);
         //label
         layout.putConstraint(SpringLayout.WEST, frameLabel, 800,
                 SpringLayout.WEST, panel);
@@ -193,7 +197,11 @@ public class ManageView extends JFrame {
         filterBtn.addActionListener(listener);
     }
 
-    public void setTransferClickListener(ActionListener listener) {
-        transferBtn.onClickListener(listener);
+    public void setTransferToRenterViewClickListener(ActionListener listener) {
+        transferToRenterViewBtn.onClickListener(listener);
+    }
+    
+    public void setTransferToPayerViewClickListener(ActionListener listener){
+        transferToPayerViewBtn.onClickListener(listener);
     }
 }

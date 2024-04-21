@@ -8,7 +8,7 @@
         <publishedDate>01/04/2024</publishedDate>
         <publisher>HVAN</publisher>
         <quantity>10</quantity>
-        <rented>7</rented>
+        <rented>10</rented>
         <type>Book</type>
     </publication>
     <publication>
@@ -30,7 +30,6 @@
         <publishedDate>01/04/2024</publishedDate>
         <publisher>HVAN</publisher>
         <quantity>10</quantity>
-        <rented>1</rented>
         <type>Book</type>
     </publication>
     <publication>
@@ -52,7 +51,7 @@
         <publishedDate>01/04/2024</publishedDate>
         <publisher>1</publisher>
         <quantity>10</quantity>
-        <rented>1</rented>
+        <rented>2</rented>
         <type>Newspaper</type>
     </publication>
     <publication>
@@ -63,7 +62,7 @@
         <publishedDate>01/04/2024</publishedDate>
         <publisher>Kim Đồng</publisher>
         <quantity>10</quantity>
-        <rented>1</rented>
+        <rented>2</rented>
         <type>Novel</type>
     </publication>
     <publication>

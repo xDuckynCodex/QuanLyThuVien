@@ -45,6 +45,11 @@ public class RenterController {
     }
 
     private ManageController manageController;
+    private PayerController payerController;
+
+    public void setPayerController(PayerController payerController) {
+        this.payerController = payerController;
+    }
 
     public RenterController(RenterView view){
         this.renterView = view;
@@ -58,6 +63,7 @@ public class RenterController {
         view.addFillRenterFromSelectedRow(new FillRenterFromSelectedRowListener());
         view.addFillBookFromSelectedRow(new FillBookFromSelectedRowListener());
         view.addTransferPublicationListener(new TransferPublicationListener());
+        view.addTransferToPayerViewListener(new TransferToPayerViewListener());
         view.addRentedBookFieldSearch(new RentedBookSearchListener());
         view.addNewBookToRentedBookList(new NewBookToRentedBookList());
         view.addRemoveBookInRentedBookList(new RemoveBookInRentedBookList());
@@ -74,12 +80,12 @@ public class RenterController {
             Renter renter = renterView.getNewRenterInfo();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent() 
                     && !renterView.getRentedBookList().isEmpty()){
-            renterDao.addRenter(renter);    
-            for (RentedBook rentedBook : renter.getRentedBookList()) {
-                publicationDao.edit(rentedBook.getPublication());
-            }
-            renterView.showListRenter(renterDao.getListRenter());
-            renterView.showMessage("Thêm thành công");    
+                renterDao.addRenter(renter);    
+                for (RentedBook rentedBook : renter.getRentedBookList()) {
+                    publicationDao.edit(rentedBook.getPublication());
+                }
+                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showMessage("Thêm thành công");    
             }else{
                 renterView.showMessage("Lỗi");
             }
@@ -160,6 +166,13 @@ public class RenterController {
             manageController.showView();
         }
     }
+    
+    class TransferToPayerViewListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            renterView.setVisible(false);
+            payerController.showPayerView();
+        }
+    }
 
     class SortByNameRenterListener implements ActionListener {
         @Override
@@ -195,7 +208,7 @@ public class RenterController {
         @Override
         public void actionPerformed(ActionEvent e) {
             Renter renter = renterView.getEditRenterInfo();
-            if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent() && renterView.validDate()){
+            if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
                 renterView.addBookToRentedBookList(renterView.getRentedBookInfo());
                 renterView.setListToListRentedBookScroll();
                 renterView.clearBook();
