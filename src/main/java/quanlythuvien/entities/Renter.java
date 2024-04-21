@@ -18,7 +18,7 @@ public class Renter {
     }
 
     public static int id = 0;
-    private String name, firstName, code;
+    private String name, firstName, code, expiredDate;
     public boolean isPaidBack;
 
     public List<RentedBook> getRentedBookList() {
@@ -38,7 +38,7 @@ public class Renter {
         rentedBook = new ArrayList<>();
         this.isPaidBack = false;
     }
-    
+
     public Renter(String name, String firstName,  String code) {
         this.name = name;
         this.firstName = firstName;
@@ -69,6 +69,13 @@ public class Renter {
         this.code = code;
     }
 
+    public String getExpiredDate() {
+        return expiredDate;
+    }
+
+    public void setExpiredDate(String expiredDate) {
+        this.expiredDate = expiredDate;
+    }
     public void setCodeByID() {
         int id = ++Renter.id;
         if(id < 10){

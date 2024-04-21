@@ -93,7 +93,7 @@ public class RenterDao {
     public List<Renter> searchByName(String name){
         List<Renter> searchResult = new ArrayList<Renter>();
         for(int i = 0; i < listRenter.size(); i++){
-            if(listRenter.get(i).getName().contains(name)) {
+            if(listRenter.get(i).getName().contains(name) && !listRenter.get(i).isPaidBack) {
                 searchResult.add(listRenter.get(i));
             }
         }
@@ -121,17 +121,22 @@ public class RenterDao {
     public List<Renter> getListRenter(){
         return listRenter;
     }
-    
+
     public List<Renter> getListRenterPayingBack(){
         List<Renter> listRenterPayingBack = new ArrayList<Renter>();
         for(Renter r : listRenter){
-            if(r.isPaidBack == true){
+            if(r.isPaidBack){
                 listRenterPayingBack.add(r);
-            } 
+            }
         }
         return listRenterPayingBack;
     }
-    
+
+    public void setListRenterPayingBack(String searchText){
+        List<Renter> listRenterPayingBack = new ArrayList<Renter>();
+
+    }
+
     public List<Renter> getListRenterNotPayingBack(){
         List<Renter> listRenterNotPayingBack = new ArrayList<Renter>();
         for(Renter r : listRenter){

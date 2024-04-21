@@ -8,7 +8,7 @@
         <publishedDate>01/04/2024</publishedDate>
         <publisher>HVAN</publisher>
         <quantity>10</quantity>
-        <rented>7</rented>
+        <rented>10</rented>
         <type>Book</type>
     </publication>
     <publication>
@@ -34,6 +34,28 @@
         <type>Book</type>
     </publication>
     <publication>
+        <author>HVAN</author>
+        <code>P000006</code>
+        <name>OOP</name>
+        <price>2.0</price>
+        <publishedDate>09/04/2024</publishedDate>
+        <publisher>2</publisher>
+        <quantity>20</quantity>
+        <rented>0</rented>
+        <type>Magazine</type>
+    </publication>
+    <publication>
+        <author>HVAN</author>
+        <code>P000008</code>
+        <name>Tin học</name>
+        <price>1.0</price>
+        <publishedDate>01/04/2024</publishedDate>
+        <publisher>1</publisher>
+        <quantity>10</quantity>
+        <rented>2</rented>
+        <type>Newspaper</type>
+    </publication>
+    <publication>
         <author>Haruki</author>
         <code>P000009</code>
         <name>Rừng Na Uy</name>
@@ -41,7 +63,29 @@
         <publishedDate>01/04/2024</publishedDate>
         <publisher>Kim Đồng</publisher>
         <quantity>10</quantity>
-        <rented>1</rented>
+        <rented>2</rented>
+        <type>Novel</type>
+    </publication>
+    <publication>
+        <author>1</author>
+        <code>P000010</code>
+        <name>1</name>
+        <price>1.0</price>
+        <publishedDate>01/04/2024</publishedDate>
+        <publisher>1</publisher>
+        <quantity>1</quantity>
+        <rented>0</rented>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>Haruki</author>
+        <code>P000009</code>
+        <name>Rừng Na Uy</name>
+        <price>10000.0</price>
+        <publishedDate>01/04/2024</publishedDate>
+        <publisher>Kim Đồng</publisher>
+        <quantity>10</quantity>
+        <rented>0</rented>
         <type>Novel</type>
     </publication>
 </publications>

@@ -6,6 +6,8 @@ package quanlythuvien.views;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,9 +17,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.WindowConstants;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import quanlythuvien.components.InputField;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.Renter;
 
 /**
  *
@@ -41,6 +45,15 @@ public class PayerView extends JFrame{
     
     // thêm bảng
     private JScrollPane payerScrollPane;
+
+    public void setSearchField(InputField searchField) {
+        this.searchField = searchField;
+    }
+
+    public String getSearchField() {
+        return searchField.getTextField();
+    }
+
     private JTable payerTable;
     
     // thêm cột cho bảng
@@ -52,7 +65,7 @@ public class PayerView extends JFrame{
         searchField = new InputField("Tìm kiếm người trả: ", 20);
         deleteBtn = new JButton("Xoá người trả");
         transferToPublicationViewBtn = new JButton("Chuyển sang quản lý ấn phẩm");
-        transfertoRenterViewBtn = new JButton("Chuyển sang quản lý người trả");
+        transfertoRenterViewBtn = new JButton("Chuyển sang quản lý người mượn");
         deleteBtn.setEnabled(false);
         
         title = new JLabel("Quản lý người trả ấn phẩm");
@@ -114,6 +127,38 @@ public class PayerView extends JFrame{
         initComponet();
     }
     
+    public void showListPayer(List<Renter> list){
+        Object [][] data = new Object[list.size()][4];
+        for(int i = 0; i < list.size(); i++){
+            data[i][0] = i + 1;
+            data[i][1] = list.get(i).getFirstName() + " " + list.get(i).getName();
+            data[i][2] = list.get(i).getCode();
+            data[i][3] = list.get(i).getExpiredDate();
+        }
+        this.payerTable.setModel(new DefaultTableModel(data, column));
+        for(int i = 0; i < list.size(); i++){
+            this.payerTable.setRowHeight(i, 20);
+        }
+        payerTable.clearSelection();
+    }
+
+    public void searchByName(String name){
+        List<Renter> list = renterDao.searchByName(name);
+        this.showListPayer(list);
+    }
+
+    public void addTransferToPublicationViewListener(ActionListener listener){
+        transferToPublicationViewBtn.addActionListener(listener);
+    }
+
+    public void addTransfertoRenterViewListener(ActionListener listener){
+        transfertoRenterViewBtn.addActionListener(listener);
+    }
+
+    public void setSearchFieldOnChangeListener(DocumentListener listener) {
+        searchField.addFieldChange(listener);
+    }
+
     public static void main(String[] args){
         PayerView payerView = new PayerView();
         payerView.setVisible(true);

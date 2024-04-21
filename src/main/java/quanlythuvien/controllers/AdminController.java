@@ -11,6 +11,7 @@ import quanlythuvien.views.RenterView;
 
 import java.util.List;
 import quanlythuvien.components.TableStatistic;
+import quanlythuvien.views.PayerView;
 
 public class AdminController {
     //data
@@ -21,6 +22,7 @@ public class AdminController {
     private LoginView loginView;
     private InfoView infoView;
     private RenterView renterView;
+    private PayerView payerView;
     //Component
     private GridCards gridCards;
 
@@ -29,6 +31,7 @@ public class AdminController {
     private InfoController infoController;
     private LoginController loginController;
     private RenterController renterController;
+    private PayerController payerController;
 
     public AdminController()
     {
@@ -45,11 +48,13 @@ public class AdminController {
         manageView = new ManageView();
         infoView = new InfoView();
         renterView = new RenterView();
+        payerView = new PayerView();
         // controller
         manageController = new ManageController(manageView);
         infoController = new InfoController(infoView);
         loginController = new LoginController(loginView);
         renterController = new RenterController(renterView);
+        payerController = new PayerController(payerView);
 
         //Component
         gridCards = new GridCards(publicationDao, manageView, infoController);
@@ -60,11 +65,17 @@ public class AdminController {
         manageController.setInfoController(infoController);
         manageController.setPublicationDao(publicationDao);
         manageController.setRenterController(renterController);
+        manageController.setPayerController(payerController);
         
         renterController.setPublicationDao(publicationDao);
         renterController.setRenterDao(renterDao);
         renterController.setManageView(manageView);
         renterController.setManageController(manageController);
+        renterController.setPayerController(payerController);
+        
+        payerController.setManageController(manageController);
+        payerController.setRenterController(renterController);
+        payerController.setRenterDao(renterDao);
 
         infoController.setGridCards(gridCards);
         infoController.setManageView(manageView);

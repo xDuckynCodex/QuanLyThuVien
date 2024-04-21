@@ -16,9 +16,14 @@ public class ManageController {
     private final ManageView manageView;
     private InfoController infoController;
     private RenterController renterController;
-
+    private PayerController payerController;
+    
     public void setRenterController(RenterController renterController) {
         this.renterController = renterController;
+    }
+
+    public void setPayerController(PayerController payerController) {
+        this.payerController = payerController;
     }
 
     public void setInfoController(InfoController infoController) {
@@ -33,8 +38,9 @@ public class ManageController {
 
         this.manageView.setSearchFieldOnChangeListener(new AddSearchListener());
         this.manageView.setAddBtnClickListener(new AddBtnClickListener());
-        this.manageView.setTransferClickListener(new TransferClickListener());
+        this.manageView.setTransferToRenterViewClickListener(new TransferToRenterViewClickListener());
         this.manageView.setFilterByTypeBtnClickListener(new FilterByTypeClickListener());
+        this.manageView.setTransferToPayerViewClickListener(new TransferToPayerViewClickListener());
     }
 
     public TableStatistic getTs() {
@@ -68,6 +74,7 @@ public class ManageController {
 
         }
     }
+    
     class AddBtnClickListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -77,12 +84,19 @@ public class ManageController {
         }
     }
 
-    class TransferClickListener implements ActionListener {
+    class TransferToRenterViewClickListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             manageView.setVisible(false);
             renterController.showRenterView();
+        }
+    }
+    
+    class TransferToPayerViewClickListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            manageView.setVisible(false);
+            payerController.showPayerView();
         }
     }
     
