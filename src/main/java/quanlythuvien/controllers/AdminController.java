@@ -15,7 +15,6 @@ import quanlythuvien.components.TableStatistic;
 public class AdminController {
     //data
     private PublicationDao publicationDao;
-    private List<Publication> publicationList;
     private RenterDao renterDao;
     // view
     private ManageView manageView;
@@ -39,7 +38,6 @@ public class AdminController {
     public void initComponent() {
         //data
         publicationDao = new PublicationDao();
-        publicationList = publicationDao.getListPublication();
         renterDao = new RenterDao();
 
         // view
@@ -83,8 +81,25 @@ public class AdminController {
     public void showLoginView() {
         loginController.showLoginView();
     }
-
-    public void showManageView() {
-        manageController.showView();
+    public GridCards getGridCards() {
+        return gridCards;
+    }
+    public PublicationDao getPublicationDao() {
+        return publicationDao;
+    }
+    public RenterDao getRenterDao() {
+        return renterDao;
+    }
+    public ManageController getManageController() {
+        return manageController;
+    }
+    public InfoController getInfoController() {
+        return infoController;
+    }
+    public LoginController getLoginController() {
+        return loginController;
+    }
+    public RenterController getRenterController() {
+        return renterController;
     }
 }

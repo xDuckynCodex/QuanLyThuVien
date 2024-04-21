@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="ban cham code">
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="pull from master">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ContextMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/ContextMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/components/GridCards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/controllers/AdminController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -418,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713599473448</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="pull from master">
+      <option name="closed" value="true" />
+      <created>1713603107824</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1713603107824</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -479,13 +493,13 @@
     <MESSAGE value="update resultTable in RenterView" />
     <MESSAGE value="Renter can rent more than one publication" />
     <MESSAGE value="fill rented book info" />
-    <MESSAGE value="pull from master" />
     <MESSAGE value="Fix add &amp; edit in RenterController" />
     <MESSAGE value="Fix delete RenterController" />
     <MESSAGE value="add final key word" />
     <MESSAGE value="semi-final" />
     <MESSAGE value="ban cham code" />
-    <option name="LAST_COMMIT_MESSAGE" value="ban cham code" />
+    <MESSAGE value="pull from master" />
+    <option name="LAST_COMMIT_MESSAGE" value="pull from master" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

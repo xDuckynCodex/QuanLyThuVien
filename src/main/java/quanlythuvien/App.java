@@ -11,7 +11,7 @@ public class App {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                AdminController adminController = new AdminController();
+                AdminController adminController = AdminController.getInstance();
                 adminController.showLoginView();
             }
         });

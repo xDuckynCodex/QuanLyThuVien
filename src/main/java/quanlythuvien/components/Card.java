@@ -24,14 +24,13 @@ public class Card extends JPanel {
     private ImageIcon imgCard;
     private ContextMenu menu;
     private final Publication publication;
-    public Card(Publication publication, GridCards gridCards,
-                InfoController infoController) {
+    public Card(Publication publication, InfoController infoController) {
         this.publication = publication;
         this.infoController = infoController;
-        initComponent(gridCards);
+        initComponent();
     }
 
-    public void initComponent(GridCards gridCards) {
+    public void initComponent() {
         // constructor elements
         nameCard = new JLabel(String.format("<html><div style=\"width:%dpx;" +
                 "text-align: center;" +
@@ -41,7 +40,7 @@ public class Card extends JPanel {
         imgCardLabel = new JLabel(imgCard);
 
         //context menu
-        menu = new ContextMenu(publication, gridCards, infoController);
+        menu = new ContextMenu(publication, infoController);
 
         //mainPanel;
         mainPanel = new JPanel();
