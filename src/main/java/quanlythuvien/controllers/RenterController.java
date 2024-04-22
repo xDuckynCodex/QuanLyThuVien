@@ -71,7 +71,7 @@ public class RenterController {
     
     public void showRenterView(){
         renterView.setVisible(true);
-        renterView.showListRenter(renterDao.getListRenter());
+        renterView.showListRenter(renterDao.getListRenterNotPayingBack());
         renterView.clear();
     }
     
@@ -79,12 +79,12 @@ public class RenterController {
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getNewRenterInfo();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent() 
-                    && !renterView.getRentedBookList().isEmpty()){
+                    && !renterView.getRentedBookList().isEmpty() && renterView.validDate()){
                 renterDao.addRenter(renter);    
                 for (RentedBook rentedBook : renter.getRentedBookList()) {
                     publicationDao.edit(rentedBook.getPublication());
                 }
-                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showListRenter(renterDao.getListRenterNotPayingBack());
                 renterView.showMessage("Thêm thành công");    
             }else{
                 renterView.showMessage("Lỗi");
@@ -102,12 +102,12 @@ public class RenterController {
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getEditRenterInfo();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent() 
-                    && !renterView.getRentedBookList().isEmpty()){
+                    && !renterView.getRentedBookList().isEmpty() && renterView.validDate()){
                 renterDao.editRenter(renter);
                 for (RentedBook rentedBook : renter.getRentedBookList()) {
                     publicationDao.edit(rentedBook.getPublication());
                 }
-                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showListRenter(renterDao.getListRenterNotPayingBack());
                 renterView.showMessage("Cập nhật thành công");
                 
             } else{
@@ -129,8 +129,9 @@ public class RenterController {
                 for (RentedBook rentedBook : renter.getRentedBookList()) {
                     publicationDao.setRentedInDeleting(rentedBook.getPublication(), rentedBook.getQuantity());
                 }
-                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showListRenter(renterDao.getListRenterNotPayingBack());
                 renterView.showMessage("Xoá thành công");
+                payerController.showPayerView();
             }
             renterView.clear();
             manageView.setTableStatistic();
@@ -178,7 +179,7 @@ public class RenterController {
         @Override
         public void actionPerformed(ActionEvent e) {
             renterDao.sortByName();
-            renterView.showListRenter(renterDao.getListRenter());
+            renterView.showListRenter(renterDao.getListRenterNotPayingBack());
         }
     }
     

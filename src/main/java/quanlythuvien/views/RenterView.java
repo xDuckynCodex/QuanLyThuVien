@@ -100,7 +100,7 @@ public class RenterView extends JFrame {
     private TableFilterHeader tableFilter;
     
     // cot
-    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Ngày trả"};
+    private final String[] column = new String[] {"STT","Họ và tên đệm", "Tên", "ID", "Ngày hết hạn"};
 
     private final Object data = new Object[][] {};
     private int dataPubRows = 0;
@@ -583,7 +583,7 @@ public class RenterView extends JFrame {
         Publication publication =
                 publicationDao.searchByName(rentedBookField.getText()).getFirst();
         if (checkExist(publication) == null) {
-            if (validQuantity(publication) && validRentedBook()) {
+            if (validQuantity(publication) && validRentedBook() && validDate()) {
                 publication.setRented(publication.getRented()+Integer.parseInt(quantityField.getText()));
 
                 RentedBook rentedBook = new RentedBook();
@@ -598,7 +598,7 @@ public class RenterView extends JFrame {
             rentedBookList.remove(rentedBook);
             publication.setRented(publication.getRented() -
                     rentedBook.getQuantity());
-            if (validQuantity(publication) && validRentedBook()) {
+            if (validQuantity(publication) && validRentedBook() && validDate()) {
                 publication.setRented(publication.getRented() + Integer.parseInt(quantityField.getText()));
 
                 rentedBook.setQuantity(Integer.parseInt(quantityField.getText()));

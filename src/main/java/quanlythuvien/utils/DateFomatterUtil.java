@@ -13,7 +13,13 @@ public class DateFomatterUtil{
         return dateFormat.format(date);
     }
 
-    public static Date stringToValue(String string) throws ParseException {
-        return dateFormat.parse(string);
+    public static Date stringToValue(String string) {
+        try{
+            return dateFormat.parse(string);
+        }
+        catch(Exception e){
+           
+        }
+        return null;
     }
 }

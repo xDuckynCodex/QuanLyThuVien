@@ -57,7 +57,7 @@ public class PayerView extends JFrame{
     private JTable payerTable;
     
     // thêm cột cho bảng
-    private final String[] column = new String[] {"STT", "Tên", "ID", "Ngày trả"};
+    private final String[] column = new String[] {"STT", "Tên", "ID", "Ngày hết hạn", "Ngày trả sách", "Trạng thái"};
     private final Object data = new Object[][] {};
     
     public void initComponet(){
@@ -128,12 +128,14 @@ public class PayerView extends JFrame{
     }
     
     public void showListPayer(List<Renter> list){
-        Object [][] data = new Object[list.size()][4];
+        Object [][] data = new Object[list.size()][6];
         for(int i = 0; i < list.size(); i++){
             data[i][0] = i + 1;
             data[i][1] = list.get(i).getFirstName() + " " + list.get(i).getName();
             data[i][2] = list.get(i).getCode();
             data[i][3] = list.get(i).getExpiredDate();
+            data[i][4] = list.get(i).getPayBackDate();
+            data[i][5] = list.get(i).getState();
         }
         this.payerTable.setModel(new DefaultTableModel(data, column));
         for(int i = 0; i < list.size(); i++){
