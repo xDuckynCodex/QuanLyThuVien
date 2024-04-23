@@ -130,13 +130,13 @@ public class PublicationDao {
     }
     
     public List<Publication> filterByType(String type){
-        List<Publication> searchResult = new ArrayList<Publication>();
+        List<Publication> filterResult = new ArrayList<Publication>();
         for(int i = 0; i < listPub.size(); i++){
             if(listPub.get(i).getType().contains(type)) {
-                searchResult.add(listPub.get(i));
+                filterResult.add(listPub.get(i));
             }
         }
-        return searchResult;
+        return filterResult;
     }
 
     public Integer countType(String type) {

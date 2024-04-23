@@ -6,10 +6,12 @@ import quanlythuvien.entities.Publication;
 import quanlythuvien.views.InfoView;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
-import quanlythuvien.components.TableStatistic;
 import quanlythuvien.views.ManageView;
 
 
@@ -48,6 +50,9 @@ public class InfoController {
         infoView.setEditBtnOnClickListener(new EditClickedListener());
         infoView.setDeleteBtnOnClickListener(new DeleteClickedListener());
         infoView.setExitBtnOnClickListener(new ExitClickedListener());
+        infoView.setBrowseBtnOnClickListener(new BrowseClickListener());
+        infoView.setNameFieldOnChangeListener(new NameFieldListener());
+        infoView.setAuthorFieldOnChangeListener(new AuthorFieldListener());
     }
 
     public void setPublicationDao(PublicationDao publicationDao) {
@@ -80,11 +85,8 @@ public class InfoController {
                 JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
                 //dispose frame
                 infoView.dispose();
-//            } else{
-//                JOptionPane.showMessageDialog(infoView, "Lỗi");
-//            }
-            //Handler add event
-        }}
+            }
+        }
     }
 
     class EditClickedListener implements ActionListener {
@@ -125,4 +127,65 @@ public class InfoController {
             infoView.dispose();
         }
     }
+
+    class BrowseClickListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFileChooser fc = new JFileChooser();
+            fc.setCurrentDirectory(new File("."));
+            int result = fc.showOpenDialog(infoView);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                String imagePath = fc.getSelectedFile().getPath();
+                infoView.card.setImageLabel(imagePath);
+                infoView.setImgPath(imagePath);
+            }
+        }
+    }
+
+    class NameFieldListener implements DocumentListener {
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            infoView.card.setNameCard(infoView.name.getTextField());
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            if (infoView.name.getTextField().isBlank()) {
+                infoView.card.setNameCard("...");
+            } else {
+                infoView.card.setNameCard(infoView.name.getTextField());
+            }
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+
+        }
+    }
+
+    class AuthorFieldListener implements DocumentListener {
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            infoView.card.setAuthorCard(infoView.author.getTextField());
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            if (infoView.author.getTextField().isBlank()) {
+                infoView.card.setAuthorCard("...");
+            } else {
+                infoView.card.setAuthorCard(infoView.author.getTextField());
+            }
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+
+        }
+    }
+
+
 }

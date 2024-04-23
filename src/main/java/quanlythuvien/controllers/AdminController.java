@@ -14,6 +14,14 @@ import quanlythuvien.components.TableStatistic;
 import quanlythuvien.views.PayerView;
 
 public class AdminController {
+    private static AdminController adminController;
+    public static AdminController getInstance() {
+        if (adminController == null) {
+            adminController = new AdminController();
+        }
+        return adminController;
+    }
+
     //data
     private PublicationDao publicationDao;
     private RenterDao renterDao;
@@ -79,9 +87,7 @@ public class AdminController {
 
         infoController.setGridCards(gridCards);
         infoController.setManageView(manageView);
-        
-        infoView.setRenterView(renterView);
-        infoView.setRenterDao(renterDao);
+
 
         manageView.setGridCards(gridCards);
 
@@ -94,23 +100,5 @@ public class AdminController {
     }
     public GridCards getGridCards() {
         return gridCards;
-    }
-    public PublicationDao getPublicationDao() {
-        return publicationDao;
-    }
-    public RenterDao getRenterDao() {
-        return renterDao;
-    }
-    public ManageController getManageController() {
-        return manageController;
-    }
-    public InfoController getInfoController() {
-        return infoController;
-    }
-    public LoginController getLoginController() {
-        return loginController;
-    }
-    public RenterController getRenterController() {
-        return renterController;
     }
 }

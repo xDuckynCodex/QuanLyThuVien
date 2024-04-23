@@ -3,7 +3,6 @@ package quanlythuvien.components;
 import quanlythuvien.controllers.InfoController;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
-import quanlythuvien.views.InfoView;
 import quanlythuvien.views.ManageView;
 
 import javax.swing.*;
@@ -33,27 +32,6 @@ public class GridCards extends JScrollPane {
         this.setViewportView(cardPanel);
         this.setPreferredSize(new Dimension(1350, 900));
         this.getVerticalScrollBar().setUnitIncrement(16);
-    }
-
-    public GridCards() {
-        initComponent();
-    }
-
-    public GridCards(PublicationDao publicationDao) {
-        this.publicationDao = publicationDao;
-        initComponent();
-    }
-
-    public GridCards(PublicationDao publicationDao, ManageView manageView) {
-        this.publicationDao = publicationDao;
-        this.manageView = manageView;
-        initComponent();
-    }
-
-    public GridCards(PublicationDao publicationDao, InfoController infoController) {
-        this.publicationDao = publicationDao;
-        this.infoController = infoController;
-        initComponent();
     }
 
     public GridCards(PublicationDao publicationDao, ManageView manageView, InfoController infoController) {
@@ -110,9 +88,5 @@ public class GridCards extends JScrollPane {
         publicationDao.delete(publication);
         manageView.setTableStatistic();
         this.setCardList(manageView.getSearchField());
-    }
-    
-    public List<Card> getCardList(){
-        return cardList;
     }
 }

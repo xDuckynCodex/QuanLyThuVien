@@ -18,5 +18,10 @@ public class FontUtil {
             throw new RuntimeException(e);
         }
     }
-    public static String Bitter = "Bitter Medium";
+    public static Font Bitter(int fontSize) {
+        return new Font("Bitter Medium", Font.PLAIN, fontSize);
+    }
+    public static Font Bitter(int fontSize, int style) {
+        return new Font("Bitter Medium", style, fontSize);
+    }
 }

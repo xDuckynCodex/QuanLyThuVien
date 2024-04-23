@@ -20,7 +20,7 @@ public class Publication implements Serializable {
         Publication.id++;
     }
     private static int id = 0;
-    private String type, code, publisher, author, name;
+    private String type, code, publisher, author, name, imgPath;
     private double price;
     private int quantity;
 
@@ -130,5 +130,13 @@ public class Publication implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 }
