@@ -108,4 +108,15 @@
         <rented>0</rented>
         <type>Book</type>
     </publication>
+    <publication>
+        <author>Haruki</author>
+        <code>P000009</code>
+        <name>Rừng Na Uy</name>
+        <price>10000.0</price>
+        <publishedDate>01/04/2024</publishedDate>
+        <publisher>Kim Đồng</publisher>
+        <quantity>10</quantity>
+        <rented>0</rented>
+        <type>Novel</type>
+    </publication>
 </publications>
