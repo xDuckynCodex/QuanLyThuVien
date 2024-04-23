@@ -3,14 +3,11 @@ package quanlythuvien.controllers;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
-import quanlythuvien.entities.Publication;
 import quanlythuvien.views.InfoView;
 import quanlythuvien.views.LoginView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
-import java.util.List;
-import quanlythuvien.components.TableStatistic;
 import quanlythuvien.views.PayerView;
 
 public class AdminController {

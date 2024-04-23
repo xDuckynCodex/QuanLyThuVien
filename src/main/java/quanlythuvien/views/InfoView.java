@@ -9,6 +9,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.Objects;
 
 import quanlythuvien.utils.DateFomatterUtil;
 
@@ -343,7 +344,7 @@ public class InfoView extends JFrame {
     
     public boolean validType(){
         String type = typeMenu.getTypeString();
-        if(type == "Choose Type"){
+        if(Objects.equals(type, "Choose Type")){
             showMessage("Thể loại không hợp lệ");
             return false;
         } 

@@ -25,7 +25,7 @@ public class GridCards extends JScrollPane {
     private InfoController infoController;
 
     public void initComponent() {
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         // card panel setup
         this.setCardPanel();
 
@@ -43,7 +43,7 @@ public class GridCards extends JScrollPane {
 
     //call to show info
     public void setCardList() {
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         for (Publication publication : publicationDao.getListPublication()) {
             cardList.add(new Card(publication, infoController));
         }
@@ -55,7 +55,7 @@ public class GridCards extends JScrollPane {
     }
 
     public void setCardList(String searchText) {
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         for (Publication publication : publicationDao.searchByName(searchText)) {
             cardList.add(new Card(publication, infoController));
         }
@@ -67,7 +67,7 @@ public class GridCards extends JScrollPane {
     }
     
     public void filterByType(String type){
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         for (Publication publication : publicationDao.filterByType(type)) {
             cardList.add(new Card(publication, infoController));
         }

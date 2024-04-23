@@ -33,10 +33,6 @@ public class InfoController {
     public void setPublication(Publication publication) {
         this.publication = publication;
     }
-    
-    public InfoController() {
-        initComponent();
-    }
 
     public InfoController(InfoView view) {
         this.infoView = view;
