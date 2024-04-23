@@ -200,7 +200,7 @@ public class ManageView extends JFrame {
     public void setTransferToRenterViewClickListener(ActionListener listener) {
         transferToRenterViewBtn.onClickListener(listener);
     }
-    
+
     public void setTransferToPayerViewClickListener(ActionListener listener){
         transferToPayerViewBtn.onClickListener(listener);
     }

@@ -1,73 +1,42 @@
 package quanlythuvien.views;
 
 import quanlythuvien.components.*;
-import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.utils.FontUtil;
 
 import javax.swing.*;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import java.util.List;
-import quanlythuvien.dao.RenterDao;
-import quanlythuvien.entities.RentedBook;
-import quanlythuvien.entities.Renter;
+import java.util.Objects;
+
 import quanlythuvien.utils.DateFomatterUtil;
 
 public class InfoView extends JFrame {
     public InfoView() {
         initComponent();
     }
-
-    public InfoView(GridCards gridCards) {
-        this.gridCards = gridCards;
-        this.publicationDao = gridCards.getPublicationDao();
-        initComponent();
-    }
-    RenterView renterView;
-
-    public void setRenterView(RenterView renterView) {
-        this.renterView = renterView;
-    }
-    private InputField name, code, publisher, author, quantity, price;
-    private ButtonComp addBtn, editBtn, deleteBtn, exitBtn;
+    public InputField name, code, publisher, author, quantity, price;
+    private ButtonComp addBtn, editBtn, deleteBtn, exitBtn, browseBtn;
     private JLabel title;
     private DatePickerPanel datePickerPanel;
 
-    public DatePickerPanel getDatePickerPanel() {
-        return datePickerPanel;
-    }
+    public Card card;
     private DropDown typeMenu;
-    private GridCards gridCards;
-    private PublicationDao publicationDao;
-    private RentedBook rentedBook;
 
     public Publication getPublication() {
         return publication;
     }
-
-    public InputField getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(InputField quantity) {
-        this.quantity = quantity;
-    }
-    
     private Publication publication;
-    private RenterDao renterDao;
-
-    public void setRenterDao(RenterDao renterDao) {
-        this.renterDao = renterDao;
-    }
+    private String imgPath;
     private final int north = 50;
     private final int west = 250;
     public void initComponent() {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         // label
         title = new JLabel("Thông tin đối tượng");
-        title.setFont(new Font(FontUtil.Bitter, Font.PLAIN, 30 ));
+        title.setFont(FontUtil.Bitter(30));
         //input field
         name = new InputField("Tên sản phẩm");
         code = new InputField("Mã sản phẩm");
@@ -84,8 +53,9 @@ public class InfoView extends JFrame {
         editBtn =new ButtonComp("Sửa");
         deleteBtn = new ButtonComp("Xóa");
         exitBtn = new ButtonComp("Exit");
+        browseBtn = new ButtonComp("Browse");
 
-//        card = new Card();
+        card = new Card();
 
         //giao dien chinh
         JPanel panel = new JPanel();
@@ -107,9 +77,15 @@ public class InfoView extends JFrame {
         panel.add(editBtn);
         panel.add(deleteBtn);
         panel.add(exitBtn);
+        panel.add(browseBtn);
 
+        panel.add(card);
 
         //set vi tri
+        layout.putConstraint(SpringLayout.WEST, card, 40, SpringLayout.WEST,
+                panel);
+        layout.putConstraint(SpringLayout.NORTH, card, north, SpringLayout.NORTH,
+                panel);
         //title
         layout.putConstraint(SpringLayout.WEST, title, 200, SpringLayout.WEST,
                 panel);
@@ -118,7 +94,8 @@ public class InfoView extends JFrame {
         //name
         layout.putConstraint(SpringLayout.WEST, name, west, SpringLayout.WEST,
                 panel);
-        layout.putConstraint(SpringLayout.NORTH, name, north, SpringLayout.NORTH,
+        layout.putConstraint(SpringLayout.NORTH, name, north + 10,
+                SpringLayout.NORTH,
                 panel);
         //code
         layout.putConstraint(SpringLayout.WEST, code, west, SpringLayout.WEST,
@@ -199,7 +176,14 @@ public class InfoView extends JFrame {
                 north + 40 * 8,
                 SpringLayout.NORTH,
                 panel);
-
+//        browseBtn
+        layout.putConstraint(SpringLayout.WEST, browseBtn, 100,
+                SpringLayout.WEST,
+                panel);
+        layout.putConstraint(SpringLayout.NORTH, browseBtn,
+                north + 40 * 7,
+                SpringLayout.NORTH,
+                panel);
         //set frame
         this.add(panel);
         this.pack();
@@ -218,30 +202,22 @@ public class InfoView extends JFrame {
         price.setField(publication.getPrice() + "");
         datePickerPanel.showDate(publication.getPublishedDate());
         typeMenu.setType(publication.getType());
+        card.setImageLabel(publication.getImgPath());
         this.setVisible(true);
     }
     
     public void setPublication(Publication publication) {
         this.publication = publication;
     }
-    
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
     public void showInfoView() {
         this.setVisible(true);
     }
-   
-    public void updatePublication(){
-        PublicationDao publicationDao = new PublicationDao();
-        RenterDao renterDao = new RenterDao();
-        RentedBook rentedBook = new RentedBook();
-        List<Publication> listP = publicationDao.getListPublication();
-        List<Renter> listR = renterDao.getListRenter();
-        for(Renter r : listR){
-            if(publication.getName().equals(r.getRentedBookList())){    
-                int n = publication.getQuantity() - rentedBook.getQuantity();
-                publication.setQuantity(n); 
-            }
-        }   
-    }
+    
 
     public Publication getNewInfoPublication() {
         if(!validAuthor() || !validName() || !validPrice() || !validPublisher() || !validQuantity() || !validDate() || !validType()){
@@ -257,6 +233,7 @@ public class InfoView extends JFrame {
             publication.setPublishedDate(datePickerPanel.getDateString());
             publication.setType(typeMenu.getTypeString());
             publication.setQuantity(Integer.parseInt(quantity.getTextField()));
+            publication.setImgPath(imgPath);
             return publication;
         } catch(Exception e) {
             showMessage(e.getMessage());
@@ -294,7 +271,8 @@ public class InfoView extends JFrame {
         price.setField("");
         datePickerPanel.clearDate();
         typeMenu.clearType();
-        
+        card.setImageLabel(".\\public\\images\\ph.png");
+
         addBtn.setEnable(true);
         editBtn.setEnable(false);
         deleteBtn.setEnable(false);
@@ -357,7 +335,7 @@ public class InfoView extends JFrame {
             showMessage("Không được bỏ trống 5");
             return false;
         }
-        if(Integer.parseInt(checkPrice) <= 0){
+        if(Double.parseDouble(checkPrice) <= 0){
             showMessage("Giá không hợp lệ");
             return false;
         }
@@ -366,7 +344,7 @@ public class InfoView extends JFrame {
     
     public boolean validType(){
         String type = typeMenu.getTypeString();
-        if(type == "Choose Type"){
+        if(Objects.equals(type, "Choose Type")){
             showMessage("Thể loại không hợp lệ");
             return false;
         } 
@@ -402,5 +380,17 @@ public class InfoView extends JFrame {
 
     public void setExitBtnOnClickListener(ActionListener listener) {
         exitBtn.onClickListener(listener);
+    }
+
+    public void setBrowseBtnOnClickListener(ActionListener listener) {
+        browseBtn.onClickListener(listener);
+    }
+
+    public void setNameFieldOnChangeListener(DocumentListener listener) {
+        name.addFieldChange(listener);
+    }
+
+    public void setAuthorFieldOnChangeListener(DocumentListener listener) {
+        author.addFieldChange(listener);
     }
 }

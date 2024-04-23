@@ -53,7 +53,7 @@ public class PayerView extends JFrame{
     public String getSearchField() {
         return searchField.getTextField();
     }
-    
+  
     private JTable payerTable;
     
     // thêm cột cho bảng
@@ -141,24 +141,24 @@ public class PayerView extends JFrame{
         }
         payerTable.clearSelection();
     }
-    
+
     public void searchByName(String name){
         List<Renter> list = renterDao.searchByName(name);
         this.showListPayer(list);
     }
-    
+
     public void addTransferToPublicationViewListener(ActionListener listener){
         transferToPublicationViewBtn.addActionListener(listener);
     }
-    
+
     public void addTransfertoRenterViewListener(ActionListener listener){
         transfertoRenterViewBtn.addActionListener(listener);
     }
-    
+
     public void setSearchFieldOnChangeListener(DocumentListener listener) {
         searchField.addFieldChange(listener);
     }
-    
+
     public static void main(String[] args){
         PayerView payerView = new PayerView();
         payerView.setVisible(true);

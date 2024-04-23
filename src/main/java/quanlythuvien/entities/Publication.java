@@ -1,6 +1,7 @@
 package quanlythuvien.entities;
 
 
+import java.io.Serial;
 import java.io.Serializable;
 //@XmlElement(name = "publication")
 //@XmlAccessorType(XmlAccessType.FIELD)
@@ -8,19 +9,15 @@ public class Publication implements Serializable {
     // class định nghĩa các ấn phẩm của thư viện
     // chứa các thông tin sau: sách, báo, tạp chí, chuyên san, tập san, sách tranh…, 
     //giá thành, số lượng, mã số, Nhà xuất bản, tác giả…
+    @Serial
     private static final long serialVersionUID = 1L;
 
-    public static int getId() {
-        return id;
-    }
     public static void setId(int id) {
         Publication.id = id;
     }
-    public static void increaseId() {
-        Publication.id++;
-    }
+
     private static int id = 0;
-    private String type, code, publisher, author, name;
+    private String type, code, publisher, author, name, imgPath;
     private double price;
     private int quantity;
 
@@ -130,5 +127,13 @@ public class Publication implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 }
