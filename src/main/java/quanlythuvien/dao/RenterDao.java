@@ -134,7 +134,6 @@ public class RenterDao {
 
     public void setListRenterPayingBack(String searchText){
         List<Renter> listRenterPayingBack = new ArrayList<Renter>();
-
     }
 
     public List<Renter> getListRenterNotPayingBack(){
