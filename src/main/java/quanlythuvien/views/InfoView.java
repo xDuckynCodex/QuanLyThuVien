@@ -29,7 +29,8 @@ public class InfoView extends JFrame {
         return publication;
     }
     private Publication publication;
-    private String imgPath;
+
+    private String imgPath = ".\\public\\images\\ph.png";
     private final int north = 50;
     private final int west = 250;
     public void initComponent() {
@@ -255,6 +256,7 @@ public class InfoView extends JFrame {
             publication.setPublishedDate(datePickerPanel.getDateString());
             publication.setType(typeMenu.getTypeString());
             publication.setQuantity(Integer.parseInt(quantity.getTextField()));
+            publication.setImgPath(imgPath);
             return publication;
         } catch(Exception e){
             showMessage(e.getMessage());
@@ -272,6 +274,7 @@ public class InfoView extends JFrame {
         datePickerPanel.clearDate();
         typeMenu.clearType();
         card.setImageLabel(".\\public\\images\\ph.png");
+        imgPath = ".\\public\\images\\ph.png";
 
         addBtn.setEnable(true);
         editBtn.setEnable(false);

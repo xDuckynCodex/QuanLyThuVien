@@ -1,122 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
     <publication>
-        <author>1</author>
+        <author>qweq</author>
         <code>P000001</code>
         <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ableson.jpg</imgPath>
-        <name>A Developer' Guide</name>
+        <name>wqeqw</name>
         <price>1.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>1</publisher>
-        <quantity>111</quantity>
+        <publishedDate>03/04/2024</publishedDate>
+        <publisher>qwewq</publisher>
+        <quantity>1</quantity>
         <rented>0</rented>
         <type>Book</type>
     </publication>
     <publication>
-        <author>1</author>
+        <author>rty</author>
         <code>P000002</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ahmed.jpg</imgPath>
-        <name>Flex 3</name>
-        <price>111.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>asd</publisher>
-        <quantity>111</quantity>
-        <rented>0</rented>
-        <type>Magazine</type>
-    </publication>
-    <publication>
-        <author>qwe</author>
-        <code>P000003</code>
         <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\armstrong.jpg</imgPath>
-        <name>Rails</name>
+        <name>try</name>
         <price>1.0</price>
         <publishedDate>01/04/2024</publishedDate>
-        <publisher>aw</publisher>
-        <quantity>111</quantity>
+        <publisher>rty</publisher>
+        <quantity>1</quantity>
         <rented>0</rented>
         <type>Book</type>
     </publication>
     <publication>
-        <author>1</author>
-        <code>P000001</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ableson.jpg</imgPath>
-        <name>A Developer' Guide</name>
-        <price>1.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>1</publisher>
-        <quantity>111</quantity>
-        <rented>0</rented>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>1</author>
-        <code>P000002</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ahmed.jpg</imgPath>
-        <name>Flex 3</name>
-        <price>111.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>asd</publisher>
-        <quantity>111</quantity>
-        <rented>0</rented>
-        <type>Magazine</type>
-    </publication>
-    <publication>
-        <author>qwe</author>
+        <author>gfbdvc</author>
         <code>P000003</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\armstrong.jpg</imgPath>
-        <name>Rails</name>
+        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\alag.jpg</imgPath>
+        <name>rewdq</name>
         <price>1.0</price>
         <publishedDate>01/04/2024</publishedDate>
-        <publisher>aw</publisher>
-        <quantity>111</quantity>
+        <publisher>grefed</publisher>
+        <quantity>1</quantity>
         <rented>0</rented>
         <type>Book</type>
-    </publication>
-    <publication>
-        <author>1</author>
-        <code>P000001</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ableson.jpg</imgPath>
-        <name>A Developer' Guide</name>
-        <price>1.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>1</publisher>
-        <quantity>111</quantity>
-        <rented>0</rented>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>1</author>
-        <code>P000002</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ahmed.jpg</imgPath>
-        <name>Flex 3</name>
-        <price>111.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>asd</publisher>
-        <quantity>111</quantity>
-        <rented>0</rented>
-        <type>Magazine</type>
-    </publication>
-    <publication>
-        <author>qwe</author>
-        <code>P000003</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ph.png</imgPath>
-        <name>Rails</name>
-        <price>1.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>aw</publisher>
-        <quantity>111</quantity>
-        <rented>0</rented>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>Haruki</author>
-        <code>P000009</code>
-        <name>Rừng Na Uy</name>
-        <price>10000.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>Kim Đồng</publisher>
-        <quantity>10</quantity>
-        <rented>0</rented>
-        <type>Novel</type>
     </publication>
 </publications>
