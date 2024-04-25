@@ -80,11 +80,8 @@ public class InfoController {
                 JOptionPane.showMessageDialog(infoView, "Thêm ấn phẩm thành công");
                 //dispose frame
                 infoView.dispose();
-//            } else{
-//                JOptionPane.showMessageDialog(infoView, "Lỗi");
-//            }
-            //Handler add event
-        }}
+            }
+        }
     }
 
     class EditClickedListener implements ActionListener {
@@ -99,22 +96,24 @@ public class InfoController {
                 manageView.setTableStatistic();
                 infoView.dispose();
                 JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
-//            } else {
-//                JOptionPane.showMessageDialog(infoView, "Lỗi");
-//            }   
-        }}
+            }   
+        }
     }
 
     class DeleteClickedListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler delete event
-            publicationDao.delete(publication);
-            //reset gridcards
-            gridCards.setCardList();
-            manageView.setTableStatistic();
-            infoView.dispose();
-            JOptionPane.showMessageDialog(infoView, "Xoá ấn phẩm thành công");
+            if(publication.getRented() == 0){
+                publicationDao.delete(publication);
+                //reset gridcards
+                gridCards.setCardList();
+                manageView.setTableStatistic();
+                infoView.dispose();
+                JOptionPane.showMessageDialog(infoView, "Xoá ấn phẩm thành công");
+            } else {
+                JOptionPane.showMessageDialog(infoView, "Sách đang cho mượn nên không thể xoá");
+            }
         }
     }
 
