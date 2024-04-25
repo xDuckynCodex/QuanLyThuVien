@@ -33,6 +33,7 @@ public class Publication implements Serializable {
     private String publishedDate;
     public Publication(){
        rented = 0;
+        imgPath = ".\\public\\images\\ph.png";
     }
     public Publication(String type, String code, String publisher,
                        String author, double price, int quantity,

@@ -60,6 +60,7 @@ public class PublicationDao {
                 publication.setPrice(pub.getPrice());
                 publication.setQuantity(pub.getQuantity());
                 publication.setPublishedDate(pub.getPublishedDate());
+                publication.setImgPath(pub.getImgPath());
             }
         }
         writeListPub(listPub);

@@ -3,11 +3,14 @@ package quanlythuvien.controllers;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
+import quanlythuvien.utils.ImageUtils;
 import quanlythuvien.views.InfoView;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -97,10 +100,8 @@ public class InfoController {
                 manageView.setTableStatistic();
                 infoView.dispose();
                 JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
-//            } else {
-//                JOptionPane.showMessageDialog(infoView, "Lỗi");
-//            }   
-        }}
+            }
+        }
     }
 
     class DeleteClickedListener implements ActionListener {
@@ -129,6 +130,9 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fc = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Image files", ImageIO.getReaderFileSuffixes());
+            fc.setFileFilter(filter);
             fc.setCurrentDirectory(new File("."));
             int result = fc.showOpenDialog(infoView);
             if (result == JFileChooser.APPROVE_OPTION) {
