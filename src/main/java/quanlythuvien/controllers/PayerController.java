@@ -41,6 +41,7 @@ public class PayerController {
         this.payerView = view;
         view.addTransferToPublicationViewListener(new TransferToPublicationViewListener());
         view.addTransfertoRenterViewListener(new TransferToRenterViewListener());
+        view.setSearchFieldOnChangeListener(new AddSearchListener());
     }
     
     public void showPayerView(){

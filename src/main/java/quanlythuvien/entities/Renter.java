@@ -18,8 +18,16 @@ public class Renter {
     }
 
     public static int id = 0;
-    private String name, firstName, code, expiredDate;
+    private String name, firstName, code, expiredDate, payBackDate, state;
     public boolean isPaidBack;
+
+//    public boolean getIsPaidBack() {
+//        return isPaidBack;
+//    }
+//
+//    public void setIsPaidBack(boolean isPaidBack) {
+//        this.isPaidBack = isPaidBack;
+//    }
 
     public List<RentedBook> getRentedBookList() {
         return rentedBook;
@@ -43,6 +51,22 @@ public class Renter {
         this.name = name;
         this.firstName = firstName;
         this.code = code;
+    }
+
+    public String getPayBackDate() {
+        return payBackDate;
+    }
+
+    public void setPayBackDate(String payBackDate) {
+        this.payBackDate = payBackDate;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getName() {

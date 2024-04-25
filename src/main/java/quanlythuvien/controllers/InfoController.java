@@ -108,12 +108,16 @@ public class InfoController {
         @Override
         public void actionPerformed(ActionEvent e) {
             //Handler delete event
-            publicationDao.delete(publication);
-            //reset gridcards
-            gridCards.setCardList();
-            manageView.setTableStatistic();
-            infoView.dispose();
-            JOptionPane.showMessageDialog(infoView, "Xoá ấn phẩm thành công");
+            if(publication.getRented() == 0){
+                publicationDao.delete(publication);
+                //reset gridcards
+                gridCards.setCardList();
+                manageView.setTableStatistic();
+                infoView.dispose();
+                JOptionPane.showMessageDialog(infoView, "Xoá ấn phẩm thành công");
+            } else {
+                JOptionPane.showMessageDialog(infoView, "Sách đang cho mượn nên không thể xoá");
+            }
         }
     }
 

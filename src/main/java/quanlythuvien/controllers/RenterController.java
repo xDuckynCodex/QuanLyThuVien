@@ -7,15 +7,16 @@ package quanlythuvien.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
+import quanlythuvien.entities.Publication;
 import quanlythuvien.entities.RentedBook;
 import quanlythuvien.entities.Renter;
-import quanlythuvien.views.InfoView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
@@ -53,7 +54,6 @@ public class RenterController {
 
     public RenterController(RenterView view){
         this.renterView = view;
-//        view.hideTablePub();
 
         view.addAddRenterListener(new AddNewRenterListener());
         view.addEditRenterListener(new EditRenterListener());
@@ -71,7 +71,7 @@ public class RenterController {
     
     public void showRenterView(){
         renterView.setVisible(true);
-        renterView.showListRenter(renterDao.getListRenter());
+        renterView.showListRenter(renterDao.getListRenterNotPayingBack());
         renterView.clear();
     }
     
@@ -79,12 +79,12 @@ public class RenterController {
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getNewRenterInfo();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent() 
-                    && !renterView.getRentedBookList().isEmpty()){
+                    && !renterView.getRentedBookList().isEmpty() && renterView.validDate()){
                 renterDao.addRenter(renter);    
                 for (RentedBook rentedBook : renter.getRentedBookList()) {
                     publicationDao.edit(rentedBook.getPublication());
                 }
-                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showListRenter(renterDao.getListRenterNotPayingBack());
                 renterView.showMessage("Thêm thành công");    
             }else{
                 renterView.showMessage("Lỗi");
@@ -96,20 +96,17 @@ public class RenterController {
         }
     }
 
-
-
     class EditRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Renter renter = renterView.getEditRenterInfo();
             if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent() 
-                    && !renterView.getRentedBookList().isEmpty()){
+                    && !renterView.getRentedBookList().isEmpty() && renterView.validDate()){
                 renterDao.editRenter(renter);
                 for (RentedBook rentedBook : renter.getRentedBookList()) {
                     publicationDao.edit(rentedBook.getPublication());
                 }
-                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showListRenter(renterDao.getListRenterNotPayingBack());
                 renterView.showMessage("Cập nhật thành công");
-                
             } else{
                 renterView.showMessage("Lỗi");
             }
@@ -129,7 +126,7 @@ public class RenterController {
                 for (RentedBook rentedBook : renter.getRentedBookList()) {
                     publicationDao.setRentedInDeleting(rentedBook.getPublication(), rentedBook.getQuantity());
                 }
-                renterView.showListRenter(renterDao.getListRenter());
+                renterView.showListRenter(renterDao.getListRenterNotPayingBack());
                 renterView.showMessage("Xoá thành công");
             }
             renterView.clear();
@@ -178,7 +175,7 @@ public class RenterController {
         @Override
         public void actionPerformed(ActionEvent e) {
             renterDao.sortByName();
-            renterView.showListRenter(renterDao.getListRenter());
+            renterView.showListRenter(renterDao.getListRenterNotPayingBack());
         }
     }
     
@@ -208,13 +205,19 @@ public class RenterController {
         @Override
         public void actionPerformed(ActionEvent e) {
             Renter renter = renterView.getEditRenterInfo();
-            if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent()){
+            if(renter != null && renterView.checkPublication() && renterView.checkQuantityToRent() ){
                 renterView.addBookToRentedBookList(renterView.getRentedBookInfo());
-                renterView.setListToListRentedBookScroll();
-                renterView.clearBook();
-            } else{
-                renterView.showMessage("Lỗi");
-            }   
+                if(renterView.checkMaximum()){
+                    renterView.setListToListRentedBookScroll();
+                    renterView.clearBook();
+                }else{
+                    renterView.showMessage("Chỉ được mượn tối đa 5 ấn phẩm");
+                }
+            } else if(!renterView.checkPublication()){
+                renterView.showMessage("Ấn phẩm không có trong thư viện");
+            } else if(!renterView.checkQuantityToRent()){
+                renterView.showMessage("Ấn phẩm còn lại không đủ");
+            } 
         }
     }
     
@@ -222,10 +225,15 @@ public class RenterController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            renterView.removeBookInRentedBook();
-            renterView.setListToListRentedBookScroll();
-            renterView.clearBook();
-            renterView.setEnableRemoveBookBtn(false);
+            List<RentedBook> list = renterView.getRentedBookList();
+            if(list.size() == 1){
+                renterView.showMessage("Danh sách mượn ấn phẩm không được trống");
+            } else{
+                renterView.removeBookInRentedBook();
+                renterView.setListToListRentedBookScroll();
+                renterView.clearBook();
+                renterView.setEnableRemoveBookBtn(false);
+            }
         }
     }
 }

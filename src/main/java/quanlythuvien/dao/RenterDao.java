@@ -7,15 +7,18 @@ package quanlythuvien.dao;
 import java.text.Collator;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import quanlythuvien.entities.Publication;
 import quanlythuvien.entities.Renter;
+import quanlythuvien.utils.DateFomatterUtil;
 import quanlythuvien.utils.FileUtils;
 
 /**
@@ -74,7 +77,16 @@ public class RenterDao {
     public void delete(Renter r){
         for(int i = 0; i < listRenter.size(); i++){
             if(listRenter.get(i).getCode().equals(r.getCode())){
-                listRenter.remove(i);
+                listRenter.get(i).isPaidBack = true;
+                Date date = DateFomatterUtil.stringToValue(listRenter.get(i).getExpiredDate());
+                Date dateNow = new Date();
+                listRenter.get(i).setPayBackDate(DateFomatterUtil.valueToString(dateNow));
+                if(dateNow.before(date)){
+                    listRenter.get(i).setState("Trả sách đúng hạn");
+                } else{
+                    long day = (dateNow.getTime() - date.getTime()) / (1000*60*60*24);
+                    listRenter.get(i).setState("Quá hạn " + day + " ngày");
+                }
                 writeListRenter(listRenter);
                 break;
             }
@@ -93,7 +105,7 @@ public class RenterDao {
     public List<Renter> searchByName(String name){
         List<Renter> searchResult = new ArrayList<Renter>();
         for(int i = 0; i < listRenter.size(); i++){
-            if(listRenter.get(i).getName().contains(name) && !listRenter.get(i).isPaidBack) {
+            if(listRenter.get(i).getName().contains(name) && listRenter.get(i).isPaidBack) {
                 searchResult.add(listRenter.get(i));
             }
         }

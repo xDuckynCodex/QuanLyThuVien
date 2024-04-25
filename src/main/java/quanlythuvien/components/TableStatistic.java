@@ -76,10 +76,10 @@ public class TableStatistic extends JScrollPane {
                 + Integer.parseInt(dataStatistic[2][1].toString()) + Integer.parseInt(dataStatistic[3][1].toString());
         
         dataStatistic[4][2] = Integer.valueOf(dataStatistic[0][2].toString()) + Integer.valueOf(dataStatistic[1][2].toString()) 
-                + Integer.valueOf(dataStatistic[2][2].toString()) + Integer.valueOf(dataStatistic[3][2].toString());
+                + Integer.parseInt(dataStatistic[2][2].toString()) + Integer.parseInt(dataStatistic[3][2].toString());
         
         dataStatistic[4][3] = Integer.valueOf(dataStatistic[0][3].toString()) + Integer.valueOf(dataStatistic[1][3].toString()) 
-                + Integer.valueOf(dataStatistic[2][3].toString()) + Integer.valueOf(dataStatistic[3][3].toString());
+                + Integer.parseInt(dataStatistic[2][3].toString()) + Integer.parseInt(dataStatistic[3][3].toString());
         
 
         tableStatistic.setModel(new DefaultTableModel(dataStatistic, columnStatistic));

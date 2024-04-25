@@ -56,8 +56,11 @@ public class ContextMenu extends JPopupMenu {
     class DeleteMenuItem implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            gridCards.deleteCard(publication);
-
+            if(publication.getRented() == 0){
+                gridCards.deleteCard(publication);
+            } else {
+                JOptionPane.showMessageDialog(gridCards, "Sách đang cho mượn nên không thể xoá");
+            }
         }
     }
 
