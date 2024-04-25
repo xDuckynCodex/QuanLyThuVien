@@ -46,7 +46,7 @@ public class Renter {
         rentedBook = new ArrayList<>();
         this.isPaidBack = false;
     }
-    
+  
     public Renter(String name, String firstName,  String code) {
         this.name = name;
         this.firstName = firstName;

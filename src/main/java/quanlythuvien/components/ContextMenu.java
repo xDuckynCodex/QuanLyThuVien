@@ -1,6 +1,7 @@
 package quanlythuvien.components;
 
 import quanlythuvien.components.GridCards;
+import quanlythuvien.controllers.AdminController;
 import quanlythuvien.controllers.InfoController;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
@@ -25,10 +26,9 @@ public class ContextMenu extends JPopupMenu {
     private PublicationDao publicationDao;
     private Publication publication;
 
-    public ContextMenu(Publication publication, GridCards gridCards,
-                       InfoController infoController) {
+    public ContextMenu(Publication publication, InfoController infoController) {
         this.publication = publication;
-        this.gridCards = gridCards;
+        this.gridCards = AdminController.getInstance().getGridCards();
         this.infoController = infoController;
         this.publicationDao = gridCards.getPublicationDao();
         initComponent();

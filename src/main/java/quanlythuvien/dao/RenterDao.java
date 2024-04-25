@@ -133,22 +133,21 @@ public class RenterDao {
     public List<Renter> getListRenter(){
         return listRenter;
     }
-    
+
     public List<Renter> getListRenterPayingBack(){
         List<Renter> listRenterPayingBack = new ArrayList<Renter>();
         for(Renter r : listRenter){
-            if(r.isPaidBack == true){
+            if(r.isPaidBack){
                 listRenterPayingBack.add(r);
-            } 
+            }
         }
         return listRenterPayingBack;
     }
-    
+
     public void setListRenterPayingBack(String searchText){
         List<Renter> listRenterPayingBack = new ArrayList<Renter>();
-        
     }
-    
+
     public List<Renter> getListRenterNotPayingBack(){
         List<Renter> listRenterNotPayingBack = new ArrayList<Renter>();
         for(Renter r : listRenter){

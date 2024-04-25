@@ -3,20 +3,24 @@ package quanlythuvien.controllers;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.dao.RenterDao;
-import quanlythuvien.entities.Publication;
 import quanlythuvien.views.InfoView;
 import quanlythuvien.views.LoginView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
 
-import java.util.List;
-import quanlythuvien.components.TableStatistic;
 import quanlythuvien.views.PayerView;
 
 public class AdminController {
+    private static AdminController adminController;
+    public static AdminController getInstance() {
+        if (adminController == null) {
+            adminController = new AdminController();
+        }
+        return adminController;
+    }
+
     //data
     private PublicationDao publicationDao;
-    private List<Publication> publicationList;
     private RenterDao renterDao;
     // view
     private ManageView manageView;
@@ -42,7 +46,6 @@ public class AdminController {
     public void initComponent() {
         //data
         publicationDao = new PublicationDao();
-        publicationList = publicationDao.getListPublication();
         renterDao = new RenterDao();
 
         // view
@@ -81,9 +84,7 @@ public class AdminController {
 
         infoController.setGridCards(gridCards);
         infoController.setManageView(manageView);
-        
-        infoView.setRenterView(renterView);
-        infoView.setRenterDao(renterDao);
+
 
         manageView.setGridCards(gridCards);
 
@@ -94,8 +95,7 @@ public class AdminController {
     public void showLoginView() {
         loginController.showLoginView();
     }
-
-    public void showManageView() {
-        manageController.showView();
+    public GridCards getGridCards() {
+        return gridCards;
     }
 }

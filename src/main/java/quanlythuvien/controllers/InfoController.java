@@ -3,13 +3,18 @@ package quanlythuvien.controllers;
 import quanlythuvien.components.GridCards;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
+import quanlythuvien.utils.ImageUtils;
 import quanlythuvien.views.InfoView;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
-import quanlythuvien.components.TableStatistic;
 import quanlythuvien.views.ManageView;
 
 
@@ -31,10 +36,6 @@ public class InfoController {
     public void setPublication(Publication publication) {
         this.publication = publication;
     }
-    
-    public InfoController() {
-        initComponent();
-    }
 
     public InfoController(InfoView view) {
         this.infoView = view;
@@ -48,6 +49,9 @@ public class InfoController {
         infoView.setEditBtnOnClickListener(new EditClickedListener());
         infoView.setDeleteBtnOnClickListener(new DeleteClickedListener());
         infoView.setExitBtnOnClickListener(new ExitClickedListener());
+        infoView.setBrowseBtnOnClickListener(new BrowseClickListener());
+        infoView.setNameFieldOnChangeListener(new NameFieldListener());
+        infoView.setAuthorFieldOnChangeListener(new AuthorFieldListener());
     }
 
     public void setPublicationDao(PublicationDao publicationDao) {
@@ -96,7 +100,7 @@ public class InfoController {
                 manageView.setTableStatistic();
                 infoView.dispose();
                 JOptionPane.showMessageDialog(infoView, "Sửa ấn phẩm thành công");
-            }   
+            }
         }
     }
 
@@ -124,4 +128,68 @@ public class InfoController {
             infoView.dispose();
         }
     }
+
+    class BrowseClickListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFileChooser fc = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Image files", ImageIO.getReaderFileSuffixes());
+            fc.setFileFilter(filter);
+            fc.setCurrentDirectory(new File("."));
+            int result = fc.showOpenDialog(infoView);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                String imagePath = fc.getSelectedFile().getPath();
+                infoView.card.setImageLabel(imagePath);
+                infoView.setImgPath(imagePath);
+            }
+        }
+    }
+
+    class NameFieldListener implements DocumentListener {
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            infoView.card.setNameCard(infoView.name.getTextField());
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            if (infoView.name.getTextField().isBlank()) {
+                infoView.card.setNameCard("...");
+            } else {
+                infoView.card.setNameCard(infoView.name.getTextField());
+            }
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+
+        }
+    }
+
+    class AuthorFieldListener implements DocumentListener {
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            infoView.card.setAuthorCard(infoView.author.getTextField());
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            if (infoView.author.getTextField().isBlank()) {
+                infoView.card.setAuthorCard("...");
+            } else {
+                infoView.card.setAuthorCard(infoView.author.getTextField());
+            }
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+
+        }
+    }
+
+
 }

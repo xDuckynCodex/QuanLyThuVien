@@ -3,7 +3,6 @@ package quanlythuvien.components;
 import quanlythuvien.controllers.InfoController;
 import quanlythuvien.dao.PublicationDao;
 import quanlythuvien.entities.Publication;
-import quanlythuvien.views.InfoView;
 import quanlythuvien.views.ManageView;
 
 import javax.swing.*;
@@ -26,34 +25,13 @@ public class GridCards extends JScrollPane {
     private InfoController infoController;
 
     public void initComponent() {
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         // card panel setup
         this.setCardPanel();
 
         this.setViewportView(cardPanel);
         this.setPreferredSize(new Dimension(1350, 900));
         this.getVerticalScrollBar().setUnitIncrement(16);
-    }
-
-    public GridCards() {
-        initComponent();
-    }
-
-    public GridCards(PublicationDao publicationDao) {
-        this.publicationDao = publicationDao;
-        initComponent();
-    }
-
-    public GridCards(PublicationDao publicationDao, ManageView manageView) {
-        this.publicationDao = publicationDao;
-        this.manageView = manageView;
-        initComponent();
-    }
-
-    public GridCards(PublicationDao publicationDao, InfoController infoController) {
-        this.publicationDao = publicationDao;
-        this.infoController = infoController;
-        initComponent();
     }
 
     public GridCards(PublicationDao publicationDao, ManageView manageView, InfoController infoController) {
@@ -65,9 +43,9 @@ public class GridCards extends JScrollPane {
 
     //call to show info
     public void setCardList() {
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         for (Publication publication : publicationDao.getListPublication()) {
-            cardList.add(new Card(publication, this, infoController));
+            cardList.add(new Card(publication, infoController));
         }
         this.setCardPanel();
         for (Card c : cardList) {
@@ -77,9 +55,9 @@ public class GridCards extends JScrollPane {
     }
 
     public void setCardList(String searchText) {
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         for (Publication publication : publicationDao.searchByName(searchText)) {
-            cardList.add(new Card(publication, this, infoController));
+            cardList.add(new Card(publication, infoController));
         }
         this.setCardPanel();
         for (Card c : cardList) {
@@ -89,9 +67,9 @@ public class GridCards extends JScrollPane {
     }
     
     public void filterByType(String type){
-        cardList = new ArrayList<Card>();
+        cardList = new ArrayList<>();
         for (Publication publication : publicationDao.filterByType(type)) {
-            cardList.add(new Card(publication, this, infoController));
+            cardList.add(new Card(publication, infoController));
         }
         this.setCardPanel();
         for (Card c : cardList) {
@@ -110,9 +88,5 @@ public class GridCards extends JScrollPane {
         publicationDao.delete(publication);
         manageView.setTableStatistic();
         this.setCardList(manageView.getSearchField());
-    }
-    
-    public List<Card> getCardList(){
-        return cardList;
     }
 }
