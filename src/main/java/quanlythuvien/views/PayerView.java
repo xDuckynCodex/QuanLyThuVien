@@ -53,7 +53,7 @@ public class PayerView extends JFrame{
     public String getSearchField() {
         return searchField.getTextField();
     }
-
+  
     private JTable payerTable;
     
     // thêm cột cho bảng

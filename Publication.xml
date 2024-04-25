@@ -1,39 +1,3 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
-    <publication>
-        <author>qweq</author>
-        <code>P000001</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\ableson.jpg</imgPath>
-        <name>wqeqw</name>
-        <price>1.0</price>
-        <publishedDate>03/04/2024</publishedDate>
-        <publisher>qwewq</publisher>
-        <quantity>1</quantity>
-        <rented>0</rented>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>rty</author>
-        <code>P000002</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\armstrong.jpg</imgPath>
-        <name>try</name>
-        <price>1.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>rty</publisher>
-        <quantity>1</quantity>
-        <rented>0</rented>
-        <type>Book</type>
-    </publication>
-    <publication>
-        <author>gfbdvc</author>
-        <code>P000003</code>
-        <imgPath>C:\Users\phati\Desktop\OOP\QuanLyThuVien\public\images\alag.jpg</imgPath>
-        <name>rewdq</name>
-        <price>1.0</price>
-        <publishedDate>01/04/2024</publishedDate>
-        <publisher>grefed</publisher>
-        <quantity>1</quantity>
-        <rented>0</rented>
-        <type>Book</type>
-    </publication>
 </publications>
