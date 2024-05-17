@@ -222,7 +222,6 @@ public class RenterController {
     }
     
     class RemoveBookInRentedBookList implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             List<RentedBook> list = renterView.getRentedBookList();

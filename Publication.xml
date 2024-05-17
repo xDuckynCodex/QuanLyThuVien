@@ -1,3 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
+    <publication>
+        <author>1</author>
+        <code>P000001</code>
+        <imgPath>.\public\images\ph.png</imgPath>
+        <name>Anh</name>
+        <price>10.0</price>
+        <publishedDate>02/04/2024</publishedDate>
+        <publisher>1</publisher>
+        <quantity>10</quantity>
+        <rented>7</rented>
+        <type>Book</type>
+    </publication>
+    <publication>
+        <author>1</author>
+        <code>P000002</code>
+        <imgPath>.\public\images\ph.png</imgPath>
+        <name>Trung</name>
+        <price>10.0</price>
+        <publishedDate>02/04/2024</publishedDate>
+        <publisher>1</publisher>
+        <quantity>10</quantity>
+        <rented>2</rented>
+        <type>Magazine</type>
+    </publication>
+    <publication>
+        <author>1</author>
+        <code>P000003</code>
+        <imgPath>.\public\images\ph.png</imgPath>
+        <name>CA</name>
+        <price>1.0</price>
+        <publishedDate>01/04/2024</publishedDate>
+        <publisher>1</publisher>
+        <quantity>10</quantity>
+        <rented>1</rented>
+        <type>Newspaper</type>
+    </publication>
+    <publication>
+        <author>1</author>
+        <code>P000004</code>
+        <imgPath>.\public\images\ph.png</imgPath>
+        <name>Tiểu thuyết</name>
+        <price>1.0</price>
+        <publishedDate>02/04/2024</publishedDate>
+        <publisher>1</publisher>
+        <quantity>10</quantity>
+        <rented>1</rented>
+        <type>Novel</type>
+    </publication>
 </publications>
