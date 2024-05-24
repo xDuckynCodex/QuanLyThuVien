@@ -57,7 +57,7 @@ public class LoginView extends JFrame implements ActionListener {
         
         img.setHorizontalAlignment(SwingConstants.LEFT);
         img.setBounds(0, 0, 400, 300);
-        img.setIcon(new ImageIcon(".\\public\\images\\bg.jpg"));
+        img.setIcon(new ImageIcon("..\\public\\images\\bg.jpg"));
 
         loginBtn.setText("Login");
         loginBtn.addActionListener(this);

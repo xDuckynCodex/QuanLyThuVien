@@ -30,7 +30,7 @@ public class InfoView extends JFrame {
     }
     private Publication publication;
 
-    private String imgPath = ".\\public\\images\\ph.png";
+    private String imgPath = "..\\public\\images\\ph.png";
     private final int north = 50;
     private final int west = 250;
     public void initComponent() {
@@ -273,8 +273,8 @@ public class InfoView extends JFrame {
         price.setField("");
         datePickerPanel.clearDate();
         typeMenu.clearType();
-        card.setImageLabel(".\\public\\images\\ph.png");
-        imgPath = ".\\public\\images\\ph.png";
+        imgPath = "..\\public\\images\\ph.png";
+        card.setImageLabel(imgPath);
 
         addBtn.setEnable(true);
         editBtn.setEnable(false);
