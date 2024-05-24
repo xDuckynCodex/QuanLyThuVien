@@ -12,4 +12,16 @@
         <rented>0</rented>
         <type>Book</type>
     </publication>
+    <publication>
+        <author>12</author>
+        <code>P000002</code>
+        <imgPath>.\public\images\ph.png</imgPath>
+        <name>qwewqe</name>
+        <price>12.0</price>
+        <publishedDate>13/05/2024</publishedDate>
+        <publisher>qwe</publisher>
+        <quantity>13</quantity>
+        <rented>0</rented>
+        <type>Book</type>
+    </publication>
 </publications>

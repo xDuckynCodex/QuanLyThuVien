@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="final">
+    <list default="true" id="34e05069-4413-4a3d-9a68-14bab94da80a" name="Changes" comment="fix jaxb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/utils/FontUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Publication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Publication.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/InfoView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quanlythuvien/views/LoginView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -86,7 +84,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Run",
+    "Application.App.executor": "Debug",
     "Application.InfoController.executor": "Run",
     "Application.InfoView.executor": "Run",
     "Application.Main.executor": "Run",
@@ -489,7 +487,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716563510369</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="fix jaxb">
+      <option name="closed" value="true" />
+      <created>1716568315173</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1716568315173</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,7 +537,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add RootController" />
     <MESSAGE value="fix all RootController" />
     <MESSAGE value="handle all event in InfoView" />
     <MESSAGE value="add RenterController to AdminController &#10;add button swap two views" />
@@ -556,7 +561,8 @@
     <MESSAGE value="c" />
     <MESSAGE value="fix warning" />
     <MESSAGE value="final" />
-    <option name="LAST_COMMIT_MESSAGE" value="final" />
+    <MESSAGE value="fix jaxb" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix jaxb" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -565,11 +571,6 @@
           <properties class="javax.xml.bind.UnmarshalException" package="javax.xml.bind" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/quanlythuvien/components/Card.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

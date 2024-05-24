@@ -325,9 +325,13 @@ public class InfoView extends JFrame {
             showMessage("Không được bỏ trống 4");
             return false;
         }
-        if(Integer.parseInt(checkQuantity) <= 0){
+        try {
+            if(Integer.parseInt(checkQuantity) <= 0){
+                showMessage("Số lượng không hợp lệ");
+                return false;
+            }
+        } catch (NumberFormatException e) {
             showMessage("Số lượng không hợp lệ");
-            return false;
         }
         return true;
     }
@@ -338,10 +342,15 @@ public class InfoView extends JFrame {
             showMessage("Không được bỏ trống 5");
             return false;
         }
-        if(Double.parseDouble(checkPrice) <= 0){
+        try {
+            if(Double.parseDouble(checkPrice) <= 0){
+                showMessage("Giá không hợp lệ");
+                return false;
+            }
+        } catch (NumberFormatException e) {
             showMessage("Giá không hợp lệ");
-            return false;
         }
+
         return true;
     }
     
