@@ -119,19 +119,20 @@ public class RenterController {
 
     class DeleteRenterListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Renter renter = renterView.getEditRenterInfo();
-            renter = renterDao.getRenterByCode(renter.getCode());
+            String renterCode = renterView.getEditRenterInfo().getCode();
+            Renter renter = renterDao.getRenterByCode(renterCode);
             if(renter != null){
-                renterDao.delete(renter);
+                //hoàn trả sách về thư viện
                 for (RentedBook rentedBook : renter.getRentedBookList()) {
                     publicationDao.setRentedInDeleting(rentedBook.getPublication(), rentedBook.getQuantity());
                 }
-                renterView.showListRenter(renterDao.getListRenterNotPayingBack());
-                renterView.showMessage("Xoá thành công");
-            }
+            renterDao.delete(renter);    
+            renterView.showListRenter(renterDao.getListRenterNotPayingBack());
+            renterView.showMessage("Xoá thành công");
             renterView.clear();
             manageView.setTableStatistic();
             renterView.setRentedBookList(new ArrayList<>());
+            }
         }
     }
 

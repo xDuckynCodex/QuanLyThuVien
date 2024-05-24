@@ -295,7 +295,7 @@ public class InfoView extends JFrame {
     public boolean validName(){
         String checkName = name.getTextField();
         if(checkName == null || checkName.trim().isEmpty()){
-            showMessage("Không được bỏ trống 1");
+            showMessage("Không được bỏ trống tên");
             return false;
         }
         return true;
@@ -304,7 +304,7 @@ public class InfoView extends JFrame {
     public boolean validPublisher(){
         String checkPublisher = publisher.getTextField();
         if(checkPublisher == null || checkPublisher.trim().isEmpty()){
-            showMessage("Không được bỏ trống 2");
+            showMessage("Không được bỏ trống NXB");
             return false;
         }
         return true;
@@ -322,7 +322,7 @@ public class InfoView extends JFrame {
     public boolean validQuantity(){
         String checkQuantity = quantity.getTextField();
         if(checkQuantity == null || checkQuantity.trim().isEmpty()){
-            showMessage("Không được bỏ trống 4");
+            showMessage("Không được bỏ trống số lượng");
             return false;
         }
         if(Integer.parseInt(checkQuantity) <= 0){
@@ -335,7 +335,7 @@ public class InfoView extends JFrame {
     public boolean validPrice(){
         String checkPrice = price.getTextField();
         if(checkPrice == null || checkPrice.trim().isEmpty()){
-            showMessage("Không được bỏ trống 5");
+            showMessage("Không được bỏ trống giá");
             return false;
         }
         if(Double.parseDouble(checkPrice) <= 0){
@@ -358,7 +358,7 @@ public class InfoView extends JFrame {
         Date date = datePickerPanel.getDateValue();
         Date dateNow = new Date();
         if(date == null || DateFomatterUtil.valueToString(date).trim().isEmpty()){
-            showMessage("Không được bỏ trống");
+            showMessage("Không được bỏ trống ngày");
             return false;
         }
         if(dateNow.after(date)){

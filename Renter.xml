@@ -2,182 +2,170 @@
 <renters>
     <renter>
         <isPaidBack>true</isPaidBack>
-        <code>R000001</code>
-        <expiredDate>26/04/2024</expiredDate>
-        <firstName>1</firstName>
-        <name>1</name>
-        <payBackDate>25/04/2024</payBackDate>
+        <code>R000005</code>
+        <expiredDate>19/05/2024</expiredDate>
+        <firstName>Nguyễn Văn Thành</firstName>
+        <name>An</name>
+        <payBackDate>17/05/2024</payBackDate>
         <rentedBookList>
             <publication>
-                <author>1</author>
+                <author>Khoa NN</author>
                 <code>P000001</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>Anh</name>
-                <price>10.0</price>
-                <publishedDate>02/04/2024</publishedDate>
-                <publisher>1</publisher>
+                <imgPath>D:\QuanLyThuVien\public\images\bayern.jpg</imgPath>
+                <name>Tiếng Anh</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>HVAN</publisher>
                 <quantity>10</quantity>
-                <rented>7</rented>
+                <rented>2</rented>
                 <type>Book</type>
             </publication>
             <quantity>1</quantity>
         </rentedBookList>
         <state>Trả sách đúng hạn</state>
-    </renter>
-    <renter>
-        <isPaidBack>false</isPaidBack>
-        <code>R000006</code>
-        <expiredDate>26/04/2024</expiredDate>
-        <firstName>Nguyễn Văn Thành</firstName>
-        <name>An</name>
-        <rentedBookList>
-            <publication>
-                <author>1</author>
-                <code>P000002</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>Trung</name>
-                <price>10.0</price>
-                <publishedDate>02/04/2024</publishedDate>
-                <publisher>1</publisher>
-                <quantity>10</quantity>
-                <rented>3</rented>
-                <type>Magazine</type>
-            </publication>
-            <quantity>1</quantity>
-        </rentedBookList>
     </renter>
     <renter>
         <isPaidBack>true</isPaidBack>
-        <code>R000004</code>
-        <expiredDate>26/04/2024</expiredDate>
-        <firstName>Chu Thị Hồng</firstName>
+        <code>R000007</code>
+        <expiredDate>21/05/2024</expiredDate>
+        <firstName>Chu Hồng</firstName>
         <name>Anh</name>
-        <payBackDate>25/04/2024</payBackDate>
+        <payBackDate>17/05/2024</payBackDate>
         <rentedBookList>
             <publication>
-                <author>1</author>
+                <author>Khoa NV7</author>
                 <code>P000002</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>Trung</name>
-                <price>10.0</price>
-                <publishedDate>02/04/2024</publishedDate>
-                <publisher>1</publisher>
+                <imgPath>D:\QuanLyThuVien\public\images\allmon.jpg</imgPath>
+                <name>OOP</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>HVAN</publisher>
                 <quantity>10</quantity>
-                <rented>3</rented>
+                <rented>0</rented>
                 <type>Magazine</type>
             </publication>
-            <quantity>1</quantity>
+            <quantity>2</quantity>
         </rentedBookList>
         <state>Trả sách đúng hạn</state>
     </renter>
     <renter>
-        <isPaidBack>false</isPaidBack>
-        <code>R000007</code>
-        <expiredDate>26/04/2024</expiredDate>
+        <isPaidBack>true</isPaidBack>
+        <code>R000006</code>
+        <expiredDate>21/05/2024</expiredDate>
         <firstName>Nguyễn Duy</firstName>
         <name>Khang</name>
+        <payBackDate>17/05/2024</payBackDate>
         <rentedBookList>
             <publication>
-                <author>1</author>
-                <code>P000001</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>Anh</name>
-                <price>10.0</price>
-                <publishedDate>02/04/2024</publishedDate>
-                <publisher>1</publisher>
-                <quantity>10</quantity>
-                <rented>7</rented>
-                <type>Book</type>
-            </publication>
-            <quantity>1</quantity>
-        </rentedBookList>
-    </renter>
-    <renter>
-        <isPaidBack>false</isPaidBack>
-        <code>R000008</code>
-        <expiredDate>26/04/2024</expiredDate>
-        <firstName>Hoàng Đức</firstName>
-        <name>Linh</name>
-        <rentedBookList>
-            <publication>
-                <author>1</author>
-                <code>P000002</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>Trung</name>
-                <price>10.0</price>
-                <publishedDate>02/04/2024</publishedDate>
-                <publisher>1</publisher>
-                <quantity>10</quantity>
-                <rented>3</rented>
-                <type>Magazine</type>
-            </publication>
-            <quantity>1</quantity>
-        </rentedBookList>
-    </renter>
-    <renter>
-        <isPaidBack>false</isPaidBack>
-        <code>R000003</code>
-        <expiredDate>26/04/2024</expiredDate>
-        <firstName>Nguyễn Hữu</firstName>
-        <name>Nguyên</name>
-        <rentedBookList>
-            <publication>
-                <author>1</author>
+                <author>Paul Boag</author>
                 <code>P000003</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>CA</name>
-                <price>1.0</price>
-                <publishedDate>01/04/2024</publishedDate>
-                <publisher>1</publisher>
+                <imgPath>D:\QuanLyThuVien\public\images\boag.jpg</imgPath>
+                <name>Website Owner's Manual</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>Manning</publisher>
                 <quantity>10</quantity>
-                <rented>1</rented>
+                <rented>2</rented>
                 <type>Newspaper</type>
             </publication>
             <quantity>1</quantity>
         </rentedBookList>
+        <state>Trả sách đúng hạn</state>
     </renter>
     <renter>
-        <isPaidBack>false</isPaidBack>
-        <code>R000005</code>
-        <expiredDate>26/04/2024</expiredDate>
-        <firstName>Nông Quốc</firstName>
-        <name>Phong</name>
+        <isPaidBack>true</isPaidBack>
+        <code>R000004</code>
+        <expiredDate>20/05/2024</expiredDate>
+        <firstName>Hoàng Đức</firstName>
+        <name>Linh</name>
+        <payBackDate>24/05/2024</payBackDate>
         <rentedBookList>
             <publication>
-                <author>1</author>
+                <author>Paul Boag</author>
+                <code>P000003</code>
+                <imgPath>D:\QuanLyThuVien\public\images\boag.jpg</imgPath>
+                <name>Website Owner's Manual</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>Manning</publisher>
+                <quantity>10</quantity>
+                <rented>2</rented>
+                <type>Newspaper</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+        <state>Quá hạn 4 ngày</state>
+    </renter>
+    <renter>
+        <isPaidBack>true</isPaidBack>
+        <code>R000003</code>
+        <expiredDate>22/05/2024</expiredDate>
+        <firstName>Lê Nguyễn Nhật</firstName>
+        <name>Minh</name>
+        <payBackDate>17/05/2024</payBackDate>
+        <rentedBookList>
+            <publication>
+                <author>Khoa NV7</author>
+                <code>P000002</code>
+                <imgPath>D:\QuanLyThuVien\public\images\allmon.jpg</imgPath>
+                <name>OOP</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>1</rented>
+                <type>Magazine</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+        <state>Trả sách đúng hạn</state>
+    </renter>
+    <renter>
+        <isPaidBack>true</isPaidBack>
+        <code>R000001</code>
+        <expiredDate>18/05/2024</expiredDate>
+        <firstName>Nông Quốc</firstName>
+        <name>Phong</name>
+        <payBackDate>17/05/2024</payBackDate>
+        <rentedBookList>
+            <publication>
+                <author>Khoa NN</author>
+                <code>P000001</code>
+                <imgPath>D:\QuanLyThuVien\public\images\bayern.jpg</imgPath>
+                <name>Tiếng Anh</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>2</rented>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+        <state>Trả sách đúng hạn</state>
+    </renter>
+    <renter>
+        <isPaidBack>true</isPaidBack>
+        <code>R000002</code>
+        <expiredDate>18/05/2024</expiredDate>
+        <firstName>Lê Thế</firstName>
+        <name>Phát</name>
+        <payBackDate>24/05/2024</payBackDate>
+        <rentedBookList>
+            <publication>
+                <author>David A. Black</author>
                 <code>P000004</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>Tiểu thuyết</name>
-                <price>1.0</price>
-                <publishedDate>02/04/2024</publishedDate>
-                <publisher>1</publisher>
+                <imgPath>D:\QuanLyThuVien\public\images\black2.jpg</imgPath>
+                <name>Well-Grounded Rubyist</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>Manning</publisher>
                 <quantity>10</quantity>
                 <rented>1</rented>
                 <type>Novel</type>
             </publication>
             <quantity>1</quantity>
         </rentedBookList>
-    </renter>
-    <renter>
-        <isPaidBack>false</isPaidBack>
-        <code>R000002</code>
-        <expiredDate>26/04/2024</expiredDate>
-        <firstName>Lê Thế</firstName>
-        <name>Phát</name>
-        <rentedBookList>
-            <publication>
-                <author>1</author>
-                <code>P000001</code>
-                <imgPath>.\public\images\ph.png</imgPath>
-                <name>Anh</name>
-                <price>10.0</price>
-                <publishedDate>02/04/2024</publishedDate>
-                <publisher>1</publisher>
-                <quantity>10</quantity>
-                <rented>7</rented>
-                <type>Book</type>
-            </publication>
-            <quantity>1</quantity>
-        </rentedBookList>
+        <state>Quá hạn 6 ngày</state>
     </renter>
 </renters>
