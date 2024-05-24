@@ -1,7 +1,7 @@
 package quanlythuvien.dao;
 import java.util.List;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 
 import quanlythuvien.entities.Publication;
 

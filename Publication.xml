@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
+    <publication>
+        <author>1</author>
+        <code>P000001</code>
+        <imgPath>.\public\images\ph.png</imgPath>
+        <name>qweqweqw</name>
+        <price>1.0</price>
+        <publishedDate>06/05/2024</publishedDate>
+        <publisher>qwewq</publisher>
+        <quantity>1</quantity>
+        <rented>0</rented>
+        <type>Book</type>
+    </publication>
 </publications>

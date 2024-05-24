@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class FontUtil {
     private static final File fontFile
-            = new File("..\\public\\fonts\\Bitter-Medium.ttf");
+            = new File(".\\public\\fonts\\Bitter-Medium.ttf");
     public static void setFont() {
         GraphicsEnvironment ge =
                 GraphicsEnvironment.getLocalGraphicsEnvironment();
