@@ -1,27 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <publications>
     <publication>
-        <author>1</author>
+        <author>Khoa NN</author>
         <code>P000001</code>
-        <imgPath>.\public\images\ph.png</imgPath>
-        <name>qweqweqw</name>
-        <price>1.0</price>
-        <publishedDate>06/05/2024</publishedDate>
-        <publisher>qwewq</publisher>
-        <quantity>1</quantity>
+        <imgPath>D:\QuanLyThuVien\public\images\bayern.jpg</imgPath>
+        <name>Tiếng Anh</name>
+        <price>100000.0</price>
+        <publishedDate>01/05/2024</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>10</quantity>
         <rented>0</rented>
         <type>Book</type>
     </publication>
     <publication>
-        <author>12</author>
+        <author>Khoa NV7</author>
         <code>P000002</code>
-        <imgPath>.\public\images\ph.png</imgPath>
-        <name>qwewqe</name>
-        <price>12.0</price>
-        <publishedDate>13/05/2024</publishedDate>
-        <publisher>qwe</publisher>
-        <quantity>13</quantity>
+        <imgPath>D:\QuanLyThuVien\public\images\allmon.jpg</imgPath>
+        <name>OOP</name>
+        <price>100000.0</price>
+        <publishedDate>01/05/2024</publishedDate>
+        <publisher>HVAN</publisher>
+        <quantity>10</quantity>
         <rented>0</rented>
-        <type>Book</type>
+        <type>Magazine</type>
+    </publication>
+    <publication>
+        <author>Paul Boag</author>
+        <code>P000003</code>
+        <imgPath>D:\QuanLyThuVien\public\images\boag.jpg</imgPath>
+        <name>Website Owner's Manual</name>
+        <price>100000.0</price>
+        <publishedDate>01/05/2024</publishedDate>
+        <publisher>Manning</publisher>
+        <quantity>10</quantity>
+        <rented>0</rented>
+        <type>Newspaper</type>
+    </publication>
+    <publication>
+        <author>David A. Black</author>
+        <code>P000004</code>
+        <imgPath>D:\QuanLyThuVien\public\images\black2.jpg</imgPath>
+        <name>Well-Grounded Rubyist</name>
+        <price>100000.0</price>
+        <publishedDate>01/05/2024</publishedDate>
+        <publisher>Manning</publisher>
+        <quantity>10</quantity>
+        <rented>0</rented>
+        <type>Novel</type>
     </publication>
 </publications>

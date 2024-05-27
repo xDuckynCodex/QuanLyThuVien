@@ -7,7 +7,6 @@ import quanlythuvien.views.InfoView;
 import quanlythuvien.views.LoginView;
 import quanlythuvien.views.ManageView;
 import quanlythuvien.views.RenterView;
-
 import quanlythuvien.views.PayerView;
 
 public class AdminController {

@@ -58,7 +58,7 @@ public class ManageView extends JFrame {
 
         addBtn = new ButtonComp("Thêm ấn phẩm");
         transferToRenterViewBtn = new ButtonComp("Chuyển sang quản lý người mượn");
-        transferToPayerViewBtn = new ButtonComp("Chuyển qua quản lý người trả");
+        transferToPayerViewBtn = new ButtonComp("Chuyển sang quản lý người trả");
         filterBtn = new JButton("Lọc");
         tableStatistic = new TableStatistic();
         
@@ -119,7 +119,7 @@ public class ManageView extends JFrame {
                 SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferToRenterViewBtn, 73,
                 SpringLayout.NORTH, panel);
-        layout.putConstraint(SpringLayout.EAST, transferToPayerViewBtn, -127, SpringLayout.EAST, panel);
+        layout.putConstraint(SpringLayout.EAST, transferToPayerViewBtn, -120, SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.NORTH, transferToPayerViewBtn, 33, SpringLayout.NORTH, panel);
         //label
         layout.putConstraint(SpringLayout.WEST, frameLabel, 800,
