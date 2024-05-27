@@ -1,4 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <renters>
-    
+    <renter>
+        <isPaidBack>false</isPaidBack>
+        <code>R000001</code>
+        <expiredDate>31/05/2024</expiredDate>
+        <firstName>Lê Thế</firstName>
+        <name>Phát</name>
+        <rentedBookList>
+            <publication>
+                <author>Khoa NN</author>
+                <code>P000001</code>
+                <imgPath>.\public\images\bayern.jpg</imgPath>
+                <name>Tiếng Anh</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>1</rented>
+                <type>Book</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <isPaidBack>false</isPaidBack>
+        <code>R000002</code>
+        <expiredDate>31/05/2024</expiredDate>
+        <firstName>Nông Quốc</firstName>
+        <name>Phong</name>
+        <rentedBookList>
+            <publication>
+                <author>David A. Black</author>
+                <code>P000003</code>
+                <imgPath>.\public\images\black2.jpg</imgPath>
+                <name>Well-Grounded Rubyist</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>Manning</publisher>
+                <quantity>10</quantity>
+                <rented>2</rented>
+                <type>Novel</type>
+            </publication>
+            <quantity>2</quantity>
+        </rentedBookList>
+    </renter>
+    <renter>
+        <isPaidBack>false</isPaidBack>
+        <code>R000003</code>
+        <expiredDate>31/05/2024</expiredDate>
+        <firstName>Hồ Chí Vinh</firstName>
+        <name>Vinh</name>
+        <rentedBookList>
+            <publication>
+                <author>Khoa NV7</author>
+                <code>P000002</code>
+                <imgPath>.\public\images\allmon.jpg</imgPath>
+                <name>OOP</name>
+                <price>100000.0</price>
+                <publishedDate>01/05/2024</publishedDate>
+                <publisher>HVAN</publisher>
+                <quantity>10</quantity>
+                <rented>1</rented>
+                <type>Magazine</type>
+            </publication>
+            <quantity>1</quantity>
+        </rentedBookList>
+    </renter>
 </renters>

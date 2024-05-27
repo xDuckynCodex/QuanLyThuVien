@@ -9,6 +9,11 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class ImageUtils {
+    public static String getRelativePath(String path) {
+        String absolutePath = new File(".").getAbsolutePath();
+        return ".\\" + path.substring(absolutePath.length()- 1);
+    }
+
     public static ImageIcon getImageFromFile(String filePath) {
         BufferedImage bImg;
         try {

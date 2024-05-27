@@ -140,7 +140,7 @@ public class InfoController {
             fc.setCurrentDirectory(new File("."));
             int result = fc.showOpenDialog(infoView);
             if (result == JFileChooser.APPROVE_OPTION) {
-                String imagePath = fc.getSelectedFile().getPath();
+                String imagePath = ImageUtils.getRelativePath(fc.getSelectedFile().getAbsolutePath());
                 infoView.card.setImageLabel(imagePath);
                 infoView.setImgPath(imagePath);
             }
